@@ -1,1 +1,1 @@
-Sitemap: https://evalf22.classes.andrewheiss.com/sitemap.xml
+Sitemap: https://encuestas-sociales.netlify.app/sitemap.xml

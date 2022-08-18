@@ -23,7 +23,7 @@ csl: files/bib/chicago-author-date.csl
 
 website:
   title: "Encuestas Sociales"
-  site-url: "https://evalf22.classes.andrewheiss.com"
+  site-url: "https://encuestas-sociales.netlify.app"
   description-meta: "Diseño, análisis, reporte y visualización de encuestas sociales"
   favicon: "/files/icon-513.png"
 

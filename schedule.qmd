@@ -19,34 +19,31 @@ Los dos componentes centrales del curso son las clases teóricas y las actividad
 | |<i class="fas fa-chalkboard-teacher"></i>  Clases  |  <i class="fas fa-user-edit"></i>  Prácticas y evaluaciones | <i class="fas fa-book-reader"></i> Lecturas y material adicional
 -----|---------|-----------|-----------
 <font color="orange"> **Agosto** </font> |   |   |
-Jueves 18 | [**1. Presentación e introducción**](/content/01-content.html)  |   | - Leer detalladamente [programa del curso](syllabus.html) 
+Jueves 18 | [**1. Presentación e introducción**](/content/01-content.html)  |   | - Leer detalladamente [programa del curso](syllabus.html)
 
-### UNIDAD 1: DISEÑO 
+### UNIDAD 1: DISEÑO
 
 |||
 -----|---------|-----------|-----------
-Jueves 25 | [**2.Encuestas: tipos, características e implementación **]()   |  [Selección de encuesta de referencia]()  | - Font & Pasadas, cap.1: ¿Qué es una encuesta y qué no es una encuesta? <br>- Font & Pasadas, cap.2: ¿Para qué sirve una encuesta? <br>- Fowler Cap 1: Introduction
+Jueves 25 | [**2.Encuestas: tipos, características e implementación **]()   |  [Selección de encuesta de referencia]()  | - [Font & Pasadas, cap.1: ¿Qué es una encuesta y qué no es una encuesta?](files/lecturas/Font&Pasadas2016LasEncuestasdeOpinion.pdf) <br>- [Font & Pasadas, cap.2: ¿Para qué sirve una encuesta?](files/lecturas/Font&Pasadas2016LasEncuestasdeOpinion.pdf) <br>- [Fowler Cap 1: Introduction](files/lecturas/Fowler2013Survey Research Methods.pdf)
 <font color="orange"> **Septiembre** </font> |   |   |
-Jueves 1 | [**3. Diseño de preguntas 1: medición, confiabilidad y validez**]()  |   | 
-Jueves 8 | [**4. Diseño de preguntas 2: diseño de instrumentos de medición (preguntas, baterías, experimentos)**]()  |   | 
-Jueves 15 | RECESO  |   | 
-Jueves 22 | [**5. Diseño de cuestionarios**]()  |   | 
-Jueves 29 | [**6. Muestreo**]()  | - Entrega 1: Diseño de instrumento de medición  | 
+Jueves 1 | [**3. Diseño de preguntas 1: medición, confiabilidad y validez**]()  |   | - [RatSWD Quality standards for the design of measurement instruments](files/lecturas/RatSWD_WP_245.pdf)
+Jueves 8 | [**4. Diseño de preguntas 2: diseño de instrumentos de medición (preguntas, baterías, experimentos)**]()  |   |
+Jueves 15 | RECESO  |   |
+Jueves 22 | [**5. Diseño de cuestionarios**]()  |   |
+Jueves 29 | [**6. Muestreo**]()  | - Entrega 1: Diseño de instrumento de medición  |
 <font color="orange"> **Octubre** </font> |   |   |
-Jueves 6 | [**7. Presentación informe 1**]()  |   | 
+Jueves 6 | [**7. Presentación informe 1**]()  |   |
 
-### UNIDAD 2: ANÁLISIS 
+### UNIDAD 2: ANÁLISIS
 
 |||
 -----|---------|-----------|-----------
-Jueves 13 | [**8. Limpieza, descriptivos y flujo de trabajo reproducible**]()  |   | 
-Jueves 20 | [**9. Visualización 1: Tablas**]()  |   | 
-Jueves 27 | [**10. Visualización 2: Gráficos**]()  |   | 
+Jueves 13 | [**8. Limpieza, descriptivos y flujo de trabajo reproducible**]()  |   |
+Jueves 20 | [**9. Visualización 1: Tablas**]()  |   |
+Jueves 27 | [**10. Visualización 2: Gráficos**]()  |   |
 <font color="orange"> **Noviembre** </font> |   |   |
-Jueves 3 | [**11. Indices y análisis factorial** ]()  |   | 
-Jueves 10 | [**12. Reporte y comunicación de resultados**]()  |   | 
-Jueves 17 | [**13. Foro invitados externos**]()  |  - Entrega informe 2: Análisis y reporte | 
-Jueves 24 | [**14. Presentación final**]()  |   | 
-
-
-
+Jueves 3 | [**11. Indices y análisis factorial** ]()  |   |
+Jueves 10 | [**12. Reporte y comunicación de resultados**]()  |   |
+Jueves 17 | [**13. Foro invitados externos**]()  |  - Entrega informe 2: Análisis y reporte |
+Jueves 24 | [**14. Presentación final**]()  |   |

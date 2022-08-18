@@ -1,6 +1,7 @@
 ---
 title: "Encuestas Sociales"
 subtitle: "Diseño, análisis y reporte"
+lang: es
 details: |
   SOC01210-1 • Segundo Semestre 2022<br>Departamento de Sociología FACSO<br>Universidad de Chile
 sidebar: false
