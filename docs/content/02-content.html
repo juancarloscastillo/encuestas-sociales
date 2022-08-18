@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.0.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Encuestas Sociales - Regression and inference</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="..//files/icon-513.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<meta property="og:title" content="Encuestas Sociales - Regression and inference">
+<meta property="og:description" content="Look through your notes on regression from your last stats class. Also, you can skim through these resources:">
+<meta property="og:image" content="https://evalf22.classes.andrewheiss.com/files/social-image-f22.png">
+<meta property="og:site-name" content="Encuestas Sociales">
+<meta property="og:locale" content="en_US">
+<meta property="og:image:height" content="490">
+<meta property="og:image:width" content="898">
+<meta name="twitter:title" content="Encuestas Sociales - Regression and inference">
+<meta name="twitter:description" content="Look through your notes on regression from your last stats class. Also, you can skim through these resources:">
+<meta name="twitter:image" content="https://evalf22.classes.andrewheiss.com/files/social-image-f22.png">
+<meta name="twitter:creator" content="@juankcastillo">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image-height" content="490">
+<meta name="twitter:image-width" content="898">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Encuestas Sociales</span>
+  </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../syllabus.html">Programa</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../schedule.html">Planificación</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../content/index.html">Contenidos</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../resource/index.html">Recursos</a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.slack.com"><i class="bi bi-slack" role="img" aria-label="Slack">
+</i> 
+ </a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#readings" id="toc-readings" class="nav-link active" data-scroll-target="#readings">Readings</a></li>
+  <li><a href="#recommended-readings" id="toc-recommended-readings" class="nav-link" data-scroll-target="#recommended-readings">Recommended readings</a></li>
+  <li><a href="#slides" id="toc-slides" class="nav-link" data-scroll-target="#slides">Slides</a></li>
+  <li><a href="#videos" id="toc-videos" class="nav-link" data-scroll-target="#videos">Videos</a></li>
+  <li><a href="#in-class-stuff" id="toc-in-class-stuff" class="nav-link" data-scroll-target="#in-class-stuff">In-class stuff</a></li>
+  <li><a href="#bayesian-statistics-resources" id="toc-bayesian-statistics-resources" class="nav-link" data-scroll-target="#bayesian-statistics-resources">Bayesian statistics resources</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header">
+<h1 class="title display-7">Regression and inference</h1>
+
+<div class="date-block bg-content text-white p-2">
+  <p class="date">Content for Thursday, January 20, 2022</p>
+</div>
+</header>
+
+<section id="readings" class="level2">
+<h2 class="anchored" data-anchor-id="readings">Readings</h2>
+<ul>
+<li><i class="fa-solid fa-book" aria-hidden="true"></i> Chapters 3 and 4 in <em>The Effect</em> <span class="citation" data-cites="Huntington-Klein:2021">(<a href="#ref-Huntington-Klein:2021" role="doc-biblioref">Huntington-Klein 2021</a>)</span></li>
+</ul>
+</section>
+<section id="recommended-readings" class="level2">
+<h2 class="anchored" data-anchor-id="recommended-readings">Recommended readings</h2>
+<p>Look through your notes on regression from your last stats class. Also, you can skim through these resources:</p>
+<ul>
+<li><i class="fa-solid fa-book" aria-hidden="true"></i> <a href="https://moderndive.com/6-regression.html">6.1–6.4 in <em>ModernDive</em></a> <span class="citation" data-cites="IsmayKim:2018">(<a href="#ref-IsmayKim:2018" role="doc-biblioref">Ismay and Kim 2019</a>)</span></li>
+<li><i class="fa-solid fa-book" aria-hidden="true"></i> <a href="https://moderndive.com/7-multiple-regression.html">7.1–7.4 in <em>ModernDive</em></a> <span class="citation" data-cites="IsmayKim:2018">(<a href="#ref-IsmayKim:2018" role="doc-biblioref">Ismay and Kim 2019</a>)</span></li>
+<li><i class="fa-solid fa-book" aria-hidden="true"></i> 7.1–7.3 in <em>OpenIntro Statistics</em> <span class="citation" data-cites="DiezBarrCetinkaya-Rundel:2017">(<a href="#ref-DiezBarrCetinkaya-Rundel:2017" role="doc-biblioref">Diez, Barr, and Çetinkaya-Rundel 2017</a>)</span></li>
+<li><i class="fa-solid fa-book" aria-hidden="true"></i> 8.1 in <em>OpenIntro Statistics</em> <span class="citation" data-cites="DiezBarrCetinkaya-Rundel:2017">(<a href="#ref-DiezBarrCetinkaya-Rundel:2017" role="doc-biblioref">Diez, Barr, and Çetinkaya-Rundel 2017</a>)</span></li>
+</ul>
+<p>We’ll review all this regression stuff in the videos, so <em>don’t panic</em> if this all looks terrifying! Also, take advantage of the videos that accompany the <em>OpenIntro</em> chapters. And <em>also</em>, the <em>OpenIntro</em> chapters are heavier on the math—don’t worry if you don’t understand everything.</p>
+</section>
+<section id="slides" class="level2">
+<h2 class="anchored" data-anchor-id="slides">Slides</h2>
+<p>The slides for today’s lesson are available online as an HTML file. Use the buttons below to open the slides either as an interactive website or as a static PDF (for printing or storing for later). You can also click in the slides below and navigate through them with your left and right arrow keys.</p>
+<p>
+<a class="btn btn-danger" target="_blank" href="../slides/02-slides.html"><i class="fa-solid fa-arrow-up-right-from-square"></i> View all slides in new window</a> <a class="btn btn-danger" target="_blank" href="../slides/02-slides.pdf" role="button"><i class="fa-solid fa-file-pdf"></i> Download PDF of all slides</a>
+</p>
+<ul class="nav nav-tabs" id="slide-tabs" role="tablist">
+<li class="nav-item">
+<a class="nav-link active" id="introduction-tab" data-toggle="tab" href="#introduction" role="tab" aria-controls="introduction" aria-selected="true">Introduction</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" id="drawing-lines-tab" data-toggle="tab" href="#drawing-lines" role="tab" aria-controls="drawing-lines" aria-selected="false">Drawing lines</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" id="lines-greek-and-regression-tab" data-toggle="tab" href="#lines-greek-and-regression" role="tab" aria-controls="lines-greek-and-regression" aria-selected="false">Lines, Greek, and regression</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" id="null-worlds-and-statistical-significance-tab" data-toggle="tab" href="#null-worlds-and-statistical-significance" role="tab" aria-controls="null-worlds-and-statistical-significance" aria-selected="false">Null worlds and statistical significance</a>
+</li>
+</ul>
+<div id="slide-tabs" class="tab-content">
+<div id="introduction" class="tab-pane fade show active" role="tabpanel" aria-labelledby="introduction-tab">
+<div class="ratio ratio-16x9">
+<iframe src="../slides/02-slides.html#1">
+</iframe>
+</div>
+</div>
+<div id="drawing-lines" class="tab-pane fade" role="tabpanel" aria-labelledby="drawing-lines-tab">
+<div class="ratio ratio-16x9">
+<iframe src="../slides/02-slides.html#drawing-lines">
+</iframe>
+</div>
+</div>
+<div id="lines-greek-and-regression" class="tab-pane fade" role="tabpanel" aria-labelledby="lines-greek-and-regression-tab">
+<div class="ratio ratio-16x9">
+<iframe src="../slides/02-slides.html#lines-greek-regression">
+</iframe>
+</div>
+</div>
+<div id="null-worlds-and-statistical-significance" class="tab-pane fade" role="tabpanel" aria-labelledby="null-worlds-and-statistical-significance-tab">
+<div class="ratio ratio-16x9">
+<iframe src="../slides/02-slides.html#significance">
+</iframe>
+</div>
+</div>
+</div>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Fun fact</strong>: If you type <kbd>?</kbd> (or <kbd>shift</kbd> + <kbd>/</kbd>) while going through the slides, you can see a list of special slide-specific commands.</p>
+</div>
+</div>
+</section>
+<section id="videos" class="level2">
+<h2 class="anchored" data-anchor-id="videos">Videos</h2>
+<p>Videos for each section of the lecture are <a href="https://www.youtube.com/playlist?list=PLS6tnpTr39sERjvBbJGr9mpqvtiLVPzd4">available at this YouTube playlist</a>.</p>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=S4OmWxc3h3Y&amp;list=PLS6tnpTr39sERjvBbJGr9mpqvtiLVPzd4">Introduction</a></li>
+<li><a href="https://www.youtube.com/watch?v=DGbLEgL4g6Y&amp;list=PLS6tnpTr39sERjvBbJGr9mpqvtiLVPzd4">Drawing lines</a></li>
+<li><a href="https://www.youtube.com/watch?v=n-rV1TIoIgw&amp;list=PLS6tnpTr39sERjvBbJGr9mpqvtiLVPzd4">Lines, Greek, and regression</a></li>
+<li><a href="https://www.youtube.com/watch?v=RYKsrTKWCR4&amp;list=PLS6tnpTr39sERjvBbJGr9mpqvtiLVPzd4">Null worlds and statistical significance</a></li>
+</ul>
+<p>You can also watch the playlist (and skip around to different sections) here:</p>
+<div class="ratio ratio-16x9">
+<iframe src="https://www.youtube.com/embed/playlist?list=PLS6tnpTr39sERjvBbJGr9mpqvtiLVPzd4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="">
+</iframe>
+</div>
+</section>
+<section id="in-class-stuff" class="level2">
+<h2 class="anchored" data-anchor-id="in-class-stuff">In-class stuff</h2>
+<p>Here are all the materials we’ll use in class:</p>
+<ul>
+<li><a href="../slides/02-class.html"><strong>Session 2 FAQ slides</strong></a> (<a href="../slides/02-class.pdf">PDF</a>)</li>
+<li><a href="https://moderndive.com/1-getting-started.html#messages">Errors vs.&nbsp;warnings vs.&nbsp;messages</a> (i.e.&nbsp;what to do when R shows you red text)</li>
+<li>R Markdown examples:
+<ul>
+<li>Example R Markdown file used as a code-through or step-by-step teaching document:
+<ul>
+<li>Lots of <a href="https://www.andrewheiss.com/blog/">blog posts here</a></li>
+<li>Julia Silge, <a href="https://juliasilge.com/blog/star-trek/">“Modeling human/computer interactions on Star Trek from #TidyTuesday with workflowsets”</a></li>
+<li>Bob Rudis, <a href="https://rud.is/b/2021/08/13/some-covid-donuts-to-end-the-week/">“Some Covid Donuts To End The Week”</a></li>
+<li>Holger K. von Jouanne-Diedrich, <a href="https://blog.ephorie.de/the-youth-bulge-of-afghanistan-the-hidden-force-behind-political-instability">“The “Youth Bulge” of Afghanistan: The Hidden Force behind Political Instability”</a></li>
+</ul></li>
+<li>Example R Markdown file used as a publicly-consumable document:
+<ul>
+<li>Click on the “Manuscript” menu item <a href="https://stats.andrewheiss.com/cautioning-canary/">at this site</a></li>
+<li>See <a href="https://github.com/andrewheiss/cautioning-canary/blob/master/manuscript/manuscript.Rmd">the Rmd file here</a></li>
+</ul></li>
+</ul></li>
+</ul>
+<p>Hands-on R materials:</p>
+<ul>
+<li><a href="https://vincentarelbundock.github.io/Rdatasets/csv/causaldata/restaurant_inspections.csv"><i class="fas fa-file-csv"></i> <code>restaurant_inspections.csv</code></a></li>
+<li><a href="https://rstudio.cloud/spaces/205054/project/3437782">RStudio.cloud project</a></li>
+<li><a href="../projects/01-class.zip">Project <code>.zip</code> file</a></li>
+<li><a href="../slides/01-class_03_data-basics.html">Lab slides 3: Data basics</a> (<a href="../slides/01-class_03_data-basics.pdf">PDF</a>)</li>
+<li><a href="../slides/01-class_04_visualize-data.html">Lab slides 4: Visualize data with ggplot2</a> (<a href="../slides/01-class_04_visualize-data.pdf">PDF</a>)</li>
+<li><a href="../slides/01-class_05_transform-data.html">Lab slides 5: Transform data with dplyr</a> (<a href="../slides/01-class_05_transform-data.pdf">PDF</a>)</li>
+</ul>
+</section>
+<section id="bayesian-statistics-resources" class="level2">
+<h2 class="anchored" data-anchor-id="bayesian-statistics-resources">Bayesian statistics resources</h2>
+<p>In class I briefly mentioned the difference between frequentist and Bayesian statistics. You can see a bunch of <a href="../resource/bayes.qmd">additional resources and examples of these two approaches to statistics here</a>. <a href="https://www.andrewheiss.com/blog/2021/12/01/multilevel-models-panel-data-guide/">This huge blog post</a> also shows how to do multilevel models with Bayesian models.</p>
+
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
+<div id="ref-DiezBarrCetinkaya-Rundel:2017" class="csl-entry" role="doc-biblioentry">
+Diez, David M., Christopher D. Barr, and Mine Çetinkaya-Rundel. 2017. <em><span>OpenIntro</span> Statistics</em>. 3rd ed. <a href="https://www.openintro.org/stat/textbook.php?stat_book=os">https://www.openintro.org/stat/textbook.php?stat_book=os</a>.
+</div>
+<div id="ref-Huntington-Klein:2021" class="csl-entry" role="doc-biblioentry">
+Huntington-Klein, Nick. 2021. <em>The Effect: An Introduction to Research Design and Causality</em>. Boca Raton, Florida: <span>Chapman and Hall</span> / CRC. <a href="https://theeffectbook.net/">https://theeffectbook.net/</a>.
+</div>
+<div id="ref-IsmayKim:2018" class="csl-entry" role="doc-biblioentry">
+Ismay, Chester, and Albert Y. Kim. 2019. <em>Statistical Inference via Data Science: A <span>ModernDive</span> into <span>R</span> and the Tidyverse</em>. <span>Chapman and Hall</span> / CRC. <a href="https://moderndive.com/">https://moderndive.com/</a>.
+</div>
+</div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">Content <i class="fa-brands fa-creative-commons" aria-hidden="true"></i> 2022 by <a href="https://www.jc-castillo.com">Juan Castillo</a> <br> All content licensed under a <i class="fa-brands fa-creative-commons" aria-hidden="true"></i> <i class="fa-brands fa-creative-commons-by" aria-hidden="true"></i> <i class="fa-brands fa-creative-commons-nc" aria-hidden="true"></i> <a href="https://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International license (CC BY-NC 4.0)</a></div>   
+    <div class="nav-footer-right">Made with <i class="fa-brands fa-r-project" aria-hidden="true"></i> and <a href="https://quarto.org/">Quarto</a><br> <a href="https://github.com/juancarloscastillo/encuestas-sociales">View the source at <i class="fa-brands fa-github" aria-hidden="true"></i> GitHub</a></div>
+  </div>
+</footer>
+
+
+
+</body></html>

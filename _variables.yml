@@ -1,32 +1,32 @@
-author: Andrew Heiss
+author: Juan Carlos Castillo
 
 instructor:
-  name: Dr. Andrew Heiss
-  name_no_title: Andrew Heiss
-  email: aheiss@gsu.edu
-  url: "https://www.andrewheiss.com"
-  twitter: andrewheiss
-  github: andrewheiss
-  office: "357 Andrew Young School"
+  name: Juan Carlos Castillo
+  name_no_title: Juan Castillo
+  email: jcastillov@uchile.cl
+  url: "https://www.jc-castillo.com"
+  twitter: juankcastillo
+  github: juancarloscastillo
+  office: "Departamento de Sociología FACSO"
   contact_policy: >-
-    E-mail and Slack are the best ways to get in contact with me. I will try to respond to all course-related e-mails and Slack messages within 24 hours (*really*), but also remember that life can be busy and chaotic for everyone (including me!), so if I don't respond right away, don't worry!
-  appointment_url: https://calendly.com/andrewheiss/
+    A través de Slack o correo
+  appointment_url: https://jc-castillo.com/contacto/
 
 course:
-  number: "PMAP 8521"
-  semester: "Spring 2022"
-  days: "Thursdays"
-  time: "7:15–9:45 PM"
-  location: "Aderhold Learning Center 224"
-  dates: "January 10–May 3, 2022"
-  github: "https://www.github.com/andrewheiss/evalf22.classes.andrewheiss.com"
+  number: "SOC01210-1"
+  semester: "Segundo Semestre 2022"
+  days: "Jueves"
+  time: "14:30-16:30 PM"
+  location: "Sala 43 FACSO"
+  dates: "Agosto 18–Noviembre 17, 2022"
+  github: "https://github.com/juancarloscastillo/encuestas-sociales"
   copyright_year: "2022"
-  slack: "https://gsuevalsp2022.slack.com"
+  slack: ""
 
 university:
-  name: Georgia State University
-  url: "https://www.gsu.edu"
+  name: Universidad de Chile
+  url: "https://www.uchile.cl/"
 
 school:
-  name: Andrew Young School of Policy Studies
-  url: "https://aysps.gsu.edu/"
+  name: Departamento de Sociología - Facultad de Ciencias Sociales
+  url: "https://facso.uchile.cl/"

@@ -1,5 +1,6 @@
 project:
   type: website
+  output-dir: docs
   render:
     - "*.qmd"
     - "!slides/"
@@ -21,17 +22,16 @@ bibliography: files/bib/references.bib
 csl: files/bib/chicago-author-date.csl
 
 website:
-  title: "Program Evaluation"
+  title: "Encuestas Sociales"
   site-url: "https://evalf22.classes.andrewheiss.com"
-  description-meta: "Use modern statistical and data scientific tools to measure causal effects and evaluate public policy"
-
-  favicon: "/files/icon-512.png"
+  description-meta: "Diseño, análisis, reporte y visualización de encuestas sociales"
+  favicon: "/files/icon-513.png"
 
   twitter-card:
     image: "/files/social-image-f22.png"
     card-style: summary_large_image
-    creator: "@andrewheiss"
-    site: "@andrewheiss"
+    creator: "@juankcastillo"
+    site: "@juankcastillo"
 
   open-graph:
     image: "/files/social-image-f22.png"
@@ -39,146 +39,69 @@ website:
 
   navbar:
     pinned: true
-    background: "#EE6A24"
+    background: "#08C4C4"
     right:
       - syllabus.qmd
       - schedule.qmd
-      - text: "Content"
+      - text: "Contenidos"
         file: content/index.qmd
-      - text: "Assignments"
-        file: assignment/index.qmd
-      - text: "Examples"
-        file: example/index.qmd
-      - text: "Resources"
+#      - text: "Assignments"
+#        file: assignment/index.qmd
+#      - text: "Examples"
+#        file: example/index.qmd
+      - text: "Recursos"
         file: resource/index.qmd
       - icon: slack
-        href: "https://www.google.com"
+        href: "https://www.slack.com"
         aria-label: Slack
-      - icon: cloud-fill
-        href: "https://www.google.com"
-        aria-label: RStudio.cloud
+
 
   sidebar:
-    - title: "Content"
+    - title: "Contenidos"
       style: "docked"
       search: false
       background: dark
       contents:
-        - section: "Overview"
+        - section: "Información general"
           contents:
             - content/index.qmd
-        - section: "Course content"
+        - section: "Sesiones"
           contents:
-            - text: "1: Evaluation and the causal revolution"
+            - text: "1: Presentación y herramientas básicas"
               file: content/01-content.qmd
-            - text: "2: Regression and inference"
-              file: content/02-content.qmd
-            - text: "3: Theories of change and logic models"
-              file: content/03-content.qmd
-            - text: "4: Measurement and DAGs"
-              file: content/04-content.qmd
-            - text: "5: DAGs and potential outcomes"
-              file: content/05-content.qmd
-            - text: "6: Threats to validity"
-              file: content/06-content.qmd
-            - text: "7: Randomization and matching"
-              file: content/07-content.qmd
-            - text: "8: Diff-in-diff I"
-              file: content/08-content.qmd
-            - text: "9: Diff-in-diff II"
-              file: content/09-content.qmd
-            - text: "10: RDD I"
-              file: content/10-content.qmd
-            - text: "11: IV I"
-              file: content/11-content.qmd
-            - text: "12: IV II & RDD II"
-              file: content/12-content.qmd
-            - text: "13: Choosing and planning ethical evaluations"
-              file: content/13-content.qmd
-            - text: "14: Ethics, stories, and curiosity"
-              file: content/14-content.qmd
+ #           - text: "2: Regression and inference"
+#              file: content/02-content.qmd
+#            - text: "3: Theories of change and logic models"
+#              file: content/03-content.qmd
+#            - text: "4: Measurement and DAGs"
+#              file: content/04-content.qmd
+#            - text: "5: DAGs and potential outcomes"
+#              file: content/05-content.qmd
+#            - text: "6: Threats to validity"
+#              file: content/06-content.qmd
+#            - text: "7: Randomization and matching"
+#              file: content/07-content.qmd
+#            - text: "8: Diff-in-diff I"
+#              file: content/08-content.qmd
+#            - text: "9: Diff-in-diff II"
+#              file: content/09-content.qmd
+#            - text: "10: RDD I"
+#              file: content/10-content.qmd
+#            - text: "11: IV I"
+#              file: content/11-content.qmd
+#            - text: "12: IV II & RDD II"
+#              file: content/12-content.qmd
+#            - text: "13: Choosing and planning ethical evaluations"
+#              file: content/13-content.qmd
+#            - text: "14: Ethics, stories, and curiosity"
+#              file: content/14-content.qmd
 
-    - title: "Assignments"
-      contents:
-        - section: "Overview"
-          contents:
-            - assignment/index.qmd
-        - section: "Other projects"
-          contents:
-            - assignment/final-project.qmd
-            - assignment/weekly-check-in.qmd
-        - section: "Problem sets"
-          contents:
-            - assignment/01-problem-set.qmd
-            - assignment/02-problem-set.qmd
-            - assignment/03-problem-set.qmd
-            - assignment/04-problem-set.qmd
-            - assignment/05-problem-set.qmd
-            - assignment/06-problem-set.qmd
-            - assignment/07-problem-set.qmd
-            - assignment/08-problem-set.qmd
-            - assignment/09-problem-set.qmd
-        - section: "Evaluation"
-          contents:
-            - assignment/01-eval-background-theory.qmd
-            - assignment/02-eval-measurement.qmd
-            - assignment/03-eval-dag.qmd
-            - assignment/04-eval-threats.qmd
 
-    - title: "Examples"
+    - title: "Recursos"
       contents:
-        - section: "Overview"
-          contents:
-            - example/index.qmd
-        - section: "Simulated data"
-          contents:
-            - text: "Random numbers"
-              file: example/random-numbers.qmd
-            - text: "Synthetic data"
-              file: example/synthetic-data.qmd
-        - section: "Examples"
-          contents:
-            - example/rstudio-tidyverse.qmd
-            - example/regression.qmd
-            - example/dags.qmd
-            - example/po-ate-cate.qmd
-            - text: "RCTs"
-              file: example/rcts.qmd
-            - text: "Matching and IPW"
-              file: example/matching-ipw.qmd
-            - text: "Robust standard errors"
-              file: example/standard-errors.qmd
-            - text: "Unobserved confounding"
-              file: example/confounding-sensitivity.qmd
-            - text: "Diff-in-diff"
-              file: example/diff-in-diff.qmd
-            - example/rdd.qmd
-            - example/iv.qmd
-            - text: "ITT and CACE"
-              file: example/cace.qmd
-            - example/rdd-fuzzy.qmd
-
-    - title: "Resources"
-      contents:
-        - section: "Overview"
+        - section: "Descripción"
           contents:
             - resource/index.qmd
-            - resource/r.qmd
-            - resource/style.qmd
-            - resource/data.qmd
-            - resource/citations.qmd
-            - resource/bayes.qmd
-            - resource/zilch.qmd
-        - section: "Study guides"
-          contents:
-            - resource/exam1.qmd
-            - resource/exam2.qmd
-        - section: "Guides"
-          contents:
-            - resource/install.qmd
-            - resource/markdown.qmd
-            - resource/rmarkdown.qmd
-            - resource/unzipping.qmd
   page-footer:
     left: |
       Content {{< fa brands creative-commons >}} {{< var course.copyright_year >}} by [{{< var instructor.name_no_title >}}]({{< var instructor.url >}}) <br>

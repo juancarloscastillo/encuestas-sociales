@@ -1,0 +1,975 @@
+[
+  {
+    "objectID": "assignment/01-eval-background-theory.html",
+    "href": "assignment/01-eval-background-theory.html",
+    "title": "Background and theory",
+    "section": "",
+    "text": "For your final project, you will conduct an evaluation for a social program of your choosing. In this assignment, you will explore the program’s background, history, purpose, and theory.\nIf you decide to use a different program for your final project, that’s okay! This assignment doesn’t have to be related to your final program, but it would be helpful—a more polished version of this assignment can be included as part of your final project."
+  },
+  {
+    "objectID": "assignment/01-eval-background-theory.html#instructions",
+    "href": "assignment/01-eval-background-theory.html#instructions",
+    "title": "Background and theory",
+    "section": "Instructions",
+    "text": "Instructions\nYou need to complete the four sections listed below. Ideally you should type this in R Markdown and knit your document to HTML or Word or PDF, but you can also write in Word if you want (though your final project will need to be in R Markdown, and this would give you practice).1\nI’ve created an R Markdown template you can use here:  background-theory.zip. It’s also available on RStudio.cloud.\nYou can draw your impact theory and logic model charts by hand or with something like Diagrams.net, Lucidchart, or Creately. Export the image as a PNG, place it in the same directory as your R Markdown file, and include the image with Markdown.\nThe syntax for adding an image in Markdown is fairly simple. Importantly, it is not R code, so don’t try putting it in an R chunk. Just type this:\n![Image caption](/path/to/image.png)\nSubmit this assignment as a PDF or Word file on iCollege."
+  },
+  {
+    "objectID": "assignment/01-eval-background-theory.html#assignment-outline",
+    "href": "assignment/01-eval-background-theory.html#assignment-outline",
+    "title": "Background and theory",
+    "section": "Assignment outline",
+    "text": "Assignment outline\n\n1: Program background and purpose\n(≈350 words)\nProvide in-depth background about the program. Include details about (1) when it was started, (2) why it was started, (3) what it was designed to address in society. If the program hasn’t started yet, explain why it’s under consideration. Make sure you cite your sources appropriately! (In the past, some students have just copied/pasted text from a program’s website; don’t do that! Describe and analyze the program’s background!)\n\n\n2: Program theory\n(≈400 words)\nExplain and explore the program’s underlying theory. Sometimes programs will explain why they exist in a mission statement, but often they don’t and you have to infer the theory from what the program looks like when implemented. What did the program designers plan on occurring? Was this theory based on existing research? If so, cite it.\nInclude a simple impact theory graph showing the program’s basic activities and outcomes. Recall from class and your reading that this is focused primarily on the theory and mechanisms, not on the implementation of the program.\n\n\n3: Logic model\nList every possible input, activity, output, and outcome for the program and provide a brief 1–2 sentence description of each.\n\nInputs\n\nSomething\nSomething else\n\n\n\nActivities\n\nSomething\nSomething else\n\n\n\nOutputs\n\nSomething\nSomething else\n\n\n\nOutcomes\n\nSomething\nSomething else\n\n\n\nDiagram\nUse flowchart software to connect the inputs, activities, outputs, and outcomes and create a complete logic model. Remember that inputs will always feed into activities, and that activities always produce outputs (that’s the whole purpose of an activity: convert an input to an output). Include this as a figure.\n\n\n\n4: Analysis\n(≈150 words)\nEvaluate how well the logic model relates to the program theory. Do the inputs, activities, and outputs have a logical, well-grounded connection to the intended outcomes? Under ideal conditions, would the components of the program lead to changes or lasting effects?"
+  },
+  {
+    "objectID": "assignment/01-problem-set.html",
+    "href": "assignment/01-problem-set.html",
+    "title": "Problem set 1",
+    "section": "",
+    "text": "Go the the example page for this week, “Welcome to R, RStudio, and the tidyverse”, and work through the different primers and videos in the four parts of the page.\nIt seems like there’s a lot on the page, but they’re short and go fairly quickly (especially as you get the hang of the syntax). Also, I have no way of seeing what you do or what you get wrong or right, and that’s totally fine! If you get stuck and want to skip some (or if it gets too easy), go right ahead and skip them!"
+  },
+  {
+    "objectID": "assignment/01-problem-set.html#task-2-make-an-rstudio-project",
+    "href": "assignment/01-problem-set.html#task-2-make-an-rstudio-project",
+    "title": "Problem set 1",
+    "section": "Task 2: Make an RStudio Project",
+    "text": "Task 2: Make an RStudio Project\n\nUse either RStudio.cloud or RStudio on your computer (preferably RStudio on your computer! Follow these instructions to get started!) to create a new RStudio Project. Refer to the example page you read in Task 1 for instructions\nCreate a folder named “data” in the project folder you just made.\nDownload this CSV file and place it in that folder:\n\n cars.csv\n\nIn RStudio, go to “File” > “New File…” > “R Markdown…” and click “OK” in the dialog without changing anything.\nDelete all the placeholder text in that new file and replace it with this:\n---\ntitle: \"Problem set 1\"\nauthor: \"Put your name here\"\noutput: html_document\n---\n\n\n```{r load-libraries-data, warning=FALSE, message=FALSE}\nlibrary(tidyverse)\n\ncars <- read_csv(\"data/cars.csv\")\n```\n\n\n\n# Learning R\n\nTell me that you worked through the primers and videos and examples at the example page for this week:\n\nWRITE SOMETHING HERE LIKE \"I did all the primers and had the time of my life!\" or whatever.\n\n\n# My first plots\n\nInsert a chunk below and use it to create a scatterplot (hint: `geom_point()`) with diplacement (`displ`) on the x-axis, city MPG (`cty`) on the y-axis, and with the points colored by drive (`drv`).\n\nPUT CHUNK HERE\n\nInsert a chunk below and use it to create a histogram (hint: `geom_histogram()`) with highway MPG (`hwy`) on the x-axis. Do not include anything on the y-axis (`geom_histogram()` will do that automatically for you). Choose an appropriate bin width. If you're brave, facet by drive (`drv`).\n\nPUT CHUNK HERE\n\n\n# My first data manipulation\n\nInsert a chunk below and use it to calculate the average city MPG (`cty`) by class of car (`class`). This won't be a plot---it'll be a table. Hint: use a combination of `group_by()` and `summarize()`.\n\nPUT CHUNK HERE\nSave the R Markdown file with some sort of name (without any spaces!)\nYour project folder should look something like this:"
+  },
+  {
+    "objectID": "assignment/01-problem-set.html#task-3-work-with-r",
+    "href": "assignment/01-problem-set.html#task-3-work-with-r",
+    "title": "Problem set 1",
+    "section": "Task 3: Work with R",
+    "text": "Task 3: Work with R\n\nRemove the text that says “PUT CHUNK HERE” and insert a new R code chunk. Either type ctrl + alt + i on Windows, or ⌘ + ⌥ + i on macOS, or use the “Insert Chunk” menu:\n\n\n\n\n\nFollow the instructions for the three chunks of code.\nKnit your document as a Word file (or PDF if you’re brave and installed LaTeX). Use the “Knit” menu:\n\n\n\n\n\nUpload the knitted document to iCollege.\n\n\npacman::p_load(emoji)\n\n\n🎉 Party! 🎉\n\n\n\n\n\n\n\nTip\n\n\n\nYou’ll be doing this same process for all your future problem sets. Each problem set will involve an R Markdown file. You can either create a new RStudio Project directory for all your work:\n\n\n\nOr you can create individual projects for each assignment and project:"
+  },
+  {
+    "objectID": "assignment/02-eval-measurement.html",
+    "href": "assignment/02-eval-measurement.html",
+    "title": "Measurement",
+    "section": "",
+    "text": "For your final project, you will conduct an evaluation for a social program of your choosing. In this assignment, you will decide how to best measure two of the program’s outcomes.\nIf you decide to use a different program for your final project, that’s okay! This assignment doesn’t have to be related to your final program, but it would be extraordinarily helpful—a more polished version of this assignment can be included as part of your final project."
+  },
+  {
+    "objectID": "assignment/02-eval-measurement.html#instructions",
+    "href": "assignment/02-eval-measurement.html#instructions",
+    "title": "Measurement",
+    "section": "Instructions",
+    "text": "Instructions\nYou need to complete the two sections listed below. Ideally you should type this in R Markdown and knit your document to HTML or Word or PDF, but you can also write in Word if you want (though your final project will need to be in R Markdown, and this would give you practice).1\nI’ve created an R Markdown template you can use here:  measurement.zip. It’s also available on RStudio.cloud.\nSubmit this assignment as a PDF or Word file on iCollege."
+  },
+  {
+    "objectID": "assignment/02-eval-measurement.html#assignment-outline",
+    "href": "assignment/02-eval-measurement.html#assignment-outline",
+    "title": "Measurement",
+    "section": "Assignment outline",
+    "text": "Assignment outline\n\n1: Measurement and abstraction for full-day kindergarten\nRead this article about half-day vs. full-day kindergarten in Utah. The article is 10 years old, and half-day kindergarten still remains standard practice in most Utah school districts.\nPretend you are the administrator of the Optional Extended Day Kindergarten initiative. Based on the Salt Lake Tribune article (which provides hints throughout, and especially in one of the final paragraphs), and based on your own knowledge of educational outcomes, make a list of two (2) possible outcomes of the full-day kindergarten program.\nThen, for each of those two outcomes, do the following: Using the concept of the “ladder of abstraction” that we discussed in class (e.g. identifying a witch, measuring poverty, etc.), make a list of all the possible attributes of the outcome. Narrow this list down to 3–4 key attributes. Discuss how you decided to narrow the concepts and justify why you think these attributes capture the outcome. (≈100 words)\nThen, for each of those attributes, answer these questions:\n\nMeasurable definition: How would you specifically define this attribute? (i.e. if the attribute is “reduced crime”, define it as “The percent change in crime in a specific neighborhood during a certain time frame” or something similar)\nIdeal measurement: How would you measure this attribute in an ideal world?\nFeasible measurement: How would you measure this given reality and given limitations in budget, time, etc.?\nMeasurement of program effect: How would to connect this measure to people in the program? How would you check to see if the program itself had an effect?\n\n\n\n2: Measurement and abstraction for your program\nMake a list of two possible outcomes of your selected program. For each of those outcomes, make a list of all the possible attributes. Narrow this list down to 3–4 key attributes. Discuss how you decided to narrow the concepts and justify why you think these attributes capture the outcome. (≈100 words)\nThen, for each of those attributes, answer these questions:\n\nMeasurable definition: How would you specifically define this attribute? (i.e. if the attribute is “reduced crime”, define it as “The percent change in crime in a specific neighborhood during a certain time frame” or something similar)\nIdeal measurement: How would you measure this attribute in an ideal world?\nFeasible measurement: How would you measure this given reality and given limitations in budget, time, etc.?\nMeasurement of program effect: How would to connect this measure to people in the program? How would you check to see if the program itself had an effect?"
+  },
+  {
+    "objectID": "assignment/02-problem-set.html",
+    "href": "assignment/02-problem-set.html",
+    "title": "Problem set 2",
+    "section": "",
+    "text": "Note\n\n\n\nIMPORTANT: This looks like a lot of work, but it’s mostly copying/pasting chunks of code and changing things."
+  },
+  {
+    "objectID": "assignment/02-problem-set.html#getting-started",
+    "href": "assignment/02-problem-set.html#getting-started",
+    "title": "Problem set 2",
+    "section": "Getting started",
+    "text": "Getting started\nFor this problem set, you’ll practice running and interpreting regression models using data about penguins in Antarctica and data on food access and mortality in the US.\nYou’ll be doing all your R work in R Markdown this time (and from now on). You should use an RStudio Project to keep your files well organized (either on your computer or on RStudio.cloud). Either create a new project for this exercise only, or make a project for all your work in this class.\nYou’ll need to download these two CSV files and put them somewhere on your computer or upload them to RStudio.cloud—preferably in a folder named data in your project folder:\n\n penguins.csv\n food_health_politics.csv\n\nYou’ll also need to download this R Markdown file with a template for this problem set. Download that here and include it in your project:\n\n problem-set-2.Rmd\n\nIn the end, the structure of your project directory should look something like this:\nyour-project-name\n├── data\n│   ├── food_health_politics.csv\n│   └── penguins.csv\n├── your-project-name.Rproj\n└── your-name_problem-set-2.Rmd\nTo check that you put everything in the right places, you can download and unzip this file, which contains everything in the correct structure:\n\n problem-set-2.zip\n\nYou’ll need to make sure you have these packages installed on your computer: tidyverse and modelsummary. If you try to load one of those packages with library(tidyverse) or library(modelsummary), etc., and R gives an error that the package is missing, use the “Packages” panel in RStudio to install it.\n(Alternatively, you can open the project named “Problem Set 2” on RStudio.cloud and complete the assignment in your browser without needing to install anything. If you don’t have access to the class RStudio.cloud account, please let me know as soon as possible. This link should take you to the project—if it doesn’t, log in and look for the project named “Problem Set 2.”)\nRemember that you can run an entire chunk by clicking on the green play arrow in the top right corner of the chunk. You can also run lines of code line-by-line if you place your cursor on some R code and press ⌘ + enter (for macOS users) or ctrl + enter (for Windows users).\nMake sure you run each chunk sequentially. If you run a chunk in the middle of the document without running previous ones, it might not work, since previous chunks might do things that later chunks depend on.\nRemember, if you’re struggling, please talk to me. Work with classmates too. Don’t suffer in silence!"
+  },
+  {
+    "objectID": "assignment/02-problem-set.html#instructions",
+    "href": "assignment/02-problem-set.html#instructions",
+    "title": "Problem set 2",
+    "section": "Instructions",
+    "text": "Instructions\nFor this problem set, we’re less interested in causal relationships and more interested in the mechanics of manipulating data and running regressions in R. We’ll start caring about identification and causal models in the next problem set. Because of this, don’t put too much causal weight into the interpretations of these different models—this is an actual case of correlation not implying causation.\nThe example for week 2 on regression will be incredibly helpful for this exercise. Reference it. Copy and paste from it liberally.\n\nRename the R Markdown file named your-name_problem-set-2.Rmd to something that matches your name and open it in RStudio.\nComplete the tasks given in the R Markdown file. Fill out code in the empty chunks provided (you can definitely copy, paste, and adapt from other code in the document or from the regression example—don’t try to write everything from scratch!), and replace text in ALL CAPS with your own. (i.e. You’ll see a bunch of TYPE YOUR ANSWER HEREs. Type your answers there.). Again, you don’t need to type your answers in all caps."
+  },
+  {
+    "objectID": "assignment/02-problem-set.html#turning-everything-in",
+    "href": "assignment/02-problem-set.html#turning-everything-in",
+    "title": "Problem set 2",
+    "section": "Turning everything in",
+    "text": "Turning everything in\nWhen you’re all done, click on the “Knit” button at the top of the editing window and create an HTML or Word version (or PDF if you’ve installed tinytex) of your document. Upload that file to iCollege."
+  },
+  {
+    "objectID": "assignment/03-eval-dag.html",
+    "href": "assignment/03-eval-dag.html",
+    "title": "Causal model",
+    "section": "",
+    "text": "For your final project, you will conduct an evaluation for a social program of your choosing. In this assignment, you will decide how to model the causal effect of your program on your primary outcome.\nIf you decide to use a different program for your final project, that’s okay! This assignment doesn’t have to be related to your final program, but it would be extraordinarily helpful—a more polished version of this assignment can be included as part of your final project."
+  },
+  {
+    "objectID": "assignment/03-eval-dag.html#instructions",
+    "href": "assignment/03-eval-dag.html#instructions",
+    "title": "Causal model",
+    "section": "Instructions",
+    "text": "Instructions\nYou need to complete the three sections listed below. Ideally you should type this in R Markdown and knit your document to HTML or Word or PDF, but you can also write in Word if you want (though your final project will need to be in R Markdown, and this would give you practice).\nI’ve created an R Markdown template you can use here:  causal-model.zip. It’s also available on RStudio.cloud.\nSubmit this assignment as a PDF or Word file on iCollege."
+  },
+  {
+    "objectID": "assignment/03-eval-dag.html#dag-i",
+    "href": "assignment/03-eval-dag.html#dag-i",
+    "title": "Causal model",
+    "section": "1: DAG I",
+    "text": "1: DAG I\nFind a news article that makes a causal claim and interpret that claim by drawing an appropriate diagram. The article likely won’t explain all the things the researchers controlled for, so you’ll need to create an ideal DAG. What should be included in the causal process to measure the effect of X on Y?\nExport the figure from dagitty and include it in your assignment, or use this code to draw the DAG with R:\n\nlibrary(tidyverse)\nlibrary(ggdag)\n\n# Remember that you can change the variable names here--they can be basically\n# anything, but cannot include spaces. The labels can have spaces. Adjust the\n# variable names (y, x2, etc) and labels (\"Outcome\", \"Something\", etc.) as\n# necessary.\nmy_dag <- dagify(y ~ x1 + x2 + z,\n                 z ~ x1,\n                 x2 ~ x1 + z,\n                 labels = c(\"y\" = \"Outcome\",\n                            \"x1\" = \"Something\",\n                            \"x2\" = \"Something else\",\n                            \"z\" = \"Yet another thing\"),\n                 exposure = \"z\",\n                 outcome = \"y\")\n\n# If you set text = TRUE, you'll see the variable names in the DAG points\n# The `seed` argument makes it so that the random layout is the same every time\nggdag(my_dag, text = FALSE, use_labels = \"label\", seed = 1234) +\n  theme_dag()\n\n# If you want the treatment and outcomes colored differently,\n# replace ggdag() with ggdag_status()\nggdag_status(my_dag, text = FALSE, use_labels = \"label\", seed = 1234) +\n  theme_dag() +\n  theme(legend.position = \"bottom\")  # Move legend to bottom for fun\n\nSummarize the causal claim. Describe what the authors controlled for and what else you included in the DAG. Justify the inclusion of each node (point) and connection (line) in the graph. (≈150 words)\nIdentify all the frontdoor and backdoor paths between your exposure and outcome. What variables need to be controlled for / adjusted to close the backdoors? Did this happen in the study or article? (≈100 words)"
+  },
+  {
+    "objectID": "assignment/03-eval-dag.html#dag-ii",
+    "href": "assignment/03-eval-dag.html#dag-ii",
+    "title": "Causal model",
+    "section": "2: DAG II",
+    "text": "2: DAG II\nFind a different news article with a causal claim and do the same thing as above.\nDraw and include a DAG.\nSummarize the causal claim. Describe what the authors controlled for and what else you included in the DAG. Justify the inclusion of each node (point) and connection (line) in the graph. (≈150 words)\nIdentify all the frontdoor and backdoor paths between your exposure and outcome. What variables need to be controlled for / adjusted to close the backdoors? Did this happen in the study or article? (≈100 words)"
+  },
+  {
+    "objectID": "assignment/03-eval-dag.html#dag-for-your-program",
+    "href": "assignment/03-eval-dag.html#dag-for-your-program",
+    "title": "Causal model",
+    "section": "3: DAG for your program",
+    "text": "3: DAG for your program\nIdentify the outcome you care most about from your final project program. Draw a DAG that shows the causal effect of your program’s intervention on the outcome.\nSummarize the causal claim. Describe what needs to be controlled for and what else you included in the DAG. Justify the inclusion of each node (point) and connection (line) in the graph. (≈150 words)\nIdentify all the frontdoor and backdoor paths between your exposure and outcome. What variables need to be controlled for / adjusted to close the backdoors? How might you do this with your evaluation? (≈100 words)"
+  },
+  {
+    "objectID": "assignment/03-problem-set.html",
+    "href": "assignment/03-problem-set.html",
+    "title": "Problem set 3",
+    "section": "",
+    "text": "Note\n\n\n\nIMPORTANT: This looks like a lot of work, but again, it’s mostly copying/pasting chunks of code and changing things.\nFor this problem set, you’ll practice analyzing RCTs and working with matching and inverse probability weighting. These two examples will be incredibly useful for you:\nYou’ll be doing all your R work in R Markdown this time (and from now on). You can download a zipped file of a pre-made project here:\nAnd as always, if you’re struggling, please talk to me. Work with classmates too (especially for this assignment!). Don’t suffer in silence!"
+  },
+  {
+    "objectID": "assignment/03-problem-set.html#instructions",
+    "href": "assignment/03-problem-set.html#instructions",
+    "title": "Problem set 3",
+    "section": "Instructions",
+    "text": "Instructions\n\nIf you’re using R on your own computer, download this file, unzip it, and double click on the file named problem-set-3.Rproj:  problem-set-3.zip\nYou’ll need to make sure you have these packages installed on your computer: tidyverse, MatchIt, modelsummary, and patchwork. If you try to load one of those packages with library(tidyverse) or library(MatchIt), etc., and R gives an error that the package is missing, use the “Packages” panel in RStudio to install it.\n(Alternatively, you can open the project named “Problem Set 3” on RStudio.cloud and complete the assignment in your browser without needing to install anything. If you don’t have access to the class RStudio.cloud account, please let me know as soon as possible. This link should take you to the project—if it doesn’t, log in and look for the project named “Problem Set 3.”)\nRename the R Markdown file named your-name_problem-set-3.Rmd to something that matches your name and open it in RStudio.\nComplete the tasks given in the R Markdown file. There are questions marked in bold (e.g. **What is the ATE?**). Your job is to answer those questions. You don’t need to put your answers in bold, and you can remove the question text if you want.\nFill out code in the empty chunks provided (you can definitely copy, paste, and adapt from other code in the document or the example page on RCTs and the example page on matching and IPW—don’t try to write everything from scratch!).\nYou’ll need to insert your own code chunks. Rather than typing them by hand (that’s tedious!), use the “Insert” button at the top of the editing window, or press ⌥ + ⌘ + I on macOS, or ctrl + alt + I on Windows.\n::: {.cell} ::: {.cell-output-display}  ::: :::\nRemember that you can run an entire chunk by clicking on the green play arrow in the top right corner of the chunk. You can also run lines of code line-by-line if you place your cursor on some R code and press ⌘ + enter (for macOS users) or ctrl + enter (for Windows users).\nMake sure you run each chunk sequentially. If you run a chunk in the middle of the document without running previous ones, it might not work, since previous chunks might do things that later chunks depend on.\nWhen you’re all done, click on the “Knit” button at the top of the editing window and create an HTML or Word version (or PDF if you’ve installed tinytex) of your document. Upload that file to iCollege."
+  },
+  {
+    "objectID": "assignment/04-eval-threats.html",
+    "href": "assignment/04-eval-threats.html",
+    "title": "Threats to validity",
+    "section": "",
+    "text": "You need to complete the “Assessing validity” section below. Ideally you should type this in R Markdown and knit your document to HTML or Word or PDF, but you can also write in Word if you want (though your final project will need to be in R Markdown, and this would give you practice).\nI’ve created an R Markdown template you can use here:  threats-validity.zip. It’s also available on RStudio.cloud.\nSubmit this assignment as a PDF or Word file on iCollege."
+  },
+  {
+    "objectID": "assignment/04-eval-threats.html#internal-validity-scores",
+    "href": "assignment/04-eval-threats.html#internal-validity-scores",
+    "title": "Threats to validity",
+    "section": "Internal validity scores",
+    "text": "Internal validity scores\nOne helpful way to assess an evaluation’s internal validity is to systematically go through each possible threat and evaluate if the research design addresses it. For each of the 13 types of internal validity that we discussed in class, assign 1 point if the study addresses it and 0 points if it fails to do so. Add up the total points and assign the study a final internal validity score.\nNot all types of validity will apply to every study. Testing, for example, is only an issue if there is a pre-test and it involves a skill that could feasibly be enhanced by practicing the test. If a threat doesn’t apply, don’t give it a score.\n\nOmitted variable bias\n\nSelection\nAttrition\n\nTrends\n\nMaturation\nSecular trends\nSeasonality\nTesting\nRegression to the mean\n\nStudy calibration\n\nMeasurement error\nTime frame of study\n\nContamination\n\nHawthorne effects\nJohn Henry effects\nSpillovers\nIntervening events"
+  },
+  {
+    "objectID": "assignment/04-eval-threats.html#assessing-validity",
+    "href": "assignment/04-eval-threats.html#assessing-validity",
+    "title": "Threats to validity",
+    "section": "Assessing validity",
+    "text": "Assessing validity\nYour textbook Impact Evaluation in Practice is full of short examples of real-world evaluations, experiments, and studies. For this assignment, you will assess the (1) internal validity, (2) external validity, and (3) construct validity for two of the examples from the book. If the summary in the book isn’t sufficient, you can skim through the original study for more details. The original studies can be found in the Content section of iCollege.\nYou will assess two (2) of these four studies. Pick whichever two seem the most interesting to you:\n\nThe effect of conditional cash transfers on education in Mexico (Box 4.2, p. 70)\n\nOriginal study: (Schultz 2004)\n\nThe impact of Sesame Street on school readiness (Box 5.1, p. 91)\n\nOriginal study: (Kearney and Levine 2015)\n\nThe effects of police deployment on crime in Argentina (Box 7.2, p. 135)\n\nOriginal study: (Di Tella and Schargrodsky 2004)\n\nEarly childhood development and migration in Jamaica (Box 9.5, p. 170)\n\nOriginal study: (Gertler et al. 2014)\n\n\nFor each of the two studies you choose, do the following:\n\nGo through the 13 types of internal validity and describe in 2–3 sentences how the study succeeds/fails to address each concern. Calculate a total internal validity score.\nDescribe any threats to external validity and assess how generalizable the findings are. (≈75 words)\nDescribe any threats to construct validity and assess if the researchers are measuring the thing they intended to measure. (≈75 words)"
+  },
+  {
+    "objectID": "assignment/04-problem-set.html",
+    "href": "assignment/04-problem-set.html",
+    "title": "Problem set 4",
+    "section": "",
+    "text": "Note\n\n\n\nIMPORTANT: This looks like a lot of work, but again, it’s mostly copying/pasting chunks of code and changing things.\nFor this problem set, you’ll practice running difference-in-differences analysis with R, both manually and with regression. This example will be incredibly useful for you:\nYou’ll be doing all your R work in R Markdown. You can download a zipped file of a pre-made project here:\nAnd as always, if you’re struggling, please talk to me. Work with classmates too (especially for this assignment!). Don’t suffer in silence!"
+  },
+  {
+    "objectID": "assignment/04-problem-set.html#instructions",
+    "href": "assignment/04-problem-set.html#instructions",
+    "title": "Problem set 4",
+    "section": "Instructions",
+    "text": "Instructions\n\nIf you’re using R on your own computer, download this file, unzip it, and double click on the file named problem-set-4.Rproj:  problem-set-4.zip\nYou’ll need to make sure you have these packages installed on your computer: tidyverse, haven, and broom. If you try to load one of those packages with library(tidyverse) or library(haven), etc., and R gives an error that the package is missing, use the “Packages” panel in RStudio to install it.\n(Alternatively, you can open the project named “Problem Set 4” on RStudio.cloud and complete the assignment in your browser without needing to install anything. If you don’t have access to the class RStudio.cloud account, please let me know as soon as possible. This link should take you to the project—if it doesn’t, log in and look for the project named “Problem Set 4.”)\nRename the R Markdown file named your-name_problem-set-4.Rmd to something that matches your name and open it in RStudio.\nComplete the tasks given in the R Markdown file. There are questions marked in bold (e.g. **What is the ATE?**). Your job is to answer those questions. You don’t need to put your answers in bold, and you can remove the question text if you want.\nFill out code in the empty chunks provided (you can definitely copy, paste, and adapt from other code in the document or the example page on diff-in-diff—don’t try to write everything from scratch!).\nYou’ll need to insert your own code chunks. Rather than typing them by hand (that’s tedious!), use the “Insert” button at the top of the editing window, or press ⌥ + ⌘ + I on macOS, or ctrl + alt + I on Windows.\n::: {.cell} ::: {.cell-output-display}  ::: :::\nRemember that you can run an entire chunk by clicking on the green play arrow in the top right corner of the chunk. You can also run lines of code line-by-line if you place your cursor on some R code and press ⌘ + enter (for macOS users) or ctrl + enter (for Windows users).\nMake sure you run each chunk sequentially. If you run a chunk in the middle of the document without running previous ones, it might not work, since previous chunks might do things that later chunks depend on.\nWhen you’re all done, click on the “Knit” button at the top of the editing window and create an HTML or Word version (or PDF if you’ve installed tinytex) of your document. Upload that file to iCollege."
+  },
+  {
+    "objectID": "assignment/05-problem-set.html",
+    "href": "assignment/05-problem-set.html",
+    "title": "Problem set 5",
+    "section": "",
+    "text": "For this problem set, you’ll reproduce the results from one of the papers that you looked at in your threats to validity assignment:\nThe full published paper is posted on iCollege under “Content > Validity assignment” (since you used the paper for that assignment). It’s not posted publicly here because of copyright reasons. The data comes from Di Tella and Schargrodsky’s data appendix available at their study’s AER webpage, and I’ve included it in the .zip file for the assignment.\nThis paper uses difference-in-differences to estimate the causal effect of increased policing on car thefts. Now that you know all about diff-in-diff, you can create their same results!\nThe answer key from Problem Set 4 (where you also did diff-in-diff) + this example page will be incredibly useful for you:\nYou’ll be doing all your R work in R Markdown. You can download a zipped file of a pre-made project here:\nAnd as always, if you’re struggling, please talk to me. Work with classmates too (especially for this assignment!). Don’t suffer in silence!"
+  },
+  {
+    "objectID": "assignment/05-problem-set.html#instructions",
+    "href": "assignment/05-problem-set.html#instructions",
+    "title": "Problem set 5",
+    "section": "Instructions",
+    "text": "Instructions\n\nIf you’re using R on your own computer, download this file, unzip it, and double click on the file named problem-set-5.Rproj:  problem-set-5.zip\nYou’ll need to make sure you have these packages installed on your computer: tidyverse, haven, broom, fixest, and modelsummary. If you try to load one of those packages with library(tidyverse) or library(haven), etc., and R gives an error that the package is missing, use the “Packages” panel in RStudio to install it.\n(Alternatively, you can open the project named “Problem Set 5” on RStudio.cloud and complete the assignment in your browser without needing to install anything. This link should take you to the project—if it doesn’t, log in and look for the project named “Problem Set 5.”)\nRename the R Markdown file named your-name_problem-set-5.Rmd to something that matches your name and open it in RStudio.\nComplete the tasks given in the R Markdown file. There are questions marked in bold. Your job is to answer those questions. You don’t need to put your answers in bold or ALL CAPS or anything, and you can remove the question text if you want.\nFill out code in the empty chunks provided (you can definitely copy, paste, and adapt from other code in the document or the example page on diff-in-diff—don’t try to write everything from scratch!).\nYou’ll need to insert your own code chunks. Rather than typing them by hand (that’s tedious!), use the “Insert” button at the top of the editing window, or press ⌥ + ⌘ + I on macOS, or ctrl + alt + I on Windows.\n::: {.cell} ::: {.cell-output-display}  ::: :::\nRemember that you can run an entire chunk by clicking on the green play arrow in the top right corner of the chunk. You can also run lines of code line-by-line if you place your cursor on some R code and press ⌘ + enter (for macOS users) or ctrl + enter (for Windows users).\nMake sure you run each chunk sequentially. If you run a chunk in the middle of the document without running previous ones, it might not work, since previous chunks might do things that later chunks depend on.\nWhen you’re all done, click on the “Knit” button at the top of the editing window and create an HTML or Word version (or PDF if you’ve installed tinytex) of your document. Upload that file to iCollege."
+  },
+  {
+    "objectID": "assignment/06-problem-set.html",
+    "href": "assignment/06-problem-set.html",
+    "title": "Problem set 6",
+    "section": "",
+    "text": "For this problem set, you’ll practice doing regression discontinuity analysis with simulated data from a hypothetical program. This example page will be incredibly useful for you:\nYou’ll be doing all your R work in R Markdown. You can download a zipped file of a pre-made project here:\nAnd as always, if you’re struggling, please talk to me. Work with classmates too (especially for this assignment!). Don’t suffer in silence!"
+  },
+  {
+    "objectID": "assignment/06-problem-set.html#instructions",
+    "href": "assignment/06-problem-set.html#instructions",
+    "title": "Problem set 6",
+    "section": "Instructions",
+    "text": "Instructions\n\nIf you’re using R on your own computer, download this file, unzip it, and double click on the file named problem-set-6.Rproj:  problem-set-6.zip\nYou’ll need to make sure you have these packages installed on your computer: tidyverse, broom, rdrobust, rddensity, and modelsummary. If you try to load one of those packages with library(tidyverse) or library(rdrobust), etc., and R gives an error that the package is missing, use the “Packages” panel in RStudio to install it.\n(Alternatively, you can open the project named “Problem Set 6” on RStudio.cloud and complete the assignment in your browser without needing to install anything. This link should take you to the project—if it doesn’t, log in and look for the project named “Problem Set 6.”)\nRename the R Markdown file named your-name_problem-set-6.Rmd to something that matches your name and open it in RStudio.\nComplete the tasks given in the R Markdown file. There are questions marked in bold. Your job is to answer those questions. You don’t need to put your answers in bold or ALL CAPS or anything, and you can remove the question text if you want.\nFill out code in the empty chunks provided (you can definitely copy, paste, and adapt from other code in the document or the example page on regression discontinuity—don’t try to write everything from scratch!).\nYou’ll need to insert your own code chunks. Rather than typing them by hand (that’s tedious!), use the “Insert” button at the top of the editing window, or press ⌥ + ⌘ + I on macOS, or ctrl + alt + I on Windows.\n::: {.cell} ::: {.cell-output-display}  ::: :::\nRemember that you can run an entire chunk by clicking on the green play arrow in the top right corner of the chunk. You can also run lines of code line-by-line if you place your cursor on some R code and press ⌘ + enter (for macOS users) or ctrl + enter (for Windows users).\nMake sure you run each chunk sequentially. If you run a chunk in the middle of the document without running previous ones, it might not work, since previous chunks might do things that later chunks depend on.\nWhen you’re all done, click on the “Knit” button at the top of the editing window and create an HTML or Word version (or PDF if you’ve installed tinytex) of your document. Upload that file to iCollege."
+  },
+  {
+    "objectID": "assignment/07-problem-set.html",
+    "href": "assignment/07-problem-set.html",
+    "title": "Problem set 7",
+    "section": "",
+    "text": "For this problem set, you’ll practice using instrumental variables with both real and simulated data. This example page will be incredibly useful for you:\nYou’ll be doing all your R work in R Markdown. You can download a zipped file of a pre-made project here:\nAnd as always, if you’re struggling, please talk to me. Work with classmates too (especially for this assignment!). Don’t suffer in silence!"
+  },
+  {
+    "objectID": "assignment/07-problem-set.html#instructions",
+    "href": "assignment/07-problem-set.html#instructions",
+    "title": "Problem set 7",
+    "section": "Instructions",
+    "text": "Instructions\n\nIf you’re using R on your own computer, download this file, unzip it, and double click on the file named problem-set-7.Rproj:  problem-set-7.zip\nYou’ll need to make sure you have these packages installed on your computer: tidyverse, broom, estimatr, and modelsummary. If you try to load one of those packages with library(tidyverse) or library(estimatr), etc., and R gives an error that the package is missing, use the “Packages” panel in RStudio to install it.\n(Alternatively, you can open the project named “Problem Set 7” on RStudio.cloud and complete the assignment in your browser without needing to install anything. This link should take you to the project—if it doesn’t, log in and look for the project named “Problem Set 7.”)\nRename the R Markdown file named your-name_problem-set-7.Rmd to something that matches your name and open it in RStudio.\nComplete the tasks given in the R Markdown file. There are questions scattered throughout the document—your job is to answer those questions. You don’t need to put your answers in bold or ALL CAPS or anything, and you can remove the question text if you want.\nFill out code in the empty chunks provided (you can definitely copy, paste, and adapt from other code in the document or the example page on instrumental variables—don’t try to write everything from scratch!).\nYou’ll need to insert your own code chunks. Rather than typing them by hand (that’s tedious!), use the “Insert” button at the top of the editing window, or press ⌥ + ⌘ + I on macOS, or ctrl + alt + I on Windows.\n::: {.cell} ::: {.cell-output-display}  ::: :::\nRemember that you can run an entire chunk by clicking on the green play arrow in the top right corner of the chunk. You can also run lines of code line-by-line if you place your cursor on some R code and press ⌘ + enter (for macOS users) or ctrl + enter (for Windows users).\nMake sure you run each chunk sequentially. If you run a chunk in the middle of the document without running previous ones, it might not work, since previous chunks might do things that later chunks depend on.\nWhen you’re all done, click on the “Knit” button at the top of the editing window and create an HTML or Word version (or PDF if you’ve installed tinytex) of your document. Upload that file to iCollege."
+  },
+  {
+    "objectID": "assignment/08-problem-set.html",
+    "href": "assignment/08-problem-set.html",
+    "title": "Problem set 8",
+    "section": "",
+    "text": "This assignment is a review of all the causal inference methods we’ve learned this semester: RCTs, matching and inverse probability weighting, diff-in-diff, RDD, and IVs. Refer to your past assignments and all the examples for guidance:\nYou’ll be doing all your R work in R Markdown. You can download a zipped file of a pre-made project here:\nAnd as always, if you’re struggling, please talk to me. Work with classmates too (especially for this assignment!). Don’t suffer in silence!"
+  },
+  {
+    "objectID": "assignment/08-problem-set.html#instructions",
+    "href": "assignment/08-problem-set.html#instructions",
+    "title": "Problem set 8",
+    "section": "Instructions",
+    "text": "Instructions\n\nIf you’re using R on your own computer, download this file, unzip it, and double click on the file named problem-set-8.Rproj:  problem-set-8.zip\nYou’ll need to make sure you have these packages installed on your computer: tidyverse, broom, estimatr, modelsummary, MatchIt, rdrobust, rddensity, and haven. If you try to load one of those packages with library(tidyverse) or library(MatchIt), etc., and R gives an error that the package is missing, use the “Packages” panel in RStudio to install it.\n(Alternatively, you can open the project named “Problem Set 8” on RStudio.cloud and complete the assignment in your browser without needing to install anything. This link should take you to the project—if it doesn’t, log in and look for the project named “Problem Set 8.”)\nRename the R Markdown file named your-name_problem-set-8.Rmd to something that matches your name and open it in RStudio.\nComplete the tasks given in the R Markdown file. You can remove any of the question text if you want.\nYou can definitely copy, paste, and adapt from other code in the document or the different example pages—don’t try to write everything from scratch!.\nYou’ll need to insert your own code chunks. Rather than typing them by hand (that’s tedious!), use the “Insert” button at the top of the editing window, or press ⌥ + ⌘ + I on macOS, or ctrl + alt + I on Windows.\n::: {.cell} ::: {.cell-output-display}  ::: :::\nRemember that you can run an entire chunk by clicking on the green play arrow in the top right corner of the chunk. You can also run lines of code line-by-line if you place your cursor on some R code and press ⌘ + enter (for macOS users) or ctrl + enter (for Windows users).\nMake sure you run each chunk sequentially. If you run a chunk in the middle of the document without running previous ones, it might not work, since previous chunks might do things that later chunks depend on.\nWhen you’re all done, click on the “Knit” button at the top of the editing window and create an HTML or Word version (or PDF if you’ve installed tinytex) of your document. Upload that file to iCollege."
+  },
+  {
+    "objectID": "assignment/09-problem-set.html",
+    "href": "assignment/09-problem-set.html",
+    "title": "Problem set 9",
+    "section": "",
+    "text": "This assignment will give you practice generating synthetic data and building in causal effects.\nThese two examples will be incredibly helpful:\nYou’ll be doing all your R work in R Markdown. You can download a zipped file of a pre-made project here:\nAnd as always, if you’re struggling, please talk to me. Work with classmates too (especially for this assignment!). Don’t suffer in silence!"
+  },
+  {
+    "objectID": "assignment/09-problem-set.html#instructions",
+    "href": "assignment/09-problem-set.html#instructions",
+    "title": "Problem set 9",
+    "section": "Instructions",
+    "text": "Instructions\n\nIf you’re using R on your own computer, download this file, unzip it, and double click on the file named problem-set-9.Rproj:  problem-set-9.zip\nYou’ll need to make sure you have these packages installed on your computer: tidyverse, broom, ggdag, and scales. If you try to load one of those packages with library(tidyverse) or library(ggdag), etc., and R gives an error that the package is missing, use the “Packages” panel in RStudio to install it.\n(Alternatively, you can open the project named “Problem Set 9” on RStudio.cloud and complete the assignment in your browser without needing to install anything. This link should take you to the project—if it doesn’t, log in and look for the project named “Problem Set 9.”)\nRename the R Markdown file named your-name_problem-set-9.Rmd to something that matches your name and open it in RStudio.\nComplete the tasks given in the R Markdown file. You can remove any of the question text if you want.\nYou can definitely copy, paste, and adapt from other code in the document or the example guide—don’t try to write everything from scratch!.\nYou’ll need to insert your own code chunks. Rather than typing them by hand (that’s tedious!), use the “Insert” button at the top of the editing window, or press ⌥ + ⌘ + I on macOS, or ctrl + alt + I on Windows.\n::: {.cell} ::: {.cell-output-display}  ::: :::\nRemember that you can run an entire chunk by clicking on the green play arrow in the top right corner of the chunk. You can also run lines of code line-by-line if you place your cursor on some R code and press ⌘ + enter (for macOS users) or ctrl + enter (for Windows users).\nMake sure you run each chunk sequentially. If you run a chunk in the middle of the document without running previous ones, it might not work, since previous chunks might do things that later chunks depend on.\nWhen you’re all done, click on the “Knit” button at the top of the editing window and create an HTML or Word version (or PDF if you’ve installed tinytex) of your document. Upload that file to iCollege."
+  },
+  {
+    "objectID": "assignment/final-project.html",
+    "href": "assignment/final-project.html",
+    "title": "Final project",
+    "section": "",
+    "text": "Evaluation research is tricky and costly. If you begin an intervention or launch a study prematurely, you can waste time and money—and potentially lives.\nEven if you have a well designed program with an impeccable logic model and a perfect DAG, you might discover (too late!) that you forgot to collect some critical variables or realize that your identification strategy will not work.\nFrom a more cynical perspective, you might (unethically) engage in the practice of p-hacking—running all sorts of different model specifications until you find the results you want, and then claim in your report that you had intended to run that model all along.\nOne increasingly popular method for (1) ensuring that your data and methods work before launching a study or intervention, and (2) declaring and committing to your hypotheses and methods and models before analyzing your data is to pre-register your research or evaluation. A pre-registered study contains all the background work—an introduction, literature review, theory, hypotheses, and proposed analysis—but without the actual data. Authors post their expectations and hypotheses publicly so they can be held publicly accountable for any deviations from their proposed design.1\nThe best preregistered studies use simulated data that has the same structure as the data that will be collected (i.e. same columns, sometimes the same correlations and relationships researchers expect to see in the collected data, etc.). Because there’s no data yet (or just fake data), you have more freedom when developing a preregistered study. You can experiment with different models, play with different approaches, manipulate data in different ways, and so on. If you realize that you need a new variable, or that you need to rearrange questions on a survey, or make any other kinds of changes, you can—you haven’t collected the data yet!\n(Additionally, using synthetic data is extremely useful if you’re working with proprietary or private data that you cannot make public. You can make a synthetic version of the real data instead; see this too.)\nOnce you finalize your plan and know all the data you need to collect, and once you’ve written out the different models you’ll run, all you have to do is collect the real data, plop it into your script (replacing the fake data you’d been using), and run the analysis script again to generate the actual, real results. In the results section, you get to either say “As predicted, we found…”, or “Contrary to expectations, we found that…”.\nFor your final project in this class, you will write a pre-registered analysis of a public or nonprofit social program that you’re interested in. You don’t need to worry about collecting data—you’ll create a synthetic dataset for your pre-analysis.\nYou will submit three things via iCollege:\nThis project is due by 11:59 PM on Monday, May 2, 2022.  No late work will be accepted.\nYou can either run the analysis in RStudio locally on your computer (highly recommended(!!), since you won’t have to worry about keeping all your work on RStudio’s servers), or use an RStudio.cloud project. You can make a copy of this RStudio.cloud project—it doesn’t have anything in it, but I have preinstalled all the packages we’ve used over the course of the semester, so you don’t have to."
+  },
+  {
+    "objectID": "assignment/final-project.html#resources",
+    "href": "assignment/final-project.html#resources",
+    "title": "Final project",
+    "section": "Resources",
+    "text": "Resources\nMost importantly, do not hesitate to work with classmates. You all must choose different programs, but you can work in groups of up to 4 people on your own projects. Also, absolutely do not hesitate to ask me questions! I’m here to help!\nYou might find this evaluation (and its proposal) of a truancy program in the Provo School District in Utah helpful as an example for the first half of this assignment (program overview, theory, implementation, threats to validity, and outcomes). The PSD evaluation doesn’t have DAGs or fancy econometrics models like RCTs, diff-in-diff, RDD, IVs, or anything like that, so you can’t use it as an example of that part, but these should provide a good template for the program-specific sections. This is longer than expected for this class. I provide suggested word counts in the outline below.\n\n psd-proposal-2011\n psd-final-report-2012"
+  },
+  {
+    "objectID": "assignment/final-project.html#suggested-outline",
+    "href": "assignment/final-project.html#suggested-outline",
+    "title": "Final project",
+    "section": "Suggested outline",
+    "text": "Suggested outline\nHere’s an outline of what you’ll need to do. You did lots of this work in your evaluation assignments. Please don’t just copy/paste those assignments as is into this final project—you’ll want to polish it up for this final report. You can download this as an RMarkdown file and change the text if you want. I’ve also included this as an RMarkdown file in the empty RStudio.cloud project.\n\n final-project-template.Rmd\n\n\n\nIntroduction\nDescribe the motivation for this evaluation, briefly describe the program to be evaluated, and explain why it matters for society. (≈150 words)\n\n\nProgram overview\nProvide in-depth background about the program. Include details about (1) when it was started, (2) why it was started, (3) what it was designed to address in society. If the program hasn’t started yet, explain why it’s under consideration. (≈300 words)\n\n\nProgram theory and implementation\n\nProgram theory and impact theory graph\nExplain and explore the program’s underlying theory. Sometimes programs will explain why they exist in a mission statement, but often they don’t and you have to infer the theory from what the program looks like when implemented. What did the program designers plan on occurring? Was this theory based on existing research? If so, cite it. (≈300 words)\nInclude a simple impact theory graph showing the program’s basic activities and outcomes. Recall from class and your reading that this is focused primarily on the theory and mechanisms, not on the implementation of the program.\n\n\nLogic model\nDescribe the program’s inputs, activities, outputs, and outcomes. Pay careful attention to how they are linked—remember that every input needs to flow into an activity and every output must flow out of an activity. (≈150 words)\nUse flowchart software to connect the inputs, activities, outputs, and outcomes and create a complete logic model. Include this as a figure.\n\n\n\nOutcome and causation\n\nMain outcome\nSelect one of the program’s outcomes to evaluate. Explain why you’ve chosen this (is it the most important? easiest to measure? has the greatest impact on society?) (≈50 words)\n\n\nMeasurement\nUsing the concept of the “ladder of abstraction” that we discussed in class (e.g. identifying a witch, measuring poverty, etc.), make a list of all the possible attributes of the outcome. Narrow this list down to 3-4 key attributes. Discuss how you decided to narrow the concepts and justify why you think these attributes capture the outcome. Then, for each of these attributes, answer these questions:\n\nMeasurable definition: How would you specifically define this attribute? (i.e. if the attribute is “reduced crime”, define it as “The percent change in crime in a specific neighborhood during a certain time frame” or something similar)\nIdeal measurement: How would you measure this attribute in an ideal world?\nFeasible measurement: How would you measure this given reality and given limitations in budget, time, etc.?\nMeasurement of program effect: How would to connect this measure to people in the program? How would you check to see if the program itself had an effect?\n\n(≈150 words in this section)\n\n\nCausal theory\nGiven your measurement approach, describe and draw a causal diagram (DAG) that shows how your program causes the outcome. Note that this is not the same thing as the logic model—you’ll likely have nodes in the DAG that aren’t related to the program at all (like socioeconomic status, gender, experience, or other factors). The logic model provides the framework for the actual implementation of your program and connects all the moving parts to the outcomes. The DAG is how you can prove causation with statistical approaches. (≈150 words)\n\n\nHypotheses\nMake predictions of your program’s effect. Declare what you think will happen. (≈50 words)\n\n\n\nData and methods\n\nIdentification strategy\nHow will you measure the actual program effect? Will you rely on an RCT? Differences-in-differences? Regression discontinuity? Instrumental variables? How does your approach account for selection bias and endogeneity? How does your approach isolate the causal effect of the program on the outcome?\nAlso briefly describe what kinds of threats to internal and external validity you face in your study.\n(≈300 words)\n\n\nData\nGiven your measurement approach, limits on feasibility, and identification strategy, describe the data you will use. Will you rely on administrative data collected by a government agency or nonprofit? Will you collect your own data? If so, what variables will you measure, and how? Will you conduct a survey or rely on outside observers or do something else? What does this data look like? What variables does it (or should it) include?\n(≈100 words)\n\n\n\nSynthetic analysis\nGenerate a synthetic (fake) dataset in R with all the variables you’ll need for the real life analysis. Analyze the data using your identification strategy. For instance:\n\nIf you’re relying on observational data, close all the backdoors with matching or inverse probability weighting, don’t adjust for colliders, and make a strong argument for isolation of the causal effect in the absence of treatment/control groups\nIf you’re doing an RCT, test the differences in means in the treatment and control groups (and follow all other best practices listed in the World Bank book, checking for balance across groups, etc.)\nIf you’re doing diff-in-diff, run a regression model with an interaction term to show the diff-in-diff\nIf you’re doing regression discontinuity, check for a jump in the outcome variable at the cutoff in the running variable\nIf you’re using instrumental variables, check the validity of your instrument and run a 2SLS model\n\nInclude robustness checks to ensure the validity of your effect (i.e. if you’re doing regression discontinuity, test different bandwidths and kernel types; etc.)\n(As many words as you need to fully describe your analysis and results)\n\n\nConclusion\nWhat would the findings from this analysis mean for your selected program? What would it mean if you found an effect? What would it mean if you didn’t find an effect? Why does any of this matter? (≈75 words)"
+  },
+  {
+    "objectID": "assignment/index.html",
+    "href": "assignment/index.html",
+    "title": "Assignments",
+    "section": "",
+    "text": "The main goals of this class are to help you design, critique, code, and run rigorous, valid, and feasible evaluations of public sector programs. Each type of assignment in this class is designed to help you achieve one or more of these goals."
+  },
+  {
+    "objectID": "assignment/index.html#weekly-check-in",
+    "href": "assignment/index.html#weekly-check-in",
+    "title": "Assignments",
+    "section": "Weekly check-in",
+    "text": "Weekly check-in\nEvery week, after you finish working through the content, I want to hear about what you learned and what questions you still have. Because the content in thsi course is flipped, these questions are crucial for our weekly in-class discussions.\nTo encourage engagement with the course content—and to allow me to collect the class’s questions each week—you’ll need to fill out a short response on iCollege. This should be ≈150 words. That’s fairly short: there are ≈250 words on a typical double-spaced page in Microsoft Word (500 when single-spaced).\nThese check-ins are due by noon on the days we have class. This is so I can look through the responses and start structuring the discussion for the evening’s class.\nYou should answer these two questions each week:\n\nWhat were the three (3) most interesting or exciting things you learned from the session? Why?\nWhat were the three (3) muddiest or unclear things from the session this week? What are you still wondering about?\n\nYou can include more than three interesting or muddiest things, but you must include at least three. There should be six easily identifiable things in each check-in: three exciting things and three questions.\nI will grade these check-ins using a check system:\n\n✔+: (11.5 points (115%) in gradebook) Response shows phenomenal thought and engagement with the course content. I will not assign these often.\n✔: (10 points (100%) in gradebook) Response is thoughtful, well-written, and shows engagement with the course content. This is the expected level of performance.\n✔−: (5 points (50%) in gradebook) Response is hastily composed, too short, and/or only cursorily engages with the course content. This grade signals that you need to improve next time. I will hopefully not assign these often.\n\nNotice that is essentially a pass/fail or completion-based system. I’m not grading your writing ability, I’m not counting the exact number of words you’re writing, and I’m not looking for encyclopedic citations of every single reading to prove that you did indeed read everything. I’m looking for thoughtful engagement, three interesting things, and three questions. That’s all. Do good work and you’ll get a ✓.\nYou will submit these check-ins via iCollege."
+  },
+  {
+    "objectID": "assignment/index.html#problem-sets",
+    "href": "assignment/index.html#problem-sets",
+    "title": "Assignments",
+    "section": "Problem sets",
+    "text": "Problem sets\nTo practice writing R code, running inferential models, and thinking about causation, you will complete a series of problem sets.\nYou need to show that you made a good faith effort to work each question. I will not grade these in detail. The problem sets will be graded using a check system:\n\n✔+: (33 points (110%) in gradebook) Assignment is 100% completed. Every question was attempted and answered, and most answers are correct. Document is clean and easy to follow. Work is exceptional. I will not assign these often.\n✔: (30 points (100%) in gradebook) Assignment is 70–99% complete and most answers are correct. This is the expected level of performance.\n✔−: (15 points (50%) in gradebook) Assignment is less than 70% complete and/or most answers are incorrect. This indicates that you need to improve next time. I will hopefully not asisgn these often.\n\nYou may (and should!) work together on the problem sets, but you must turn in your own answers. You cannot work in groups of more than four people, and you must note who participated in the group in your assignment."
+  },
+  {
+    "objectID": "assignment/index.html#evaluation-assignments",
+    "href": "assignment/index.html#evaluation-assignments",
+    "title": "Assignments",
+    "section": "Evaluation assignments",
+    "text": "Evaluation assignments\nFor your final project, you will conduct a pre-registered evaluation of a social program using synthetic data. To (1) give you practice with the principles of program evaluation, research design, measurement, and causal diagrams, and (2) help you with the foundation of your final project, you will complete a set of four evaluation-related assignments.\nIdeally these will become major sections of your final project. However, there is no requirement that the programs you use in these assignments must be the same as the final project. If, through these assignments, you discover that your initially chosen program is too simple, too complex, too boring, etc., you can change at any time.\nThese assignments will be graded using a check system:\n\n✔+: (33 points (110%) in gradebook) Assignment is 100% completed. Every question was attempted and answered, and most answers are correct. Document is clean and easy to follow. Work is exceptional. I will not assign these often.\n✔: (30 points (100%) in gradebook) Assignment is 70–99% complete and most answers are correct. This is the expected level of performance.\n✔−: (15 points (50%) in gradebook) Assignment is less than 70% complete and/or most answers are incorrect. This indicates that you need to improve next time. I will hopefully not asisgn these often."
+  },
+  {
+    "objectID": "assignment/index.html#exams",
+    "href": "assignment/index.html#exams",
+    "title": "Assignments",
+    "section": "Exams",
+    "text": "Exams\nThere will be two exams covering (1) program evaluation, design, and causation, and (2) the core statistical tools of program evaluation and causal inference.\nYou will take these exams online through iCollege. The exams will have a time limit, but you can use notes and readings and the Google. You must take the exams on your own though, and not talk to anyone about them."
+  },
+  {
+    "objectID": "assignment/index.html#final-project",
+    "href": "assignment/index.html#final-project",
+    "title": "Assignments",
+    "section": "Final project",
+    "text": "Final project\nAt the end of the course, you will demonstrate your knowledge of program evaluation and causal inference by completing a final project.\nComplete details for the final project are here.\nThere is no final exam. This project is your final exam."
+  },
+  {
+    "objectID": "assignment/weekly-check-in.html",
+    "href": "assignment/weekly-check-in.html",
+    "title": "Weekly check-in",
+    "section": "",
+    "text": "To encourage engagement with the course content—and to allow me to collect the class’s questions each week—you’ll need to fill out a short response on iCollege. This should be ≈150 words. That’s fairly short: there are ≈250 words on a typical double-spaced page in Microsoft Word (500 when single-spaced).\nThese check-ins are due by noon on the days we have class. This is so I can look through the responses and start structuring the discussion for the evening’s class.\nYou should answer these two questions each week:\n\nWhat were the three (3) most interesting or exciting things you learned from the session? Why?\nWhat were the three (3) muddiest or unclear things from the session this week? What are you still wondering about?\n\nYou can include more than three interesting or muddiest things, but you must include at least three. There should be six easily identifiable things in each check-in: three exciting things and three questions.\nI will grade these check-ins using a check system:\n\n✔+: (11.5 points (115%) in gradebook) Response shows phenomenal thought and engagement with the course content. I will not assign these often.\n✔: (10 points (100%) in gradebook) Response is thoughtful, well-written, and shows engagement with the course content. This is the expected level of performance.\n✔−: (5 points (50%) in gradebook) Response is hastily composed, too short, and/or only cursorily engages with the course content. This grade signals that you need to improve next time. I will hopefully not assign these often.\n\nNotice that is essentially a pass/fail or completion-based system. I’m not grading your writing ability, I’m not counting the exact number of words you’re writing, and I’m not looking for encyclopedic citations of every single reading to prove that you did indeed read everything. I’m looking for thoughtful engagement, three interesting things, and three questions. That’s all. Do good work and you’ll get a ✓.\nYou will submit these check-ins via iCollege."
+  },
+  {
+    "objectID": "content/01-content.html#lecturas",
+    "href": "content/01-content.html#lecturas",
+    "title": "Presentación",
+    "section": "Lecturas",
+    "text": "Lecturas\nFont & Pasadas (2016) ¿Qué sabemos de las encuestas de opinión? Madrid: CSIC. pp 1-54"
+  },
+  {
+    "objectID": "content/02-content.html",
+    "href": "content/02-content.html",
+    "title": "Regression and inference",
+    "section": "",
+    "text": "Chapters 3 and 4 in The Effect (Huntington-Klein 2021)"
+  },
+  {
+    "objectID": "content/02-content.html#recommended-readings",
+    "href": "content/02-content.html#recommended-readings",
+    "title": "Regression and inference",
+    "section": "Recommended readings",
+    "text": "Recommended readings\nLook through your notes on regression from your last stats class. Also, you can skim through these resources:\n\n 6.1–6.4 in ModernDive (Ismay and Kim 2019)\n 7.1–7.4 in ModernDive (Ismay and Kim 2019)\n 7.1–7.3 in OpenIntro Statistics (Diez, Barr, and Çetinkaya-Rundel 2017)\n 8.1 in OpenIntro Statistics (Diez, Barr, and Çetinkaya-Rundel 2017)\n\nWe’ll review all this regression stuff in the videos, so don’t panic if this all looks terrifying! Also, take advantage of the videos that accompany the OpenIntro chapters. And also, the OpenIntro chapters are heavier on the math—don’t worry if you don’t understand everything."
+  },
+  {
+    "objectID": "content/02-content.html#slides",
+    "href": "content/02-content.html#slides",
+    "title": "Regression and inference",
+    "section": "Slides",
+    "text": "Slides\nThe slides for today’s lesson are available online as an HTML file. Use the buttons below to open the slides either as an interactive website or as a static PDF (for printing or storing for later). You can also click in the slides below and navigate through them with your left and right arrow keys.\n\n View all slides in new window  Download PDF of all slides\n\n\n\nIntroduction\n\n\nDrawing lines\n\n\nLines, Greek, and regression\n\n\nNull worlds and statistical significance\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTip\n\n\n\nFun fact: If you type ? (or shift + /) while going through the slides, you can see a list of special slide-specific commands."
+  },
+  {
+    "objectID": "content/02-content.html#videos",
+    "href": "content/02-content.html#videos",
+    "title": "Regression and inference",
+    "section": "Videos",
+    "text": "Videos\nVideos for each section of the lecture are available at this YouTube playlist.\n\nIntroduction\nDrawing lines\nLines, Greek, and regression\nNull worlds and statistical significance\n\nYou can also watch the playlist (and skip around to different sections) here:"
+  },
+  {
+    "objectID": "content/02-content.html#in-class-stuff",
+    "href": "content/02-content.html#in-class-stuff",
+    "title": "Regression and inference",
+    "section": "In-class stuff",
+    "text": "In-class stuff\nHere are all the materials we’ll use in class:\n\nSession 2 FAQ slides (PDF)\nErrors vs. warnings vs. messages (i.e. what to do when R shows you red text)\nR Markdown examples:\n\nExample R Markdown file used as a code-through or step-by-step teaching document:\n\nLots of blog posts here\nJulia Silge, “Modeling human/computer interactions on Star Trek from #TidyTuesday with workflowsets”\nBob Rudis, “Some Covid Donuts To End The Week”\nHolger K. von Jouanne-Diedrich, “The “Youth Bulge” of Afghanistan: The Hidden Force behind Political Instability”\n\nExample R Markdown file used as a publicly-consumable document:\n\nClick on the “Manuscript” menu item at this site\nSee the Rmd file here\n\n\n\nHands-on R materials:\n\n restaurant_inspections.csv\nRStudio.cloud project\nProject .zip file\nLab slides 3: Data basics (PDF)\nLab slides 4: Visualize data with ggplot2 (PDF)\nLab slides 5: Transform data with dplyr (PDF)"
+  },
+  {
+    "objectID": "content/02-content.html#bayesian-statistics-resources",
+    "href": "content/02-content.html#bayesian-statistics-resources",
+    "title": "Regression and inference",
+    "section": "Bayesian statistics resources",
+    "text": "Bayesian statistics resources\nIn class I briefly mentioned the difference between frequentist and Bayesian statistics. You can see a bunch of additional resources and examples of these two approaches to statistics here. This huge blog post also shows how to do multilevel models with Bayesian models."
+  },
+  {
+    "objectID": "content/03-content.html",
+    "href": "content/03-content.html",
+    "title": "Theories of change and logic models",
+    "section": "",
+    "text": "Chapter 2 in Impact Evaluation in Practice (Gertler et al. 2016)\n Chapter 2 in Evaluation: A Systematic Approach (Rossi, Lipsey, and Henry 2019). This is available on iCollege.\n Chapter 3 in Evaluation: A Systematic Approach (Rossi, Lipsey, and Henry 2019). This is available on iCollege."
+  },
+  {
+    "objectID": "content/03-content.html#slides",
+    "href": "content/03-content.html#slides",
+    "title": "Theories of change and logic models",
+    "section": "Slides",
+    "text": "Slides\nThe slides for today’s lesson are available online as an HTML file. Use the buttons below to open the slides either as an interactive website or as a static PDF (for printing or storing for later). You can also click in the slides below and navigate through them with your left and right arrow keys.\n\n View all slides in new window  Download PDF of all slides\n\n\n\nIntroduction\n\n\nReproducibility\n\n\nProgram theories\n\n\nLogic models & results chains\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTip\n\n\n\nFun fact: If you type ? (or shift + /) while going through the slides, you can see a list of special slide-specific commands."
+  },
+  {
+    "objectID": "content/03-content.html#videos",
+    "href": "content/03-content.html#videos",
+    "title": "Theories of change and logic models",
+    "section": "Videos",
+    "text": "Videos\nVideos for each section of the lecture are available at this YouTube playlist.\n\nIntroduction\nReproducibility\nProgram theories\nLogic models & results chains\n\nYou can also watch the playlist (and skip around to different sections) here:"
+  },
+  {
+    "objectID": "content/03-content.html#in-class-stuff",
+    "href": "content/03-content.html#in-class-stuff",
+    "title": "Theories of change and logic models",
+    "section": "In-class stuff",
+    "text": "In-class stuff\nHere are all the materials we’ll use in class:\n\nSession 3 FAQ slides (PDF)\n Live R script\n atl-weather-2019.csv\n restaurant_inspections.csv"
+  },
+  {
+    "objectID": "content/04-content.html",
+    "href": "content/04-content.html",
+    "title": "Measurement and DAGs",
+    "section": "",
+    "text": "The witch trial scene from Monty Python and the Holy Grail\n Chapter 5 in Evaluation: A Systematic Approach (Rossi, Lipsey, and Henry 2019). This is available on iCollege.\n Chapter 5 in The Effect (Huntington-Klein 2021)\n\n\n\n\n\n Julia M. Rohrer, “Thinking Clearly About Correlations and Causation: Graphical Causal Models for Observational Data” (Rohrer 2018) This will be posted on iCollege.\n Section 2 only (pp. 4–11) from Julian Schuessler and Peter Selb, “Graphical Causal Models for Survey Inference.” (Schuessler and Selb 2019) The PDF is available at SocArXiv.\n Chapters 6 and 7 in The Effect (Huntington-Klein 2021)\n\n\n\n\n\nThe example page on DAGs shows how to draw and analyze DAGs with both dagitty.net and R + ggdag"
+  },
+  {
+    "objectID": "content/04-content.html#slides",
+    "href": "content/04-content.html#slides",
+    "title": "Measurement and DAGs",
+    "section": "Slides",
+    "text": "Slides\nThe slides for today’s lesson are available online as an HTML file. Use the buttons below to open the slides either as an interactive website or as a static PDF (for printing or storing for later). You can also click in the slides below and navigate through them with your left and right arrow keys.\n\n View all slides in new window  Download PDF of all slides\n\n\n\nIntroduction\n\n\nAbstraction, stretching, and validity\n\n\nCausal models\n\n\nPaths, doors, and adjustment\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTip\n\n\n\nFun fact: If you type ? (or shift + /) while going through the slides, you can see a list of special slide-specific commands."
+  },
+  {
+    "objectID": "content/04-content.html#videos",
+    "href": "content/04-content.html#videos",
+    "title": "Measurement and DAGs",
+    "section": "Videos",
+    "text": "Videos\nVideos for each section of the lecture are available at this YouTube playlist.\n\nIntroduction\nAbstraction, stretching, and validity\nCausal models\nPaths, doors, and adjustment\n\nYou can also watch the playlist (and skip around to different sections) here:"
+  },
+  {
+    "objectID": "content/04-content.html#in-class-stuff",
+    "href": "content/04-content.html#in-class-stuff",
+    "title": "Measurement and DAGs",
+    "section": "In-class stuff",
+    "text": "In-class stuff\nHere are all the materials we’ll use in class:\n\nSession 4 FAQ slides (PDF)\n\nYou can use bookdown to create automatic figure, table, and equation numbers. See here for more details:\n\nhttps://bookdown.org/yihui/rmarkdown-cookbook/figure-number.html\nhttps://rmd4sci.njtierney.com/figures-tables-captions-.html\nhttps://rmd4sci.njtierney.com/start.html\n\nMake sure you modify the metadata of your document to use bookdown when knitting:\ntitle: whatever\noutput: \n  bookdown::html_document2:\n    number_sections: no"
+  },
+  {
+    "objectID": "content/05-content.html",
+    "href": "content/05-content.html",
+    "title": "DAGs and potential outcomes",
+    "section": "",
+    "text": "Prologue and at least one of the four acts from This American Life, “Gardens of Branching Paths,” episode #691, January 10, 2020\n Chapter 3 in Impact Evaluation in Practice (Gertler et al. 2016)\n Chapters 8, 9, and 10 in The Effect (Huntington-Klein 2021)\n\n\n\n\nThe example page on potential outcomes, ATEs, and CATEs shows how to use R to calculate ATEs and CATEs"
+  },
+  {
+    "objectID": "content/05-content.html#slides",
+    "href": "content/05-content.html#slides",
+    "title": "DAGs and potential outcomes",
+    "section": "Slides",
+    "text": "Slides\nThe slides for today’s lesson are available online as an HTML file. Use the buttons below to open the slides either as an interactive website or as a static PDF (for printing or storing for later). You can also click in the slides below and navigate through them with your left and right arrow keys.\n\n View all slides in new window  Download PDF of all slides\n\n\n\nIntroduction\n\n\ndo()ing observational causal inference\n\n\nPotential outcomes\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTip\n\n\n\nFun fact: If you type ? (or shift + /) while going through the slides, you can see a list of special slide-specific commands."
+  },
+  {
+    "objectID": "content/05-content.html#videos",
+    "href": "content/05-content.html#videos",
+    "title": "DAGs and potential outcomes",
+    "section": "Videos",
+    "text": "Videos\nVideos for each section of the lecture are available at this YouTube playlist.\n\nIntroduction\ndo()ing observational causal inference\nPotential outcomes\n\nYou can also watch the playlist (and skip around to different sections) here:"
+  },
+  {
+    "objectID": "content/05-content.html#in-class-stuff",
+    "href": "content/05-content.html#in-class-stuff",
+    "title": "DAGs and potential outcomes",
+    "section": "In-class stuff",
+    "text": "In-class stuff\nHere are all the materials we’ll use in class:\n\nSession 5 FAQ slides (PDF)"
+  },
+  {
+    "objectID": "content/06-content.html",
+    "href": "content/06-content.html",
+    "title": "Threats to validity",
+    "section": "",
+    "text": "Guido Imbens, “Statistical Significance, p-Values, and the Reporting of Uncertainty” (Imbens 2021). This is available on iCollege, and it’s also free here.\n Randall Munroe, “Significant”\n Alexander Coppock, “10 Things to Know About Statistical Power”\n Play around with FiveThirtyEight, “Hack Your Way To Scientific Glory”\n Chapter 9 in Impact Evaluation in Practice (Gertler et al. 2016)\n Chapter 11 in The Effect (Huntington-Klein 2021)"
+  },
+  {
+    "objectID": "content/06-content.html#slides",
+    "href": "content/06-content.html#slides",
+    "title": "Threats to validity",
+    "section": "Slides",
+    "text": "Slides\nThe slides for today’s lesson are available online as an HTML file. Use the buttons below to open the slides either as an interactive website or as a static PDF (for printing or storing for later). You can also click in the slides below and navigate through them with your left and right arrow keys.\n\n View all slides in new window  Download PDF of all slides\n\n\n\nIntroduction\n\n\nConstruct validity\n\n\nStatistical conclusion validity\n\n\nInternal validity\n\n\nExternal validity\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTip\n\n\n\nFun fact: If you type ? (or shift + /) while going through the slides, you can see a list of special slide-specific commands."
+  },
+  {
+    "objectID": "content/06-content.html#videos",
+    "href": "content/06-content.html#videos",
+    "title": "Threats to validity",
+    "section": "Videos",
+    "text": "Videos\nVideos for each section of the lecture are available at this YouTube playlist.\n\nIntroduction\nConstruct validity\nStatistical conclusion validity\nInternal validity\nExternal validity\n\nYou can also watch the playlist (and skip around to different sections) here:"
+  },
+  {
+    "objectID": "content/06-content.html#in-class-stuff",
+    "href": "content/06-content.html#in-class-stuff",
+    "title": "Threats to validity",
+    "section": "In-class stuff",
+    "text": "In-class stuff\nHere are all the materials we’ll use in class:\n\nSession 6 FAQ slides (PDF)\nZilch!\n Live R script\n restaurant_inspections.csv"
+  },
+  {
+    "objectID": "content/07-content.html",
+    "href": "content/07-content.html",
+    "title": "Randomization and matching",
+    "section": "",
+    "text": "Andrew Heiss, “Causal Inference,” Chapter 10 in R for Political Data Science: A Practical Guide (2020) (Ignore the exercises!). Get the PDF here.\n Chapter 4 in Impact Evaluation in Practice (Gertler et al. 2016)\n Chapters 11 and 13 in The Effect (Huntington-Klein 2021). Focus especially on section 13.3 about standard errors. And skim chapter 11; it’s an overview of regression, which we reviewed in session 2, but it also applies the language of DAGs to regression, so look for that specifically as you read.\n Planet Money, “Moving To Opportunity?,” episode 937\n Aaron Carroll, “Workplace Wellness Programs Don’t Work Well. Why Some Studies Show Otherwise,” The Upshot, August 6, 2018\n\n\n\n\nThe example page on RCTs shows how to use R to analyze and estimate causal effects from RCTs\nThe example page on matching and inverse probability weighting shows how to use R to close backdoors, make adjustments, and find causal effects from observational data using matching and inverse probability weighting"
+  },
+  {
+    "objectID": "content/07-content.html#slides",
+    "href": "content/07-content.html#slides",
+    "title": "Randomization and matching",
+    "section": "Slides",
+    "text": "Slides\nThe slides for today’s lesson are available online as an HTML file. Use the buttons below to open the slides either as an interactive website or as a static PDF (for printing or storing for later). You can also click in the slides below and navigate through them with your left and right arrow keys.\n\n View all slides in new window  Download PDF of all slides\n\n\n\nIntroduction\n\n\nThe magic of randomization\n\n\nHow to analyze RCTs\n\n\nThe “gold” standard\n\n\nAdjustment with matching\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTip\n\n\n\nFun fact: If you type ? (or shift + /) while going through the slides, you can see a list of special slide-specific commands."
+  },
+  {
+    "objectID": "content/07-content.html#videos",
+    "href": "content/07-content.html#videos",
+    "title": "Randomization and matching",
+    "section": "Videos",
+    "text": "Videos\nVideos for each section of the lecture are available at this YouTube playlist.\n\nIntroduction\nThe magic of randomization\nHow to analyze RCTs\nThe “gold” standard\nAdjustment with matching\n\nYou can also watch the playlist (and skip around to different sections) here:"
+  },
+  {
+    "objectID": "content/07-content.html#in-class-stuff",
+    "href": "content/07-content.html#in-class-stuff",
+    "title": "Randomization and matching",
+    "section": "In-class stuff",
+    "text": "In-class stuff\nHere are all the materials we’ll use in class:\n\nSession 7 FAQ slides (PDF)\nIn-class .zip file\nRStudio.cloud project\nFinished code from in-class example (see also rct_vaccine-payments_finished.Rmd in the .zip file)\n\nOther helpful resources:\n\n“The Impact of Mask Distribution and Promotion on Mask Uptake and COVID-19 in Bangladesh”\nMacartan Humphreys, “I saw your RCT and I have some worries! FAQs”\nDarren Dahly, “Out of balance: A perspective on covariate adjustment in randomized experiments”\nBayesian stats and decison making\nStandard errors\nUnobserved confounding and sensitivity analysis"
+  },
+  {
+    "objectID": "content/08-content.html",
+    "href": "content/08-content.html",
+    "title": "Difference-in-differences I",
+    "section": "",
+    "text": "Chapter 7 in Impact Evaluation in Practice (Gertler et al. 2016)\n Chapter 18 in The Effect (Huntington-Klein 2021)"
+  },
+  {
+    "objectID": "content/08-content.html#slides",
+    "href": "content/08-content.html#slides",
+    "title": "Difference-in-differences I",
+    "section": "Slides",
+    "text": "Slides\nThe slides for today’s lesson are available online as an HTML file. Use the buttons below to open the slides either as an interactive website or as a static PDF (for printing or storing for later). You can also click in the slides below and navigate through them with your left and right arrow keys.\n\n View all slides in new window  Download PDF of all slides\n\n\n\nIntroduction\n\n\nQuasi-experiments\n\n\nInteractions & regression\n\n\nTwo wrongs make a right\n\n\nDiff-in-diff assumptions\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTip\n\n\n\nFun fact: If you type ? (or shift + /) while going through the slides, you can see a list of special slide-specific commands."
+  },
+  {
+    "objectID": "content/08-content.html#videos",
+    "href": "content/08-content.html#videos",
+    "title": "Difference-in-differences I",
+    "section": "Videos",
+    "text": "Videos\nVideos for each section of the lecture are available at this YouTube playlist.\n\nIntroduction\nQuasi-experiments\nInteractions & regression\nTwo wrongs make a right\nDiff-in-diff assumptions\n\nYou can also watch the playlist (and skip around to different sections) here:"
+  },
+  {
+    "objectID": "content/08-content.html#in-class-stuff",
+    "href": "content/08-content.html#in-class-stuff",
+    "title": "Difference-in-differences I",
+    "section": "In-class stuff",
+    "text": "In-class stuff\nHere are all the materials we’ll use in class:\n\nSession 8 FAQ slides (PDF)\nSession 8 R code (on RStudio.cloud)"
+  },
+  {
+    "objectID": "content/09-content.html",
+    "href": "content/09-content.html",
+    "title": "Difference-in-differences II",
+    "section": "",
+    "text": "This session is a continuation of session 8."
+  },
+  {
+    "objectID": "content/09-content.html#in-class-stuff",
+    "href": "content/09-content.html#in-class-stuff",
+    "title": "Difference-in-differences II",
+    "section": "In-class stuff",
+    "text": "In-class stuff\nHere are all the materials we’ll use in class:\n\nSession 9 FAQ slides (PDF)\nSession 9 R code (on RStudio.cloud)\n\nAnd here are some useful blog posts and examples of the stuff we talked about today:\n\nHow random effects work\nTWFE diagnostics\nSensitivity analysis for unobserved confounding"
+  },
+  {
+    "objectID": "content/10-content.html",
+    "href": "content/10-content.html",
+    "title": "Regression discontinuity I",
+    "section": "",
+    "text": "Chapter 6 in Impact Evaluation in Practice (Gertler et al. 2016)\n Chapter 20 in The Effect (Huntington-Klein 2021)\n\n\n\n\nThe example page on regression discontinuity shows how to use R to analyze and estimate causal effects with regression discontinuity"
+  },
+  {
+    "objectID": "content/10-content.html#slides",
+    "href": "content/10-content.html#slides",
+    "title": "Regression discontinuity I",
+    "section": "Slides",
+    "text": "Slides\nThe slides for today’s lesson are available online as an HTML file. Use the buttons below to open the slides either as an interactive website or as a static PDF (for printing or storing for later). You can also click in the slides below and navigate through them with your left and right arrow keys.\n\n View all slides in new window  Download PDF of all slides\n\n\n\nIntroduction\n\n\nArbitrary cutoffs and causal inference\n\n\nDrawing lines and measuring gaps\n\n\nMain RDD concerns\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTip\n\n\n\nFun fact: If you type ? (or shift + /) while going through the slides, you can see a list of special slide-specific commands."
+  },
+  {
+    "objectID": "content/10-content.html#videos",
+    "href": "content/10-content.html#videos",
+    "title": "Regression discontinuity I",
+    "section": "Videos",
+    "text": "Videos\nVideos for each section of the lecture are available at this YouTube playlist.\n\nIntroduction\nArbitrary cutoffs and causal inference\nDrawing lines and measuring gaps\nMain RDD concerns\n\nYou can also watch the playlist (and skip around to different sections) here:"
+  },
+  {
+    "objectID": "content/10-content.html#in-class-stuff",
+    "href": "content/10-content.html#in-class-stuff",
+    "title": "Regression discontinuity I",
+    "section": "In-class stuff",
+    "text": "In-class stuff\nHere are all the materials we’ll use in class:\n\nWeek 10 FAQ slides (PDF)\nWeek 10 R code (on RStudio.cloud)"
+  },
+  {
+    "objectID": "content/11-content.html",
+    "href": "content/11-content.html",
+    "title": "Instrumental variables I",
+    "section": "",
+    "text": "Chapter 5 in Impact Evaluation in Practice (Gertler et al. 2016)\n Chapter 19 in The Effect (Huntington-Klein 2021)\n\n\n\n\nThe example page on instrumental variables shows how to use R to analyze and estimate causal effects with instrumental variables"
+  },
+  {
+    "objectID": "content/11-content.html#slides",
+    "href": "content/11-content.html#slides",
+    "title": "Instrumental variables I",
+    "section": "Slides",
+    "text": "Slides\nThe slides for today’s lesson are available online as an HTML file. Use the buttons below to open the slides either as an interactive website or as a static PDF (for printing or storing for later). You can also click in the slides below and navigate through them with your left and right arrow keys.\n\n View all slides in new window  Download PDF of all slides\n\n\n\nIntroduction\n\n\nEndogeneity and exogeneity\n\n\nInstruments\n\n\nUsing instruments\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTip\n\n\n\nFun fact: If you type ? (or shift + /) while going through the slides, you can see a list of special slide-specific commands."
+  },
+  {
+    "objectID": "content/11-content.html#videos",
+    "href": "content/11-content.html#videos",
+    "title": "Instrumental variables I",
+    "section": "Videos",
+    "text": "Videos\nVideos for each section of the lecture are available at this YouTube playlist.\n\nIntroduction\nEndogeneity and exogeneity\nInstruments\nUsing instruments\n\nYou can also watch the playlist (and skip around to different sections) here:"
+  },
+  {
+    "objectID": "content/11-content.html#in-class-stuff",
+    "href": "content/11-content.html#in-class-stuff",
+    "title": "Instrumental variables I",
+    "section": "In-class stuff",
+    "text": "In-class stuff\nHere are all the materials we’ll use in class:\n\nWeek 11 FAQ slides (PDF)\nWeek 11 R code (on RStudio.cloud)"
+  },
+  {
+    "objectID": "content/12-content.html",
+    "href": "content/12-content.html",
+    "title": "Instrumental variables II + Regression discontinuity II",
+    "section": "",
+    "text": "The example page on complier average causal effects shows how to use R to disentangle complier average causal effects\nThe example page on fuzzy regression discontinuity shows how to use R to use instrumental variables in fuzzy regression discontinuity, both parametrically and nonparametrically"
+  },
+  {
+    "objectID": "content/12-content.html#slides",
+    "href": "content/12-content.html#slides",
+    "title": "Instrumental variables II + Regression discontinuity II",
+    "section": "Slides",
+    "text": "Slides\nThe slides for today’s lesson are available online as an HTML file. Use the buttons below to open the slides either as an interactive website or as a static PDF (for printing or storing for later). You can also click in the slides below and navigate through them with your left and right arrow keys.\n\n View all slides in new window  Download PDF of all slides\n\n\n\nIntroduction\n\n\nTreatment effects and compliance\n\n\nRandomized promotion\n\n\nFuzzy regression discontinuity\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTip\n\n\n\nFun fact: If you type ? (or shift + /) while going through the slides, you can see a list of special slide-specific commands."
+  },
+  {
+    "objectID": "content/12-content.html#videos",
+    "href": "content/12-content.html#videos",
+    "title": "Instrumental variables II + Regression discontinuity II",
+    "section": "Videos",
+    "text": "Videos\nVideos for each section of the lecture are available at this YouTube playlist.\n\nIntroduction\nTreatment effects and compliance\nRandomized promotion\nFuzzy regression discontinuity\n\nYou can also watch the playlist (and skip around to different sections) here:"
+  },
+  {
+    "objectID": "content/12-content.html#in-class-stuff",
+    "href": "content/12-content.html#in-class-stuff",
+    "title": "Instrumental variables II + Regression discontinuity II",
+    "section": "In-class stuff",
+    "text": "In-class stuff\nHere are all the materials we’ll use in class:\n\nWeek 12 FAQ slides (PDF)\n Live R script"
+  },
+  {
+    "objectID": "content/13-content.html",
+    "href": "content/13-content.html",
+    "title": "Choosing and planning ethical evaluations",
+    "section": "",
+    "text": "“Generating random numbers”\n “The ultimate guide to generating synthetic data for causal inference”\n Paul Hünermund and Beyers Louw, “On the Nuisance of Control Variables in Regression Analysis” (Hünermund and Louw 2020) (click on the PDF link in the right sidebar)\n “Types of Evaluation,” National Center for HIV/AIDS, Viral Hepatitis, STD, and TB Prevention, Centers for Disease Control (CDC)\n Chapters 11–13 in Impact Evaluation in Practice (Gertler et al. 2016)\n Chapter 15 in The Effect (Huntington-Klein 2021) (skim this)"
+  },
+  {
+    "objectID": "content/13-content.html#slides",
+    "href": "content/13-content.html#slides",
+    "title": "Choosing and planning ethical evaluations",
+    "section": "Slides",
+    "text": "Slides\nThe slides for today’s lesson are available online as an HTML file. Use the buttons below to open the slides either as an interactive website or as a static PDF (for printing or storing for later). You can also click in the slides below and navigate through them with your left and right arrow keys.\n\n View all slides in new window  Download PDF of all slides\n\n\n\nIntroduction\n\n\nTypes of evaluations\n\n\nModel- and design-based inference\n\n\nEthics and open science\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTip\n\n\n\nFun fact: If you type ? (or shift + /) while going through the slides, you can see a list of special slide-specific commands."
+  },
+  {
+    "objectID": "content/13-content.html#videos",
+    "href": "content/13-content.html#videos",
+    "title": "Choosing and planning ethical evaluations",
+    "section": "Videos",
+    "text": "Videos\nVideos for each section of the lecture are available at this YouTube playlist.\n\nIntroduction\nTypes of evaluations\nModel- and design-based inference\nEthics and open science\n\nYou can also watch the playlist (and skip around to different sections) here:"
+  },
+  {
+    "objectID": "content/13-content.html#in-class-stuff",
+    "href": "content/13-content.html#in-class-stuff",
+    "title": "Choosing and planning ethical evaluations",
+    "section": "In-class stuff",
+    "text": "In-class stuff\nHere are all the materials we’ll use in class:\n\nWeek 13 FAQ slides (PDF)\n Live R script"
+  },
+  {
+    "objectID": "content/14-content.html",
+    "href": "content/14-content.html",
+    "title": "Ethics, stories, and curiosity",
+    "section": "",
+    "text": "This looks like a lot, but most of these are quite short!\n\n\n\n Miguel A. Hernán, “The C-Word: Scientific Euphemisms Do Not Improve Causal Inference From Observational Data” (Hernán 2018)\n Hannah Fresques and Meg Marco, “‘Your Default Position Should Be Skepticism’ and Other Advice for Data Journalists From Hadley Wickham,” ProPublica, June 10, 2019\n\n\n\n\n\n Chapter 14 in Impact Evaluation in Practice (Gertler et al. 2016)\n Martin Krzywinski and Alberto Cairo, “Storytelling”\n Ben Wellington, “Making data mean more through storytelling”\n Will Schoder, “Every Story is the Same”\n\n\n\n\nKeep in mind throughout all these readings that an “algorithm” in these contexts is typically some fancy type of regression model where the outcome variable is something binary like “Safe babysitter/unsafe babysitter,” “Gave up seat in past/didn’t give up seat in past”, or “Violated probation in past/didn’t violate probation in past”, and the explanatory variables are hundreds of pieces of data that might predict those outcomes (social media history, flight history, race, etc.).\nData scientists build a (sometimes proprietary and complex) model based on existing data, plug in values for any given new person, multiply that person’s values by the coefficients in the model, and get a final score in the end for how likely someone is to be a safe babysitter or how likely someone is to return to jail.\n\n DJ Patil, “A Code of Ethics for Data Science” (if your’re interested in this, also check out Mike Loukides, Hilary Mason, and DJ Patil, Ethics and Data Science\n “AI in 2018: A Year in Review”\n “How Big Data Is ‘Automating Inequality’”\n “In ‘Algorithms of Oppression,’ Safiya Noble finds old stereotypes persist in new media”\n 99% Invisible, “The Age of the Algorithm”: Note that this is a podcast, or a 20ish minute audio story. Listen to this.\n On the Media, “Biased Algorithms, Biased World”\n “Wanted: The ‘perfect babysitter.’ Must pass AI scan for respect and attitude.”\n “Companies are on the hook if their hiring algorithms are biased”\n “Courts use algorithms to help determine sentencing, but random people get the same results”\n David Heinemeier Hansson’s rant on the Apple Card\n\nAnd Jamie Heinemeier Hansson’s response"
+  },
+  {
+    "objectID": "content/14-content.html#slides",
+    "href": "content/14-content.html#slides",
+    "title": "Ethics, stories, and curiosity",
+    "section": "Slides",
+    "text": "Slides\nThe slides for today’s lesson are available online as an HTML file. Use the buttons below to open the slides either as an interactive website or as a static PDF (for printing or storing for later). You can also click in the slides below and navigate through them with your left and right arrow keys.\n\n View all slides in new window  Download PDF of all slides\n\n\n\nIntroduction\n\n\nWhat did we just learn?\n\n\nEthics of data analyitcs (a)\n\n\nEthics of data analytics (b)\n\n\nEthics of data analytics (c)\n\n\nEthics of storytelling (a)\n\n\nEthics of storytelling (b)\n\n\nEthics of storytelling (c)\n\n\nEthics of storytelling (d)\n\n\nCuriosity\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTip\n\n\n\nFun fact: If you type ? (or shift + /) while going through the slides, you can see a list of special slide-specific commands."
+  },
+  {
+    "objectID": "content/14-content.html#videos",
+    "href": "content/14-content.html#videos",
+    "title": "Ethics, stories, and curiosity",
+    "section": "Videos",
+    "text": "Videos\nVideos for each section of the lecture are available at this YouTube playlist.\n\nIntroduction\nWhat did we just learn?\nEthics of data analyitcs (a)\nEthics of data analytics (b)\nEthics of data analytics (c)\nEthics of storytelling (a)\nEthics of storytelling (b)\nEthics of storytelling (c)\nEthics of storytelling (d)\nCuriosity\n\nYou can also watch the playlist (and skip around to different sections) here:"
+  },
+  {
+    "objectID": "content/index.html",
+    "href": "content/index.html",
+    "title": "Presentaciones, lecturas y actividades",
+    "section": "",
+    "text": "En esta sección se encuentran los documentos de presentación correspondientes a cada clase, lecturas y también actividades prácticas."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Encuestas Sociales",
+    "section": "",
+    "text": "Profesor\n\n   Juan Carlos Castillo\n   Departamento de Sociología FACSO\n   jcastillov@uchile.cl\n   juankcastillo\n   Reuniones\n\n\n\nInformación del curso\n\n   Jueves\n   Agosto 18–Noviembre 17, 2022\n   14:30-16:30 PM\n   Sala 43 FACSO\n   Slack\n\n\n\nContacto\nA través de Slack o correo"
+  },
+  {
+    "objectID": "resource/citations.html",
+    "href": "resource/citations.html",
+    "title": "Citations and bibliography",
+    "section": "",
+    "text": "references.bib\n\nYou can open the file in BibDesk on macOS, JabRef on Windows, or Zotero or Mendeley online."
+  },
+  {
+    "objectID": "resource/data.html",
+    "href": "resource/data.html",
+    "title": "Data",
+    "section": "",
+    "text": "Data is Plural newsletter: Jeremy Singer-Vine sends a weekly newsletter of the most interesting public datasets he’s found. You should subscribe to it. He also has an archive of all the datasets he’s highlighted.\nGoogle Dataset Search: Google indexes thousands of public datasets; search for them here.\nKaggle: Kaggle hosts machine learning competitions where people compete to create the fastest, most efficient, most predictive algorithms. A byproduct of these competitions is a host of fascinating datasets that are generally free and open to the public. See, for example, the European Soccer Database, the Salem Witchcraft Dataset or results from an Oreo flavors taste test.\n360Giving: Dozens of British foundations follow a standard file format for sharing grant data and have made that data available online.\nUS City Open Data Census: More than 100 US cities have committed to sharing dozens of types of data, including data about crime, budgets, campaign finance, lobbying, transit, and zoning. This site from the Sunlight Foundation and Code for America collects this data and rates cities by how well they’re doing.\nPolitical science and economics datasets: There’s a wealth of data available for political science- and economics-related topics:\n\nFrançois Briatte’s extensive curated lists: Includes data from/about intergovernmental organizations (IGOs), nongovernmental organizations (NGOs), public opinion surveys, parliaments and legislatures, wars, human rights, elections, and municipalities.\nThomas Leeper’s list of political science datasets: Good short list of useful datasets, divided by type of data (country-level data, survey data, social media data, event data, text data, etc.).\nErik Gahner’s list of political science datasets: Huge list of useful datasets, divided by topic (governance, elections, policy, political elites, etc.)"
+  },
+  {
+    "objectID": "resource/exam1.html",
+    "href": "resource/exam1.html",
+    "title": "Things you should know for Exam 1",
+    "section": "",
+    "text": "You should understand…\n\n…the difference between experimental research and observational research\n…the sometimes conflicting roles of science and intuition in public administration and policy\n…the difference between the various types of evaluations and how they target specific parts of a logic model\n…the difference between identifying correlation (math) and identifying causation (philosophy and theory)\n…what it means for a relationship to be causal"
+  },
+  {
+    "objectID": "resource/exam1.html#regression-and-inference",
+    "href": "resource/exam1.html#regression-and-inference",
+    "title": "Things you should know for Exam 1",
+    "section": "Regression and inference",
+    "text": "Regression and inference\nYou should understand…\n\n…the difference between correlation coefficients and regression coefficients\n…the difference between outcome/response/dependent and explanatory/predictor/independent variables\n…the two purposes of regression\n…what each of the components in a regression equation stand for, in both “flavors” of notation:\n\n\\(y = \\beta_0 + \\beta_1 x_1 + \\beta_2 x_2 + \\epsilon\\) for the statistical flavor\n\\(y = \\alpha + \\beta x_1 + \\gamma x_2 + \\epsilon\\) for the econometrics flavor\n\n…how sliders and switches work as metaphors for regression coefficients\n…what it means to hold variables constant (or to control for variables)\n…the different elements of the grammar of graphics and be able to identify how variables are encoded in a graph (i.e. how columns in a dataset can be represented through x/y coordinates, through color, through size, through fill, etc.)\n\nYou should be able to…\n\n…write and interpret R code that calculates summary statistics for groups (i.e. group_by() %>% summarize())\n…write and interpret R code that builds linear models (i.e. lm())\n…interpret regression coefficients\n…interpret other regression diagnostics like \\(R^2\\)\n…use the %>% pipe in R to chain functions together\n…use ggplot() to visualize data\n\nHelpful resources:\n\n Garrett Grolemund and Hadley Wickham, R for Data Science\n Kieran Healy, “How ggplot works,” chapter 3 in Data Visualization: A Practical Introduction"
+  },
+  {
+    "objectID": "resource/exam1.html#theories-of-change-and-measurement",
+    "href": "resource/exam1.html#theories-of-change-and-measurement",
+    "title": "Things you should know for Exam 1",
+    "section": "Theories of change and measurement",
+    "text": "Theories of change and measurement\nYou should understand…\n\n…how to describe a program’s theory of change\n…the difference between inputs, activities, outputs, and outcomes\n…the elements of a program’s impact theory: causes (activities) linked to effects (outcomes)\n…the elements of a program’s logic model: the explicit links between all its inputs, activities, outputs, and outcomes\n…the difference between implicit and articulated program theories\n…the purpose of smaller-scale mechanism testing\n…how indicators can be measured at different levels of abstraction\n…what makes an indicator a good indicator\n\nYou should be able to…\n\n…identify a program’s underlying theory based on its mission statement\n…draw a program impact theory chart that links activities to outcomes\n…draw a program logic model that links inputs to activities to outputs to outcomes\n…identify the most central elements of a potential outcome measurement"
+  },
+  {
+    "objectID": "resource/exam1.html#counterfactuals-and-dags",
+    "href": "resource/exam1.html#counterfactuals-and-dags",
+    "title": "Things you should know for Exam 1",
+    "section": "Counterfactuals and DAGs",
+    "text": "Counterfactuals and DAGs\nYou should understand…\n\n…how a causal model encodes our understanding of a causal process\n…how to identify front door and back door paths between treatment/exposure and outcome\n…why we avoid closing front door paths\n…why we close back door paths\n…why adjusting for colliders can distort causal effects\n…the difference between logic models and DAGs\n…the difference between individual level causal effects, average treatment effects (ATE), conditional average treatment effect (CATE), average treatment on the treated effects (ATT), and average treatment on the untreated (ATU)\n…what the fundamental problem of causal inference is and how we can attempt to address it\n\nYou should be able to…\n\n…draw a possible DAG for a given causal relationship\n…identify all pathways between treatment/exposure and outcome\n…identify which nodes in the DAG need to be adjusted for (or closed)\n…identify colliders (which should not be adjusted for)\n\nHelpful resources:\n\n Malcom Barrett, “An Introduction to Directed Acyclic Graphs”\n Malcom Barrett, “An Introduction to ggdag”\n Judea Pearl, “A Crash Course in Good and Bad Control”: A quick summary of back doors, front doors, confounders, colliders, and when to control/not control for DAG nodes\n Causal Inference Bootcamp, “Average Treatment Effects,” Duke University\n Causal Inference Bootcamp, “Unit Level Effects,” Duke University\n Causal Inference Bootcamp, “Conditional Average Treatment Effects,” Duke University\n Causal Inference Bootcamp, “Counterfactuals,” Duke University\n Neel Ocean, “Understanding Selection Bias”: explanation of how to identify selection bias from the ATT and the ATE, with an explanation of how ATE = ATT + selection bias under the potential outcomes framework\n Paul Hünermund, “Sample Selection vs. Selection Into Treatment”"
+  },
+  {
+    "objectID": "resource/exam1.html#threats-to-validity",
+    "href": "resource/exam1.html#threats-to-validity",
+    "title": "Things you should know for Exam 1",
+    "section": "Threats to validity",
+    "text": "Threats to validity\nYou should understand…\n\n…what it means when a study has internal validity and know how to identify the major threats to internal validity, including: omitted variable bias (selection and attrition), trend issues (maturation, secular trends, seasonality, testing, regression to the mean), study calibration issues (measurement error, time frame of study), and contamination issues (Hawthorne effects, John Henry effects, spillovers, and intervening events)\n…why selection bias is the most pernicious and difficult threat to internal validity and how we can account for it\n…what it means when a study has external validity\n…what it means when the measures used in a study have construct validity\n…what it means when the analysis used in a study has statistical conclusion validity\n\nYou should be able to…\n\n…identify existing and potential threats to validity in a study\n…suggest ways of addressing these threats\n\nHelpful resources:\n\nReally, just google “threats to internal validity” or “threats to external validity” and you’ll find a billion different slide decks, articles, and lessons about these. They’re a pretty standard part of any research design class."
+  },
+  {
+    "objectID": "resource/exam2.html",
+    "href": "resource/exam2.html",
+    "title": "Things you should know for Exam 2",
+    "section": "",
+    "text": "Understand why randomization is crucial for causal inference and counterfactuals\nUnderstand the process for analyzing a randomized controlled trial\n\nCrucial resources:\n\nReadings, slides, and videos for randomization and matching\nGuide for RCTs\nProblem set 3\nTask 1 in problem set 8"
+  },
+  {
+    "objectID": "resource/exam2.html#matching-and-inverse-probability-weighting",
+    "href": "resource/exam2.html#matching-and-inverse-probability-weighting",
+    "title": "Things you should know for Exam 2",
+    "section": "Matching and inverse probability weighting",
+    "text": "Matching and inverse probability weighting\n\nUnderstand the intuition behind matching and inverse probability weighting\nUnderstand the process for adjusting for confounders and closing backdoors with both matching and inverse probability weighting\n\nCrucial resources:\n\nReadings, slides, and videos for randomization and matching\nGuide for matching and inverse probability weighting\nProblem set 3\nTask 2 in problem set 8"
+  },
+  {
+    "objectID": "resource/exam2.html#difference-in-difference",
+    "href": "resource/exam2.html#difference-in-difference",
+    "title": "Things you should know for Exam 2",
+    "section": "Difference-in-difference",
+    "text": "Difference-in-difference\n\nUnderstand the intuition behind making causal inferences with difference-in-differences\nUnderstand the process for analyzing diff-in-diffs\n\nCrucial resources:\n\nReadings, slides, and videos for diff-in-diff\nGuide for diff-in-diff\nProblem set 4\nProblem set 5\nTask 3 in problem set 8"
+  },
+  {
+    "objectID": "resource/exam2.html#regression-discontinuity",
+    "href": "resource/exam2.html#regression-discontinuity",
+    "title": "Things you should know for Exam 2",
+    "section": "Regression discontinuity",
+    "text": "Regression discontinuity\n\nUnderstand the intuition behind making causal inferences with regression discontinuity\nUnderstand the process for analyzing regression discontinuities, both fuzzy and sharp\nUnderstand the difference between ATE and LATE\n\nCrucial resources:\n\nReadings, slides, and videos for regression discontinuity I (sharp)\nReadings, slides, and videos for regression discontinuity II (fuzzy)\nGuide for sharp diff-in-diff\nGuide for fuzzy diff-in-diff\nProblem set 6\nTask 4 in problem set 8"
+  },
+  {
+    "objectID": "resource/exam2.html#instrumental-variables",
+    "href": "resource/exam2.html#instrumental-variables",
+    "title": "Things you should know for Exam 2",
+    "section": "Instrumental variables",
+    "text": "Instrumental variables\n\nUnderstand the intuition behind using instruments for causal inference\nUnderstand the three characteristics of a good instrument\nUnderstand the process for analyzing data with instrumental variables and 2SLS\nUnderstand the difference between ATE and LATE\n\nCrucial resources:\n\nReadings, slides, and videos for instrumental variables I\nReadings, slides, and videos for instrumental variables II\nGuide for instrumental variables\nProblem set 7\nTask 5 in problem set 8"
+  },
+  {
+    "objectID": "resource/index.html",
+    "href": "resource/index.html",
+    "title": "Recursos",
+    "section": "",
+    "text": "Proximamente aquí."
+  },
+  {
+    "objectID": "resource/install.html",
+    "href": "resource/install.html",
+    "title": "Installing R, RStudio, tidyverse, and tinytex",
+    "section": "",
+    "text": "You will do all of your work in this class with the open source (and free!) programming language R. You will use RStudio as the main program to access R. Think of R as an engine and RStudio as a car dashboard—R handles all the calculations and the actual statistics, while RStudio provides a nice interface for running R code."
+  },
+  {
+    "objectID": "resource/install.html#rstudio.cloud",
+    "href": "resource/install.html#rstudio.cloud",
+    "title": "Installing R, RStudio, tidyverse, and tinytex",
+    "section": "RStudio.cloud",
+    "text": "RStudio.cloud\nR is free, but it can sometimes be a pain to install and configure. To make life easier, you can (and should!) use the free RStudio.cloud service initially, which lets you run a full instance of RStudio in your web browser. This means you won’t have to install anything on your computer to get started with R! We will have a shared class workspace in RStudio.cloud that will let you quickly copy templates for labs and problem sets.\nGo to https://rstudio.cloud/ and create an account. You’ll receive a link to join the shared class workspace separately. If you don’t get this link, let me know and I will invite you."
+  },
+  {
+    "objectID": "resource/install.html#rstudio-on-your-computer",
+    "href": "resource/install.html#rstudio-on-your-computer",
+    "title": "Installing R, RStudio, tidyverse, and tinytex",
+    "section": "RStudio on your computer",
+    "text": "RStudio on your computer\nRStudio.cloud is convenient, but it can be slow and it is not designed to be able to handle larger datasets, more complicated analysis, or fancier graphics. Over the course of the semester, you should wean yourself off of RStudio.cloud and install all these things locally. This is also important if you want to customize fonts, since RStudio.cloud has extremely limited support for fonts other than Helvetica.\nHere’s how you install all these things\n\nInstall R\nFirst you need to install R itself (the engine).\n\nGo to the CRAN (Collective R Archive Network)1 website: https://cran.r-project.org/\nClick on “Download R for XXX”, where XXX is either Mac or Windows:\n::: {.cell} ::: {.cell-output-display}  ::: :::\n\nIf you use macOS, scroll down to the first .pkg file in the list of files (in this picture, it’s R-4.0.0.pkg; as of right now, the current version is also 4.0.0) and download it.\n::: {.cell} ::: {.cell-output-display}  ::: :::\nIf you use Windows, click “base” (or click on the bolded “install R for the first time” link) and download it.\n::: {.cell} ::: {.cell-output-display}  ::: :::\n\nDouble click on the downloaded file (check your Downloads folder). Click yes through all the prompts to install like any other program.\nIf you use macOS, download and install XQuartz. You do not need to do this on Windows.\n\n\n\nInstall RStudio\nNext, you need to install RStudio, the nicer graphical user interface (GUI) for R (the dashboard). Once R and RStudio are both installed, you can ignore R and only use RStudio. RStudio will use R automatically and you won’t ever have to interact with it directly.\n\nGo to the free download location on RStudio’s website: https://www.rstudio.com/products/rstudio/download/#download\nThe website should automatically detect your operating system (macOS or Windows) and show a big download button for it:\n::: {.cell} ::: {.cell-output-display}  ::: :::\nIf not, scroll down a little to the large table and choose the version of RStudio that matches your operating system.\n::: {.cell} ::: {.cell-output-display}  ::: :::\nDouble click on the downloaded file (again, check your Downloads folder). Click yes through all the prompts to install like any other program.\n\nDouble click on RStudio to run it (check your applications folder or start menu).\n\n\nInstall tidyverse\nR packages are easy to install with RStudio. Select the packages panel, click on “Install,” type the name of the package you want to install, and press enter.\n\n\n\n\n\nThis can sometimes be tedious when you’re installing lots of packages, though. The tidyverse, for instance, consists of dozens of packages (including ggplot2) that all work together. Rather than install each individually, you can install a single magical package and get them all at the same time.\nGo to the packages panel in RStudio, click on “Install,” type “tidyverse”, and press enter. You’ll see a bunch of output in the RStudio console as all the tidyverse packages are installed.\n\n\n\n\n\nNotice also that RStudio will generate a line of code for you and run it: install.packages(\"tidyverse\"). You can also just paste and run this instead of using the packages panel.\n\n\nInstall tinytex\nWhen you knit to PDF, R uses a special scientific typesetting program named LaTeX (pronounced “lay-tek” or “lah-tex”; for goofy nerdy reasons, the x is technically the “ch” sound in “Bach”, but most people just say it as “k”—saying “layteks” is frowned on for whatever reason).\nLaTeX is neat and makes pretty documents, but it’s a huge program—the macOS version, for instance, is nearly 4 GB! To make life easier, there’s an R package named tinytex that installs a minimal LaTeX program and that automatically deals with differences between macOS and Windows.\nHere’s how to install tinytex so you can knit to pretty PDFs:\n\nUse the Packages in panel in RStudio to install tinytex like you did above with tidyverse. Alternatively, run install.packages(\"tinytex\") in the console.\nRun tinytex::install_tinytex() in the console.\nWait for a bit while R downloads and installs everything you need.\nThe end! You should now be able to knit to PDF."
+  },
+  {
+    "objectID": "resource/r.html",
+    "href": "resource/r.html",
+    "title": "R",
+    "section": "",
+    "text": "I highly recommend subscribing to the R Weekly newsletter. This e-mail is sent every Monday and is full of helpful tutorials about how to do stuff with R.\nSearching for help with R on Google can sometimes be tricky because the program name is a single letter. Google is generally smart enough to figure out what you mean when you search for “r scatterplot”, but if it does struggle, try searching for “rstats” instead (e.g. “rstats scatterplot”).\nIf you use Twitter, post R-related questions and content with #rstats. The community there is exceptionally generous and helpful. Also check out StackOverflow (a Q&A site with hundreds of thousands of answers to all sorts of programming questions) and RStudio Community (a forum specifically designed for people using RStudio and the tidyverse (i.e. you)).\nThese resources are also really really helpful:\n\nR for Data Science: A free online book for learning the basics of R and the tidyverse.\nR and RStudio cheat sheets: A large collection of simple cheat sheets for RStudio, ggplot2, and other R-related things.\nStat 545: Dr. Jenny Bryan at RStudio has an entire introductory course in R, visualization, and data analysis online.\nSTA 112FS: Data Science: Dr. Mine Çetinkaya-Rundel at the University of Edinburgh / Duke University has an entire introductory course in R, visualization, and data science online.\nCSE 631: Principles & Practice of Data Visualization: Yet another introductory course for R and ggplot2 by Dr. Alison Presmanes Hill at RStudio."
+  },
+  {
+    "objectID": "resource/r.html#r-in-the-wild",
+    "href": "resource/r.html#r-in-the-wild",
+    "title": "R",
+    "section": "R in the wild",
+    "text": "R in the wild\nA popular (and increasingly standard) way for sharing your analyses and visualizations is to post an annotated explanation of your process somewhere online. RStudio allows you to publish knitted HTML files directly to RPubs, but you can also post your output to a blog or other type of website.1 Reading these kinds of posts is one of the best ways to learn R, since they walk you through each step of the process and show the code and output.\nHere are some of the best examples I’ve come across:\n\nText analysis of Trump’s tweets confirms he writes only the (angrier) Android half (with a follow-up)\nBob Ross - Joy of Painting\nBechdel analysis using the tidyverse: There are also a bunch of other examples using data from FiveThirtyEight.\nSexism on the Silver Screen: Exploring film’s gender divide\nComparison of Quentin Tarantino Movies by Box Office and the Bechdel Test\nWho came to vote in Utah’s caucuses?\nHealth care indicators in Utah counties\nSong lyrics across the United States\nA decade (ish) of listening to Sigur Rós\nWhen is Tom peeping these days?: There are a also bunch of final projects from other R and data visualization classes here and here.\nMapping Fall Foliage\nGeneral (Attys) Distributions\nDisproving Approval"
+  },
+  {
+    "objectID": "resource/rmarkdown.html",
+    "href": "resource/rmarkdown.html",
+    "title": "Using R Markdown",
+    "section": "",
+    "text": "R Markdown is regular Markdown with R code and output sprinkled in. You can do everything you can with regular Markdown, but you can incorporate graphs, tables, and other R output directly in your document. You can create HTML, PDF, and Word documents, PowerPoint and HTML presentations, websites, books, and even interactive dashboards with R Markdown. This whole course website is created with R Markdown (and a package named blogdown).\nThe documentation for R Markdown is extremely comprehensive, and their tutorials and cheatsheets are excellent—rely on those.\nHere are the most important things you’ll need to know about R Markdown in this class:"
+  },
+  {
+    "objectID": "resource/rmarkdown.html#key-terms",
+    "href": "resource/rmarkdown.html#key-terms",
+    "title": "Using R Markdown",
+    "section": "Key terms",
+    "text": "Key terms\n\nDocument: A Markdown file where you type stuff\nChunk: A piece of R code that is included in your document. It looks like this:\n\n```{r}\n# Code goes here\n```\n\nThere must be an empty line before and after the chunk. The final three backticks must be the only thing on the line—if you add more text, or if you forget to add the backticks, or accidentally delete the backticks, your document will not knit correctly.\nKnit: When you “knit” a document, R runs each of the chunks sequentially and converts the output of each chunk into Markdown. R then runs the knitted document through pandoc to convert it to HTML or PDF or Word (or whatever output you’ve selected).\nYou can knit by clicking on the “Knit” button at the top of the editor window, or by pressing ⌘⇧K on macOS or control + shift + K on Windows."
+  },
+  {
+    "objectID": "resource/rmarkdown.html#add-chunks",
+    "href": "resource/rmarkdown.html#add-chunks",
+    "title": "Using R Markdown",
+    "section": "Add chunks",
+    "text": "Add chunks\nThere are three ways to insert chunks:\n\nPress ⌘⌥I on macOS or control + alt + I on Windows\nClick on the “Insert” button at the top of the editor window\n\n\n\n\n\n\n\n\n\n\n\nManually type all the backticks and curly braces (don’t do this)"
+  },
+  {
+    "objectID": "resource/rmarkdown.html#chunk-names",
+    "href": "resource/rmarkdown.html#chunk-names",
+    "title": "Using R Markdown",
+    "section": "Chunk names",
+    "text": "Chunk names\nYou can add names to chunks to make it easier to navigate your document. If you click on the little dropdown menu at the bottom of your editor in RStudio, you can see a table of contents that shows all the headings and chunks. If you name chunks, they’ll appear in the list. If you don’t include a name, the chunk will still show up, but you won’t know what it does.\n\n\n\n\n\n\n\n\n\nTo add a name, include it immediately after the {r in the first line of the chunk. Names cannot contain spaces, but they can contain underscores and dashes. All chunk names in your document must be unique.\n```{r name-of-this-chunk}\n# Code goes here\n```"
+  },
+  {
+    "objectID": "resource/rmarkdown.html#chunk-options",
+    "href": "resource/rmarkdown.html#chunk-options",
+    "title": "Using R Markdown",
+    "section": "Chunk options",
+    "text": "Chunk options\nThere are a bunch of different options you can set for each chunk. You can see a complete list in the RMarkdown Reference Guide or at knitr’s website.\nOptions go inside the {r} section of the chunk:\n```{r name-of-this-chunk, warning=FALSE, message=FALSE}\n# Code goes here\n```\nThe most common chunk options are these:\n\nfig.width=5 and fig.height=3 (or whatever number you want): Set the dimensions for figures\necho=FALSE: The code is not shown in the final document, but the results are\nmessage=FALSE: Any messages that R generates (like all the notes that appear after you load a package) are omitted\nwarning=FALSE: Any warnings that R generates are omitted\ninclude=FALSE: The chunk still runs, but the code and results are not included in the final document\n\nYou can also set chunk options by clicking on the little gear icon in the top right corner of any chunk:"
+  },
+  {
+    "objectID": "resource/rmarkdown.html#inline-chunks",
+    "href": "resource/rmarkdown.html#inline-chunks",
+    "title": "Using R Markdown",
+    "section": "Inline chunks",
+    "text": "Inline chunks\nYou can also include R output directly in your text, which is really helpful if you want to report numbers from your analysis. To do this, use `r r_code_here`.\nIt’s generally easiest to calculate numbers in a regular chunk beforehand and then use an inline chunk to display the value in your text. For instance, this document…\n```{r find-avg-mpg, echo=FALSE}\navg_mpg <- mean(mtcars$mpg)\n```\n\nThe average fuel efficiency for cars from 1974 was `r round(avg_mpg, 1)` miles per gallon.\n… would knit into this:\n\nThe average fuel efficiency for cars from 1974 was 20.1 miles per gallon."
+  },
+  {
+    "objectID": "resource/rmarkdown.html#output-formats",
+    "href": "resource/rmarkdown.html#output-formats",
+    "title": "Using R Markdown",
+    "section": "Output formats",
+    "text": "Output formats\nYou can specify what kind of document you create when you knit in the YAML front matter.\ntitle: \"My document\"\noutput:\n  html_document: default\n  pdf_document: default\n  word_document: default\nYou can also click on the down arrow on the “Knit” button to choose the output and generate the appropriate YAML. If you click on the gear icon next to the “Knit” button and choose “Output options”, you change settings for each specific output type, like default figure dimensions or whether or not a table of contents is included.\n\n\n\n\n\n\n\n\n\nThe first output type listed under output: will be what is generated when you click on the “Knit” button or press the keyboard shortcut (⌘⇧K on macOS; control + shift + K on Windows). If you choose a different output with the “Knit” button menu, that output will be moved to the top of the output section.\nThe indentation of the YAML section matters, especially when you have settings nested under each output type. Here’s what a typical output section might look like:\n---\ntitle: \"My document\"\nauthor: \"My name\"\ndate: \"January 13, 2020\"\noutput: \n  html_document: \n    toc: yes\n    fig_caption: yes\n    fig_height: 8\n    fig_width: 10\n  pdf_document: \n    latex_engine: xelatex  # More modern PDF typesetting engine\n    toc: yes\n  word_document: \n    toc: yes\n    fig_caption: yes\n    fig_height: 4\n    fig_width: 5\n---"
+  },
+  {
+    "objectID": "resource/style.html",
+    "href": "resource/style.html",
+    "title": "R style suggestions",
+    "section": "",
+    "text": "R is fairly forgiving about how you type code (unlike other languages like Python, where miscounting spaces can ruin your code!). All of these things will do exactly the same thing:\n\nmpg %>% \n  filter(cty > 10, class == \"compact\")\n\nmpg %>% filter(cty > 10, class == \"compact\")\n\nmpg %>% \n  filter(cty > 10, \n         class == \"compact\")\n\nmpg %>% filter(cty>10, class==\"compact\")\n\nfilter(mpg,cty>10,class==\"compact\")\n\nmpg %>% \nfilter(cty > 10, \n                        class == \"compact\")\n\nfilter ( mpg,cty>10,     class==\"compact\" )\n\nBut you’ll notice that only a few of those iterations (the first three) are easily readable.\nTo help improve readability and make it easier to share code with others, there’s an unofficial style guide for writing R code. It’s fairly short and just has lots of examples of good and bad ways of writing code (naming variables, dealing with long lines, using proper indentation levels, etc.)—you should glance through it some time.\nRStudio has a built-in way of cleaning up your code. Select some code, press ctrl + i (on Windows) or ⌘ + i (on macOS), and R will reformat the code for you. It’s not always perfect, but it’s really helpful for getting indentation right without having to manually hit space a billion times."
+  },
+  {
+    "objectID": "resource/style.html#main-style-things-to-pay-attention-to-for-this-class",
+    "href": "resource/style.html#main-style-things-to-pay-attention-to-for-this-class",
+    "title": "R style suggestions",
+    "section": "Main style things to pay attention to for this class",
+    "text": "Main style things to pay attention to for this class\n\nImportant note: I won’t ever grade you on any of this! If you submit something like filter(mpg,cty>10,class==\"compact\"), I might recommend adding spaces, but it won’t affect your grade or points or anything.\n\n\nSpacing\n\nSee the “Spacing” section in the tidyverse style guide.\n\nPut spaces after commas (like in regular English):\n\n# Good\nfilter(mpg, cty > 10)\n\n# Bad\nfilter(mpg , cty > 10)\nfilter(mpg ,cty > 10)\nfilter(mpg,cty > 10)\n\nPut spaces around operators like +, -, >, =, etc.:\n\n# Good\nfilter(mpg, cty > 10)\n\n# Bad\nfilter(mpg, cty>10)\nfilter(mpg, cty> 10)\nfilter(mpg, cty >10)\n\nDon’t put spaces around parentheses that are parts of functions:\n\n# Good\nfilter(mpg, cty > 10)\n\n# Bad\nfilter (mpg, cty > 10)\nfilter ( mpg, cty > 10)\nfilter( mpg, cty > 10 )\n\n\n\nLong lines\n\nSee the “Long lines” section in the tidyverse style guide.\n\nIt’s generally good practice to not have really long lines of code. A good suggestion is to keep lines at a maximum of 80 characters. Instead of counting characters by hand (ew), in RStudio go to “Tools” > “Global Options” > “Code” > “Display” and check the box for “Show margin”. You should now see a really thin line indicating 80 characters. Again, you can go beyond this—that’s fine. It’s just good practice to avoid going too far past it.\nYou can add line breaks inside longer lines of code. Line breaks should come after commas, and things like function arguments should align within the function:\n\n# Good\nfilter(mpg, cty > 10, class == \"compact\")\n\n# Good\nfilter(mpg, cty > 10, \n       class == \"compact\")\n\n# Good\nfilter(mpg,\n       cty > 10,\n       class == \"compact\")\n\n# Bad\nfilter(mpg, cty > 10, class %in% c(\"compact\", \"pickup\", \"midsize\", \"subcompact\", \"suv\", \"2seater\", \"minivan\"))\n\n# Good\nfilter(mpg, \n       cty > 10, \n       class %in% c(\"compact\", \"pickup\", \"midsize\", \"subcompact\", \n                    \"suv\", \"2seater\", \"minivan\"))\n\n\n\nPipes (%>%) and ggplot layers (+)\nPut each layer of a ggplot plot on separate lines, with the + at the end of the line, indented with two spaces:\n\n# Good\nggplot(mpg, aes(x = cty, y = hwy, color = class)) +\n  geom_point() +\n  geom_smooth() +\n  theme_bw()\n\n# Bad\nggplot(mpg, aes(x = cty, y = hwy, color = class)) +\n  geom_point() + geom_smooth() +\n  theme_bw()\n\n# Super bad\nggplot(mpg, aes(x = cty, y = hwy, color = class)) + geom_point() + geom_smooth() + theme_bw()\n\n# Super bad and won't even work\nggplot(mpg, aes(x = cty, y = hwy, color = class))\n  + geom_point()\n  + geom_smooth() \n  + theme_bw()\n\nPut each step in a dplyr pipeline on separate lines, with the %>% at the end of the line, indented with two spaces:\n\n# Good\nmpg %>% \n  filter(cty > 10) %>% \n  group_by(class) %>% \n  summarize(avg_hwy = mean(hwy))\n\n# Bad\nmpg %>% filter(cty > 10) %>% group_by(class) %>% \n  summarize(avg_hwy = mean(hwy))\n\n# Super bad\nmpg %>% filter(cty > 10) %>% group_by(class) %>% summarize(avg_hwy = mean(hwy))\n\n# Super bad and won't even work\nmpg %>% \n  filter(cty > 10)\n  %>% group_by(class)\n  %>% summarize(avg_hwy = mean(hwy))\n\n\n\nComments\n\nSee the “Comments” section in the tidyverse style guide.\n\nComments should start with a comment symbol and a single space: #\n\n# Good\n\n#Bad\n\n    #Bad\n\nIf the comment is really short (and won’t cause you to go over 80 characters in the line), you can include it in the same line as the code, separated by at least two spaces (it works with one space, but using a couple can enhance readability):\n\nmpg %>% \n  filter(cty > 10) %>%  # Only rows where cty is 10 +\n  group_by(class) %>%  # Divide into class groups\n  summarize(avg_hwy = mean(hwy))  # Find the average hwy in each group\n\nYou can add extra spaces to get inline comments to align, if you want:\n\nmpg %>% \n  filter(cty > 10) %>%            # Only rows where cty is 10 +\n  group_by(class) %>%             # Divide into class groups\n  summarize(avg_hwy = mean(hwy))  # Find the average hwy in each group\n\nIf the comment is really long, you can break it into multiple lines. RStudio can do this for you if you go to “Code” > “Reflow comment”\n\n# Good\n# Happy families are all alike; every unhappy family is unhappy in its own way.\n# Everything was in confusion in the Oblonskys’ house. The wife had discovered\n# that the husband was carrying on an intrigue with a French girl, who had been\n# a governess in their family, and she had announced to her husband that she\n# could not go on living in the same house with him. This position of affairs\n# had now lasted three days, and not only the husband and wife themselves, but\n# all the members of their family and household, were painfully conscious of it.\n\n# Bad\n# Happy families are all alike; every unhappy family is unhappy in its own way. Everything was in confusion in the Oblonskys’ house. The wife had discovered that the husband was carrying on an intrigue with a French girl, who had been a governess in their family, and she had announced to her husband that she could not go on living in the same house with him. This position of affairs had now lasted three days, and not only the husband and wife themselves, but all the members of their family and household, were painfully conscious of it.\n\nThough, if you’re dealing with comments that are that long, consider putting the text in R Markdown instead and having it be actual prose."
+  },
+  {
+    "objectID": "resource/unzipping.html",
+    "href": "resource/unzipping.html",
+    "title": "Unzipping files",
+    "section": "",
+    "text": "Because RStudio projects typically consist of multiple files (R scripts, datasets, graphical output, etc.) the easiest way to distribute them to you for examples, assignments, and projects is to combine all the different files in to a single compressed collection called a zip file. When you unzip a zipped file, your operating system extracts all the files that are contained inside into a new folder on your computer.\nUnzipping files on macOS is trivial, but unzipping files on Windows can mess you up if you don’t pay careful attention. Here’s a helpful guide to unzipping files on both macOS and Windows."
+  },
+  {
+    "objectID": "resource/unzipping.html#unzipping-files-on-macos",
+    "href": "resource/unzipping.html#unzipping-files-on-macos",
+    "title": "Unzipping files",
+    "section": "Unzipping files on macOS",
+    "text": "Unzipping files on macOS\nDouble click on the downloaded .zip file. macOS will automatically create a new folder with the same name as the .zip file, and all the file’s contents will be inside. Double click on the RStudio Project file (.Rproj) to get started."
+  },
+  {
+    "objectID": "resource/unzipping.html#unzipping-files-on-windows",
+    "href": "resource/unzipping.html#unzipping-files-on-windows",
+    "title": "Unzipping files",
+    "section": "Unzipping files on Windows",
+    "text": "Unzipping files on Windows\ntl;dr: Right click on the .zip file, select “Extract All…”, and work with the resulting unzipped folder.\nUnlike macOS, Windows does not automatically unzip things for you. If you double click on the .zip file, Windows will show you what’s inside, but it will do so without actually extracting anything. This can be is incredibly confusing! Here’s what it looks like—the only clues that this folder is really a .zip file are that there’s a “Compressed Folder Tools” tab at the top, and there’s a “Ratio” column that shows how much each file is compressed.\n\n\n\n\n\nIt is very tempting to try to open files from this view. However, if you do, things will break and you won’t be able to correctly work with any of the files in the zipped folder. If you open the R Project file, for instance, RStudio will point to a bizarre working directory buried deep in some temporary folder:\n\n\n\n\n\nYou most likely won’t be able to open any data files or save anything, which will be frustrating.\nInstead, you need to right click on the .zip file and select “Extract All…”:\n\n\n\n\n\nThen choose where you want to unzip all the files and click on “Extract”\n\n\n\n\n\nYou should then finally have a real folder with all the contents of the zipped file. Open the R Project file and RStudio will point to the correct working directory and everything will work."
+  },
+  {
+    "objectID": "schedule.html",
+    "href": "schedule.html",
+    "title": "Planificación",
+    "section": "",
+    "text": "Clases ( ): Lecturas, documentos de presentación y video (en caso que la sesión sea grabada)\nPrácticas y evaluaciones (): Actividades prácticas a desarrollar durante la semana.\nLecturas (): Llegar a la clase con los textos leídos.\n\n\n\n\n\n Clases\n Prácticas y evaluaciones\n Lecturas y material adicional\n\n\n\n\n Agosto \n\n\n\n\n\nJueves 18\n1. Presentación e introducción\n\n- Leer detalladamente programa del curso\n\n\n\n\nUNIDAD 1: DISEÑO\n\n\n\nJueves 25\n2.Encuestas: tipos, características e implementación \nSelección de encuesta de referencia\n- Font & Pasadas, cap.1: ¿Qué es una encuesta y qué no es una encuesta? - Font & Pasadas, cap.2: ¿Para qué sirve una encuesta? - Fowler Cap 1: Introduction\n\n\n Septiembre \n\n\n\n\n\nJueves 1\n3. Diseño de preguntas 1: medición, confiabilidad y validez\n\n\n\n\nJueves 8\n4. Diseño de preguntas 2: diseño de instrumentos de medición (preguntas, baterías, experimentos)\n\n\n\n\nJueves 15\nRECESO\n\n\n\n\nJueves 22\n5. Diseño de cuestionarios\n\n\n\n\nJueves 29\n6. Muestreo\n- Entrega 1: Diseño de instrumento de medición\n\n\n\n Octubre \n\n\n\n\n\nJueves 6\n7. Presentación informe 1\n\n\n\n\n\n\n\nUNIDAD 2: ANÁLISIS\n\n\n\nJueves 13\n8. Limpieza, descriptivos y flujo de trabajo reproducible\n\n\n\n\nJueves 20\n9. Visualización 1: Tablas\n\n\n\n\nJueves 27\n10. Visualización 2: Gráficos\n\n\n\n\n Noviembre \n\n\n\n\n\nJueves 3\n11. Indices y análisis factorial\n\n\n\n\nJueves 10\n12. Reporte y comunicación de resultados\n\n\n\n\nJueves 17\n13. Foro invitados externos\n- Entrega informe 2: Análisis y reporte\n\n\n\nJueves 24\n14. Presentación final"
+  },
+  {
+    "objectID": "syllabus.html",
+    "href": "syllabus.html",
+    "title": "Programa",
+    "section": "",
+    "text": "Juan Carlos Castillo\n   Departamento de Sociología FACSO\n   jcastillov@uchile.cl\n   juankcastillo\n   Schedule an appointment\n\n\n\n\n\n   Jueves\n   Agosto 18–Noviembre 17, 2022\n   14:30-16:30 PM\n   Sala 43 FACSO\n   Slack"
+  },
+  {
+    "objectID": "syllabus.html#resumen",
+    "href": "syllabus.html#resumen",
+    "title": "Programa",
+    "section": "Resumen",
+    "text": "Resumen\nEste seminario de profundización metodológica está dirigido a quienes tengan interés en adquirir herramientas que les permitan responder de manera adecuada a las demandas actuales de diseño y análisis de encuestas, así como también analizar crítica y propositivamente proyectos de encuestas sociales desarrollados en el país y también a nivel internacional.\nEl seminario cuenta con dos partes: diseño y análisis. La sección de diseño cubre temas como cuestionarios, muestreo, aplicación y documentación. Esta sección se evaluará con un reporte donde se analice la calidad de alguna encuesta realizada recientemente a nivel nacional, identificando aspectos críticos y sugerencias de mejora. En la segunda parte se trabajará con herramientas de visualización de datos, generación de reportes y presentación de resultados, lo que sera evaluado mediante un documento de reporte de alguna encuesta de interés.\nLa metodología incluye clases lectivas, presentaciones de invitados, y presentación de trabajos grupales."
+  },
+  {
+    "objectID": "syllabus.html#objetivo-general",
+    "href": "syllabus.html#objetivo-general",
+    "title": "Programa",
+    "section": "Objetivo general",
+    "text": "Objetivo general\nLas encuestas son utilizadas ampliamente como instrumento de investigación en la academia, el sector público y el sector privado. Dado que en general se identifica a la sociología como la disciplina más cercana al diseño y análisis de este instrumento, este curso consiste en un espacio de formación en la lógica de investigación por encuestas, sus objetivos, alcances, alternativas de diseño, análisis y reporte."
+  },
+  {
+    "objectID": "syllabus.html#resultados-de-aprendizaje",
+    "href": "syllabus.html#resultados-de-aprendizaje",
+    "title": "Programa",
+    "section": "Resultados de Aprendizaje",
+    "text": "Resultados de Aprendizaje\n\nManejar herramientas de análisis y reporte de resultados\nConocer e implementar protocolos de análisis de datos\nDesarrollar instrumentos de medición como preguntas, escalas y cuestionarios"
+  },
+  {
+    "objectID": "syllabus.html#saberes-contenidos",
+    "href": "syllabus.html#saberes-contenidos",
+    "title": "Programa",
+    "section": "Saberes / contenidos",
+    "text": "Saberes / contenidos\n\nA. Diseño\n\nEncuestas, investigación de mercados y opinión pública -Desarrollo de estudios de encuestas: financiamiento, actores, ética, planificación y productos principales\nAplicación / terreno: formas de administración, métodos mixtos, incentivos\nDiseño de cuestionarios\nDiseño muestral y representatividad\nReporte técnico y libro de códigos\n\n\n\nB. Análisis\n\nEl reporte de resultados\nConstrucción de índices compuestos y análisis factorial\nVisualización de datos\nPonderadores y factores de expansión\nReportes dinámicos con RMarkdown\nDocumentos de presentación"
+  },
+  {
+    "objectID": "syllabus.html#metodología",
+    "href": "syllabus.html#metodología",
+    "title": "Programa",
+    "section": "Metodología",
+    "text": "Metodología\nEl curso se organiza en sesiones semanales, con una parte lectiva seguida de una práctica. En la parte lectiva se transmiten y discuten los conceptos centrales del diseño y análisis de encuestas. En la parte práctica se aplicarán los conceptos transmitidos en la parte lectiva, además de resolver dudas en el avance de los trabajos de investigación"
+  },
+  {
+    "objectID": "syllabus.html#evaluación",
+    "href": "syllabus.html#evaluación",
+    "title": "Programa",
+    "section": "Evaluación",
+    "text": "Evaluación\nLa evaluación consistirá en la elaboración de dos reportes: uno de diseño (50%) y uno de análisis (50%) un reporte en el formato de artículo de investigación. Este 50% de cada reporte se divide en trabajo escrito (30%), presentación (10%) e informe de corrección cruzada (10%)."
+  },
+  {
+    "objectID": "syllabus.html#requisitos-de-aprobación",
+    "href": "syllabus.html#requisitos-de-aprobación",
+    "title": "Programa",
+    "section": "Requisitos de aprobación",
+    "text": "Requisitos de aprobación\n\nNota mínima de aprobación: 4,0 (en escala de 1 a 7)."
+  },
+  {
+    "objectID": "syllabus.html#palabras-clave",
+    "href": "syllabus.html#palabras-clave",
+    "title": "Programa",
+    "section": "Palabras Clave",
+    "text": "Palabras Clave\n\nEncuestas sociales, medición, cuestionarios, análisis de datos, tablas, gráficos, visualización, reproducibilidad, reportes dinámicos"
+  }
+]

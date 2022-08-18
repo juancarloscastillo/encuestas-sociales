@@ -1,8 +1,8 @@
 ---
-title: "Program Evaluation for Public Service"
-subtitle: "Combine research design, causal inference, and econometric tools to measure the effects of social programs"
+title: "Encuestas Sociales"
+subtitle: "Diseño, análisis y reporte"
 details: |
-  PMAP 8521 • Fall 2022<br>Andrew Young School of Policy Studies<br>Georgia State University
+  SOC01210-1 • Segundo Semestre 2022<br>Departamento de Sociología FACSO<br>Universidad de Chile
 sidebar: false
 toc: false
 page-layout: full
@@ -13,7 +13,7 @@ format:
 course-logo: /files/img/eval-hires.png
 ---
 
-```{r set-dependencies, include=FALSE}
+```{r set-dependencies, include=FALSE, eval=FALSE}
 withr::with_dir(here::here(), {
   targets::tar_load(project_zips)
   targets::tar_load(xaringan_slides)
@@ -26,17 +26,17 @@ withr::with_dir(here::here(), {
 ::: {.grid .course-details}
 
 ::: {.g-col-4}
-### Instructor
+### Profesor
 
 - {{< fa user >}} &nbsp; [{{< var instructor.name >}}]({{< var instructor.url >}})
 - {{< fa university >}} &nbsp; {{< var instructor.office >}}
 - {{< fa envelope >}} &nbsp; <a href="mailto:{{< var instructor.email >}}">{{< var instructor.email >}}</a>
 - {{< fa brands twitter >}} &nbsp; [{{< var instructor.twitter >}}](https://www.twitter.com/{{< var instructor.twitter >}})
-- {{< fa calendar-check >}} &nbsp; [Schedule an appointment]({{< var instructor.appointment_url >}})
+- {{< fa calendar-check >}} &nbsp; [Reuniones]({{< var instructor.appointment_url >}})
 :::
 
 ::: {.g-col-4}
-### Course details
+### Información del curso
 
 - {{< fa calendar >}} &nbsp; {{< var course.days >}}
 - {{< fa calendar-alt >}} &nbsp; {{< var course.dates >}}
@@ -46,15 +46,15 @@ withr::with_dir(here::here(), {
 :::
 
 ::: {.g-col-4 .contact-policy}
-### Contacting me
+### Contacto
 
 {{< var instructor.contact_policy >}}
 :::
 
 :::
 
-```{r echo=FALSE}
-knitr::include_graphics(here::here("files", "img", "eval-flowchart.png"), error = FALSE)
+```{r eval=FALSE, echo=FALSE}
+# knitr::include_graphics(here::here("files", "img", "eval-flowchart.png"), error = FALSE)
 ```
 
 :::

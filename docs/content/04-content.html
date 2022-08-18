@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.0.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Encuestas Sociales - Measurement and DAGs</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="..//files/icon-513.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<meta property="og:title" content="Encuestas Sociales - Measurement and DAGs">
+<meta property="og:description" content="The slides for today’s lesson are available online as an HTML file. Use the buttons below to open the slides either as an interactive website or as a static PDF (for printing or storing for later).">
+<meta property="og:image" content="https://evalf22.classes.andrewheiss.com/files/social-image-f22.png">
+<meta property="og:site-name" content="Encuestas Sociales">
+<meta property="og:locale" content="en_US">
+<meta property="og:image:height" content="490">
+<meta property="og:image:width" content="898">
+<meta name="twitter:title" content="Encuestas Sociales - Measurement and DAGs">
+<meta name="twitter:description" content="The slides for today’s lesson are available online as an HTML file. Use the buttons below to open the slides either as an interactive website or as a static PDF (for printing or storing for later).">
+<meta name="twitter:image" content="https://evalf22.classes.andrewheiss.com/files/social-image-f22.png">
+<meta name="twitter:creator" content="@juankcastillo">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image-height" content="490">
+<meta name="twitter:image-width" content="898">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Encuestas Sociales</span>
+  </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../syllabus.html">Programa</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../schedule.html">Planificación</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../content/index.html">Contenidos</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../resource/index.html">Recursos</a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.slack.com"><i class="bi bi-slack" role="img" aria-label="Slack">
+</i> 
+ </a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#readings" id="toc-readings" class="nav-link active" data-scroll-target="#readings">Readings</a>
+  <ul class="collapse">
+  <li><a href="#measurement" id="toc-measurement" class="nav-link" data-scroll-target="#measurement">Measurement</a></li>
+  <li><a href="#dags" id="toc-dags" class="nav-link" data-scroll-target="#dags">DAGs</a></li>
+  <li><a href="#dag-example-page" id="toc-dag-example-page" class="nav-link" data-scroll-target="#dag-example-page">DAG example page</a></li>
+  </ul></li>
+  <li><a href="#slides" id="toc-slides" class="nav-link" data-scroll-target="#slides">Slides</a></li>
+  <li><a href="#videos" id="toc-videos" class="nav-link" data-scroll-target="#videos">Videos</a></li>
+  <li><a href="#in-class-stuff" id="toc-in-class-stuff" class="nav-link" data-scroll-target="#in-class-stuff">In-class stuff</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header">
+<h1 class="title display-7">Measurement and DAGs</h1>
+
+<div class="date-block bg-content text-white p-2">
+  <p class="date">Content for Thursday, February 3, 2022</p>
+</div>
+</header>
+
+<section id="readings" class="level2">
+<h2 class="anchored" data-anchor-id="readings">Readings</h2>
+<section id="measurement" class="level3">
+<h3 class="anchored" data-anchor-id="measurement">Measurement</h3>
+<ul>
+<li><i class="fa-brands fa-youtube" aria-hidden="true"></i> <a href="https://www.youtube.com/watch?v=yp_l5ntikaU">The witch trial scene from <em>Monty Python and the Holy Grail</em></a></li>
+<li><i class="fa-solid fa-book" aria-hidden="true"></i> Chapter 5 in <em>Evaluation: A Systematic Approach</em> <span class="citation" data-cites="RossiLipseyHenry:2019">(<a href="#ref-RossiLipseyHenry:2019" role="doc-biblioref">Rossi, Lipsey, and Henry 2019</a>)</span>. This is available on iCollege.</li>
+<li><i class="fa-solid fa-book" aria-hidden="true"></i> Chapter 5 in <em>The Effect</em> <span class="citation" data-cites="Huntington-Klein:2021">(<a href="#ref-Huntington-Klein:2021" role="doc-biblioref">Huntington-Klein 2021</a>)</span></li>
+</ul>
+</section>
+<section id="dags" class="level3">
+<h3 class="anchored" data-anchor-id="dags">DAGs</h3>
+<ul>
+<li><i class="fa-solid fa-file-pdf" aria-hidden="true"></i> Julia M. Rohrer, “Thinking Clearly About Correlations and Causation: Graphical Causal Models for Observational Data” <span class="citation" data-cites="Rohrer:2018">(<a href="#ref-Rohrer:2018" role="doc-biblioref">Rohrer 2018</a>)</span> This will be posted on iCollege.</li>
+<li><i class="fa-solid fa-file-pdf" aria-hidden="true"></i> Section 2 only (pp.&nbsp;4–11) from Julian Schuessler and Peter Selb, “Graphical Causal Models for Survey Inference.” <span class="citation" data-cites="SchuesslerSelb:2019">(<a href="#ref-SchuesslerSelb:2019" role="doc-biblioref">Schuessler and Selb 2019</a>)</span> <a href="https://osf.io/preprints/socarxiv/hbg3m/">The PDF is available at SocArXiv.</a></li>
+<li><i class="fa-solid fa-book" aria-hidden="true"></i> Chapters 6 and 7 in <em>The Effect</em> <span class="citation" data-cites="Huntington-Klein:2021">(<a href="#ref-Huntington-Klein:2021" role="doc-biblioref">Huntington-Klein 2021</a>)</span></li>
+</ul>
+</section>
+<section id="dag-example-page" class="level3">
+<h3 class="anchored" data-anchor-id="dag-example-page">DAG example page</h3>
+<ul>
+<li>The <a href="../example/dags.qmd">example page on DAGs</a> shows how to draw and analyze DAGs with both dagitty.net and R + <strong>ggdag</strong></li>
+</ul>
+</section>
+</section>
+<section id="slides" class="level2">
+<h2 class="anchored" data-anchor-id="slides">Slides</h2>
+<p>The slides for today’s lesson are available online as an HTML file. Use the buttons below to open the slides either as an interactive website or as a static PDF (for printing or storing for later). You can also click in the slides below and navigate through them with your left and right arrow keys.</p>
+<p>
+<a class="btn btn-danger" target="_blank" href="../slides/04-slides.html"><i class="fa-solid fa-arrow-up-right-from-square"></i> View all slides in new window</a> <a class="btn btn-danger" target="_blank" href="../slides/04-slides.pdf" role="button"><i class="fa-solid fa-file-pdf"></i> Download PDF of all slides</a>
+</p>
+<ul class="nav nav-tabs" id="slide-tabs" role="tablist">
+<li class="nav-item">
+<a class="nav-link active" id="introduction-tab" data-toggle="tab" href="#introduction" role="tab" aria-controls="introduction" aria-selected="true">Introduction</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" id="abstraction-stretching-and-validity-tab" data-toggle="tab" href="#abstraction-stretching-and-validity" role="tab" aria-controls="abstraction-stretching-and-validity" aria-selected="false">Abstraction, stretching, and validity</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" id="causal-models-tab" data-toggle="tab" href="#causal-models" role="tab" aria-controls="causal-models" aria-selected="false">Causal models</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" id="paths-doors-and-adjustment-tab" data-toggle="tab" href="#paths-doors-and-adjustment" role="tab" aria-controls="paths-doors-and-adjustment" aria-selected="false">Paths, doors, and adjustment</a>
+</li>
+</ul>
+<div id="slide-tabs" class="tab-content">
+<div id="introduction" class="tab-pane fade show active" role="tabpanel" aria-labelledby="introduction-tab">
+<div class="ratio ratio-16x9">
+<iframe src="../slides/04-slides.html#1">
+</iframe>
+</div>
+</div>
+<div id="abstraction-stretching-and-validity" class="tab-pane fade" role="tabpanel" aria-labelledby="abstraction-stretching-and-validity-tab">
+<div class="ratio ratio-16x9">
+<iframe src="../slides/04-slides.html#abstraction">
+</iframe>
+</div>
+</div>
+<div id="causal-models" class="tab-pane fade" role="tabpanel" aria-labelledby="causal-models-tab">
+<div class="ratio ratio-16x9">
+<iframe src="../slides/04-slides.html#causal-models">
+</iframe>
+</div>
+</div>
+<div id="paths-doors-and-adjustment" class="tab-pane fade" role="tabpanel" aria-labelledby="paths-doors-and-adjustment-tab">
+<div class="ratio ratio-16x9">
+<iframe src="../slides/04-slides.html#paths-doors-adjustment">
+</iframe>
+</div>
+</div>
+</div>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Fun fact</strong>: If you type <kbd>?</kbd> (or <kbd>shift</kbd> + <kbd>/</kbd>) while going through the slides, you can see a list of special slide-specific commands.</p>
+</div>
+</div>
+</section>
+<section id="videos" class="level2">
+<h2 class="anchored" data-anchor-id="videos">Videos</h2>
+<p>Videos for each section of the lecture are <a href="https://www.youtube.com/playlist?list=PLS6tnpTr39sFVrHdTifzlyS9dsJjhEhsF">available at this YouTube playlist</a>.</p>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=V9zIL7bI9WI&amp;list=PLS6tnpTr39sFVrHdTifzlyS9dsJjhEhsF">Introduction</a></li>
+<li><a href="https://www.youtube.com/watch?v=QkFhHOoYq-I&amp;list=PLS6tnpTr39sFVrHdTifzlyS9dsJjhEhsF">Abstraction, stretching, and validity</a></li>
+<li><a href="https://www.youtube.com/watch?v=kJQuH3nssfI&amp;list=PLS6tnpTr39sFVrHdTifzlyS9dsJjhEhsF">Causal models</a></li>
+<li><a href="https://www.youtube.com/watch?v=_qs_1B4ySWY&amp;list=PLS6tnpTr39sFVrHdTifzlyS9dsJjhEhsF">Paths, doors, and adjustment</a></li>
+</ul>
+<p>You can also watch the playlist (and skip around to different sections) here:</p>
+<div class="ratio ratio-16x9">
+<iframe src="https://www.youtube.com/embed/playlist?list=PLS6tnpTr39sFVrHdTifzlyS9dsJjhEhsF" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="">
+</iframe>
+</div>
+</section>
+<section id="in-class-stuff" class="level2">
+<h2 class="anchored" data-anchor-id="in-class-stuff">In-class stuff</h2>
+<p>Here are all the materials we’ll use in class:</p>
+<ul>
+<li><a href="../slides/04-class.html"><strong>Session 4 FAQ slides</strong></a> (<a href="../slides/04-class.pdf">PDF</a>)</li>
+</ul>
+<p>You can use <strong>bookdown</strong> to create automatic figure, table, and equation numbers. See here for more details:</p>
+<ul>
+<li><a href="https://bookdown.org/yihui/rmarkdown-cookbook/figure-number.html" class="uri">https://bookdown.org/yihui/rmarkdown-cookbook/figure-number.html</a></li>
+<li><a href="https://rmd4sci.njtierney.com/figures-tables-captions-.html" class="uri">https://rmd4sci.njtierney.com/figures-tables-captions-.html</a></li>
+<li><a href="https://rmd4sci.njtierney.com/start.html" class="uri">https://rmd4sci.njtierney.com/start.html</a></li>
+</ul>
+<p>Make sure you modify the metadata of your document to use <strong>bookdown</strong> when knitting:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> whatever</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span><span class="at"> </span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="at">  bookdown:</span><span class="fu">:html_document2</span><span class="kw">:</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">number_sections</span><span class="kw">:</span><span class="at"> </span><span class="ch">no</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
+<div id="ref-Huntington-Klein:2021" class="csl-entry" role="doc-biblioentry">
+Huntington-Klein, Nick. 2021. <em>The Effect: An Introduction to Research Design and Causality</em>. Boca Raton, Florida: <span>Chapman and Hall</span> / CRC. <a href="https://theeffectbook.net/">https://theeffectbook.net/</a>.
+</div>
+<div id="ref-Rohrer:2018" class="csl-entry" role="doc-biblioentry">
+Rohrer, Julia M. 2018. <span>“Thinking Clearly about Correlations and Causation: Graphical Causal Models for Observational Data.”</span> <em>Advances in Methods and Practices in Psychological Science</em> 1 (1): 27–42. <a href="https://doi.org/10.1177/2515245917745629">https://doi.org/10.1177/2515245917745629</a>.
+</div>
+<div id="ref-RossiLipseyHenry:2019" class="csl-entry" role="doc-biblioentry">
+Rossi, Peter H., Mark W. Lipsey, and Gary T. Henry. 2019. <em>Evaluation: A Systematic Approach</em>. 8th ed. Los Angeles: Sage.
+</div>
+<div id="ref-SchuesslerSelb:2019" class="csl-entry" role="doc-biblioentry">
+Schuessler, Julian, and Peter Selb. 2019. <span>“Graphical Causal Models for Survey Inference.”</span> Working Paper. SocArXiv. <a href="https://doi.org/10.31235/osf.io/hbg3m">https://doi.org/10.31235/osf.io/hbg3m</a>.
+</div>
+</div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">Content <i class="fa-brands fa-creative-commons" aria-hidden="true"></i> 2022 by <a href="https://www.jc-castillo.com">Juan Castillo</a> <br> All content licensed under a <i class="fa-brands fa-creative-commons" aria-hidden="true"></i> <i class="fa-brands fa-creative-commons-by" aria-hidden="true"></i> <i class="fa-brands fa-creative-commons-nc" aria-hidden="true"></i> <a href="https://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International license (CC BY-NC 4.0)</a></div>   
+    <div class="nav-footer-right">Made with <i class="fa-brands fa-r-project" aria-hidden="true"></i> and <a href="https://quarto.org/">Quarto</a><br> <a href="https://github.com/juancarloscastillo/encuestas-sociales">View the source at <i class="fa-brands fa-github" aria-hidden="true"></i> GitHub</a></div>
+  </div>
+</footer>
+
+
+
+</body></html>
