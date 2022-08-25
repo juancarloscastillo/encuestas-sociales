@@ -67,10 +67,10 @@ website:
             - content/index.qmd
         - section: "Sesiones"
           contents:
-            - text: "1: Presentación y herramientas básicas"
+            - text: "1: Presentación"
               file: content/01-content.qmd
- #           - text: "2: Regression and inference"
-#              file: content/02-content.qmd
+            - text: "2: Bases"
+              file: content/02-content.qmd
 #            - text: "3: Theories of change and logic models"
 #              file: content/03-content.qmd
 #            - text: "4: Measurement and DAGs"

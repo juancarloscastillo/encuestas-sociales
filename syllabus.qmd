@@ -1,5 +1,6 @@
 ---
 title: Programa
+lang: es
 ---
 
 ```{r setup, message=FALSE, warning=FALSE, include=FALSE}

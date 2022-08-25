@@ -1,18 +1,21 @@
-group,subgroup,date,date_end,title,deadline,content,assignment
-Unidad 1: Introducción,Sesión 1,2022-08-18,,Presentación y forma de trabajo,,content/01-content,
-Unidad 1: Introducción,Sesión 2,2022-08-25,,"Encuestas: tipos, características e implementación",,content/20-content,
-Unidad 1: Introducción,Sesión 2,2022-08-25,,Actividad práctica: presentación de encuesta,,,
-Unidad 2: Análisis,Sesión 3,2022-09-01,,Introducción al análisis de encuestas,,,
-Unidad 2: Análisis,Sesión 3,2022-09-01,,Selección de encuesta para Trabajo 1,,,
-Unidad 2: Análisis,Sesión 4,2022-09-08,,Reporte y visualización 1,,,
-Unidad 2: Análisis,Receso,2022-09-15,,…,,,
-Unidad 2: Análisis,Sesión 5,2022-09-22,,Reporte y visualización 1,,,
-Unidad 2: Análisis,Sesión 6,2022-09-29,,Reporte y visualización 2,,,
-Unidad 2: Análisis,Sesión 7,2022-10-06,,Entrega 1,,,
-Unidad 3: Diseño,Sesión 8,2022-10-13,,,,,
-Unidad 3: Diseño,Sesión 9,2022-10-20,,Diseño de cuestionarios,,,
-Unidad 3: Diseño,Sesión 10,2022-10-27,,"Muestreo, ponderadores y factores de expansión",,,
-Unidad 3: Diseño,Sesión 11,2022-11-03,,Foro invitados externos,,,
-Unidad 4: Reporte y presentación,Sesión 12,2022-11-10,,Reporte resultados,,,
-Unidad 4: Reporte y presentación,Sesión 13,2022-11-17,,Entrega 2,,,
-Unidad 4: Reporte y presentación,Sesión 14,2022-11-24,,Retroalimentación,,,
+Sesion,,,
+1,Introducción,Presentación,
+2,Introducción,"Encuestas: tipos, características e implementación
+Tarea: selección de encuesta de referencia","- Font & Pasadas, cap.1: ¿Qué es una encuesta y qué no es una encuesta?
+- Font & Pasadas, cap.2: ¿Para qué sirve una encuesta?
+- Fowler Cap 1: Introduction"
+3,Diseño,"Diseño de preguntas 1: medición, confiabilidad y validez",- Fowler Cap 2: Types of error in surveys
+4,Diseño,"Diseño de preguntas 2: diseño de instrumentos de medición (preguntas, baterías, experimentos)","- Fowler Cap 6: Designing questions to be good measures
+- Fowler Cap 7: Evaluating survey questions and instruments"
+,RECESO,,
+5,Diseño,Diseño de cuestionarios,
+6,Diseño,Muestreo / Entrega 1: Diseño de instrumento de medición,
+7,Diseño,Presentación informe 1,
+8,Diseño, ,
+9,Análisis,"Limpieza, descriptivos y flujo de trabajo reproducible",
+10,Análisis,Visualización: tablas y gráficos,
+11,Análisis,Indices y análisis factorial,
+12,Análisis,Reporte y comunicación de resultados,
+13,Análisis,Foro invitados externos,
+14,Análisis,Entrega 2: Reporte de resultados,
+15,Análisís,Presentación final,

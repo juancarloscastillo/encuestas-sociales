@@ -1,0 +1,19 @@
+---
+title: "Bases"
+date: "2022-08-25"
+lang: es
+---
+
+## Documento de presentación
+ 
+<iframe src=/slides/02-bases/02-bases.html height="550" width=100% allowfullscreen="true">
+</iframe> 
+
+
+## Lecturas
+
+- [Font & Pasadas, cap.1: ¿Qué es una encuesta y qué no es una encuesta?](files/lecturas/Font&Pasadas2016LasEncuestasdeOpinion.pdf) <br>
+- [Font & Pasadas, cap.2: ¿Para qué sirve una encuesta?](files/lecturas/Font&Pasadas2016LasEncuestasdeOpinion.pdf) <br>
+- [Fowler Cap 1: Introduction](files/lecturas/Fowler2013Survey Research Methods.pdf)
+
+
