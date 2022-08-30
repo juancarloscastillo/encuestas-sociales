@@ -17,15 +17,15 @@ Los dos componentes centrales del curso son las clases teóricas y las actividad
 
 
 | |<i class="fas fa-chalkboard-teacher"></i>  Clases  |  <i class="fas fa-user-edit"></i>  Prácticas y evaluaciones | <i class="fas fa-book-reader"></i> Lecturas y material adicional
------|---------|-----------|-----------
+-----|----|-----------|-----------
 <font color="orange"> **Agosto** </font> |   |   |
 Jueves 18 | [**1. Presentación e introducción**](/content/01-content.html)  |   | - Leer detalladamente [programa del curso](syllabus.html)
 
 ### UNIDAD 1: DISEÑO
 
 |||
------|---------|-----------|-----------
-Jueves 25 | [**2.Encuestas: tipos, características e implementación **]()   |  [Selección de encuesta de referencia]()  | - [Lecturas](01-content.html#lecturas) <br> - [Font & Pasadas, cap.1: ¿Qué es una encuesta y qué no es una encuesta?](files/lecturas/Font&Pasadas2016LasEncuestasdeOpinion.pdf) <br>- [Font & Pasadas, cap.2: ¿Para qué sirve una encuesta?](files/lecturas/Font&Pasadas2016LasEncuestasdeOpinion.pdf) <br>- [Fowler Cap 1: Introduction](files/lecturas/Fowler2013Survey Research Methods.pdf)
+-----|-----|-----------|-----------
+Jueves 25 | [**2.Encuestas: tipos, características e implementación **]()   |  [Ficha de Encuesta](02-content.html#actividad-ficha-de-encuestas)  | - [Lecturas](01-content.html#lecturas) <br> - [Font & Pasadas, cap.1: ¿Qué es una encuesta y qué no es una encuesta?](files/lecturas/Font&Pasadas2016LasEncuestasdeOpinion.pdf) <br>- [Font & Pasadas, cap.2: ¿Para qué sirve una encuesta?](files/lecturas/Font&Pasadas2016LasEncuestasdeOpinion.pdf) <br>- [Fowler Cap 1: Introduction](files/lecturas/Fowler2013Survey Research Methods.pdf)
 <font color="orange"> **Septiembre** </font> |   |   |
 Jueves 1 | [**3. Diseño de preguntas 1: medición, confiabilidad y validez**]()  |   | - [RatSWD Quality standards for the design of measurement instruments](files/lecturas/RatSWD_WP_245.pdf)
 Jueves 8 | [**4. Diseño de preguntas 2: diseño de instrumentos de medición (preguntas, baterías, experimentos)**]()  |   |

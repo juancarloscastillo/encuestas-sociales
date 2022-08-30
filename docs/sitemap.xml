@@ -2,30 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://encuestas-sociales.netlify.app/assignment/index.html</loc>
-    <lastmod>2022-08-18T18:21:49.076Z</lastmod>
+    <lastmod>2022-08-30T15:50:30.339Z</lastmod>
   </url>
   <url>
     <loc>https://encuestas-sociales.netlify.app/content/01-content.html</loc>
-    <lastmod>2022-08-23T15:37:55.376Z</lastmod>
-  </url>
-  <url>
-    <loc>https://encuestas-sociales.netlify.app/content/index.html</loc>
-    <lastmod>2022-08-25T16:11:26.384Z</lastmod>
-  </url>
-  <url>
-    <loc>https://encuestas-sociales.netlify.app/index.html</loc>
-    <lastmod>2022-08-25T16:10:06.284Z</lastmod>
-  </url>
-  <url>
-    <loc>https://encuestas-sociales.netlify.app/schedule.html</loc>
-    <lastmod>2022-08-23T15:40:49.553Z</lastmod>
-  </url>
-  <url>
-    <loc>https://encuestas-sociales.netlify.app/syllabus.html</loc>
-    <lastmod>2022-08-18T19:58:27.624Z</lastmod>
+    <lastmod>2022-08-30T15:50:30.875Z</lastmod>
   </url>
   <url>
     <loc>https://encuestas-sociales.netlify.app/content/02-content.html</loc>
-    <lastmod>2022-08-25T16:11:30.596Z</lastmod>
+    <lastmod>2022-08-30T15:50:31.443Z</lastmod>
+  </url>
+  <url>
+    <loc>https://encuestas-sociales.netlify.app/content/index.html</loc>
+    <lastmod>2022-08-30T15:50:31.859Z</lastmod>
+  </url>
+  <url>
+    <loc>https://encuestas-sociales.netlify.app/index.html</loc>
+    <lastmod>2022-08-30T15:50:32.323Z</lastmod>
+  </url>
+  <url>
+    <loc>https://encuestas-sociales.netlify.app/resource/index.html</loc>
+    <lastmod>2022-08-30T15:50:32.739Z</lastmod>
+  </url>
+  <url>
+    <loc>https://encuestas-sociales.netlify.app/schedule.html</loc>
+    <lastmod>2022-08-30T15:50:33.223Z</lastmod>
+  </url>
+  <url>
+    <loc>https://encuestas-sociales.netlify.app/syllabus.html</loc>
+    <lastmod>2022-08-30T15:50:33.851Z</lastmod>
   </url>
 </urlset>
