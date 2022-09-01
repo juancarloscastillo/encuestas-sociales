@@ -1,0 +1,9 @@
+---
+title: "Medición e instrumentos"
+date: "2022-08-18"
+lang: es
+---
+
+- [Soep Scales Manual (2017)](https://www.diw.de/documents/publikationen/73/diw_01.c.571151.de/diw_ssp0423.pdf)
+
+- [ratSWD (2015) Quality Standards for the Development, Application, and Evaluation of Measurement Instruments in Social Science Survey Research ](https://encuestas-sociales.netlify.app/files/lecturas/RatSWD_WP_245.pdf)

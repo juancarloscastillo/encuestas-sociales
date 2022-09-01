@@ -25,10 +25,10 @@ Jueves 18 | [**1. Presentación e introducción**](/content/01-content.html)  | 
 
 |||
 -----|-----|-----------|-----------
-Jueves 25 | [**2.Encuestas: tipos, características e implementación **]()   |  [Ficha de Encuesta](02-content.html#actividad-ficha-de-encuestas)  | - [Lecturas](01-content.html#lecturas) <br> - [Font & Pasadas, cap.1: ¿Qué es una encuesta y qué no es una encuesta?](files/lecturas/Font&Pasadas2016LasEncuestasdeOpinion.pdf) <br>- [Font & Pasadas, cap.2: ¿Para qué sirve una encuesta?](files/lecturas/Font&Pasadas2016LasEncuestasdeOpinion.pdf) <br>- [Fowler Cap 1: Introduction](files/lecturas/Fowler2013Survey Research Methods.pdf)
+Jueves 25 | [**2.Encuestas: tipos, características e implementación **](/content/02-content.html)   |  [Ficha de Encuesta](02-content.html#actividad-ficha-de-encuestas)  | - [Lecturas](01-content.html#lecturas) <br> - [Font & Pasadas, cap.1: ¿Qué es una encuesta y qué no es una encuesta?](files/lecturas/Font&Pasadas2016LasEncuestasdeOpinion.pdf) <br>- [Font & Pasadas, cap.2: ¿Para qué sirve una encuesta?](files/lecturas/Font&Pasadas2016LasEncuestasdeOpinion.pdf) <br>- [Fowler Cap 1: Introduction](files/lecturas/Fowler2013Survey Research Methods.pdf)
 <font color="orange"> **Septiembre** </font> |   |   |
-Jueves 1 | [**3. Diseño de preguntas 1: medición, confiabilidad y validez**]()  |   | - [RatSWD Quality standards for the design of measurement instruments](files/lecturas/RatSWD_WP_245.pdf)
-Jueves 8 | [**4. Diseño de preguntas 2: diseño de instrumentos de medición (preguntas, baterías, experimentos)**]()  |   |
+Jueves 1 | [**3. Medición, instrumentos y estándares**](/content/03-content.html)  |   | - [RatSWD Quality standards for the design of measurement instruments](files/lecturas/RatSWD_WP_245.pdf)
+Jueves 8 | [**4. Preguntas, cuestionarios y aplicación**]()  |   | [- Czaja & Blair (2005) Cap. 4- Questionnaire Design, Writing the questions](files/lecturas/Czaja&Blair2005Designing-Surveys.pdf)
 Jueves 15 | RECESO  |   |
 Jueves 22 | [**5. Diseño de cuestionarios**]()  |   |
 Jueves 29 | [**6. Muestreo**]()  | - Entrega 1: Diseño de instrumento de medición  |

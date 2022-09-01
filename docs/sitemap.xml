@@ -2,34 +2,46 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://encuestas-sociales.netlify.app/assignment/index.html</loc>
-    <lastmod>2022-08-30T15:50:30.339Z</lastmod>
+    <lastmod>2022-09-01T18:25:54.741Z</lastmod>
   </url>
   <url>
     <loc>https://encuestas-sociales.netlify.app/content/01-content.html</loc>
-    <lastmod>2022-08-30T15:50:30.875Z</lastmod>
+    <lastmod>2022-09-01T18:25:55.665Z</lastmod>
   </url>
   <url>
     <loc>https://encuestas-sociales.netlify.app/content/02-content.html</loc>
-    <lastmod>2022-08-30T15:50:31.443Z</lastmod>
+    <lastmod>2022-09-01T18:25:56.681Z</lastmod>
+  </url>
+  <url>
+    <loc>https://encuestas-sociales.netlify.app/content/03-content.html</loc>
+    <lastmod>2022-09-01T18:25:57.585Z</lastmod>
   </url>
   <url>
     <loc>https://encuestas-sociales.netlify.app/content/index.html</loc>
-    <lastmod>2022-08-30T15:50:31.859Z</lastmod>
+    <lastmod>2022-09-01T18:25:58.325Z</lastmod>
   </url>
   <url>
     <loc>https://encuestas-sociales.netlify.app/index.html</loc>
-    <lastmod>2022-08-30T15:50:32.323Z</lastmod>
+    <lastmod>2022-09-01T18:25:59.113Z</lastmod>
+  </url>
+  <url>
+    <loc>https://encuestas-sociales.netlify.app/resource/01-resource.html</loc>
+    <lastmod>2022-09-01T18:25:59.869Z</lastmod>
+  </url>
+  <url>
+    <loc>https://encuestas-sociales.netlify.app/resource/02-resource.html</loc>
+    <lastmod>2022-09-01T18:26:00.565Z</lastmod>
   </url>
   <url>
     <loc>https://encuestas-sociales.netlify.app/resource/index.html</loc>
-    <lastmod>2022-08-30T15:50:32.739Z</lastmod>
+    <lastmod>2022-09-01T18:26:01.245Z</lastmod>
   </url>
   <url>
     <loc>https://encuestas-sociales.netlify.app/schedule.html</loc>
-    <lastmod>2022-08-30T15:50:33.223Z</lastmod>
+    <lastmod>2022-09-01T18:26:02.029Z</lastmod>
   </url>
   <url>
     <loc>https://encuestas-sociales.netlify.app/syllabus.html</loc>
-    <lastmod>2022-08-30T15:50:33.851Z</lastmod>
+    <lastmod>2022-09-01T18:26:02.921Z</lastmod>
   </url>
 </urlset>

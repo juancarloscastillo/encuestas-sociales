@@ -6,7 +6,7 @@ lang: es
 
 ## Documento de presentación
  
-<iframe src=/slides/01-Intro/01-intro.html height="550" width=100% allowfullscreen="true">
+<iframe src=/slides/01-presentacion/01-presentacion.html height="550" width=100% allowfullscreen="true">
 </iframe> 
 
 

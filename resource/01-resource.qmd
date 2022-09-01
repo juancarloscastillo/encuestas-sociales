@@ -1,0 +1,52 @@
+---
+title: "Ejemplos encuestas"
+date: "2022-08-18"
+lang: es
+---
+
+## Algunas instituciones internacionales 
+
+- [Roper Center](https://ropercenter.cornell.edu/)
+
+- [ICPSR](https://www.icpsr.umich.edu/web/pages/)
+
+- [GESIS](https://www.gesis.org/en/home)
+
+- [ESRA](https://esraeurope.org/)
+
+
+## Ejemplos de encuestas actuales - Nacional
+
+- [Encuestas CEP](https://www.cepchile.cl/encuestaCEP)
+
+- [CASEN](http://observatorio.ministeriodesarrollosocial.gob.cl/encuesta-casen)
+
+- [Encuestas INE](https://www.ine.cl/)]
+
+- [ENUT](https://www.ine.cl/estadisticas/sociales/genero/uso-del-tiempo)
+
+- [Estudios PNUD](https://www.estudiospnud.cl/)
+
+- [ELSOC]()
+
+
+## Ejemplo encuestas internacionales
+
+- [GSS](https://gss.norc.org/)
+
+- [SOEP](https://www.diw.de/en/diw_01.c.615551.en/research_infrastructure__socio-economic_panel__soep.html)
+
+- [British Social Attitudes](https://www.bsa.natcen.ac.uk/)]
+
+
+## Comparativas
+
+- [World Values Survey](https://www.worldvaluessurvey.org/wvs.jsp)
+
+- [ISSP](https://issp.org/)
+
+- [ESS](https://www.europeansocialsurvey.org/)
+
+- [LAPOP](https://www.vanderbilt.edu/lapop/index.php/)
+
+- [Latinobarómetro](https://www.latinobarometro.org/lat.jsp)

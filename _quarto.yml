@@ -71,37 +71,21 @@ website:
               file: content/01-content.qmd
             - text: "2: Bases"
               file: content/02-content.qmd
-#            - text: "3: Theories of change and logic models"
-#              file: content/03-content.qmd
-#            - text: "4: Measurement and DAGs"
-#              file: content/04-content.qmd
-#            - text: "5: DAGs and potential outcomes"
-#              file: content/05-content.qmd
-#            - text: "6: Threats to validity"
-#              file: content/06-content.qmd
-#            - text: "7: Randomization and matching"
-#              file: content/07-content.qmd
-#            - text: "8: Diff-in-diff I"
-#              file: content/08-content.qmd
-#            - text: "9: Diff-in-diff II"
-#              file: content/09-content.qmd
-#            - text: "10: RDD I"
-#              file: content/10-content.qmd
-#            - text: "11: IV I"
-#              file: content/11-content.qmd
-#            - text: "12: IV II & RDD II"
-#              file: content/12-content.qmd
-#            - text: "13: Choosing and planning ethical evaluations"
-#              file: content/13-content.qmd
-#            - text: "14: Ethics, stories, and curiosity"
-#              file: content/14-content.qmd
-
-
+            - text: "3: Medición"
+              file: content/03-content.qmd
     - title: "Recursos"
+      style: "docked"
+      search: false
+      background: dark
       contents:
-        - section: "Descripción"
-          contents:
-            - resource/index.qmd
+        - text: "Descripción"
+          file: resource/index.qmd
+        - text: "Ejemplos encuestas"
+          file: resource/01-resource.qmd
+        - text: "Medición e instrumentos"
+          file: resource/02-resource.qmd
+
+
   page-footer:
     left: |
       Content {{< fa brands creative-commons >}} {{< var course.copyright_year >}} by [{{< var instructor.name_no_title >}}]({{< var instructor.url >}}) <br>

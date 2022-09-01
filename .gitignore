@@ -5,7 +5,6 @@
 
 /.quarto/
 /_site/
-/slides/
 /_freeze/
 
 projects/*.zip
