@@ -30,7 +30,7 @@ Jueves 25 | [**2.Encuestas: tipos, características e implementación **](/conte
 Jueves 1 | [**3. Medición, instrumentos y estándares**](/content/03-content.html)  |   | - [RatSWD Quality standards for the design of measurement instruments](files/lecturas/RatSWD_WP_245.pdf)
 Jueves 8 | [**4. Preguntas, cuestionarios y aplicación**]()  |   | [- Czaja & Blair (2005) Cap. 4- Questionnaire Design, Writing the questions](files/lecturas/Czaja&Blair2005Designing-Surveys.pdf)
 Jueves 15 | RECESO  |   |
-Jueves 22 | [**5. Diseño de cuestionarios**]()  |   |
+Jueves 22 | [**5. Diseño de cuestionarios**]()  |   | - [Czaja & Blair (2005) Cap. 5 Organizing the questions <br> - Czaja & Blair (2005) Cap. 6  Testing  the questions](files/lecturas/Czaja&Blair2005Designing-Surveys.pdf) 
 Jueves 29 | [**6. Muestreo**]()  | - Entrega 1: Diseño de instrumento de medición  |
 <font color="orange"> **Octubre** </font> |   |   |
 Jueves 6 | [**7. Presentación informe 1**]()  |   |

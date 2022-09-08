@@ -73,6 +73,8 @@ website:
               file: content/02-content.qmd
             - text: "3: Medición"
               file: content/03-content.qmd
+            - text: "4: Preguntas"
+              file: content/04-content.qmd
     - title: "Recursos"
       style: "docked"
       search: false

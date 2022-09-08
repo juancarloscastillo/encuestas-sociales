@@ -11,6 +11,16 @@ lang: es
 
 - Para ver en pantalla completa presionar F (con cursor sobre presentación)
 
+
+## Video de clase
+
+<div style="width: 100%; height: 600px; overflow: hidden;">
+<video  style="width: 100%;" controls>
+<source src="https://www.dropbox.com/s/1ocgr931vhzkdpl/clase3.webm?raw=1" type="video/mp4">
+</video>
+</div>
+
+
 ## Lecturas
 
 - [RatSWD Quality standards for the design of measurement instruments](files/lecturas/RatSWD_WP_245.pdf)

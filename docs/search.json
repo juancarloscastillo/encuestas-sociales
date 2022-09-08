@@ -70,25 +70,25 @@
     "text": "Actividad: Ficha de encuestas\nSeleccionar encuesta / centro de estudios de encuestas en algún tema de interés y hacer ficha con la siguiente información:\n\nNombre\nHistoria\nObjetivos\nCaracterísticas\nÁreas de trabajo\nProyectos emblemáticos\n\n(para no repetirse, anotarse AQUI)"
   },
   {
-    "objectID": "content/03-content.html",
-    "href": "content/03-content.html",
-    "title": "Medición, instrumentos y estándares",
+    "objectID": "content/04-content.html",
+    "href": "content/04-content.html",
+    "title": "Preguntas",
     "section": "",
     "text": "Para ver en pantalla completa presionar F (con cursor sobre presentación)"
   },
   {
-    "objectID": "content/03-content.html#lecturas",
-    "href": "content/03-content.html#lecturas",
-    "title": "Medición, instrumentos y estándares",
+    "objectID": "content/04-content.html#lecturas",
+    "href": "content/04-content.html#lecturas",
+    "title": "Preguntas",
     "section": "Lecturas",
-    "text": "Lecturas\n\nRatSWD Quality standards for the design of measurement instruments"
+    "text": "Lecturas\n\nCzaja & Blair (2005) Cap. 5 Questionnaire Design, Writing the questions"
   },
   {
-    "objectID": "content/03-content.html#actividad-medición",
-    "href": "content/03-content.html#actividad-medición",
-    "title": "Medición, instrumentos y estándares",
-    "section": "Actividad: Medición",
-    "text": "Actividad: Medición\nSeleccionar alguna pregunta / batería de preguntas en un tema de interés de alguna encuesta (puede ser la misma encuesta sobre la que se realizó la ficha).\n\nRevisar si es que en el manual /ficha técnica de la encuesta aparece información sobre el origen de la pregunta, validez y confiabilidad\nDescribir posibles problemas de validez en base a lo presentado en clases\nAnalizar utilidad, pertinencia y posibles problemas de construcción de estas preguntas"
+    "objectID": "content/04-content.html#actividad-comenzar-a-preparar-trabajo-1",
+    "href": "content/04-content.html#actividad-comenzar-a-preparar-trabajo-1",
+    "title": "Preguntas",
+    "section": "Actividad: Comenzar a preparar trabajo 1:",
+    "text": "Actividad: Comenzar a preparar trabajo 1:\n\ngrupos de 3 integrantes\nseleccionar tema de interés general (ej: migración, género, clase social, pueblos originarios, uso del tiempo, bienestar, etc.)\ndefinir hipótesis y conceptos más específicos\ndefinir población objetivo\noperacionalizar\nbúsqueda de preguntas en bases de datos y literatura especializada\nadaptar / diseñar preguntas de distintos ámbitos y con distintas escalas de respuestas\nutilizar calificativos"
   },
   {
     "objectID": "content/index.html",
@@ -151,14 +151,14 @@
     "href": "schedule.html",
     "title": "Planificación",
     "section": "",
-    "text": "Clases ( ): Lecturas, documentos de presentación y video (en caso que la sesión sea grabada)\nPrácticas y evaluaciones (): Actividades prácticas a desarrollar durante la semana.\nLecturas (): Llegar a la clase con los textos leídos.\n\n\n\n\n\n Clases\n Prácticas y evaluaciones\n Lecturas y material adicional\n\n\n\n\n Agosto \n\n\n\n\n\nJueves 18\n1. Presentación e introducción\n\n- Leer detalladamente programa del curso\n\n\n\n\nUNIDAD 1: DISEÑO\n\n\n\nJueves 25\n2.Encuestas: tipos, características e implementación \nFicha de Encuesta\n- Lecturas  - Font & Pasadas, cap.1: ¿Qué es una encuesta y qué no es una encuesta? - Font & Pasadas, cap.2: ¿Para qué sirve una encuesta? - Fowler Cap 1: Introduction\n\n\n Septiembre \n\n\n\n\n\nJueves 1\n3. Medición, instrumentos y estándares\n\n- RatSWD Quality standards for the design of measurement instruments\n\n\nJueves 8\n4. Preguntas, cuestionarios y aplicación\n\n- Czaja & Blair (2005) Cap. 4- Questionnaire Design, Writing the questions\n\n\nJueves 15\nRECESO\n\n\n\n\nJueves 22\n5. Diseño de cuestionarios\n\n\n\n\nJueves 29\n6. Muestreo\n- Entrega 1: Diseño de instrumento de medición\n\n\n\n Octubre \n\n\n\n\n\nJueves 6\n7. Presentación informe 1\n\n\n\n\n\n\n\nUNIDAD 2: ANÁLISIS\n\n\n\nJueves 13\n8. Limpieza, descriptivos y flujo de trabajo reproducible\n\n\n\n\nJueves 20\n9. Visualización 1: Tablas\n\n\n\n\nJueves 27\n10. Visualización 2: Gráficos\n\n\n\n\n Noviembre \n\n\n\n\n\nJueves 3\n11. Indices y análisis factorial\n\n\n\n\nJueves 10\n12. Reporte y comunicación de resultados\n\n\n\n\nJueves 17\n13. Foro invitados externos\n- Entrega informe 2: Análisis y reporte\n\n\n\nJueves 24\n14. Presentación final"
+    "text": "Clases ( ): Lecturas, documentos de presentación y video (en caso que la sesión sea grabada)\nPrácticas y evaluaciones (): Actividades prácticas a desarrollar durante la semana.\nLecturas (): Llegar a la clase con los textos leídos.\n\n\n\n\n\n Clases\n Prácticas y evaluaciones\n Lecturas y material adicional\n\n\n\n\n Agosto \n\n\n\n\n\nJueves 18\n1. Presentación e introducción\n\n- Leer detalladamente programa del curso\n\n\n\n\nUNIDAD 1: DISEÑO\n\n\n\nJueves 25\n2.Encuestas: tipos, características e implementación \nFicha de Encuesta\n- Lecturas  - Font & Pasadas, cap.1: ¿Qué es una encuesta y qué no es una encuesta? - Font & Pasadas, cap.2: ¿Para qué sirve una encuesta? - Fowler Cap 1: Introduction\n\n\n Septiembre \n\n\n\n\n\nJueves 1\n3. Medición, instrumentos y estándares\n\n- RatSWD Quality standards for the design of measurement instruments\n\n\nJueves 8\n4. Preguntas, cuestionarios y aplicación\n\n- Czaja & Blair (2005) Cap. 4- Questionnaire Design, Writing the questions\n\n\nJueves 15\nRECESO\n\n\n\n\nJueves 22\n5. Diseño de cuestionarios\n\n- Czaja & Blair (2005) Cap. 5 Organizing the questions  - Czaja & Blair (2005) Cap. 6 Testing the questions\n\n\nJueves 29\n6. Muestreo\n- Entrega 1: Diseño de instrumento de medición\n\n\n\n Octubre \n\n\n\n\n\nJueves 6\n7. Presentación informe 1\n\n\n\n\n\n\n\nUNIDAD 2: ANÁLISIS\n\n\n\nJueves 13\n8. Limpieza, descriptivos y flujo de trabajo reproducible\n\n\n\n\nJueves 20\n9. Visualización 1: Tablas\n\n\n\n\nJueves 27\n10. Visualización 2: Gráficos\n\n\n\n\n Noviembre \n\n\n\n\n\nJueves 3\n11. Indices y análisis factorial\n\n\n\n\nJueves 10\n12. Reporte y comunicación de resultados\n\n\n\n\nJueves 17\n13. Foro invitados externos\n- Entrega informe 2: Análisis y reporte\n\n\n\nJueves 24\n14. Presentación final"
   },
   {
     "objectID": "syllabus.html",
     "href": "syllabus.html",
     "title": "Programa",
     "section": "",
-    "text": "Juan Carlos Castillo\n   Departamento de Sociología FACSO\n   jcastillov@uchile.cl\n   juankcastillo\n   Schedule an appointment\n\n\n\n\n\n   Jueves\n   Agosto 18–Noviembre 17, 2022\n   14:30-16:30 PM\n   Sala 43 FACSO\n   Slack"
+    "text": "Juan Carlos Castillo\n   Departamento de Sociología FACSO\n   juancastillov@uchile.cl\n   juankcastillo\n   Schedule an appointment\n\n\n\n\n\n   Jueves\n   Agosto 18–Noviembre 17, 2022\n   14:30-16:30 PM\n   Sala 43 FACSO\n   Slack"
   },
   {
     "objectID": "syllabus.html#resumen",
@@ -215,5 +215,47 @@
     "title": "Programa",
     "section": "Palabras Clave",
     "text": "Palabras Clave\n\nEncuestas sociales, medición, cuestionarios, análisis de datos, tablas, gráficos, visualización, reproducibilidad, reportes dinámicos"
+  },
+  {
+    "objectID": "content/04-content.html#pauta-trabajo-1",
+    "href": "content/04-content.html#pauta-trabajo-1",
+    "title": "Preguntas",
+    "section": "Pauta trabajo 1",
+    "text": "Pauta trabajo 1\n\n3 integrantes\nseleccionar tema de interés general (ej: migración, género, clase social, pueblos originarios, uso del tiempo, bienestar, etc.)\ndefinir hipótesis y conceptos más específicos\ndefinir población objetivo\noperacionalizar\nbúsqueda de preguntas en bases de datos y literatura especializada\nadaptar / diseñar preguntas de distintos ámbitos y con distintas escalas de respuestas\nutilizar calificativos"
+  },
+  {
+    "objectID": "content/04-content.html#video-de-clase",
+    "href": "content/04-content.html#video-de-clase",
+    "title": "Preguntas",
+    "section": "Video de clase",
+    "text": "Video de clase"
+  },
+  {
+    "objectID": "content/03-content.html",
+    "href": "content/03-content.html",
+    "title": "Medición, instrumentos y estándares",
+    "section": "",
+    "text": "Para ver en pantalla completa presionar F (con cursor sobre presentación)"
+  },
+  {
+    "objectID": "content/03-content.html#video-de-clase",
+    "href": "content/03-content.html#video-de-clase",
+    "title": "Medición, instrumentos y estándares",
+    "section": "Video de clase",
+    "text": "Video de clase"
+  },
+  {
+    "objectID": "content/03-content.html#lecturas",
+    "href": "content/03-content.html#lecturas",
+    "title": "Medición, instrumentos y estándares",
+    "section": "Lecturas",
+    "text": "Lecturas\n\nRatSWD Quality standards for the design of measurement instruments"
+  },
+  {
+    "objectID": "content/03-content.html#actividad-medición",
+    "href": "content/03-content.html#actividad-medición",
+    "title": "Medición, instrumentos y estándares",
+    "section": "Actividad: Medición",
+    "text": "Actividad: Medición\nSeleccionar alguna pregunta / batería de preguntas en un tema de interés de alguna encuesta (puede ser la misma encuesta sobre la que se realizó la ficha).\n\nRevisar si es que en el manual /ficha técnica de la encuesta aparece información sobre el origen de la pregunta, validez y confiabilidad\nDescribir posibles problemas de validez en base a lo presentado en clases\nAnalizar utilidad, pertinencia y posibles problemas de construcción de estas preguntas"
   }
 ]

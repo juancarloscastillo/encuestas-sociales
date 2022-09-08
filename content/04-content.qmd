@@ -1,0 +1,29 @@
+---
+title: "Preguntas"
+date: "2022-09-08"
+lang: es
+---
+
+## Documento de presentación
+
+<iframe src=/slides/04-preguntas/04-preguntas.html height="550" width=100% allowfullscreen="true">
+</iframe>
+
+- Para ver en pantalla completa presionar F (con cursor sobre presentación)
+
+
+
+## Lecturas
+
+- Czaja & Blair (2005) Cap. 5 Questionnaire Design, Writing the questions
+
+## Actividad: Comenzar a preparar trabajo 1:
+
+- grupos de 3 integrantes
+- seleccionar tema de interés general (ej: migración, género, clase social, pueblos originarios, uso del tiempo, bienestar, etc.)
+- definir hipótesis y conceptos más específicos
+- definir población objetivo
+- operacionalizar
+- búsqueda de preguntas en bases de datos y literatura especializada
+- adaptar / diseñar preguntas de distintos ámbitos y con distintas escalas de respuestas
+- utilizar calificativos
