@@ -105,6 +105,13 @@
     "text": "Para ver en pantalla completa presionar F (con cursor sobre presentación)"
   },
   {
+    "objectID": "content/04-content.html#video-de-clase",
+    "href": "content/04-content.html#video-de-clase",
+    "title": "Preguntas",
+    "section": "Video de clase",
+    "text": "Video de clase"
+  },
+  {
     "objectID": "content/04-content.html#lecturas",
     "href": "content/04-content.html#lecturas",
     "title": "Preguntas",
@@ -117,6 +124,27 @@
     "title": "Preguntas",
     "section": "Actividad: Comenzar a preparar trabajo 1:",
     "text": "Actividad: Comenzar a preparar trabajo 1:\n\ngrupos de 3 integrantes\nseleccionar tema de interés general (ej: migración, género, clase social, pueblos originarios, uso del tiempo, bienestar, etc.)\ndefinir hipótesis y conceptos más específicos\ndefinir población objetivo\noperacionalizar\nbúsqueda de preguntas en bases de datos y literatura especializada\nadaptar / diseñar preguntas de distintos ámbitos y con distintas escalas de respuestas\nutilizar calificativos"
+  },
+  {
+    "objectID": "content/05-content.html",
+    "href": "content/05-content.html",
+    "title": "Cuestionario: formr",
+    "section": "",
+    "text": "Los contenidos principales de esta clase están relacionados con el tutorial de formr (sección recursos de este sitio)"
+  },
+  {
+    "objectID": "content/05-content.html#documento-de-presentación",
+    "href": "content/05-content.html#documento-de-presentación",
+    "title": "Cuestionario: formr",
+    "section": "Documento de presentación",
+    "text": "Documento de presentación\n\n\n\nPara ver en pantalla completa presionar F (con cursor sobre presentación)"
+  },
+  {
+    "objectID": "content/05-content.html#lecturas",
+    "href": "content/05-content.html#lecturas",
+    "title": "Cuestionario: formr",
+    "section": "Lecturas",
+    "text": "Lecturas\n\nCzaja & Blair (2005) Cap. 5 Questionnaire Design, Organizing the questions"
   },
   {
     "objectID": "content/index.html",
@@ -264,33 +292,5 @@
     "title": "Programa",
     "section": "Palabras Clave",
     "text": "Palabras Clave\n\nEncuestas sociales, medición, cuestionarios, análisis de datos, tablas, gráficos, visualización, reproducibilidad, reportes dinámicos"
-  },
-  {
-    "objectID": "content/05-content.html",
-    "href": "content/05-content.html",
-    "title": "Cuestionario: formr",
-    "section": "",
-    "text": "Los contenidos principales de esta clase están relacionados con el tutorial de formr (sección recursos de este sitio)"
-  },
-  {
-    "objectID": "content/05-content.html#documento-de-presentación",
-    "href": "content/05-content.html#documento-de-presentación",
-    "title": "Cuestionario: formr",
-    "section": "Documento de presentación",
-    "text": "Documento de presentación\n\n\n\nPara ver en pantalla completa presionar F (con cursor sobre presentación)"
-  },
-  {
-    "objectID": "content/05-content.html#lecturas",
-    "href": "content/05-content.html#lecturas",
-    "title": "Cuestionario: formr",
-    "section": "Lecturas",
-    "text": "Lecturas\n\nCzaja & Blair (2005) Cap. 5 Questionnaire Design, Organizing the questions"
-  },
-  {
-    "objectID": "content/04-content.html#video-de-clase",
-    "href": "content/04-content.html#video-de-clase",
-    "title": "Preguntas",
-    "section": "Video de clase",
-    "text": "Video de clase"
   }
 ]
