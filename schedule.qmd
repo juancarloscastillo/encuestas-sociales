@@ -31,7 +31,7 @@ Jueves 1 | [**3. Medición, instrumentos y estándares**](/content/03-content.ht
 Jueves 8 | [**4. Preguntas, cuestionarios y aplicación**]()  |   | [- Czaja & Blair (2005) Cap. 4- Questionnaire Design, Writing the questions](files/lecturas/Czaja&Blair2005Designing-Surveys.pdf)
 Jueves 15 | RECESO  |   |
 Jueves 22 | [**5. Diseño de cuestionarios**]()  |   | - [Czaja & Blair (2005) Cap. 5 Organizing the questions <br> - Czaja & Blair (2005) Cap. 6  Testing  the questions](files/lecturas/Czaja&Blair2005Designing-Surveys.pdf) 
-Jueves 29 | [**6. Muestreo**]()  | - Entrega 1: Diseño de instrumento de medición  |
+Jueves 29 | [**6. Muestreo**]()  | - Entrega 1: Diseño de instrumento de medición  |- [Czaja & Blair (2005) Cap. 7 Designing the sample <br> - Czaja & Blair (2005) Cap. 8  Selecting a sample](files/lecturas/Czaja&Blair2005Designing-Surveys.pdf) 
 <font color="orange"> **Octubre** </font> |   |   |
 Jueves 6 | [**7. Presentación informe 1**]()  |   |
 

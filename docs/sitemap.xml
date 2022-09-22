@@ -2,50 +2,58 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://encuestas-sociales.netlify.app/assignment/index.html</loc>
-    <lastmod>2022-09-08T16:34:31.776Z</lastmod>
+    <lastmod>2022-09-22T16:31:12.624Z</lastmod>
   </url>
   <url>
     <loc>https://encuestas-sociales.netlify.app/content/01-content.html</loc>
-    <lastmod>2022-09-08T18:20:40.852Z</lastmod>
+    <lastmod>2022-09-22T16:31:13.040Z</lastmod>
   </url>
   <url>
     <loc>https://encuestas-sociales.netlify.app/content/02-content.html</loc>
-    <lastmod>2022-09-08T16:34:32.552Z</lastmod>
-  </url>
-  <url>
-    <loc>https://encuestas-sociales.netlify.app/content/04-content.html</loc>
-    <lastmod>2022-09-08T18:26:31.184Z</lastmod>
-  </url>
-  <url>
-    <loc>https://encuestas-sociales.netlify.app/content/index.html</loc>
-    <lastmod>2022-09-08T18:22:47.724Z</lastmod>
-  </url>
-  <url>
-    <loc>https://encuestas-sociales.netlify.app/index.html</loc>
-    <lastmod>2022-09-08T18:22:43.120Z</lastmod>
-  </url>
-  <url>
-    <loc>https://encuestas-sociales.netlify.app/resource/01-resource.html</loc>
-    <lastmod>2022-09-08T16:34:33.948Z</lastmod>
-  </url>
-  <url>
-    <loc>https://encuestas-sociales.netlify.app/resource/02-resource.html</loc>
-    <lastmod>2022-09-08T16:34:34.248Z</lastmod>
-  </url>
-  <url>
-    <loc>https://encuestas-sociales.netlify.app/resource/index.html</loc>
-    <lastmod>2022-09-08T16:34:34.600Z</lastmod>
-  </url>
-  <url>
-    <loc>https://encuestas-sociales.netlify.app/schedule.html</loc>
-    <lastmod>2022-09-08T16:48:16.676Z</lastmod>
-  </url>
-  <url>
-    <loc>https://encuestas-sociales.netlify.app/syllabus.html</loc>
-    <lastmod>2022-09-08T16:34:35.440Z</lastmod>
+    <lastmod>2022-09-22T16:31:13.532Z</lastmod>
   </url>
   <url>
     <loc>https://encuestas-sociales.netlify.app/content/03-content.html</loc>
-    <lastmod>2022-09-08T18:24:03.668Z</lastmod>
+    <lastmod>2022-09-22T16:41:09.042Z</lastmod>
+  </url>
+  <url>
+    <loc>https://encuestas-sociales.netlify.app/content/04-content.html</loc>
+    <lastmod>2022-09-22T17:16:28.399Z</lastmod>
+  </url>
+  <url>
+    <loc>https://encuestas-sociales.netlify.app/content/index.html</loc>
+    <lastmod>2022-09-22T17:04:21.275Z</lastmod>
+  </url>
+  <url>
+    <loc>https://encuestas-sociales.netlify.app/index.html</loc>
+    <lastmod>2022-09-22T16:31:15.096Z</lastmod>
+  </url>
+  <url>
+    <loc>https://encuestas-sociales.netlify.app/resource/01-resource.html</loc>
+    <lastmod>2022-09-22T16:31:15.492Z</lastmod>
+  </url>
+  <url>
+    <loc>https://encuestas-sociales.netlify.app/resource/02-resource.html</loc>
+    <lastmod>2022-09-22T16:31:15.996Z</lastmod>
+  </url>
+  <url>
+    <loc>https://encuestas-sociales.netlify.app/resource/03-resource.html</loc>
+    <lastmod>2022-09-22T17:16:47.267Z</lastmod>
+  </url>
+  <url>
+    <loc>https://encuestas-sociales.netlify.app/resource/index.html</loc>
+    <lastmod>2022-09-22T17:16:43.027Z</lastmod>
+  </url>
+  <url>
+    <loc>https://encuestas-sociales.netlify.app/schedule.html</loc>
+    <lastmod>2022-09-22T17:04:11.843Z</lastmod>
+  </url>
+  <url>
+    <loc>https://encuestas-sociales.netlify.app/syllabus.html</loc>
+    <lastmod>2022-09-22T16:31:17.828Z</lastmod>
+  </url>
+  <url>
+    <loc>https://encuestas-sociales.netlify.app/content/05-content.html</loc>
+    <lastmod>2022-09-22T17:16:32.115Z</lastmod>
   </url>
 </urlset>

@@ -75,6 +75,8 @@ website:
               file: content/03-content.qmd
             - text: "4: Preguntas"
               file: content/04-content.qmd
+            - text: "5: Cuestionario"
+              file: content/05-content.qmd
     - title: "Recursos"
       style: "docked"
       search: false
@@ -86,6 +88,8 @@ website:
           file: resource/01-resource.qmd
         - text: "Medición e instrumentos"
           file: resource/02-resource.qmd
+        - text: "Tutorial formr"
+          file: resource/03-resource.qmd
 
 
   page-footer:

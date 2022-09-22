@@ -70,6 +70,34 @@
     "text": "Actividad: Ficha de encuestas\nSeleccionar encuesta / centro de estudios de encuestas en algún tema de interés y hacer ficha con la siguiente información:\n\nNombre\nHistoria\nObjetivos\nCaracterísticas\nÁreas de trabajo\nProyectos emblemáticos\n\n(para no repetirse, anotarse AQUI)"
   },
   {
+    "objectID": "content/03-content.html",
+    "href": "content/03-content.html",
+    "title": "Medición, instrumentos y estándares",
+    "section": "",
+    "text": "Para ver en pantalla completa presionar F (con cursor sobre presentación)"
+  },
+  {
+    "objectID": "content/03-content.html#video-de-clase",
+    "href": "content/03-content.html#video-de-clase",
+    "title": "Medición, instrumentos y estándares",
+    "section": "Video de clase",
+    "text": "Video de clase"
+  },
+  {
+    "objectID": "content/03-content.html#lecturas",
+    "href": "content/03-content.html#lecturas",
+    "title": "Medición, instrumentos y estándares",
+    "section": "Lecturas",
+    "text": "Lecturas\n\nRatSWD Quality standards for the design of measurement instruments"
+  },
+  {
+    "objectID": "content/03-content.html#actividad-medición",
+    "href": "content/03-content.html#actividad-medición",
+    "title": "Medición, instrumentos y estándares",
+    "section": "Actividad: Medición",
+    "text": "Actividad: Medición\nSeleccionar alguna pregunta / batería de preguntas en un tema de interés de alguna encuesta (puede ser la misma encuesta sobre la que se realizó la ficha).\n\nRevisar si es que en el manual /ficha técnica de la encuesta aparece información sobre el origen de la pregunta, validez y confiabilidad\nDescribir posibles problemas de validez en base a lo presentado en clases\nAnalizar utilidad, pertinencia y posibles problemas de construcción de estas preguntas"
+  },
+  {
     "objectID": "content/04-content.html",
     "href": "content/04-content.html",
     "title": "Preguntas",
@@ -140,6 +168,27 @@
     "text": "Soep Scales Manual (2017)\nratSWD (2015) Quality Standards for the Development, Application, and Evaluation of Measurement Instruments in Social Science Survey Research"
   },
   {
+    "objectID": "resource/03-resource.html",
+    "href": "resource/03-resource.html",
+    "title": "Tutorial formr",
+    "section": "",
+    "text": "Actualmente, el diseño de cuestionarios e instrumentos de medición en el contexto del desarrollo de encuestas sociales se implementa principalmente en formato web. Incluso cuando la aplicación es cara-a-cara, crecientemente las entrevistas se encuetran mediadas por un dispositivo electrónico tipo tablet o teléfono donde se registran las respuestas. Por lo tanto, la elección de la plataforma en la cual diseñar y programar la encuesta cobra cada vez más importancia.\nLa plataforma utilizada por defecto por el público general al momento de diseñar encuestas actualmente es Google Forms, que tiene la ventaja de ser fácil de diseñar, administrar y registrar respuestas. Sin embargo, carece de funcionalidades necesarias en investigaciones sociales (como aleatorización). Para encuestas con funciones más avanzadas existen servicios como Qualtrics y Surveymonkey, que poseen muchas ventajas en diseño de cuestionario pero que poseen limitaciones en términos de licencias pagadas y propiedad del trabajo realizado. Por ejemplo, si se deja de pagar Qualtrics, todo el trabajo de programación de la encuesta en la plataforma ya no es accesible y es difícilmente transferible a otras plataformas.\nformr es a la vez una plataforma y una librería de R que permite desarrollar y administrar encuestas en un entorno caracterizado por:\n\ncódigo abierto\namplia variedad de funcionalidades como aleatorización de módulos y preguntas, encuestas longitudinales, experimentos, etc.\nprogramación en un entorno simple (planilla de cálculo)\npropiedad de los contenidos (a diferencia de plataformas donde la programación de la encuesta es accesible mediante licencia pagada)\nvínculo expedito con R, tanto para análisis de los datos como también para incorporar en la encuesta elementos generados mediante R / Rmarkdown\n\nLos pasos para poder utilizar formr son los siguientes:\n\ngenerar una cuenta\ncrear encuesta\npublicar encuesta\nmonitoreo de respuestas\nobtener datos desde R"
+  },
+  {
+    "objectID": "resource/03-resource.html#creando-la-planilla",
+    "href": "resource/03-resource.html#creando-la-planilla",
+    "title": "Tutorial formr",
+    "section": "Creando la planilla",
+    "text": "Creando la planilla\n\nhay una planilla modelo de forms que se encuentra disponible aquí. Para poder generar un archivo propio y editable a partir de este modelo se debe hacer una copia en el drive personal: ir a archivo > hacer una copia, y se sugiere dar un nombre que permita su clara identificación (ej: probandoencuesta)\nuna vez creado el archivo se debe generar permiso para que pueda ser accesible desde formr: en compartir > cualquier persona con el enlace > editor.\ncopiar la dirección de la planilla y pegar en la ventana de formr sheet link. Además, dar un nombre a la encuesta (survey name). Acá hay restricciones: debe comenzar con una letra, entre 2 y 64 caracteres, si caracteres especiales (tildes, eñes, espacios). Para este tutorial le daremos el nombre “prueba1”\ncon esto la información de la planilla debería cargarse y así se puede acceder a la encuesta desde el menú superior (Surveys). Al hacer click en la encuesta se abre la siguiente plataforma de diseño:\n\n\n\nsi se presiona la opción test survey se puede visualizar (renderizar) las instrucciones de la planilla, y al comparar planilla con la visualización se puede tener una idea de cómo se especifican los distintos tipos de ítems e información que aparece en la encuesta"
+  },
+  {
+    "objectID": "resource/03-resource.html#tipos-de-items-y-campos",
+    "href": "resource/03-resource.html#tipos-de-items-y-campos",
+    "title": "Tutorial formr",
+    "section": "Tipos de items y campos",
+    "text": "Tipos de items y campos\nEl aspecto central del cuestionario sin duda se realaciona con el diseño de items. En la planilla, el tipo de item se especifica en la columna type. Los principales son:\n\nTexto:\n\ntext: campo de texto para respuesta breve\ntextarea: campo respuesta amplia\nnote: solo texto (por ejemplo encabezados, instrucciones), no solicita respuesta\n\nBotón de salto de página:\n\nsubmit, y darle un label para poder avanzar\n\nSelección múltiple\n\n\n\n\n\n\n\ntype\ndescripción\n\n\n\n\nmc\nlista_de_elección opción múltiple (botones de radio), puede elegir solo uno.\n\n\nmc_button\nlista_elección como mc pero en lugar de que el texto aparezca junto a un botón pequeño, un botón grande contiene cada etiqueta de opción\n\n\nmc_multiple\nopción múltiple múltiple (casillas de verificación), puede elegir varios. Opciones definidas como arriba.\n\n\nmc_multiple_button\ncomo mc_multiple y mc_button controlar una sola casilla de verificación para la confirmación de una declaración.\n\n\ncheck\nun botón más grande para comprobar.\n\n\nrating_button; min, max, step\nEsto muestra la etiqueta de elección 1 a la izquierda, la etiqueta de elección 2 a la derecha y una serie de botones numerados definidos por min, max, step en el medio. Los valores predeterminados son 1,5,1.\n\n\nsex\nabreviatura de mc_button con los símbolos ♂, ♀ como opciones\n\n\nselect_one\nun menú desplegable, puede elegir solo uno select_multiple\n\n\nselect_or_add_one, choice_list, maxType\ncomo select_one, pero permite a los usuarios elegir una opción no dada. Utiliza Select2. se puede usar para establecer un límite superior en la longitud de la opción agregada por el usuario. El valor predeterminado es 255.\n\n\nselect_or_add_multiple, choice_list, maxType, maxChoose\ncomo select_multiple y select_or_add_one, permite a los usuarios agregar opciones no proporcionadas. Se puede usar para colocar un límite superior en la cantidad de opciones seleccionables.\n\n\nmc_heading, choice_list\nEste tipo le permite mostrar las etiquetas para las opciones mc o mc_multiple solo una vez. Para obtener el aspecto tabular necesario, asigne un ancho constante a las opciones (usando, por ejemplo, mc-width100), asigne al encabezado las mismas opciones que a los mcs y asigne a los siguientes mcs (o mc_multiples) las mismas clases + hide_label. En pantallas pequeñas, mc_heading se ocultará y las etiquetas se volverán a mostrar automáticamente, ya que, de lo contrario, el diseño tabular se rompería.\n\n\n\n\nUn ejemplo de encuesta con estas opciones se puede ve aquí. El archivo de origen se puede acceder aquí"
+  },
+  {
     "objectID": "resource/index.html",
     "href": "resource/index.html",
     "title": "Recursos",
@@ -151,7 +200,7 @@
     "href": "schedule.html",
     "title": "Planificación",
     "section": "",
-    "text": "Clases ( ): Lecturas, documentos de presentación y video (en caso que la sesión sea grabada)\nPrácticas y evaluaciones (): Actividades prácticas a desarrollar durante la semana.\nLecturas (): Llegar a la clase con los textos leídos.\n\n\n\n\n\n Clases\n Prácticas y evaluaciones\n Lecturas y material adicional\n\n\n\n\n Agosto \n\n\n\n\n\nJueves 18\n1. Presentación e introducción\n\n- Leer detalladamente programa del curso\n\n\n\n\nUNIDAD 1: DISEÑO\n\n\n\nJueves 25\n2.Encuestas: tipos, características e implementación \nFicha de Encuesta\n- Lecturas  - Font & Pasadas, cap.1: ¿Qué es una encuesta y qué no es una encuesta? - Font & Pasadas, cap.2: ¿Para qué sirve una encuesta? - Fowler Cap 1: Introduction\n\n\n Septiembre \n\n\n\n\n\nJueves 1\n3. Medición, instrumentos y estándares\n\n- RatSWD Quality standards for the design of measurement instruments\n\n\nJueves 8\n4. Preguntas, cuestionarios y aplicación\n\n- Czaja & Blair (2005) Cap. 4- Questionnaire Design, Writing the questions\n\n\nJueves 15\nRECESO\n\n\n\n\nJueves 22\n5. Diseño de cuestionarios\n\n- Czaja & Blair (2005) Cap. 5 Organizing the questions  - Czaja & Blair (2005) Cap. 6 Testing the questions\n\n\nJueves 29\n6. Muestreo\n- Entrega 1: Diseño de instrumento de medición\n\n\n\n Octubre \n\n\n\n\n\nJueves 6\n7. Presentación informe 1\n\n\n\n\n\n\n\nUNIDAD 2: ANÁLISIS\n\n\n\nJueves 13\n8. Limpieza, descriptivos y flujo de trabajo reproducible\n\n\n\n\nJueves 20\n9. Visualización 1: Tablas\n\n\n\n\nJueves 27\n10. Visualización 2: Gráficos\n\n\n\n\n Noviembre \n\n\n\n\n\nJueves 3\n11. Indices y análisis factorial\n\n\n\n\nJueves 10\n12. Reporte y comunicación de resultados\n\n\n\n\nJueves 17\n13. Foro invitados externos\n- Entrega informe 2: Análisis y reporte\n\n\n\nJueves 24\n14. Presentación final"
+    "text": "Clases ( ): Lecturas, documentos de presentación y video (en caso que la sesión sea grabada)\nPrácticas y evaluaciones (): Actividades prácticas a desarrollar durante la semana.\nLecturas (): Llegar a la clase con los textos leídos.\n\n\n\n\n\n Clases\n Prácticas y evaluaciones\n Lecturas y material adicional\n\n\n\n\n Agosto \n\n\n\n\n\nJueves 18\n1. Presentación e introducción\n\n- Leer detalladamente programa del curso\n\n\n\n\nUNIDAD 1: DISEÑO\n\n\n\nJueves 25\n2.Encuestas: tipos, características e implementación \nFicha de Encuesta\n- Lecturas  - Font & Pasadas, cap.1: ¿Qué es una encuesta y qué no es una encuesta? - Font & Pasadas, cap.2: ¿Para qué sirve una encuesta? - Fowler Cap 1: Introduction\n\n\n Septiembre \n\n\n\n\n\nJueves 1\n3. Medición, instrumentos y estándares\n\n- RatSWD Quality standards for the design of measurement instruments\n\n\nJueves 8\n4. Preguntas, cuestionarios y aplicación\n\n- Czaja & Blair (2005) Cap. 4- Questionnaire Design, Writing the questions\n\n\nJueves 15\nRECESO\n\n\n\n\nJueves 22\n5. Diseño de cuestionarios\n\n- Czaja & Blair (2005) Cap. 5 Organizing the questions  - Czaja & Blair (2005) Cap. 6 Testing the questions\n\n\nJueves 29\n6. Muestreo\n- Entrega 1: Diseño de instrumento de medición\n- Czaja & Blair (2005) Cap. 7 Designing the sample  - Czaja & Blair (2005) Cap. 8 Selecting a sample\n\n\n Octubre \n\n\n\n\n\nJueves 6\n7. Presentación informe 1\n\n\n\n\n\n\n\nUNIDAD 2: ANÁLISIS\n\n\n\nJueves 13\n8. Limpieza, descriptivos y flujo de trabajo reproducible\n\n\n\n\nJueves 20\n9. Visualización 1: Tablas\n\n\n\n\nJueves 27\n10. Visualización 2: Gráficos\n\n\n\n\n Noviembre \n\n\n\n\n\nJueves 3\n11. Indices y análisis factorial\n\n\n\n\nJueves 10\n12. Reporte y comunicación de resultados\n\n\n\n\nJueves 17\n13. Foro invitados externos\n- Entrega informe 2: Análisis y reporte\n\n\n\nJueves 24\n14. Presentación final"
   },
   {
     "objectID": "syllabus.html",
@@ -217,11 +266,25 @@
     "text": "Palabras Clave\n\nEncuestas sociales, medición, cuestionarios, análisis de datos, tablas, gráficos, visualización, reproducibilidad, reportes dinámicos"
   },
   {
-    "objectID": "content/04-content.html#pauta-trabajo-1",
-    "href": "content/04-content.html#pauta-trabajo-1",
-    "title": "Preguntas",
-    "section": "Pauta trabajo 1",
-    "text": "Pauta trabajo 1\n\n3 integrantes\nseleccionar tema de interés general (ej: migración, género, clase social, pueblos originarios, uso del tiempo, bienestar, etc.)\ndefinir hipótesis y conceptos más específicos\ndefinir población objetivo\noperacionalizar\nbúsqueda de preguntas en bases de datos y literatura especializada\nadaptar / diseñar preguntas de distintos ámbitos y con distintas escalas de respuestas\nutilizar calificativos"
+    "objectID": "content/05-content.html",
+    "href": "content/05-content.html",
+    "title": "Cuestionario: formr",
+    "section": "",
+    "text": "Los contenidos principales de esta clase están relacionados con el tutorial de formr (sección recursos de este sitio)"
+  },
+  {
+    "objectID": "content/05-content.html#documento-de-presentación",
+    "href": "content/05-content.html#documento-de-presentación",
+    "title": "Cuestionario: formr",
+    "section": "Documento de presentación",
+    "text": "Documento de presentación\n\n\n\nPara ver en pantalla completa presionar F (con cursor sobre presentación)"
+  },
+  {
+    "objectID": "content/05-content.html#lecturas",
+    "href": "content/05-content.html#lecturas",
+    "title": "Cuestionario: formr",
+    "section": "Lecturas",
+    "text": "Lecturas\n\nCzaja & Blair (2005) Cap. 5 Questionnaire Design, Organizing the questions"
   },
   {
     "objectID": "content/04-content.html#video-de-clase",
@@ -229,33 +292,5 @@
     "title": "Preguntas",
     "section": "Video de clase",
     "text": "Video de clase"
-  },
-  {
-    "objectID": "content/03-content.html",
-    "href": "content/03-content.html",
-    "title": "Medición, instrumentos y estándares",
-    "section": "",
-    "text": "Para ver en pantalla completa presionar F (con cursor sobre presentación)"
-  },
-  {
-    "objectID": "content/03-content.html#video-de-clase",
-    "href": "content/03-content.html#video-de-clase",
-    "title": "Medición, instrumentos y estándares",
-    "section": "Video de clase",
-    "text": "Video de clase"
-  },
-  {
-    "objectID": "content/03-content.html#lecturas",
-    "href": "content/03-content.html#lecturas",
-    "title": "Medición, instrumentos y estándares",
-    "section": "Lecturas",
-    "text": "Lecturas\n\nRatSWD Quality standards for the design of measurement instruments"
-  },
-  {
-    "objectID": "content/03-content.html#actividad-medición",
-    "href": "content/03-content.html#actividad-medición",
-    "title": "Medición, instrumentos y estándares",
-    "section": "Actividad: Medición",
-    "text": "Actividad: Medición\nSeleccionar alguna pregunta / batería de preguntas en un tema de interés de alguna encuesta (puede ser la misma encuesta sobre la que se realizó la ficha).\n\nRevisar si es que en el manual /ficha técnica de la encuesta aparece información sobre el origen de la pregunta, validez y confiabilidad\nDescribir posibles problemas de validez en base a lo presentado en clases\nAnalizar utilidad, pertinencia y posibles problemas de construcción de estas preguntas"
   }
 ]

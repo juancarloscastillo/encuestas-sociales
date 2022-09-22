@@ -1,0 +1,21 @@
+---
+title: "Cuestionario: formr"
+date: "2022-09-22"
+lang: es
+---
+
+## Tutorial
+
+Los contenidos principales de esta clase están relacionados con el [tutorial de **formr**](/resource/03-resource.html) (sección recursos de este sitio)
+
+## Documento de presentación
+
+<iframe src=/slides/05-cuestionario/05-cuestionario.html height="550" width=100% allowfullscreen="true">
+</iframe>
+
+- Para ver en pantalla completa presionar F (con cursor sobre presentación)
+
+
+## Lecturas
+
+- Czaja & Blair (2005) Cap. 5 Questionnaire Design, Organizing the questions
