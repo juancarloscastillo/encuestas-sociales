@@ -49,12 +49,12 @@ website:
 #        file: assignment/index.qmd
 #      - text: "Examples"
 #        file: example/index.qmd
+      - trabajos.qmd
       - text: "Recursos"
         file: resource/index.qmd
       - icon: slack
         href: "https://www.slack.com"
         aria-label: Slack
-
 
   sidebar:
     - title: "Contenidos"

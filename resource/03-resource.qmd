@@ -8,7 +8,7 @@ output:
 
 # Contexto
 
-Actualmente, el diseño de cuestionarios e instrumentos de medición en el contexto del desarrollo de encuestas sociales se implementa principalmente en formato web. Incluso cuando la aplicación es cara-a-cara, crecientemente las entrevistas se encuetran mediadas por un dispositivo electrónico tipo tablet o teléfono donde se registran las respuestas. Por lo tanto, la elección de la plataforma en la cual diseñar y programar la encuesta cobra cada vez más importancia. 
+Actualmente, el diseño de cuestionarios e instrumentos de medición en el contexto del desarrollo de encuestas sociales se implementa principalmente en formato web. Incluso cuando la aplicación es cara-a-cara, crecientemente las entrevistas se encuetran mediadas por un dispositivo electrónico tipo tablet o teléfono donde se registran las respuestas. Por lo tanto, la elección de la plataforma en la cual diseñar y programar la encuesta cobra cada vez más importancia.
 
 La plataforma utilizada por defecto por el público general al momento de diseñar encuestas actualmente es Google Forms, que tiene la ventaja de ser fácil de diseñar, administrar y registrar respuestas. Sin embargo, carece de funcionalidades necesarias en investigaciones sociales (como aleatorización). Para encuestas con funciones más avanzadas existen servicios como Qualtrics y Surveymonkey, que poseen muchas ventajas en diseño de cuestionario pero que poseen limitaciones en términos de licencias pagadas y propiedad del trabajo realizado. Por ejemplo, si se deja de pagar Qualtrics, todo el trabajo de programación de la encuesta en la plataforma ya no es accesible y es difícilmente transferible a otras plataformas.
 
@@ -27,7 +27,6 @@ Los pasos para poder utilizar formr son los siguientes:
 - publicar encuesta
 - monitoreo de respuestas
 - obtener datos desde R
-
 
 # 1. Generar cuenta
 
@@ -62,7 +61,7 @@ Además, hay un link a Documentation, que es el manual de `formr` y se recomiend
 
 - en general se recomienda vincular a una hoja de _Googlesheets_
 
-- la planilla donde se ingresa la información posee ciertas columnas específicas que luego son leídas por formr: 
+- la planilla donde se ingresa la información posee ciertas columnas específicas que luego son leídas por formr:
 
 ![](../files/img/formr/googlesheet.png)
 
@@ -72,16 +71,16 @@ Además, hay un link a Documentation, que es el manual de `formr` y se recomiend
   - **name**: es el nombre del item y también será el nombre de la variable en la base de datos. Considerar: minúsculas, breves, sin caractéres especiales, sin espacios
   - **label**: es el texto del item o pregunta
   - **choice**: son las opciones de respuesta
-  
+
 
 - las otras columnas son:
 
   - **class**: opciones adicionales de la pregunta, como por ejemplo formato de las opciones, utilización de lista recurrente de opciones de respuesta, etc.
-  - **optional**: si la pregunta es opcional o no. Si se ingresa un asterisco en esta casilla la pregunta correspondiente es opcional, es decir, se puede seguir avanzando en el cuestionario a pesar de no responder ninguna opción. 
+  - **optional**: si la pregunta es opcional o no. Si se ingresa un asterisco en esta casilla la pregunta correspondiente es opcional, es decir, se puede seguir avanzando en el cuestionario a pesar de no responder ninguna opción.
   - **showif**: es la manera de especificar filtros. Se utilizan operadores lógicos haciendo referencia al nombre de la pregunta (columna name) . Por ejemplo: _pregunta1==3_; se mostrará esta pregunta solamente a aquellos que hayan respondido 3 en la pregunta 1.
 
 La columna **explanations** no es considerada en la lectura de la planilla desde formr, se utiliza solo para comentarios en relación a la pregunta (por ejemplo: "corregir pregunta antes del piloto")
-  
+
 
 ## Creando la planilla
 
@@ -107,7 +106,7 @@ El aspecto central del cuestionario sin duda se realaciona con el diseño de ite
   - _text_: campo de texto para respuesta breve
   - _textarea_: campo respuesta amplia
   - note: solo texto (por ejemplo encabezados, instrucciones), no solicita respuesta
-  
+
 - Botón de salto de página:
   - submit, y darle un label para poder avanzar
 
