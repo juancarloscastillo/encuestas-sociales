@@ -25,11 +25,9 @@ Entrega:
 - Formato Tradicional: archivo .pdf en tamaño carta o A4, letra Times New Roman, tamaño 12, interlineado 1,5, márgenes normales (2,5 cm superior e inferior, 3 cm derecho e izquierdo).
 - no más de 10 páginas
 - incluir referencias de la literatura / encuestas revisadas
-
-
+- atrasos, 0,5 por día de atraso.
 
 
 ## Requisitos de aprobación
 
 - Nota mínima de aprobación: 4,0 (en escala de 1 a 7).
-
