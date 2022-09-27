@@ -90,7 +90,8 @@ website:
           file: resource/02-resource.qmd
         - text: "Tutorial formr"
           file: resource/03-resource.qmd
-
+        - text: "Encuesta Microemprendimiento"
+          file: resource/04-resource.qmd
 
   page-footer:
     left: |

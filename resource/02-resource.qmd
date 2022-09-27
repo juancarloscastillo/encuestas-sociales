@@ -10,3 +10,5 @@ lang: es
 
 - [Documenting Measurement Instruments for the Social
 and Behavioral Sciences](https://www.gesis.org/fileadmin/upload/SDMwiki/2020_schmidt_measurement_1.pdf)
+
+- [Survey Quality Predictor](https://sqp.gesis.org/). SQP 3.0 is a survey quality prediction system for questions used in survey research.

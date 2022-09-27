@@ -140,6 +140,13 @@
     "text": "Documento de presentación\n\n\n\nPara ver en pantalla completa presionar F (con cursor sobre presentación)"
   },
   {
+    "objectID": "content/05-content.html#presentación-encuesta-microemprendimiento",
+    "href": "content/05-content.html#presentación-encuesta-microemprendimiento",
+    "title": "Cuestionario: formr",
+    "section": "Presentación Encuesta Microemprendimiento",
+    "text": "Presentación Encuesta Microemprendimiento\nDisponible en la sección de recursos, link aquí"
+  },
+  {
     "objectID": "content/05-content.html#lecturas",
     "href": "content/05-content.html#lecturas",
     "title": "Cuestionario: formr",
@@ -193,7 +200,7 @@
     "href": "resource/02-resource.html",
     "title": "Medición e instrumentos",
     "section": "",
-    "text": "Soep Scales Manual (2017)\nratSWD (2015) Quality Standards for the Development, Application, and Evaluation of Measurement Instruments in Social Science Survey Research\nDocumenting Measurement Instruments for the Social and Behavioral Sciences"
+    "text": "Soep Scales Manual (2017)\nratSWD (2015) Quality Standards for the Development, Application, and Evaluation of Measurement Instruments in Social Science Survey Research\nDocumenting Measurement Instruments for the Social and Behavioral Sciences\nSurvey Quality Predictor. SQP 3.0 is a survey quality prediction system for questions used in survey research."
   },
   {
     "objectID": "resource/03-resource.html",
@@ -215,6 +222,13 @@
     "title": "Tutorial formr",
     "section": "Tipos de items y campos",
     "text": "Tipos de items y campos\nEl aspecto central del cuestionario sin duda se realaciona con el diseño de items. En la planilla, el tipo de item se especifica en la columna type. Los principales son:\n\nTexto:\n\ntext: campo de texto para respuesta breve\ntextarea: campo respuesta amplia\nnote: solo texto (por ejemplo encabezados, instrucciones), no solicita respuesta\n\nBotón de salto de página:\n\nsubmit, y darle un label para poder avanzar\n\nSelección múltiple\n\n\n\n\n\n\n\ntype\ndescripción\n\n\n\n\nmc\nlista_de_elección opción múltiple (botones de radio), puede elegir solo uno.\n\n\nmc_button\nlista_elección como mc pero en lugar de que el texto aparezca junto a un botón pequeño, un botón grande contiene cada etiqueta de opción\n\n\nmc_multiple\nopción múltiple múltiple (casillas de verificación), puede elegir varios. Opciones definidas como arriba.\n\n\nmc_multiple_button\ncomo mc_multiple y mc_button controlar una sola casilla de verificación para la confirmación de una declaración.\n\n\ncheck\nun botón más grande para comprobar.\n\n\nrating_button; min, max, step\nEsto muestra la etiqueta de elección 1 a la izquierda, la etiqueta de elección 2 a la derecha y una serie de botones numerados definidos por min, max, step en el medio. Los valores predeterminados son 1,5,1.\n\n\nsex\nabreviatura de mc_button con los símbolos ♂, ♀ como opciones\n\n\nselect_one\nun menú desplegable, puede elegir solo uno select_multiple\n\n\nselect_or_add_one, choice_list, maxType\ncomo select_one, pero permite a los usuarios elegir una opción no dada. Utiliza Select2. se puede usar para establecer un límite superior en la longitud de la opción agregada por el usuario. El valor predeterminado es 255.\n\n\nselect_or_add_multiple, choice_list, maxType, maxChoose\ncomo select_multiple y select_or_add_one, permite a los usuarios agregar opciones no proporcionadas. Se puede usar para colocar un límite superior en la cantidad de opciones seleccionables.\n\n\nmc_heading, choice_list\nEste tipo le permite mostrar las etiquetas para las opciones mc o mc_multiple solo una vez. Para obtener el aspecto tabular necesario, asigne un ancho constante a las opciones (usando, por ejemplo, mc-width100), asigne al encabezado las mismas opciones que a los mcs y asigne a los siguientes mcs (o mc_multiples) las mismas clases + hide_label. En pantallas pequeñas, mc_heading se ocultará y las etiquetas se volverán a mostrar automáticamente, ya que, de lo contrario, el diseño tabular se rompería.\n\n\n\n\nUn ejemplo de encuesta con estas opciones se puede ve aquí. El archivo de origen se puede acceder aquí"
+  },
+  {
+    "objectID": "resource/04-resource.html",
+    "href": "resource/04-resource.html",
+    "title": "Encuesta Microemprendimiento INE",
+    "section": "",
+    "text": "Presentación de Martín Venegas, sociólogo UChile quien realizó su práctica en Encuesta Microemprendimiento INE."
   },
   {
     "objectID": "resource/index.html",
@@ -301,11 +315,11 @@
     "text": "La evaluación consistirá en la elaboración de dos reportes: uno de diseño (50%) y uno de análisis (50%). Este 50% de cada reporte se divide en trabajo escrito (30%), presentación (10%) e informe de corrección cruzada (10%).\nLos reportes son elaborados en grupos de máximo 3 integrantes."
   },
   {
-    "objectID": "trabajos.html#informe-1",
-    "href": "trabajos.html#informe-1",
+    "objectID": "trabajos.html#reporte-1",
+    "href": "trabajos.html#reporte-1",
     "title": "Trabajos",
-    "section": "Informe 1",
-    "text": "Informe 1\n\ngrupos de 3 integrantes\nseleccionar tema de interés general (ej: migración, género, clase social, pueblos originarios, uso del tiempo, bienestar, etc.)\ndefinir hipótesis y conceptos más específicos\ndefinir población objetivo\noperacionalizar\nbúsqueda de preguntas en bases de datos y literatura especializada\nadaptar / diseñar preguntas de distintos ámbitos y con distintas escalas de respuestas\nutilizar calificativos\n\nEntrega: - Jueves 29 de Septiembre - Formato Tradicional: archivo .pdf en tamaño carta o A4, letra Times New Roman, tamaño 12, interlineado 1,5, márgenes normales (2,5 cm superior e inferior, 3 cm derecho e izquierdo). - no más de 10 páginas - incluir referencias de la literatura / encuestas revisadas"
+    "section": "Reporte 1",
+    "text": "Reporte 1\n\nseleccionar tema de interés general (ej: migración, género, clase social, pueblos originarios, uso del tiempo, bienestar, etc.)\ndefinir hipótesis y conceptos más específicos\ndefinir población objetivo\noperacionalizar\nbúsqueda de preguntas en bases de datos y literatura especializada\nadaptar / diseñar preguntas de distintos ámbitos y con distintas escalas de respuestas\nutilizar calificativos\n\nEntrega:\n\nJueves 29 de Septiembre a través de UCursos, sección tareas\nFormato Tradicional: archivo .pdf en tamaño carta o A4, letra Times New Roman, tamaño 12, interlineado 1,5, márgenes normales (2,5 cm superior e inferior, 3 cm derecho e izquierdo).\nno más de 10 páginas\nincluir referencias de la literatura / encuestas revisadas\natrasos, 0,5 por día de atraso."
   },
   {
     "objectID": "trabajos.html#requisitos-de-aprobación",
@@ -313,19 +327,5 @@
     "title": "Trabajos",
     "section": "Requisitos de aprobación",
     "text": "Requisitos de aprobación\n\nNota mínima de aprobación: 4,0 (en escala de 1 a 7)."
-  },
-  {
-    "objectID": "trabajos.html#palabras-clave",
-    "href": "trabajos.html#palabras-clave",
-    "title": "Trabajos",
-    "section": "Palabras Clave",
-    "text": "Palabras Clave\n\nEncuestas sociales, medición, cuestionarios, análisis de datos, tablas, gráficos, visualización, reproducibilidad, reportes dinámicos"
-  },
-  {
-    "objectID": "trabajos.html#reporte-1",
-    "href": "trabajos.html#reporte-1",
-    "title": "Trabajos",
-    "section": "Reporte 1",
-    "text": "Reporte 1\n\nseleccionar tema de interés general (ej: migración, género, clase social, pueblos originarios, uso del tiempo, bienestar, etc.)\ndefinir hipótesis y conceptos más específicos\ndefinir población objetivo\noperacionalizar\nbúsqueda de preguntas en bases de datos y literatura especializada\nadaptar / diseñar preguntas de distintos ámbitos y con distintas escalas de respuestas\nutilizar calificativos\n\nEntrega:\n\nJueves 29 de Septiembre a través de UCursos, sección tareas\nFormato Tradicional: archivo .pdf en tamaño carta o A4, letra Times New Roman, tamaño 12, interlineado 1,5, márgenes normales (2,5 cm superior e inferior, 3 cm derecho e izquierdo).\nno más de 10 páginas\nincluir referencias de la literatura / encuestas revisadas\natrasos, 0,5 por día de atraso."
   }
 ]
