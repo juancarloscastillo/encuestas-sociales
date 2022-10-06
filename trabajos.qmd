@@ -35,6 +35,17 @@ Entrega:
   - Diseño y propuesta de preguntas a incluir en la encuesta
   - Hipótesis de trabajo para guiar el análisis
 
+- Criterios a evaluar:
+
+  - Manejo del tiempo
+  - Claridad en la transmisión de los contenidos
+  - Estructura apropiada
+  - Calidad del apoyo audiovisual
+  - Aplicación de conceptos aprendidos en el curso
+  - Respuestas a comentarios/preguntas
+
+
+
 ## Requisitos de aprobación
 
 - Nota mínima de aprobación: 4,0 (en escala de 1 a 7).
