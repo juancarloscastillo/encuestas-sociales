@@ -1,0 +1,17 @@
+---
+title: "Flujo de trabajo reproducible y colaborativo"
+date: "2022-10-13"
+lang: es
+---
+
+
+## Documento de presentación
+
+<iframe src=/slides/08-flujo-rep/08-flujo-rep.html height="550" width=100% allowfullscreen="true">
+</iframe>
+
+- Para ver en pantalla completa presionar F (con cursor sobre presentación)
+
+## Lecturas/material
+
+- [Protocolo reproducible IPO](https://lisa-coes.com/ipo-repro/)
