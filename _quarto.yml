@@ -79,6 +79,8 @@ website:
               file: content/05-content.qmd
             - text: "8: Flujo de trabajo"
               file: content/08-content.qmd
+            - text: "9: Documentos dinámicos & RMarkdown"
+              file: content/09-content.qmd
     - title: "Recursos"
       style: "docked"
       search: false

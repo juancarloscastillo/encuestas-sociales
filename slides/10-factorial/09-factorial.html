@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Encuestas Sociales</title>
+    <meta charset="utf-8" />
+    <meta name="author" content=".small[Juan Carlos Castillo    Departamento de Sociología - UCH / COES   ]" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link href="libs/tile-view/tile-view.css" rel="stylesheet" />
+    <script src="libs/tile-view/tile-view.js"></script>
+    <link href="libs/animate.css/animate.xaringan.css" rel="stylesheet" />
+    <script src="libs/fabric/fabric.min.js"></script>
+    <link href="libs/xaringanExtra-scribble/scribble.css" rel="stylesheet" />
+    <script src="libs/xaringanExtra-scribble/scribble.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', function() { window.xeScribble = new Scribble({"pen_color":["#FF0000"],"pen_size":3,"eraser_size":30,"palette":[]}) })</script>
+    <link rel="stylesheet" href="../../files/css/custom_2020.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+class: front
+ 
+
+
+
+
+
+
+
+
+&lt;!---
+Para correr en ATOM
+- open terminal, abrir R (simplemente, R y enter)
+- rmarkdown::render('static/docpres/07_interacciones/7interacciones.Rmd', 'xaringan::moon_reader')
+
+About macros.js: permite escalar las imágenes como [scale 50%](path to image), hay si que grabar ese archivo js en el directorio.
+---&gt;
+
+
+.pull-left[
+# Encuestas Sociales
+## Juan Carlos Castillo
+## Sociología FACSO - UChile
+## 2do Sem 2022
+## [.green[encuestas-sociales.netlify.com]](https://encuestas-sociales.netlify.com)
+]
+
+
+.pull-right[
+.right[
+&lt;br&gt;
+## .yellow[Sesión 8: Análisis factorial]
+![:scale 70%](../../files/img/eval-hires.png)
+
+]
+]
+
+---
+
+layout: true
+class: animated, fadeIn
+
+---
+class: inverse
+# Contenidos
+
+
+---
+### Objetivos de la sesión
+
+-   Problematizar los supuestos a la base de los instrumentos de
+    medición en relación a variables latentes
+
+-   Introducción al concepto y estimación de variables latentes mediante
+    análisis factorial exploratorio
+
+---
+
+# Instrumentos y error de medición
+
+---
+# Error total de encuesta
+.center[
+![:scale 60%](../../files/img/slides/ratswd-errors.png)
+]
+
+(Groves et al, 2010, en RATSWD WP 245, 2015)
+
+
+---
+class: middle
+
+.pull-left-narrow[
+# Preguntas y error de medición (1)
+]
+.pull-right-wide[
+.content-box-yellow[
+-   Para medir hechos observables simples usualmente se utiliza **una
+    pregunta** (ej: edad)
+
+-   Fenómenos complejos se miden en general con más de una pregunta, con
+    el objetivo de dar mejor cuenta del atributo (i.e. minimizar error
+    de medición)
+]]
+
+---
+class: middle
+
+.pull-left-narrow[
+# Preguntas y error de medición (2)
+]
+
+.pull-right-wide[
+.content-box-red[
+-   En este marco se asume que el **indicador es distinto del atributo**, y que la medición del atributo o variable latente conlleva error
+
+-   Cuando la el atributo se mide con más de una pregunta, se puede
+    estimar la variable latente o factor mediante técnicas de **análisis
+    factorial**
+]]
+
+
+---
+## Ejemplo (Wegener &amp; Liebig 2000)
+
+
+.center[
+  ![](../../files/img/slides/gridgroup.png)
+]
+
+
+---
+## Ejemplo (Wegener &amp; Liebig 2000)
+
+.center[
+  ![](../../files/img/slides/gridgroupfac.png)
+]
+
+---
+class: middle
+
+.pull-left-narrow[
+#  Variables latentes (1)
+]
+.pull-right-wide[
+
+-   La mayor parte de las variables en el mundo social no son
+    directamente observables. Esto las hace constructos hipotéticos
+    "latentes"
+
+-   La medición de variables latentes se realiza a partir de indicadores
+    observables, tales como ítems de un cuestionario
+]
+
+---
+class: middle
+
+.pull-left-narrow[
+#  Variables latentes (2)
+]
+.pull-right-wide[
+-   Lo latente puede ser entendido como la varianza compartida por
+    diferentes indicadores observados
+
+-   La medición de variables latentes se encuentra asociada al modelo de
+    factor común (Thurstone) y al análisis factorial
+]
+
+---
+# Factor común
+
+.pull-left[
+-   Cada indicador en un set de medidas observadas es una función lineal
+    de uno o más factores comunes y un factor único
+
+-   Como referencia podemos usar la teoría clásica de test (CTT), que
+    divide el puntaje de los indicadores entre puntaje verdadero y error
+    ]
+
+--
+
+.pull-right[
+&lt;br&gt;
+`$$X=T+E$$`
+
+`$$\sigma^{2}_{x}=\sigma^{2}_{t} + \sigma^{2}_{e}$$`
+
+Donde 
+- X= puntaje observado, 
+- T= puntaje verdadero, y 
+- E= error
+
+]
+---
+# Modelo de factor común
+
+.pull-left[
+-   La existencia de un solo ítem por constructo no permite aislar puntaje verdadero del error
+
+-   Si existen más ítems, el **análisis factorial** y
+    distinguir entre **varianza común** (compartida con otros indicadores) y **varianza única** (o error)
+]
+
+.pull-right[
+.center[
+  ![](../../files/img/slides/figure1efa.jpg)
+]
+]
+---
+# Análisis factorial
+
+-   El análisis factorial es un conjunto de métodos para explicar las
+    correlaciones entre variables en términos de entidades más generales
+    llamadas variables latentes o factores
+
+-   El o los factores darían cuenta (i.e. causarían) de la covariación
+    entre una serie de medidas observadas (indicadores)
+
+---
+# Análisis factorial
+
+-   Un factor es una variable no observada que da cuenta de las
+    correlaciones entre indicadores = los indicadores están
+    correlacionados porque comparten una causa común (*independencia
+    condicional*)
+
+
+-   Es un intento de comprensión más parsimonioso que la correlación
+    entre una serie de indicadores ya que el número de factores es menor
+    que el de indicadores
+
+
+---
+# Objetivos del análisis factorial
+
+-   Teórico: relacionar datos con dimensiones latentes basadas en
+    conceptos (validez de constructo)
+
+-   Pragmático: hacer sentido de un conjunto de datos, reducción de
+    dimensiones y obtención de puntajes
+
+-   Metodológico: aislar el error (varianza única) de la varianza común
+
+
+---
+# Alternativas en análisis factorial
+
+-   exploratorio (EFA): Permite explorar las dimensiones que subyacen a
+    una escala
+
+-   confirmatorio (CFA): Permite confirmar las dimensiones que subyacen
+    a una escala, aislando el error de medición en la estimación
+
+---
+# Análisis factorial exploratorio (EFA)
+
+-   Forma de análisis factorial donde se estiman la o las variables
+    latentes a un conjunto de indicadores, sin una especificación previa
+    de la estructura factorial.
+
+-   Preguntas a responder:
+
+    -   ¿Cuántos factores subyacen a un conjunto de indicadores?
+
+    -   ¿Cómo se relacionan los indicadores con los factores?
+
+    -   ¿Cómo es la calidad del modelo estimado?
+
+
+---
+### Características EFA
+
+-   Basado en la matriz de correlaciones
+
+-   Diferentes métodos de extracción de factores
+
+-   Determinación del número y "calidad" de las dimensiones (continuas)
+    subyacentes a una escala
+
+-   Dimensiones continuas latentes: factores
+
+-   Variables observadas: indicadores
+
+
+---
+### Bases correlación
+
+-   varianza 
+`$$\sigma^2 = \frac{\sum_{i=1}^{n}(x_i - \bar{x})^2} {n-1}=\frac{\sum_{i=1}^{n}(x_i - \bar{x})(x_i - \bar{x})} {n-1}$$`
+
+-   covarianza 
+`$$cov(x,y) = \frac{\sum_{i=1}^{n}(x_i - \bar{x})(y_i - \bar{y})} {n-1}$$`
+---
+# Correlación
+
+`$$r= \frac{\sum_{i=1}^{n}(x_i - \bar{x})(y_i - \bar{y})} {(n-1)\sigma_x \sigma_y }$$`
+
+
+- medida estandarizada de asociación entre variables continuas
+
+- varía entre -1 y 1
+
+- mientras más cercana a |1|, mayor es la correlación entre dos variables
+
+
+---
+# Matriz de correlaciones
+
+.center[
+  ![:scale 60%](../../files/img/slides/cormat1.png)
+
+Matriz hipotética de variables que miden un constructo
+
+]
+
+
+
+
+---
+# Ej. Matriz de correlaciones (1)
+
+.center[
+  ![:scale 60%](../../files/img/slides/cormat2.png)
+
+Matriz hipotética de variables que miden constructos independientes
+] 
+
+---
+# Ej. Matriz de correlaciones (2)
+
+.center[
+  ![:scale 60%](../../files/img/slides/cormat1.png)
+
+Matriz hipotética de variables que miden un constructo
+
+]
+
+---
+# Ej. Matriz de correlaciones (3)
+
+.center[
+  ![:scale 60%](../../files/img/slides/cormat3.png)
+
+Matriz hipotética de variables que miden dos constructos independientes] 
+
+
+
+
+
+---
+### Ejemplo Brown 2006 (Chap.2)
+
+.center[
+
+![:scale 50%](../../files/img/slides/brown_cormat.png)
+
+]
+
+---
+## Ejemplo Brown 2006 (Chap.2)
+
+.center[
+
+![:scale 50%](../../files/img/slides/brown_cormat.png)
+
+]
+
+---
+## Ejemplo Brown 2006 (Chap.2)
+
+.center[
+
+![](../../files/img/slides/brown_diag.png)
+
+]
+
+
+---
+### Ecuaciones fundamentales
+
+`$$y_{j}= \lambda_{j1} \eta_{1} + \lambda_{j2} \eta_{2} + ... + \lambda_{jm} \eta_{m} + \varepsilon_{j}$$`
+
+Donde
+
+-   `\(\eta\)`: factor
+
+-   `\(\lambda_{jm}\)` representa la carga factorial que relaciona al
+    indicador *j* con el factor `\(\eta\)`
+
+-   `\(\varepsilon_{j}\)` representa la varianza que es única al indicador
+    `\(y_{j}\)`
+
+
+---
+
+... aplicado al ejemplo de Brown 2006:
+
+- `\(D1=\lambda_{11}\eta_{1} + \varepsilon_{1}\)`
+- `\(D2=\lambda_{21}\eta_{1} + \varepsilon_{2}\)`
+- `\(D3=\lambda_{31}\eta_{1} + \varepsilon_{3}\)`
+- `\(D4=\lambda_{41}\eta_{1} + \varepsilon_{4}\)`
+
+
+
+---
+# Aplicado al ejemplo de Brown 2006:
+
+Reproduccion de matriz de correlaciones a patir de los parámetros del
+modelo. Ejemplo Brown 2006 cap. 2:
+
+-   VAR(D1)= `\(\sigma_{11}=\lambda_{11}\psi_{11} + \varepsilon_{1}=.83^{2}(1) + .31 = 1.00\)`
+
+-   COV(D1,D2)= `\(\sigma_{21}=\lambda_{11}\psi_{11}\lambda_{21}=(.83)(1)(.84) =.70\)`
+
+---
+# Conceptos y parámetros
+
+-   **Factores**: variables latentes que están a la base de las
+    correlaciones entre los indicadores
+
+-   **Cargas factoriales**: medida estandarizada de asociación (correlación) entre el indicador y la variable latente
+
+-   **Comunalidad**: proporción del indicador que se asocia a factor(es)
+    comun(es)
+
+---
+# Conceptos y parámetros (2)
+
+-   **Varianza única** (uniqueness): 1-comunalidad
+
+-   **Eigenvalues**: medida de proporción de la varianza total
+    correspondiente a cada uno de los factor (SS loadings)
+
+-   **Proporción de varianza** explicada por el factor = eigenvalue /
+    número de indicadores
+
+---
+### Pasos en el análisis
+
+-   Estimación de matriz de correlaciones
+
+-   Extraccion de factores
+
+-   Decisión sobre número de factores
+
+-   Rotación
+
+-   Interpretación y reporte
+
+-   Obtención de puntajes factoriales
+
+---
+
+.center[
+  ![:scale 45%](../../files/img/slides/process.png)
+]
+
+---
+## Supuestos a evaluar
+
+-   Nivel de medición de variables, normalidad
+
+-   Normalidad multivariada (test de normalidad multivariado, ej: Shapiro
+    Wilk multivariado)
+
+-   Adecuación muestal (KMO)
+.medium[
+      - varía entre 0 y 1, contrasta si las correlaciones parciales entre las variables son pequeñas.
+      
+- valores pequeños (menores a 0.5) indican que los datos no serían adecuados para EFA, ya que las correlaciones entre pares de variables no pueden ser explicadas por otras variables
+]
+
+---
+## Supuestos a evaluar (2)
+
+-   Nivel de correlaciones de la matriz: test de esfericidad de Bartlett
+
+    -   se utiliza para evaluar la hipótesis que la matriz de
+        correlaciones es una matriz identidad (diagonal 1 y bajo la
+        diagonal 0)
+
+    -   se busca significación (p `\(&lt;\)` 0.05)ya que se espera que las
+        variables estén correlacionadas
+
+
+---
+### Metodos de extracción
+
+-   Factores principales
+
+-   Factores principales iterados: estima comunalidades iterativamente,
+    reemplazandolas en la matriz de correlaciones a partir de las
+    comunalidades estimadas desde los factor loadings
+
+-   Maximum likelihood: maximiza la posibilidad de que los parametros reproduzcan los datos observados
+---
+# Instrumentos y criterios de selección del número de factores
+
+-   Criterio de Kaiser: eigenvalues mayores a 1
+
+-   Scree plot (gráfico de sedimentación)
+
+-   Análisis paralelo: comparación de eigenvalues de la muestra con
+    eigenvalues de datos aleatorios. Nº apropiado de factores: numero de
+    eigenvalues de los datos reales que son mayores que sus
+    correspondientes eigenvalues de datos aleatorios
+
+---
+## Screeplot y análisis paralelo
+
+.center[
+  ![:scale 60%](../../files/img/slides/parallel.PNG)
+]
+
+---
+## Tipos de rotación
+
+-   Ortogonal: asume que los factores no se encuentran correlacionados
+
+-   Oblicua: permite correlación entre factores
+
+.center[
+  ![:scale 60%](../../files/img/slides/rotate.PNG)
+]
+
+
+---
+### Reporte
+
+ {.scriptsize}
+ {.center}
+ {.tabular}
+l r r r r r Variable &amp; ML2 &amp; ML1 &amp; h2 &amp; u2 &amp; com BIO &amp; ** 0.86 &amp; 0.01 &amp;
+0.75 &amp; 0.25 &amp; 1.00 GEO &amp; ** 0.78 &amp; 0.02 &amp; 0.63 &amp; 0.37 &amp; 1.00 CHEM &amp; **
+0.88 &amp; -0.07 &amp; 0.75 &amp; 0.25 &amp; 1.01 ALG &amp; -0.06 &amp; ** 0.80 &amp; 0.63 &amp; 0.37 &amp;
+1.01 CALC &amp; -0.02 &amp; ** 0.98 &amp; 0.95 &amp; 0.05 &amp; 1.00 STAT &amp; 0.11 &amp; ** 0.49 &amp;
+0.29 &amp; 0.71 &amp; 1.11 SS loadings &amp; 2.14 &amp; 1.84 &amp; ML2 &amp; 1.00 &amp; 0.26 ML1 &amp;
+0.26 &amp; 1.00************
+
+
+
+[\[default\]]{#default label="default"}
+
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script src="https://multinivel.netlify.com/docpres/xaringan_custom/macros.js"></script>
+<script>var slideshow = remark.create({
+"ratio": "16:9",
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+<style>
+.logo {
+  background-image: url("../hex_multiva_white.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 16.3em;
+  right: 31em;
+  width: 110px;
+  height: 70px;
+  z-index: 0;
+}
+</style>
+
+<script>
+document
+  .querySelectorAll(
+    '.remark-slide-content' +
+    ':not(.title-slide)' +
+    // add additional classes to exclude here, e.g.
+    // ':not(.inverse)' +
+    ':not(.hide-logo)'
+  )
+  .forEach(el => {
+    el.innerHTML += '<div class="logo"></div>';
+  });
+</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

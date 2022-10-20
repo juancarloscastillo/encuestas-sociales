@@ -40,10 +40,10 @@ Jueves 6 | [**7. Presentación informe 1**]()  |   |
 |||
 -----|---------|-----------|-----------
 Jueves 13 | [**8. Flujo de trabajo reproducible**](/content/08-content.html)  |   | - [IPO](https://lisa-coes.com/ipo-repro/)
-Jueves 20 | [**9. Visualización 1: Tablas**]()  |   |
-Jueves 27 | [**10. Visualización 2: Gráficos**]()  |   |
+Jueves 20 | [**9. Reportes dinámicos**](/content/09-content.html)  |   |
+Jueves 27 | [**10. Semana de recolección de datos**]()  |   |
 <font color="orange"> **Noviembre** </font> |   |   |
 Jueves 3 | [**11. Indices y análisis factorial** ]()  |   |
-Jueves 10 | [**12. Reporte y comunicación de resultados**]()  |   |
+Jueves 10 | [**12. Resultados: tablas, gráficos, y reporte final **]()  |   |
 Jueves 17 | [**13. Foro invitados externos**]()  |  - Entrega informe 2: Análisis y reporte |
 Jueves 24 | [**14. Presentación final**]()  |   |
