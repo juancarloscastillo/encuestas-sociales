@@ -196,6 +196,20 @@
     "text": "Lecturas/material\n\nM Editor.md - editor markdown online\nTutorial Markdown online\nThe Plain Person’s Guide to Plain Text Social Science\nIntroducción a RMarkdown\nRmarkdown / Rstudio\nRmarkdown en R4DS"
   },
   {
+    "objectID": "content/10-content.html",
+    "href": "content/10-content.html",
+    "title": "Baterías e índices",
+    "section": "",
+    "text": "Para ver en pantalla completa presionar F (con cursor sobre presentación)"
+  },
+  {
+    "objectID": "content/10-content.html#video-de-la-clase",
+    "href": "content/10-content.html#video-de-la-clase",
+    "title": "Baterías e índices",
+    "section": "Video de la clase",
+    "text": "Video de la clase\n\n\n<source ?raw=1” type=“video/mp4”>"
+  },
+  {
     "objectID": "content/index.html",
     "href": "content/index.html",
     "title": "Presentaciones, lecturas y actividades",
@@ -284,7 +298,7 @@
     "href": "schedule.html",
     "title": "Planificación",
     "section": "",
-    "text": "Clases ( ): Lecturas, documentos de presentación y video (en caso que la sesión sea grabada)\nPrácticas y evaluaciones (): Actividades prácticas a desarrollar durante la semana.\nLecturas (): Llegar a la clase con los textos leídos.\n\n\n\n\n\n Clases\n Prácticas y evaluaciones\n Lecturas y material adicional\n\n\n\n\n Agosto \n\n\n\n\n\nJueves 18\n1. Presentación e introducción\n\n- Leer detalladamente programa del curso\n\n\n\n\nUNIDAD 1: DISEÑO\n\n\n\nJueves 25\n2.Encuestas: tipos, características e implementación \nFicha de Encuesta\n- Lecturas  - Font & Pasadas, cap.1: ¿Qué es una encuesta y qué no es una encuesta? - Font & Pasadas, cap.2: ¿Para qué sirve una encuesta? - Fowler Cap 1: Introduction\n\n\n Septiembre \n\n\n\n\n\nJueves 1\n3. Medición, instrumentos y estándares\n\n- RatSWD Quality standards for the design of measurement instruments\n\n\nJueves 8\n4. Preguntas, cuestionarios y aplicación\n\n- Czaja & Blair (2005) Cap. 4- Questionnaire Design, Writing the questions\n\n\nJueves 15\nRECESO\n\n\n\n\nJueves 22\n5. Diseño de cuestionarios\n\n- Czaja & Blair (2005) Cap. 5 Organizing the questions  - Czaja & Blair (2005) Cap. 6 Testing the questions\n\n\nJueves 29\n6. Asesorías grupales\n- Entrega 1: Diseño de instrumento de medición\n- Czaja & Blair (2005) Cap. 7 Designing the sample  - Czaja & Blair (2005) Cap. 8 Selecting a sample\n\n\n Octubre \n\n\n\n\n\nJueves 6\n7. Presentación informe 1\n\n\n\n\n\n\n\nUNIDAD 2: ANÁLISIS\n\n\n\nJueves 13\n8. Flujo de trabajo reproducible\n\n- IPO\n\n\nJueves 20\n9. Reportes dinámicos\n\n\n\n\nJueves 27\n10. Semana de recolección de datos\n\n\n\n\n Noviembre \n\n\n\n\n\nJueves 3\n11. Indices y análisis factorial\n\n\n\n\nJueves 10\n12. Resultados: tablas, gráficos, y reporte final \n\n\n\n\nJueves 17\n13. Foro invitados externos\n- Entrega informe 2: Análisis y reporte\n\n\n\nJueves 24\n14. Presentación final"
+    "text": "Clases ( ): Lecturas, documentos de presentación y video (en caso que la sesión sea grabada)\nPrácticas y evaluaciones (): Actividades prácticas a desarrollar durante la semana.\nLecturas (): Llegar a la clase con los textos leídos.\n\n\n\n\n\n Clases\n Prácticas y evaluaciones\n Lecturas y material adicional\n\n\n\n\n Agosto \n\n\n\n\n\nJueves 18\n1. Presentación e introducción\n\n- Leer detalladamente programa del curso\n\n\n\n\nUNIDAD 1: DISEÑO\n\n\n\nJueves 25\n2.Encuestas: tipos, características e implementación \nFicha de Encuesta\n- Lecturas  - Font & Pasadas, cap.1: ¿Qué es una encuesta y qué no es una encuesta? - Font & Pasadas, cap.2: ¿Para qué sirve una encuesta? - Fowler Cap 1: Introduction\n\n\n Septiembre \n\n\n\n\n\nJueves 1\n3. Medición, instrumentos y estándares\n\n- RatSWD Quality standards for the design of measurement instruments\n\n\nJueves 8\n4. Preguntas, cuestionarios y aplicación\n\n- Czaja & Blair (2005) Cap. 4- Questionnaire Design, Writing the questions\n\n\nJueves 15\nRECESO\n\n\n\n\nJueves 22\n5. Diseño de cuestionarios\n\n- Czaja & Blair (2005) Cap. 5 Organizing the questions  - Czaja & Blair (2005) Cap. 6 Testing the questions\n\n\nJueves 29\n6. Asesorías grupales\n- Entrega 1: Diseño de instrumento de medición\n- Czaja & Blair (2005) Cap. 7 Designing the sample  - Czaja & Blair (2005) Cap. 8 Selecting a sample\n\n\n Octubre \n\n\n\n\n\nJueves 6\n7. Presentación informe 1\n\n\n\n\n\n\n\nUNIDAD 2: ANÁLISIS\n\n\n\nJueves 13\n8. Flujo de trabajo reproducible\n\n- IPO\n\n\nJueves 20\n9. Reportes dinámicos\n\n\n\n\nJueves 27\n10. Semana de recolección de datos\n\n\n\n\n Noviembre \n\n\n\n\n\nJueves 3\nRECESO\n\n\n\n\nJueves 10\n11. Indices y análisis factorial\n\n\n\n\nJueves 17\n12. Resultados: tablas, gráficos, y reporte final \n\n\n\n\nJueves 24\n14. Presentación final\n- Entrega informe 2: Análisis y reporte"
   },
   {
     "objectID": "syllabus.html",
