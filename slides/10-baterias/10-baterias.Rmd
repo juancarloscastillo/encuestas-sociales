@@ -31,7 +31,7 @@ o en RStudio:
 
 ```{r setup, include=FALSE, cache = FALSE}
 require("knitr")
-options(htmltools.dir.version = FALSE)
+# options(htmltools.dir.version = FALSE)
 pacman::p_load(RefManageR)
 # bib <- ReadBib("../../bib/electivomultinivel.bib", check = FALSE)
 opts_chunk$set(warning=FALSE,
