@@ -83,6 +83,8 @@ website:
               file: content/09-content.qmd
             - text: "10: Baterías e índices"
               file: content/10-content.qmd
+            - text: "11: Análisis factorial"
+              file: content/11-content.qmd
     - title: "Recursos"
       style: "docked"
       search: false
@@ -98,6 +100,8 @@ website:
           file: resource/03-resource.qmd
         - text: "Encuesta Microemprendimiento"
           file: resource/04-resource.qmd
+        - text: "Práctica Análisis factorial"
+          file: resource/05-resource.qmd
 
   page-footer:
     left: |

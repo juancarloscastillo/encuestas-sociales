@@ -10,7 +10,7 @@ output:
 
 Actualmente, el diseño de cuestionarios e instrumentos de medición en el contexto del desarrollo de encuestas sociales se implementa principalmente en formato web. Incluso cuando la aplicación es cara-a-cara, crecientemente las entrevistas se encuetran mediadas por un dispositivo electrónico tipo tablet o teléfono donde se registran las respuestas. Por lo tanto, la elección de la plataforma en la cual diseñar y programar la encuesta cobra cada vez más importancia.
 
-La plataforma utilizada por defecto por el público general al momento de diseñar encuestas actualmente es Google Forms, que tiene la ventaja de ser fácil de diseñar, administrar y registrar respuestas. Sin embargo, carece de funcionalidades necesarias en investigaciones sociales (como aleatorización). Para encuestas con funciones más avanzadas existen servicios como Qualtrics y Surveymonkey, que poseen muchas ventajas en diseño de cuestionario pero que poseen limitaciones en términos de licencias pagadas y propiedad del trabajo realizado. Por ejemplo, si se deja de pagar Qualtrics, todo el trabajo de programación de la encuesta en la plataforma ya no es accesible y es difícilmente transferible a otras plataformas.
+La plataforma utilizada por defecto por el público general al momento de diseñar encuestas actualmente es **Google Forms**, que tiene la ventaja de ser fácil de diseñar, administrar y registrar respuestas. Sin embargo, carece de funcionalidades necesarias en investigaciones sociales (como seguimiento, aleatorización de preguntas y módulos, etiquetado, reproducibilidad, etc.). Para encuestas con funciones más avanzadas existen servicios como Qualtrics y Surveymonkey, que poseen muchas ventajas en diseño de cuestionario pero que poseen limitaciones en términos de licencias pagadas y propiedad del trabajo realizado. Por ejemplo, si se deja de pagar Qualtrics, todo el trabajo de programación de la encuesta en la plataforma ya no es accesible y es difícilmente transferible a otras plataformas.
 
 **`formr`** es a la vez una plataforma y una librería de `R` que permite desarrollar y administrar encuestas en un entorno caracterizado por:
 
@@ -18,21 +18,22 @@ La plataforma utilizada por defecto por el público general al momento de diseñ
 - amplia variedad de funcionalidades como aleatorización de módulos y preguntas, encuestas longitudinales, experimentos, etc.
 - programación en un entorno simple (planilla de cálculo)
 - propiedad de los contenidos (a diferencia de plataformas donde la programación de la encuesta es accesible mediante licencia pagada)
+- reproducibilidad
 - vínculo expedito con R, tanto para análisis de los datos como también para incorporar en la encuesta elementos generados mediante R / Rmarkdown
 
 Los pasos para poder utilizar formr son los siguientes:
 
-- generar una cuenta
-- crear encuesta
-- publicar encuesta
-- monitoreo de respuestas
-- obtener datos desde R
+1- generar una cuenta
+2- crear encuesta
+3- publicar encuesta
+4- monitoreo de respuestas
+5- obtener datos desde R
 
 # 1. Generar cuenta
 
 ![](../files/img/formr/webpage.png)
 
-1. abrir una cuenta en [formr.org](https://workshops.formr.org/) (en ocasiones puede que las cuentas para usuarios nuevos estén temporalmente suspendidas, en ese caso abrir una cuenta en https://workshops.formr.org/, que se utiliza para fines de aprendizaje)
+1. abrir una cuenta en [formr.org](https://formr.org/) (en ocasiones puede que las cuentas para usuarios nuevos estén temporalmente suspendidas, en ese caso abrir una cuenta en https://workshops.formr.org/, que se utiliza para fines de aprendizaje)
 
 2. confirmar el mail enviado al correo con el que se abrió la cuenta y hacer login.
 
@@ -84,20 +85,23 @@ La columna **explanations** no es considerada en la lectura de la planilla desde
 
 ## Creando la planilla
 
-- hay una planilla modelo de forms que se encuentra disponible [aquí](https://docs.google.com/spreadsheets/d/1vXJ8sbkh0p4pM5xNqOelRUmslcq2IHnY9o52RmQLKFw/). Para poder generar un archivo propio y editable a partir de este modelo se debe hacer una copia en el drive personal: ir a _archivo > hacer una copia_, y se sugiere dar un nombre que permita su clara identificación (ej: probandoencuesta)
+- hay una planilla modelo de forms que se encuentra disponible [aquí](https://docs.google.com/spreadsheets/d/1vXJ8sbkh0p4pM5xNqOelRUmslcq2IHnY9o52RmQLKFw/). Para poder generar un archivo propio y editable a partir de este modelo se debe hacer una copia en el drive personal: ir a _archivo > hacer una copia_, y se sugiere dar un nombre que permita su clara identificación (ej: probandoencuesta). **Evitar espacios y caracteres especiales**
 
 - una vez creado el archivo se debe generar permiso para que pueda ser accesible desde formr: en compartir > cualquier persona con el enlace > editor.
 
-- copiar la dirección de la planilla y pegar en la ventana de formr _sheet link_. Además, dar un nombre a la encuesta (survey name). Acá hay restricciones: debe comenzar con una letra, entre 2 y 64 caracteres, si caracteres especiales (tildes, eñes, espacios). Para este tutorial le daremos el nombre "prueba1"
+- copiar la dirección de la planilla y pegar en la ventana de formr _sheet link_. Además, dar un nombre a la encuesta (survey name).
+
+- **Tener en cuenta las restricciones para el nombre de la encuesta**: debe comenzar con una letra, entre 2 y 64 caracteres, sin caracteres especiales (tildes, eñes, espacios). Para este tutorial le daremos el nombre "prueba1"
 
 - con esto la información de la planilla debería cargarse y así se puede acceder a la encuesta desde el menú superior (Surveys). Al hacer click en la encuesta se abre la siguiente plataforma de diseño:
 
 ![](../files/img/formr/survey_platform.png)
 
-- si se presiona la opción _test survey_ se puede visualizar (renderizar) las instrucciones de la planilla, y al comparar planilla con la visualización se puede tener una idea de cómo se especifican los distintos tipos de ítems e información que aparece en la encuesta
+- si se presiona la opción _test survey_ se puede visualizar (renderizar) la encuesta creada, y al comparar planilla con la visualización se puede tener una idea de cómo se especifican los distintos tipos de ítems e información que aparece en la encuesta
+
+- modificaciones e incorporación de nuevos items: cada vez que se realiza una modificación en la planilla se debe actualizar la encuesta en formr (**no es automático**). Para ello hay que ir a _import items_ y presionar el botón al final (Upload new items). En caso que items anteriores hayan sido borrados o que la etiqueta se haya modificado (_name_ en la planilla ), mostrará una advertencia y hay que escribir el nombre de la encuesta para modificar esto.
 
 ## Tipos de items y campos
-
 
 El aspecto central del cuestionario sin duda se realaciona con el diseño de items. En la planilla, el tipo de item se especifica en la columna _type_. Los principales son:
 
@@ -127,25 +131,69 @@ select_or_add_multiple,  choice_list, maxType, maxChoose | como select_multiple 
 mc_heading, choice_list |  Este tipo le permite mostrar las etiquetas para las opciones mc o mc_multiple solo una vez. Para obtener el aspecto tabular necesario, asigne un ancho constante a las opciones (usando, por ejemplo, mc-width100), asigne al encabezado las mismas opciones que a los mcs y asigne a los siguientes mcs (o mc_multiples) las mismas clases + hide_label. En pantallas pequeñas, mc_heading se ocultará y las etiquetas se volverán a mostrar automáticamente, ya que, de lo contrario, el diseño tabular se rompería.
 
 
-
-
 Un ejemplo de encuesta con estas opciones se puede ve [aquí](https://tutorial-formr.formr.org/). El archivo de origen se puede acceder [aquí](https://docs.google.com/spreadsheets/d/1f_vfBWqoCTUWhgrlLf39AHz1ljHyGgtaCyKlOH3vPbQ/edit#gid=1611481919)
 
 
 # 3. Generar y publicar encuesta (Runs)
 
-Una vez que se ingresa la información del cuestionario se pasa a la generación y publicación de la encuesta. Para esto hay que generar un **Run** en formr. Para ello:
+En `formr` hay una diferencia importante entre la encuesta ingresada (cuestionario o _survey_) y la encuesta administrada, que se denomina **Run**. Un Run consiste en montar la o las encuestas de manera que puedan ser luego respondidas en la plataforma online. Esta distinción hace sentido ya que permite la creación de cuestionarios independientes (por ejemplo, por módulos a cargo de distintos equipos) y que luego se pueden combinar en un mismo Run. Esto además da la posibilidad de filtrar módulos completos según respuestas anteriores y de aleatorizar los módulos. Con el Run además se genera una dirección web que será luego la que se puede distribuir en el trabajo de campo de la encuesta.
+
+## Generación de un Run
 
 - desde el dashboard o el menú superior: Create run, y dar un nombre con las restricciones habituales, aparece lo siguiente:
 
 
 ![](../files/img/formr/run.png)
 
-- un Run es el diseño del estudio propiamente tal. Para ello se pueden ingresar items de distintas encuestas presentes en la cuenta, ordenar, introducir elementos adicionales como pausas, tiempos, mensaje final, etc. también desde el Run se puede visualizar la encuesta con **Test run** .
+- un Run es el diseño del estudio propiamente tal. Para ello se pueden ingresar items de distintas encuestas presentes en la cuenta, ordenar, introducir elementos adicionales como pausas, tiempos, mensaje final, etc. también desde el Run se puede visualizar la encuesta con **Test run**.
 
 
+# 4.Obtención de datos
+
+## Exportar desde formr
+
+- Directamente desde la página de formr, ir a la encuesta -> show results -> export, y exportar como csv. Luego leer desde r con data<-read.csv(nombre del archivo)
+
+## Leer desde R con la librería formr
+
+- instalar la librería `formr` (advertencia: en mi caso requirió actualizar _bioconductor_ , lo que a su vez actualiza varias librerías y tomó un rato largo. Mejor dejarlo corriendo durante la noche)
+
+- cargar librería
+Cargar/instalar librería
+```{r eval=F}
+pacman::p_load(formr)
+```
+
+- ingresar credenciales:
+
+```{r eval=F}
+formr_store_keys("encuestas.sociales.facso@gmail.com")
+```
+- ingresar cuenta gmail y password de formr en ventana emergente
+- luego pide otra cosa (keyring), invesar un password y memorizarlo/guardarlo para una siguiente ocasión
+
+- la conexión queda hecha y se pueden obtener los datos, por ejemplo:
+
+```{r eval=FALSE}
+results <- formr_results(survey_name = 'caracterizacion')
+```
+
+- tener en cuenta que los datos se obtienen de cada una de las encuestas por separado, entonces si se necesita información de otro(s) módulo(s) para el análisis se deben juntar (merge) las bases de datos. Para ello, la variable que identifica a cada caso es la sesión (session), ejemplo:
+
+```{r eval=FALSE}
+df1 %>%
+  left_join(df2
+, by='session') %>%  left_join(df3, by='session')
+```
 
 
+# Recursos y links
+
+- [Using formr to create R-powered surveys with individualized feedback, by John Paul Helveston](https://www.jhelvy.com/talks/2021-01-21-surveys-with-formr/)
+
+- [Arslan et al (2019) formr: A study framework](files/docs/arslan2019formr_paper.pdf)
+
+- [Arslan 2018 Workshop formr and data sharing ](files/docs/formr_workshop_Goettingen_09_2018.pdf)
 
 
 ---
