@@ -16,7 +16,7 @@ lang: es
 
 <div style="width: 100%; height: 600px; overflow: hidden;">
 <video  style="width: 100%;" controls>
-<source ?raw=1" type="video/mp4">
+<source src="https://www.dropbox.com/s/8rh6y7bdd1pxxi3/clase9rmarkdown.mp4?raw=1" type="video/mp4">
 </video>
 </div>
 

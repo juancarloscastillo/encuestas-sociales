@@ -18,7 +18,7 @@ Parte1
 
 <div style="width: 100%; height: 600px; overflow: hidden;">
 <video  style="width: 100%;" controls>
-<source https://www.dropbox.com/s/v0rfio77iqfh9ry/clase10baterias.mp4?raw=1" type="video/mp4">
+<source src="https://www.dropbox.com/s/v0rfio77iqfh9ry/clase10baterias.mp4?raw=1" type="video/mp4">
 </video>
 </div>
 
@@ -26,6 +26,6 @@ Parte 2
 
 <div style="width: 100%; height: 600px; overflow: hidden;">
 <video  style="width: 100%;" controls>
-<source https://www.dropbox.com/s/nvwqjlrlbv3svi0/clase10baterias-2.mp4?raw=1" type="video/mp4">
+<source src="https://www.dropbox.com/s/nvwqjlrlbv3svi0/clase10baterias-2.mp4?raw=1" type="video/mp4">
 </video> 
 </div>
