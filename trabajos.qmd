@@ -26,6 +26,19 @@ Entrega:
 - incluir referencias de la literatura / encuestas revisadas
 - atrasos, 0,5 por día de atraso.
 
+## Reporte 2 (final)
+
+- contiene dos partes:
+
+  - la primera es el informe 1 (diseño de instrumento de medición) con las correcciones correspondientes y siguendo la pauta original
+
+  - la segunda es un análisis descriptivo de los items correspondientes al módulo, eventual construcción de índices y análisis factorial, y cruces con variables de interés. Para ello deben basarse principalmente en las sesiones 10 y 11. Esta sección debe tener como máximo 10 páginas.
+
+- Entrega: lunes 28 de Noviembre (hasta las 23:59). Formato y otros: como en la entrega anterior.
+
+
+
+
 ## Presentación de trabajos
 
 - *Reporte 1*. Presentación breve (max. 10 min), considerar los siguientes contenidos (puede ser 1 por slide):
@@ -35,6 +48,12 @@ Entrega:
   - Diseño y propuesta de preguntas a incluir en la encuesta
   - Hipótesis de trabajo para guiar el análisis
 
+- *Reporte 2*. Presentación breve (max. 10 min), considerar los siguientes contenidos:
+  - Análisis descriptivo general del módulo
+  - Gráficos de distribución univariados
+  - Construcción de índices
+  - Cruces bivariados / correlaciones con variables de interés (por ej: de caracterización)
+
 - Criterios a evaluar:
 
   - Manejo del tiempo
@@ -43,8 +62,6 @@ Entrega:
   - Calidad del apoyo audiovisual
   - Aplicación de conceptos aprendidos en el curso
   - Respuestas a comentarios/preguntas
-
-
 
 ## Requisitos de aprobación
 

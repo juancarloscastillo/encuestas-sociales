@@ -41,9 +41,9 @@ Jueves 6 | [**7. Presentación informe 1**]()  |   |
 -----|---------|-----------|-----------
 Jueves 13 | [**8. Flujo de trabajo reproducible**](/content/08-content.html)  |   | - [IPO](https://lisa-coes.com/ipo-repro/)
 Jueves 20 | [**9. Reportes dinámicos**](/content/09-content.html)  |   |
-Jueves 27 | [**10. Semana de recolección de datos**]()  |   |
+Jueves 27 | [**Semana de recolección de datos**]()  |   |
 <font color="orange"> **Noviembre** </font> |   |   |
 Jueves 3 | RECESO  |   |
-Jueves 10 | [**11. Indices y análisis factorial** ](/content/09-content.html)  |   |
-Jueves 17 | [**12. Resultados: tablas, gráficos, y reporte final **]()  |   |
-Jueves 24 | [**14. Presentación final**]()  | - Entrega informe 2: Análisis y reporte  |
+Jueves 10 | [**10. Análisis de baterías e índices** ](/content/10-content.html)  |   |
+Jueves 17 | [**11. Análisis factorial **](/content/11-content.html)  |   |
+Jueves 24 | [**14. Presentación final**]()  | - Entrega informe 2: Análisis y reporte (Lunes 28) - detalles en pestaña Trabajos |
