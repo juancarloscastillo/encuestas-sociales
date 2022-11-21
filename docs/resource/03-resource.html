@@ -477,13 +477,38 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">formr_results</span>(<span class="at">survey_name =</span> <span class="st">'caracterizacion'</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<div class="callout-warning callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Advertencia
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Bugs: Problemas de conexión</strong>:</p>
+<ul>
+<li>en ocasiones he tenido problemas a la hora de re-conectar con formr, aparece el error (pero tal vez sea una cosa de mi sistema operativo, Linux-Ubuntu):</li>
+</ul>
+<pre><code>Error: lexical error: invalid char in json text.
+                                       &lt;!DOCTYPE html&gt; &lt;html&gt;     &lt;hea
+                     (right here) ------^</code></pre>
+<p>Pero en realidad ese error ocurre porque no reconoce las credenciales, si pongo una password aleatoria también aparece el error. Mi impresión es que es algún error de la librería keyring. Por lo tanto, ingresar de esta manera (que no utiliza librería keyring):</p>
+<pre><code>formr_connect(
+  email = "encuestas.sociales.facso@gmail.com",
+  password = "aqui_password",
+)</code></pre>
+<p>Arroja un warning, pero de todas maneras queda conectado.</p>
+</div>
+</div>
 <ul>
 <li>tener en cuenta que los datos se obtienen de cada una de las encuestas por separado, entonces si se necesita información de otro(s) módulo(s) para el análisis se deben juntar (merge) las bases de datos. Para ello, la variable que identifica a cada caso es la sesión (session), ejemplo:</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>df1 <span class="sc">%&gt;%</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(df2</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>, <span class="at">by=</span><span class="st">'session'</span>) <span class="sc">%&gt;%</span>  <span class="fu">left_join</span>(df3, <span class="at">by=</span><span class="st">'session'</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>df1 <span class="sc">%&gt;%</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(df2</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>, <span class="at">by=</span><span class="st">'session'</span>) <span class="sc">%&gt;%</span>  <span class="fu">left_join</span>(df3, <span class="at">by=</span><span class="st">'session'</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>

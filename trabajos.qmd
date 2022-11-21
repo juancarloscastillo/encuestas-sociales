@@ -54,6 +54,7 @@ Entrega:
   - Construcción de índices
   - Cruces bivariados / correlaciones con variables de interés (por ej: de caracterización)
 
+
 - Criterios a evaluar:
 
   - Manejo del tiempo
@@ -62,6 +63,8 @@ Entrega:
   - Calidad del apoyo audiovisual
   - Aplicación de conceptos aprendidos en el curso
   - Respuestas a comentarios/preguntas
+
+
 
 ## Requisitos de aprobación
 

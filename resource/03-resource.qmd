@@ -178,6 +178,29 @@ formr_store_keys("encuestas.sociales.facso@gmail.com")
 results <- formr_results(survey_name = 'caracterizacion')
 ```
 
+:::{.callout-warning}
+**Bugs: Problemas de conexión**:
+
+- en ocasiones he tenido problemas a la hora de re-conectar con formr, aparece el error (pero tal vez sea una cosa de mi sistema operativo, Linux-Ubuntu):
+
+```
+Error: lexical error: invalid char in json text.
+                                       <!DOCTYPE html> <html>     <hea
+                     (right here) ------^
+```
+
+Pero en realidad ese error ocurre porque no reconoce las credenciales, si pongo una password aleatoria también aparece el error. Mi impresión es que es algún error de la librería keyring. Por lo tanto, ingresar de esta manera (que no utiliza librería keyring):
+
+```
+formr_connect(
+  email = "encuestas.sociales.facso@gmail.com",
+  password = "aqui_password",
+)
+```
+
+Arroja un warning, pero de todas maneras queda conectado.
+:::
+
 - tener en cuenta que los datos se obtienen de cada una de las encuestas por separado, entonces si se necesita información de otro(s) módulo(s) para el análisis se deben juntar (merge) las bases de datos. Para ello, la variable que identifica a cada caso es la sesión (session), ejemplo:
 
 ```{r eval=FALSE}
