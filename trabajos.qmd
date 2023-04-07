@@ -5,11 +5,15 @@ lang: es
 
 ## Evaluación
 
-La evaluación consistirá en la elaboración de dos reportes: uno de diseño (50%) y uno de análisis (50%).  Este 50% de cada reporte se divide en trabajo escrito (30%), presentación (10%) e informe de corrección cruzada (10%).
+El curso tendrá dos instancias de evaluación: 
 
-Los reportes son elaborados en grupos de máximo 3 integrantes.
+- **Taller Colectivo**: Este taller grupal (60% de la nota final) tiene por objetivo aplicar los contenidos del curso a una tématica de interés específica en formato de artículo de investigación breve. Esto implica que los estudiantes deberán plantear un fenómeno social a investigar, el problema de investigación y su relevencia, precisar el argumento o hipótesis central, describir la metodología utilizada y analizar descriptivamente variables relativas a dicho fenónomeno. Consistirá en **dos informes**, uno de diseño de investigación (20%) y otro de análisis y conclusiones (40%). Los talleres son elaborados en grupos de máximo 4 integrantes.
 
-## Reporte 1
+- **Tareas Individuales**: Las tareas individuales (40% de la nota final) tienen por objetivo aplicar los contenidos del Laboratorio de Análisis de Datos y también de las clases lectivas del curso a actividades prácticas. Esto implica que los estudiantes deberán demostrar el aprendizaje de herramientas básicas de procesamiento, limpieza y manipulación de datos, además de analizar descriptivamente y visualizar variables, todo ello siendo correctamente reportado. Consistirán en **tres tareas individuales** a lo largo del semestre, en donde cada una equivaldrá a un 13.3%. 
+
+## Taller Colectivo
+
+### Informe 1
 
 - Seleccionar tema de interés general (ej: migración, género, clase social, pueblos originarios, uso del tiempo, bienestar, etc.)
 - Definir objeto de estudio: este objeto debe tener una definición y también una justificación breve de su relevancia. La definición debe basarse idealmente en literatratura pertinente y actualizada (app. 1 página). En esta sección también se espera que se mencione qué instrumentos han sido utilizados para medir este concepto en encuestas.
@@ -26,46 +30,21 @@ Entrega:
 - incluir referencias de la literatura / encuestas revisadas
 - atrasos, 0,5 por día de atraso.
 
-## Reporte 2 (final)
-
-- contiene dos partes:
-
-  - la primera es el informe 1 (diseño de instrumento de medición) con las correcciones correspondientes y siguendo la pauta original
-
-  - la segunda es un análisis descriptivo de los items correspondientes al módulo, eventual construcción de índices y análisis factorial, y cruces con variables de interés. Para ello deben basarse principalmente en las sesiones 10 y 11. Esta sección debe tener como máximo 10 páginas.
-
-- Entrega: lunes 28 de Noviembre (hasta las 23:59). Formato y otros: como en la entrega anterior.
+### Informe 2
 
 
 
 
-## Presentación de trabajos
 
-- *Reporte 1*. Presentación breve (max. 10 min), considerar los siguientes contenidos (puede ser 1 por slide):
+## Tareas Individuales
 
-  - Objeto de estudio
-  - Operacionalización
-  - Diseño y propuesta de preguntas a incluir en la encuesta
-  - Hipótesis de trabajo para guiar el análisis
+### Tarea 1
 
-- *Reporte 2*. Presentación breve (max. 10 min), considerar los siguientes contenidos:
-  - Análisis descriptivo general del módulo
-  - Gráficos de distribución univariados
-  - Construcción de índices
-  - Cruces bivariados / correlaciones con variables de interés (por ej: de caracterización)
+### Tarea 2
+
+### Tarea 3
 
 
-- Criterios a evaluar:
-
-  - Manejo del tiempo
-  - Claridad en la transmisión de los contenidos
-  - Estructura apropiada
-  - Calidad del apoyo audiovisual
-  - Aplicación de conceptos aprendidos en el curso
-  - Respuestas a comentarios/preguntas
-
-
-
-## Requisitos de aprobación
+# Requisitos de aprobación
 
 - Nota mínima de aprobación: 4,0 (en escala de 1 a 7).

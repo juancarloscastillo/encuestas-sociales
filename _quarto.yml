@@ -22,24 +22,24 @@ bibliography: files/bib/references.bib
 csl: files/bib/chicago-author-date.csl
 
 website:
-  title: "Encuestas Sociales"
+  title: "Estadística Descriptiva"
   site-url: "https://encuestas-sociales.netlify.app"
-  description-meta: "Diseño, análisis, reporte y visualización de encuestas sociales"
-  favicon: "/files/icon-513.png"
+  #description: "Diseño, análisis, reporte y visualización de encuestas sociales"
+  favicon: "/files/logo-removebg-preview.png"
 
   twitter-card:
     image: "/files/social-image-f22.png"
     card-style: summary_large_image
-    creator: "@juankcastillo"
-    site: "@juankcastillo"
+    creator: "@andreaslaffert"
+    site: "@andreaslaffert"
 
   open-graph:
-    image: "/files/social-image-f22.png"
+    image: "/files/logo.png"
     locale: en_US
 
   navbar:
     pinned: true
-    background: "#08C4C4"
+    background: "#069393"
     right:
       - syllabus.qmd
       - schedule.qmd
@@ -52,9 +52,8 @@ website:
       - trabajos.qmd
       - text: "Recursos"
         file: resource/index.qmd
-      - icon: slack
-        href: "https://www.slack.com"
-        aria-label: Slack
+      - text: "RStudio Cloud"
+        href: "https://login.rstudio.cloud/login?redirect=%2F"
 
   sidebar:
     - title: "Contenidos"
@@ -92,16 +91,10 @@ website:
       contents:
         - text: "Descripción"
           file: resource/index.qmd
-        - text: "Ejemplos encuestas"
+        - text: "Bases de Datos"
           file: resource/01-resource.qmd
-        - text: "Medición e instrumentos"
+        - text: "Uso de R"
           file: resource/02-resource.qmd
-        - text: "Tutorial formr"
-          file: resource/03-resource.qmd
-        - text: "Encuesta Microemprendimiento"
-          file: resource/04-resource.qmd
-        - text: "Práctica Análisis factorial"
-          file: resource/05-resource.qmd
 
   page-footer:
     left: |

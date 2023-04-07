@@ -1,9 +1,8 @@
 ---
-title: "Encuestas Sociales"
-subtitle: "Diseño, análisis y reporte"
+title: "Estadística Descriptiva"
 lang: es
 details: |
-  SOC01210-1 • Segundo Semestre 2022<br>Departamento de Sociología FACSO<br>Universidad de Chile
+  SOC01014-1 • Primer Semestre 2023<br>Departamento de Sociología FACSO<br>Universidad de Chile
 sidebar: false
 toc: false
 page-layout: full
@@ -11,7 +10,7 @@ format:
   html:
     template-partials:
       - html/home/title-block.html
-course-logo: /files/img/eval-hires.png
+course-logo: /files/img/logo.png
 ---
 
 ```{r set-dependencies, include=FALSE, eval=FALSE}
@@ -32,8 +31,15 @@ withr::with_dir(here::here(), {
 - {{< fa user >}} &nbsp; [{{< var instructor.name >}}]({{< var instructor.url >}})
 - {{< fa university >}} &nbsp; {{< var instructor.office >}}
 - {{< fa envelope >}} &nbsp; <a href="mailto:{{< var instructor.email >}}">{{< var instructor.email >}}</a>
-- {{< fa brands twitter >}} &nbsp; [{{< var instructor.twitter >}}](https://www.twitter.com/{{< var instructor.twitter >}})
-- {{< fa calendar-check >}} &nbsp; [Reuniones]({{< var instructor.appointment_url >}})
+:::
+
+::: {.g-col-4}
+### Equipo docente
+
+- {{< fa user >}} &nbsp; Daniela Olivares
+- {{< fa envelope >}} &nbsp; <a href="mailto:{{< var other2.email >}}">{{< var other2.email >}}</a>
+- {{< fa user >}} &nbsp; Andreas Laffert
+- {{< fa envelope >}} &nbsp; <a href="mailto:{{< var other.email >}}">{{< var other.email >}}</a>
 :::
 
 ::: {.g-col-4}
@@ -43,7 +49,6 @@ withr::with_dir(here::here(), {
 - {{< fa calendar-alt >}} &nbsp; {{< var course.dates >}}
 - {{< fa clock >}} &nbsp; {{< var course.time >}}
 - {{< fa location-dot >}} &nbsp; {{< var course.location >}}
-- {{< fa brands slack >}} &nbsp; [Slack]({{< var course.slack >}})
 :::
 
 ::: {.g-col-4 .contact-policy}

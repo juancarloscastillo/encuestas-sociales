@@ -5,45 +5,12 @@ toc: false
 page-layout: full
 ---
 
-Los dos componentes centrales del curso son las clases teóricas y las actividades prácticas. Las **clases** se realizarán los días **Jueves  14:30 a 16:30** en sala **43**
+Los dos componentes centrales del curso son las clases lectivas y las sesiones de Laboratorio de Análisis de Datos. Las **clases** se realizarán los días **Jueves 08:30 a 11:45 ** en sala **sala 7 y 8 del Aulario A**
+
+-   [**Clases**]() (<i class="fas fa-chalkboard-teacher"></i> ): Lecturas y  documentos de presentación.
+
+-   [**Prácticas**]() (<i class="fas fa-user-edit"></i>): Actividades prácticas en Laboratorio de Análisis de Datos a desarrollar durante el semestre.
+
+-   [**Lecturas**]() (<i class="fas fa-book-reader"></i>): Llegar a la clase con los textos leídos.
 
 
-- [**Clases**]() (<i class="fas fa-chalkboard-teacher"></i> ): Lecturas, documentos de presentación y video (en caso que la sesión sea grabada)
-
-- [**Prácticas y evaluaciones**]() (<i class="fas fa-user-edit"></i>): Actividades prácticas a desarrollar durante la semana.
-
-- [**Lecturas**]() (<i class="fas fa-book-reader"></i>): Llegar a la clase con los textos leídos.
-
-
-
-| |<i class="fas fa-chalkboard-teacher"></i>  Clases  |  <i class="fas fa-user-edit"></i>  Prácticas y evaluaciones | <i class="fas fa-book-reader"></i> Lecturas y material adicional
------|----|-----------|-----------
-<font color="orange"> **Agosto** </font> |   |   |
-Jueves 18 | [**1. Presentación e introducción**](/content/01-content.html)  |   | - Leer detalladamente [programa del curso](syllabus.html)
-
-### UNIDAD 1: DISEÑO
-
-|||
------|-----|-----------|-----------
-Jueves 25 | [**2.Encuestas: tipos, características e implementación **](/content/02-content.html)   |  [Ficha de Encuesta](02-content.html#actividad-ficha-de-encuestas)  | - [Lecturas](01-content.html#lecturas) <br> - [Font & Pasadas, cap.1: ¿Qué es una encuesta y qué no es una encuesta?](files/lecturas/Font&Pasadas2016LasEncuestasdeOpinion.pdf) <br>- [Font & Pasadas, cap.2: ¿Para qué sirve una encuesta?](files/lecturas/Font&Pasadas2016LasEncuestasdeOpinion.pdf) <br>- [Fowler Cap 1: Introduction](files/lecturas/Fowler2013Survey Research Methods.pdf)
-<font color="orange"> **Septiembre** </font> |   |   |
-Jueves 1 | [**3. Medición, instrumentos y estándares**](/content/03-content.html)  |   | - [RatSWD Quality standards for the design of measurement instruments](files/lecturas/RatSWD_WP_245.pdf)
-Jueves 8 | [**4. Preguntas, cuestionarios y aplicación**](/content/04-content.html)  |   | [- Czaja & Blair (2005) Cap. 4- Questionnaire Design, Writing the questions](files/lecturas/Czaja&Blair2005Designing-Surveys.pdf)
-Jueves 15 | RECESO  |   |
-Jueves 22 | [**5. Diseño de cuestionarios**](/content/05-content.html)  |   | - [Czaja & Blair (2005) Cap. 5 Organizing the questions <br> - Czaja & Blair (2005) Cap. 6  Testing  the questions](files/lecturas/Czaja&Blair2005Designing-Surveys.pdf)
-Jueves 29 | [**6. Asesorías grupales**]()  | - Entrega 1: Diseño de instrumento de medición  |- [Czaja & Blair (2005) Cap. 7 Designing the sample <br> - Czaja & Blair (2005) Cap. 8  Selecting a sample](files/lecturas/Czaja&Blair2005Designing-Surveys.pdf)
-<font color="orange"> **Octubre** </font> |   |   |
-Jueves 6 | [**7. Presentación informe 1**]()  |   |
-
-### UNIDAD 2: ANÁLISIS
-
-|||
------|---------|-----------|-----------
-Jueves 13 | [**8. Flujo de trabajo reproducible**](/content/08-content.html)  |   | - [IPO](https://lisa-coes.com/ipo-repro/)
-Jueves 20 | [**9. Reportes dinámicos**](/content/09-content.html)  |   |
-Jueves 27 | [**Semana de recolección de datos**]()  |   |
-<font color="orange"> **Noviembre** </font> |   |   |
-Jueves 3 | RECESO  |   |
-Jueves 10 | [**10. Análisis de baterías e índices** ](/content/10-content.html)  |   |
-Jueves 17 | [**11. Análisis factorial **](/content/11-content.html)  |   |
-Jueves 24 | [**14. Presentación final**]()  | - Entrega informe 2: Análisis y reporte (Lunes 28) - detalles en pestaña Trabajos |

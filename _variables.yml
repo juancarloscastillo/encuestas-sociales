@@ -1,26 +1,28 @@
-author: Juan Carlos Castillo
+author: Andreas Laffert
 
 instructor:
-  name: Juan Carlos Castillo
-  name_no_title: Juan Castillo
-  email: juancastillov@uchile.cl
-  url: "https://www.jc-castillo.com"
-  twitter: juankcastillo
-  github: juancarloscastillo
+  name: Rodrigo Asún
+  name_no_title: Andreas Laffert
+  email: rasun@uchile.cl
   office: "Departamento de Sociología FACSO"
   contact_policy: >-
-    A través de Slack o correo
-  appointment_url: https://jc-castillo.com/contacto/
+    A través de correo o U-Cursos
+
+other:
+  email: andreas.laffert@ug.uchile.cl
+
+other2:
+  email: dsolivares@uc.cl
 
 course:
-  number: "SOC01210-1"
-  semester: "Segundo Semestre 2022"
+  number: "SOC01014-1"
+  semester: "Primer Semestre 2023"
   days: "Jueves"
-  time: "14:30-16:30 PM"
-  location: "Sala 43 FACSO"
-  dates: "Agosto 18–Noviembre 17, 2022"
+  time: "8:30 AM - 11:45 AM"
+  location: "Aulario A - sala 7 y 8"
+  dates: "Marzo–Julio, 2023"
   github: "https://github.com/juancarloscastillo/encuestas-sociales"
-  copyright_year: "2022"
+  copyright_year: "2023"
   slack: ""
 
 university:
