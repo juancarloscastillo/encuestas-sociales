@@ -1,15 +1,76 @@
 ---
-title: "Presentación"
-date: "2022-08-18"
+title: "Práctica 1. Introducción al lenguaje R"
+date: "2023-04-13"
 lang: es
+output:
+  number_sections: true
 ---
 
-## Documento de presentación
+# Presentación
 
-<iframe src="/slides/01-presentacion/01-presentacion.html" height="550" width="100%" allowfullscreen="true">
+## 0. Objetivo de la práctica
 
-</iframe>
+El objetivo de esta guía es introducirnos en los procedimientos básicos del uso del lenguaje y ambiente R, así como conocer las herramientas que permiten establecer un flujo de trabajo en R.
 
-## Lecturas
+En detalle, aprenderemos:
 
-Font & Pasadas (2016) ¿Qué sabemos de las encuestas de opinión? Madrid: CSIC. pp 1-54
+1.  Cómo abrir y ordenar un **script**
+
+2.  Cómo crear un **Rproject** y establecer un esquema de carpetas siguiendo el protocolo [IPO](https://lisa-coes.com/ipo-data/)
+
+3.  R como calculadora
+
+4.  Lenguaje orientado a objetos
+
+5.  Librerías y paquetes
+
+## 1. Crear un script (.R)
+
+## 2. Crear un proyecto de R (.Rproj) y un flujo de trabajo reproducible
+
+## 3. R como calculadora
+
+```{r, eval=FALSE}
+5+5
+
+25/5
+
+2*2
+
+27-2
+```
+
+Operatoria con más cálculos
+
+```{r, eval=FALSE}
+
+sqrt(2^4 + exp(3)/55 - log(5*8-2))
+
+12*(7+2)+(45-32)+8
+
+520 + 202 * log(25)
+
+2 + 4 * exp(3)
+
+22^2 - 2^2
+
+log(5) + pi/sqrt(5)
+
+52 + 203 + 1002 + 204
+
+```
+
+R como calculadora lógica
+
+```{r, eval=TRUE}
+20 == 5 # igualdad
+30 >= 14 # mayor o igual que
+22 <= 2 # menor o igual que
+25 != 10 # no es igual a
+p = 10; y = 5; p <= y # operatoria en objetos
+
+```
+
+## 4. Un lenguaje orientado a objetos
+
+## 5. Paquetes y librerías

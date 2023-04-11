@@ -23,7 +23,7 @@ csl: files/bib/chicago-author-date.csl
 
 website:
   title: "Estadística Descriptiva"
-  site-url: "https://encuestas-sociales.netlify.app"
+  site-url: "https://descriptiva-facso.netlify.app"
   #description: "Diseño, análisis, reporte y visualización de encuestas sociales"
   favicon: "/files/logo-removebg-preview.png"
 
@@ -95,6 +95,8 @@ website:
           file: resource/01-resource.qmd
         - text: "Uso de R"
           file: resource/02-resource.qmd
+        - text: "Factorial"
+          file: resource/05-resource.qmd
 
   page-footer:
     left: |
