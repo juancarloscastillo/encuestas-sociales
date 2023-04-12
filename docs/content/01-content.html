@@ -126,12 +126,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 <meta property="og:title" content="Estadística Descriptiva - Práctica 1. Introducción al lenguaje R">
+<meta property="og:description" content="Hoy aprendimos distintas herramientas básicas para establecer un flujo de trabajo y poder utilizar el lenguaje y ambiente R. Como resumen:">
 <meta property="og:image" content="https://descriptiva-facso.netlify.app/files/logo.png">
 <meta property="og:site-name" content="Estadística Descriptiva">
 <meta property="og:locale" content="en_US">
 <meta property="og:image:height" content="500">
 <meta property="og:image:width" content="500">
 <meta name="twitter:title" content="Estadística Descriptiva - Práctica 1. Introducción al lenguaje R">
+<meta name="twitter:description" content="Hoy aprendimos distintas herramientas básicas para establecer un flujo de trabajo y poder utilizar el lenguaje y ambiente R. Como resumen:">
 <meta name="twitter:image" content="https://descriptiva-facso.netlify.app/files/social-image-f22.png">
 <meta name="twitter:creator" content="@andreaslaffert">
 <meta name="twitter:site" content="@andreaslaffert">
@@ -242,13 +244,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#presentación" id="toc-presentación" class="nav-link active" data-scroll-target="#presentación">Presentación</a>
   <ul class="collapse">
   <li><a href="#objetivo-de-la-práctica" id="toc-objetivo-de-la-práctica" class="nav-link" data-scroll-target="#objetivo-de-la-práctica">0. Objetivo de la práctica</a></li>
-  <li><a href="#flujo-de-trabajo-en-r" id="toc-flujo-de-trabajo-en-r" class="nav-link" data-scroll-target="#flujo-de-trabajo-en-r">1. Flujo de trabajo en R</a></li>
+  <li><a href="#flujo-de-trabajo-en-r" id="toc-flujo-de-trabajo-en-r" class="nav-link" data-scroll-target="#flujo-de-trabajo-en-r">1. Flujo de trabajo en R</a>
+  <ul class="collapse">
+  <li><a href="#cómo-crear-un-script-.r" id="toc-cómo-crear-un-script-.r" class="nav-link" data-scroll-target="#cómo-crear-un-script-.r">1.1 Cómo crear un script (.R)</a></li>
+  <li><a href="#cómo-crear-un-proyecto-.rproj" id="toc-cómo-crear-un-proyecto-.rproj" class="nav-link" data-scroll-target="#cómo-crear-un-proyecto-.rproj">1.2 Cómo crear un proyecto (.Rproj)</a></li>
+  </ul></li>
   <li><a href="#conocimientos-básicos-de-programación" id="toc-conocimientos-básicos-de-programación" class="nav-link" data-scroll-target="#conocimientos-básicos-de-programación">2. Conocimientos básicos de programación</a>
   <ul class="collapse">
   <li><a href="#r-como-calculadora" id="toc-r-como-calculadora" class="nav-link" data-scroll-target="#r-como-calculadora">2.1 R como calculadora</a></li>
   <li><a href="#un-lenguaje-orientado-a-objetos" id="toc-un-lenguaje-orientado-a-objetos" class="nav-link" data-scroll-target="#un-lenguaje-orientado-a-objetos">2.2 Un lenguaje orientado a objetos</a></li>
   <li><a href="#operadores-en-r" id="toc-operadores-en-r" class="nav-link" data-scroll-target="#operadores-en-r">2.3 Operadores en R</a></li>
-  <li><a href="#usando-funciones" id="toc-usando-funciones" class="nav-link" data-scroll-target="#usando-funciones">2.4 Usando funciones</a></li>
   </ul></li>
   <li><a href="#tipos-de-datos" id="toc-tipos-de-datos" class="nav-link" data-scroll-target="#tipos-de-datos">3. Tipos de datos</a>
   <ul class="collapse">
@@ -256,6 +261,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#qué-tipos-de-datos-encontramos-en-r" id="toc-qué-tipos-de-datos-encontramos-en-r" class="nav-link" data-scroll-target="#qué-tipos-de-datos-encontramos-en-r">3.2 ¿Qué tipos de datos encontramos en R?</a></li>
   </ul></li>
   </ul></li>
+  <li><a href="#resumen" id="toc-resumen" class="nav-link" data-scroll-target="#resumen">Resumen</a></li>
   </ul>
 </nav>
     </div>
@@ -278,14 +284,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>En detalle, aprenderemos:</p>
 <ol type="1">
 <li><p>Cómo establecer un flujo de trabajo mediante <strong>scripts</strong> y <strong>Rprojects</strong> siguiendo el protocolo <a href="https://lisa-coes.com/ipo-data/">IPO</a></p></li>
-<li><p>R como calculadora</p></li>
-<li><p>Lenguaje orientado a objetos</p></li>
-<li><p>Usando funciones</p></li>
+<li><p>Herramientas básicas de programación en R</p></li>
 <li><p>Tipos de datos</p></li>
 </ol>
 </section>
 <section id="flujo-de-trabajo-en-r" class="level2">
 <h2 class="anchored" data-anchor-id="flujo-de-trabajo-en-r">1. Flujo de trabajo en R</h2>
+<section id="cómo-crear-un-script-.r" class="level3">
+<h3 class="anchored" data-anchor-id="cómo-crear-un-script-.r">1.1 Cómo crear un script (.R)</h3>
+<p>Para empezar a trabajar en el lenguaje R, lo primero es aprender a crear y organizar un <em>script</em>. ¿Qué es un script? En términos sencillos, un script es la <em>hoja</em> en donde escribremos y guardaremos nuestros códigos para procesar y analizar datos. Es importante utilizar los script ya que nos permiten mantener ordenada y con respaldo todos nuestros procedimientos, para poder usarlos posteriormente, reproducirlos o compartirlos.</p>
+<p>¿Cómo puedo abrir un nuevo script? Hacerlo es bastante sencillo. En la sección superior izquierda de RStudio, debe hacerse click en la hoja con un signo + verde y, luego, seleccionar la opción R Script en el menú desplegado:</p>
+<p>Otra forma de hacerlo es en File de la barra superior: <strong>File &gt; New File &gt; R Script</strong>.</p>
+<p>También contamos con atajos para crear un script, utlizando las <strong>Ctrl + Shift + N</strong> en Windows o <strong>Cmmd + Shift + N</strong> en Mac.</p>
+<p>Una vez creamos un script, podremos escribir en él los códigos, que se ejecutarán en la consola una vez mantengamos presionadas las teclas Control + Enter al inicio de la línea.</p>
+<p>Para guardar nuestro script y todo lo que hayamos escrito en él, podemos hacer click en el disquete situado en la barra que se encuentra sobre el código, o bien, aplicar el atajo <strong>Ctrl/Cmmd + S</strong> (el archivo siempre se actualizará a la última versión que hayamos guardado).</p>
+<p>La primera vez que guardemos nuestro script nos pedirá darle un directorio donde deseamos almacenar nuestro script, y asignarle un nombre determinado el cual, ojalá, enga que ver con los procedimientos que hayamos ejecutado en este (por ejemplo, procesamiento o análisis).</p>
+</section>
+<section id="cómo-crear-un-proyecto-.rproj" class="level3">
+<h3 class="anchored" data-anchor-id="cómo-crear-un-proyecto-.rproj">1.2 Cómo crear un proyecto (.Rproj)</h3>
+</section>
 </section>
 <section id="conocimientos-básicos-de-programación" class="level2">
 <h2 class="anchored" data-anchor-id="conocimientos-básicos-de-programación">2. Conocimientos básicos de programación</h2>
@@ -437,54 +454,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] FALSE</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="usando-funciones" class="level3">
-<h3 class="anchored" data-anchor-id="usando-funciones">2.4 Usando funciones</h3>
-<p>R tiene una gran colección de funciones, las cuales van desde procedimientos muy simples hasta modelos o algoritmos complejos.</p>
-<p>Algunas de las funciones básicas para el uso de R son aquellas para cálculos aritméticos, las secuencias y repeteciones, y los mínimos y máximos.</p>
-<ul>
-<li>Aritméticas</li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="dv">20</span> <span class="sc">*</span> <span class="fu">log</span>(<span class="dv">25</span>)</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 64.37752</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">+</span> <span class="dv">4</span> <span class="sc">*</span> <span class="fu">exp</span>(<span class="dv">3</span>)</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 82.34215</span></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="dv">2</span>) <span class="sc">+</span> <span class="dv">100</span></span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 101.4142</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<ul>
-<li>Secuencias</li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">:</span><span class="dv">3</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 1 2 3</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">1</span>, <span class="at">to =</span> <span class="dv">3</span>)</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 1 2 3</span></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>)</span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 1 2 3</span></span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">1</span>, <span class="at">to =</span> <span class="dv">100</span>, <span class="at">by =</span> <span class="dv">2</span>)</span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1]  1  3  5  7  9 11 13 15 17 19 21 23 25 27 29 31 33 35 37 39 41 43 45 47 49</span></span>
-<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="do">## [26] 51 53 55 57 59 61 63 65 67 69 71 73 75 77 79 81 83 85 87 89 91 93 95 97 99</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<ul>
-<li>Repeticiones</li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">times =</span> <span class="dv">2</span>) <span class="co"># la función rep permite repetir una secuencia determinanda cantidad de veces (times) </span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 1 2 3 1 2 3</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">each =</span> <span class="dv">2</span>) <span class="co"># también podemos indicarles cuantas veces quiero que se repita una secuencia</span></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 1 1 2 2 3 3</span></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">times =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>))</span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 1 1 2 2 3 3</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
 </section>
 <section id="tipos-de-datos" class="level2">
 <h2 class="anchored" data-anchor-id="tipos-de-datos">3. Tipos de datos</h2>
@@ -496,13 +465,68 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="qué-tipos-de-datos-encontramos-en-r" class="level3">
 <h3 class="anchored" data-anchor-id="qué-tipos-de-datos-encontramos-en-r">3.2 ¿Qué tipos de datos encontramos en R?</h3>
+<p>Para responder esta pregunta, ¡metamos nuestras manos en los datos!. En esta oportunidad trabajaremos sobre un subset de datos del Modulo de Desigualdad Social de la encuesta <a href="https://www.gesis.org/en/issp/home">International Social Survey Programme del 2019</a>. Esta base la descargaremos directamente desde internet por esta vez (en futuras sesiones aprenderemos cómo cargar bases de datos).</p>
 <div class="cell">
-
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">#cargamos la base de datos desde internet</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="fu">url</span>(<span class="st">"https://github.com/Andreas-Lafferte/descriptiva/blob/main/data/db-proc.RData?raw=true"</span>))</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(rand_df) <span class="co"># ver primeros casos de la base</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       pais edad   sexo          ideologia percepcion_conflictos
+1     Suiza   23 Hombre          Izquierda                     2
+2     Chile   27  Mujer Sin identificación                     2
+3     Rusia   43  Mujer Sin identificación                     1
+4 Finlandia   71  Mujer Sin identificación                     1
+5     Japon   54  Mujer          Izquierda                     2
+6  Lituania   67  Mujer Sin identificación                     1</code></pre>
 </div>
-
-
+</div>
+<section id="i-character" class="level4">
+<h4 class="anchored" data-anchor-id="i-character">I) Character</h4>
+<p>Los datos <code>character</code> están directamente asociados a las variables cualitativas (o categóricas). Generalmente suelen ser variables de texto abierto, como es el caso de la variable <strong>pais</strong>, que detalla el país de procedencia de la persona encuestada.</p>
+<p>Para conocer cuál es el tipo de variable en R, utilizamos el comando <code>class()</code>, y para detallar dentro de la base de datos cuál es la variable de interés, utilizamos el símbolo <code>$</code> posterior a la base de datos:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(rand_df<span class="sc">$</span>pais) <span class="co"># siempre es la misma estructura = base$variable</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] "character"</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Sin embargo, estas variables no tienden a ser las mejores a la hora de presentar nuestros resultados. Como solución, tenemos las variables de tipo Factor.</p>
+</section>
+<section id="ii-factor" class="level4">
+<h4 class="anchored" data-anchor-id="ii-factor">II) Factor</h4>
+<p>Las variables de tipo <code>factor</code> son ideales para trabajar con variables de tipo nominal u ordinal. Esto es así debido a que permiten establecer un orden entre las categorías de la variable, lo cual es fundamental si trabajamos, por ejemplo, con variables nominales como el sexo de los encuestados, o si trabajamos con variables ordinales como su ideología política.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(rand_df<span class="sc">$</span>sexo)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] "factor"</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(rand_df<span class="sc">$</span>ideologia)</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] "factor"</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="iii-numeric" class="level4">
+<h4 class="anchored" data-anchor-id="iii-numeric">III) Numeric</h4>
+<p>Las variables de tipo <code>numeric</code> son variables de tipo númerica, las cuales pueden ser intervales o de razón. Así, por ejemplo, cuando trabajamos con variables de razón trabajamos con variables como el número de hijos o la edad (aunque sería extraño encuestar a alguien con 0 años). Mientras que cuando trabajamos con variables intervales podemos utilizar variables como escalas en donde el cero no significa la ausencia de valor, como es el caso de la variable <strong>percepcion_conflicto</strong>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(rand_df<span class="sc">$</span>edad)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] "numeric"</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(rand_df<span class="sc">$</span>percepcion_conflictos)</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] "numeric"</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 </section>
+</section>
+</section>
+<section id="resumen" class="level1">
+<h1>Resumen</h1>
+<p>Hoy aprendimos distintas herramientas básicas para establecer un flujo de trabajo y poder utilizar el lenguaje y ambiente R. Como resumen:</p>
+<ul>
+<li><p>Flujos de trabajo mediante <strong>scripts</strong> (hojas) y <strong>proyectos</strong> (.Rproj) siguiendo el sistema IPO = Input - Procesamiento - Output</p></li>
+<li><p>Utilizar R como calculadora, su lógica orientada a objetos creando objetos, vectores y data.frames, y sus operadores</p></li>
+<li><p>Tipos de datos en R como variables cualitativas (character o factor) y cuantitativas (numeric)</p></li>
+</ul>
+
+
 </section>
 
 </main> <!-- /main -->

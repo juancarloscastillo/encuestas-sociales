@@ -16,15 +16,32 @@ En detalle, aprenderemos:
 
 1. Cómo establecer un flujo de trabajo mediante **scripts** y **Rprojects** siguiendo el protocolo [IPO](https://lisa-coes.com/ipo-data/)
 
-2.  R como calculadora
+2.  Herramientas básicas de programación en R
 
-3.  Lenguaje orientado a objetos
-
-4.  Usando funciones
-
-5.  Tipos de datos
+3.  Tipos de datos
 
 ## 1. Flujo de trabajo en R
+
+### 1.1 Cómo crear un script (.R)
+
+Para empezar a trabajar en el lenguaje R, lo primero es aprender a crear y organizar un _script_. ¿Qué es un script? En términos sencillos, un script es la _hoja_ en donde escribremos y guardaremos nuestros códigos para procesar y analizar datos. Es importante utilizar los script ya que nos permiten mantener ordenada y con respaldo todos nuestros procedimientos, para poder usarlos posteriormente, reproducirlos o compartirlos.
+
+¿Cómo puedo abrir un nuevo script? Hacerlo es bastante sencillo. En la sección superior izquierda de RStudio, debe hacerse click en la hoja con un signo + verde y, luego, seleccionar la opción R Script en el menú desplegado:
+
+Otra forma de hacerlo es en File de la barra superior: **File > New File > R Script**.
+
+También contamos con atajos para crear un script, utlizando las **Ctrl + Shift + N** en Windows o **Cmmd + Shift + N** en Mac.
+
+Una vez creamos un script, podremos escribir en él los códigos, que se ejecutarán en la consola una vez mantengamos presionadas las teclas Control + Enter al inicio de la línea. 
+
+Para guardar nuestro script y todo lo que hayamos escrito en él, podemos hacer click en el disquete situado en la barra que se encuentra sobre el código, o bien, aplicar el atajo **Ctrl/Cmmd + S** (el archivo siempre se actualizará a la última versión que hayamos guardado). 
+
+La primera vez que guardemos nuestro script nos pedirá darle un directorio donde deseamos almacenar nuestro script, y asignarle un nombre determinado el cual, ojalá, enga que ver con los procedimientos que hayamos ejecutado en este (por ejemplo, procesamiento o análisis). 
+
+
+### 1.2 Cómo crear un proyecto (.Rproj)
+
+
 
 ## 2. Conocimientos básicos de programación 
 
@@ -180,48 +197,6 @@ p = 10; y = 5; p <= y # operatoria en objetos
 ```
 
 
-### 2.4 Usando funciones
-
-R tiene una gran colección de funciones, las cuales van desde procedimientos muy simples hasta modelos o algoritmos complejos. 
-
-Algunas de las funciones básicas para el uso de R son aquellas para cálculos aritméticos, las secuencias y repeteciones, y los mínimos y máximos. 
-
-- Aritméticas
-
-```{r, collapse=TRUE}
-20 * log(25)
-
-2 + 4 * exp(3)
-
-sqrt(2) + 100
-
-```
-
-- Secuencias
-
-```{r, collapse=TRUE}
-1:3
-
-seq(from = 1, to = 3)
-
-seq(1:3)
-
-seq(from = 1, to = 100, by = 2)
-
-```
-
-- Repeticiones 
-
-```{r, collapse=TRUE}
-rep(1:3, times = 2) # la función rep permite repetir una secuencia determinanda cantidad de veces (times) 
-
-rep(1:3, each = 2) # también podemos indicarles cuantas veces quiero que se repita una secuencia
-
-rep(1:3, times = c(2,2,2))
-
-```
-
-
 ## 3. Tipos de datos
 
 ### 3.1 ¿Qué son los tipos de datos?
@@ -234,13 +209,61 @@ En R, al igual que en la mayoría de lenguajes de programación, contamos con da
 
 ### 3.2 ¿Qué tipos de datos encontramos en R?
 
+Para responder esta pregunta, ¡metamos nuestras manos en los datos!. En esta oportunidad trabajaremos sobre un subset de datos del Modulo de Desigualdad Social de la encuesta [International Social Survey Programme del 2019](https://www.gesis.org/en/issp/home). Esta base la descargaremos directamente desde internet por esta vez (en futuras sesiones aprenderemos cómo cargar bases de datos).  
+
 ```{r, eval=TRUE}
+#cargamos la base de datos desde internet
 
+load(url("https://github.com/Andreas-Lafferte/descriptiva/blob/main/data/db-proc.RData?raw=true"))
 
+head(rand_df) # ver primeros casos de la base
 
 ```
 
 
+#### I) Character
+
+Los datos `character` están directamente asociados a las variables cualitativas (o categóricas). Generalmente suelen ser variables de texto abierto, como es el caso de la variable **pais**, que detalla el país de procedencia de la persona encuestada.
+
+Para conocer cuál es el tipo de variable en R, utilizamos el comando `class()`, y para detallar dentro de la base de datos cuál es la variable de interés, utilizamos el símbolo `$` posterior a la base de datos:
+
+```{r, collapse=TRUE}
+class(rand_df$pais) # siempre es la misma estructura = base$variable
+
+```
+
+Sin embargo, estas variables no tienden a ser las mejores a la hora de presentar nuestros resultados. Como solución, tenemos las variables de tipo Factor.
+
+#### II) Factor
+
+Las variables de tipo `factor` son ideales para trabajar con variables de tipo nominal u ordinal. Esto es así debido a que permiten establecer un orden entre las categorías de la variable, lo cual es fundamental si trabajamos, por ejemplo, con
+variables nominales como el sexo de los encuestados, o si trabajamos con variables ordinales como su ideología política.
 
 
+```{r, collapse=TRUE}
+class(rand_df$sexo)
+
+class(rand_df$ideologia)
+```
+
+
+#### III) Numeric
+
+Las variables de tipo `numeric` son variables de tipo númerica, las cuales pueden ser intervales o de razón. Así, por ejemplo, cuando trabajamos con variables de razón trabajamos con variables como el número de hijos o la edad (aunque sería extraño encuestar a alguien con 0 años). Mientras que cuando trabajamos con variables intervales podemos utilizar variables como escalas en donde el cero no significa la ausencia de valor, como es el caso de la variable **percepcion_conflicto**. 
+
+```{r, collapse=TRUE}
+class(rand_df$edad)
+
+class(rand_df$percepcion_conflictos)
+```
+
+# Resumen
+
+Hoy aprendimos distintas herramientas básicas para establecer un flujo de trabajo y poder utilizar el lenguaje y ambiente R. Como resumen:
+
+- Flujos de trabajo mediante **scripts** (hojas) y **proyectos** (.Rproj) siguiendo el sistema IPO = Input - Procesamiento - Output
+
+- Utilizar R como calculadora, su lógica orientada a objetos creando objetos, vectores y data.frames, y sus operadores
+
+- Tipos de datos en R como variables cualitativas (character o factor) y cuantitativas (numeric)
 
