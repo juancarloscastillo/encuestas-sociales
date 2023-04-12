@@ -69,6 +69,12 @@
 
 # Lenguaje orientado a objetos --------------------------------------------
 
+# Todas las instrucciones en R en las que crees objetos, es decir,
+# instrucciones de asignación, tendrán la misma estructura:
+
+# nombre_objeto <- valor
+
+
 # Objetos
 
 x <- 4 # asignar
