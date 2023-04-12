@@ -66,24 +66,9 @@ website:
             - content/index.qmd
         - section: "Sesiones"
           contents:
-            - text: "1: Presentación"
+            - text: "1: Introducción al lenguaje R"
               file: content/01-content.qmd
-            - text: "2: Bases"
-              file: content/02-content.qmd
-            - text: "3: Medición"
-              file: content/03-content.qmd
-            - text: "4: Preguntas"
-              file: content/04-content.qmd
-            - text: "5: Cuestionario"
-              file: content/05-content.qmd
-            - text: "8: Flujo de trabajo"
-              file: content/08-content.qmd
-            - text: "9: Documentos dinámicos & RMarkdown"
-              file: content/09-content.qmd
-            - text: "10: Baterías e índices"
-              file: content/10-content.qmd
-            - text: "11: Análisis factorial"
-              file: content/11-content.qmd
+
     - title: "Recursos"
       style: "docked"
       search: false
@@ -95,8 +80,7 @@ website:
           file: resource/01-resource.qmd
         - text: "Uso de R"
           file: resource/02-resource.qmd
-        - text: "Factorial"
-          file: resource/05-resource.qmd
+
 
   page-footer:
     left: |
