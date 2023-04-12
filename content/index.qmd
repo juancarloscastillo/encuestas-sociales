@@ -8,13 +8,20 @@ Todo el material es accesible desde el menú de la izquierda <--
 
 ## Instrucciones generales para las prácticas
 
-- Las instancia prácticas consisten en el desarrollo de una guía práctica cada 2 semanas donde se aplican y profundizan los contenidos de las clases. La organización de estas prácticas se puede revisar en la [planificación del curso](/schedule).
+- Las instancia prácticas consisten en el desarrollo de una guía práctica cada 2 semanas donde se aplican y profundizan los contenidos de las clases mediante las herramientas del lenguaje R. La organización de estas prácticas se puede revisar en la [planificación del curso](/schedule).
+
+- Estas sesiones acompañarán el desarrollo de las guías prácticas disponibles en este sitio.
+
+- En las prácticas vamos a trabajar con el software R, Versión 4.2.2 
+
+- Para poder tener una asesoría y monitoreo más cercano en el desarrollo de las guías, los estudiantes han sido divididos en grupos asignados a un/a ayudante (ver en UCursos).
 
 - El trabajo con estas guías se organiza en los siguientes momentos:
 
-  COMPLETAR
-
-- En las prácticas vamos a trabajar con el software R, Versión 4.2.2 
+    + las sesiones de laboratorios serán en modalidad online, en donde el equipo docente guiará el desarrollo del práctico
+    + el equipo docente mostrará el código para cada sesión, el cual contendrá los mismos contenidos de las guías alojadas en este sitio
+    + en paralelo, cada estudiante realiza esta guía de manera autónoma durante la sesión de laboratorio en su propio computador, apoyándose en el código que mostrarán los apoyos docentes
+    + en caso de dudas, las realizan en los foros disponibles o se contactan directamente con su ayudante
 
 ## Trabajo con software R
 
@@ -40,13 +47,6 @@ Para **instalar R**: ir a [https://cran.r-project.org/index.html](https://cran.r
 
 Para instalar **RStudio**: ir a [https://posit.co/downloads/](https://posit.co/downloads/) y bajar/instalar RStudio desktop, Open Source License (libre).
 
-En caso de dudas se puede revisar el siguiente **video tutorial** de instalación de R & RStudio, de una versión anterior del curso de estadística multivarada:
-
-<div style="width: 100%; height: 600px; overflow: hidden;">
-<video  style="width: 100%;" controls>
-<source src="https://www.dropbox.com/s/goofz32r5htw6pt/tutorialR-4.0.mp4?raw=1" type="video/mp4">
-</video>
-</div>
 
 Si por alguna razón se prefiere trabajar sin descargar, también se puede utilizar RCloud, abajo un tutorial de una versión anterior del curso de estadística multivarada
 
