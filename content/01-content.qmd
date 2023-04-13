@@ -22,26 +22,7 @@ En detalle, aprenderemos:
 
 ## 1. Flujo de trabajo en R
 
-### 1.1 Cómo crear un script (.R)
-
-Para empezar a trabajar en el lenguaje R, lo primero es aprender a crear y organizar un _script_. ¿Qué es un script? En términos sencillos, un script es la _hoja_ en donde escribremos y guardaremos nuestros códigos para procesar y analizar datos. Es importante utilizar los script ya que nos permiten mantener ordenada y con respaldo todos nuestros procedimientos, para poder usarlos posteriormente, reproducirlos o compartirlos.
-
-¿Cómo puedo abrir un nuevo script? Hacerlo es bastante sencillo. En la sección superior izquierda de RStudio, debe hacerse click en la hoja con un signo + verde y, luego, seleccionar la opción R Script en el menú desplegado:
-
-Otra forma de hacerlo es en File de la barra superior: **File > New File > R Script**.
-
-También contamos con atajos para crear un script, utlizando las **Ctrl + Shift + N** en Windows o **Cmmd + Shift + N** en Mac.
-
-Una vez creamos un script, podremos escribir en él los códigos, que se ejecutarán en la consola una vez mantengamos presionadas las teclas Control + Enter al inicio de la línea. 
-
-Para guardar nuestro script y todo lo que hayamos escrito en él, podemos hacer click en el disquete situado en la barra que se encuentra sobre el código, o bien, aplicar el atajo **Ctrl/Cmmd + S** (el archivo siempre se actualizará a la última versión que hayamos guardado). 
-
-La primera vez que guardemos nuestro script nos pedirá darle un directorio donde deseamos almacenar nuestro script, y asignarle un nombre determinado el cual, ojalá, enga que ver con los procedimientos que hayamos ejecutado en este (por ejemplo, procesamiento o análisis). 
-
-
-### 1.2 Cómo crear un proyecto (.Rproj)
-
-
+En presentación. Prontamente síntesis aquí.
 
 ## 2. Conocimientos básicos de programación 
 
