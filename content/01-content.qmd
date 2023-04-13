@@ -34,7 +34,7 @@ Revisemos algunos conocimientos básicos para la programación en R. Pero antes,
 
 ### 2.1 R como calculadora
 
-Uno de los usos más sencillos y que están a la base R, es usarlo como una calculadora. 
+Uno de los usos más sencillos y que están a la base de R, es usarlo como una calculadora. 
 
 ```{r, collapse=TRUE}
 5+5
@@ -138,9 +138,9 @@ base1
 
 ```
 
-Como puedes ver, para crear el data.frame usamos la función que lleva el mismo nombre, colocando dentro del paréntesis `data.frame()` los vectores que creamos anteriormente. 
+Como puedes ver, para crear el data.frame usamos la función que lleva el mismo nombre, colocando dentro del paréntesis los vectores que creamos anteriormente: `data.frame(mis_vectores)`. 
 
-Ahora, creemos un `data.frame()` desce cero. En este ejemplo, crearemos los vectores dentro de la función `data.frame()`.
+Ahora, creemos un `data.frame` desce cero. En este ejemplo, crearemos los vectores dentro de la función `data.frame()`.
 
 ```{r, collapse=TRUE}
 # Ejemplo de como crear un data.frame desde 0: 
@@ -182,7 +182,7 @@ p = 10; y = 5; p <= y # operatoria en objetos
 
 ### 3.1 ¿Qué son los tipos de datos?
 
-En R, al igual que en la mayoría de lenguajes de programación, contamos con datos de diversos tipos, en razón de los cuales podemos realizar determiandos procedimientos de tratamiento o análisis. 
+En R, al igual que en la mayoría de lenguajes de programación, contamos con datos de diversos tipos, en razón de los cuales podemos realizar determinados procedimientos de tratamiento o análisis. 
 
 **Los tipos de datos están íntimamente relacionados con el nivel de medición de las variables** a las que corresponden. Como viste en clases, la teoría de los niveles de medición contempla cuatro tipos: 
 
