@@ -36,7 +36,7 @@ Revisemos algunos conocimientos básicos para la programación en R. Pero antes,
 
 Uno de los usos más sencillos y que están a la base de R, es usarlo como una calculadora. 
 
-```{r, collapse=TRUE}
+```{r, collapse=FALSE}
 5+5
 
 25/5
@@ -49,7 +49,7 @@ Uno de los usos más sencillos y que están a la base de R, es usarlo como una c
 
 Como podrás ver, el resultado de estas instrucciones aparecen como un `[1]` en la consola. También podemos hacer operatorias más complejas y con más cálculos. 
 
-```{r, collapse=TRUE}
+```{r, collapse=FALSE}
 12*(7+2)+(45-32)+8
 
 22^2 - 2^2
@@ -72,7 +72,7 @@ Los elementos que podemos asignar a objetos son múltiples, como números, palab
 
 Veamos un ejemplo creando objetos:
 
-```{r, collapse=TRUE}
+```{r, collapse=FALSE}
 x <- 4 # asignar
 
 x # ejecutar
@@ -86,7 +86,7 @@ y
 
 ¿Y concatenando? Hacemos un vector.
 
-```{r, collapse=TRUE}
+```{r, collapse=FALSE}
 edad <- c(18,22,36,19,35) # concatenar (variable de razon)
 
 edad
@@ -104,7 +104,7 @@ gse
 
 **¡Hagamos una pequeño reto!**: ¿Cuál es el valor de a y b? Si a <- 5; b <- a; a <- 4
 
-```{r, collapse=TRUE}
+```{r, collapse=FALSE}
 
 a <- 5
 b <- a
@@ -119,7 +119,7 @@ a + 10
 
 Ahora, sea z = a^2 ¿qué resultado obtenemos de a * b + z?
 
-```{r, collapse=TRUE}
+```{r, collapse=FALSE}
 z <- a^2 # asignar
 
 a * b + z
@@ -130,7 +130,7 @@ Además de lo anterior, en R es fundamental la creación de **data.frames**. Un 
 
 Creemos un data.frame con los vectores que ya creamos antes. 
 
-```{r, collapse=TRUE}
+```{r, collapse=FALSE}
 base1 <- data.frame(genero, gse, edad) # Resulta como objeto de "datos" en
                                        # entorno.
 
@@ -142,7 +142,7 @@ Como puedes ver, para crear el data.frame usamos la función que lleva el mismo 
 
 Ahora, creemos un `data.frame` desce cero. En este ejemplo, crearemos los vectores dentro de la función `data.frame()`.
 
-```{r, collapse=TRUE}
+```{r, collapse=FALSE}
 # Ejemplo de como crear un data.frame desde 0: 
 
 base2 <- data.frame(Sexo=c("H","M","H","M","H","M"),
@@ -164,7 +164,7 @@ Los operadores son símbolos que permiten, en los distintos procedimientos de pr
 
 ¡Veamos algunos ejemplos!
 
-```{r, collapse=TRUE}
+```{r, collapse=FALSE}
 20 == 5 # igualdad
 
 30 >= 14 # mayor o igual que
@@ -208,7 +208,7 @@ Los datos `character` están directamente asociados a las variables cualitativas
 
 Para conocer cuál es el tipo de variable en R, utilizamos el comando `class()`, y para detallar dentro de la base de datos cuál es la variable de interés, utilizamos el símbolo `$` posterior a la base de datos:
 
-```{r, collapse=TRUE}
+```{r, collapse=FALSE}
 class(rand_df$pais) # siempre es la misma estructura = base$variable
 
 ```
@@ -221,7 +221,7 @@ Las variables de tipo `factor` son ideales para trabajar con variables de tipo n
 variables nominales como el sexo de los encuestados, o si trabajamos con variables ordinales como su ideología política.
 
 
-```{r, collapse=TRUE}
+```{r, collapse=FALSE}
 class(rand_df$sexo)
 
 class(rand_df$ideologia)
@@ -232,7 +232,7 @@ class(rand_df$ideologia)
 
 Las variables de tipo `numeric` son variables de tipo númerica, las cuales pueden ser intervales o de razón. Así, por ejemplo, cuando trabajamos con variables de razón trabajamos con variables como el número de hijos o la edad (aunque sería extraño encuestar a alguien con 0 años). Mientras que cuando trabajamos con variables intervales podemos utilizar variables como escalas en donde el cero no significa la ausencia de valor, como es el caso de la variable **percepcion_conflicto**. 
 
-```{r, collapse=TRUE}
+```{r, collapse=FALSE}
 class(rand_df$edad)
 
 class(rand_df$percepcion_conflictos)
@@ -247,4 +247,15 @@ Hoy aprendimos distintas herramientas básicas para establecer un flujo de traba
 - Utilizar R como calculadora, su lógica orientada a objetos creando objetos, vectores y data.frames, y sus operadores
 
 - Tipos de datos en R como variables cualitativas (character o factor) y cuantitativas (numeric)
+
+## Video de clase
+
+<div style="width: 100%; height: 600px; overflow: hidden;">
+<video  style="width: 100%;" controls>
+<source src="https://www.dropbox.com/s/ruqc21ldnfua6rc/video-sesion01-LAB.mp4?raw=1" type="video/mp4">
+</video>
+</div>
+
+
+
 

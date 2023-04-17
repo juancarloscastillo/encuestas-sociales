@@ -45,7 +45,6 @@
 #   variables
 
 
-
 # 1. Conocimientos básicos de programación en R --------------------------------------------------------
 
 # R como calculadora
@@ -81,6 +80,10 @@ x <- 4 # asignar
 
 x # ejecutar
 
+x <- 5
+
+x
+
 y <- "Hola mundo" # los carácteres alfabéticos siempre van acompañados de corchetes
 
 y
@@ -95,7 +98,7 @@ genero <- c(3,1,1,2,3) # masculino = 1; femenino = 2; transgenero = 3 (variable 
 
 genero
 
-gse <- c("ABC1", "C2", "E", "AbC1", "E")  # tambíen se pueden usar carácteres (variable ordinal)
+gse <- c("ABC1", "C2", "E", "ABC1", "E")  # tambíen se pueden usar carácteres (variable ordinal)
 
 gse
 
@@ -119,6 +122,10 @@ z <- a^2 # asignar
 
 a * b + z
 
+j <- 5
+
+j
+
 ## ---- Fin del reto ----
 
 
@@ -128,6 +135,8 @@ base1 <- data.frame(genero, gse, edad) # Resulta como objeto de "datos" en
 # entorno.
 
 base1
+
+View(base1)
 
 # Ejemplo de como crear un data.frame desde 0:
 
@@ -172,9 +181,14 @@ head(rand_df) # ver primeros casos de la base
 # y para detallar dentro de la base de datos cuál es la variable de interés,
 # utilizamos el símbolo $ posterior a la base de datos
 
+
 # I) Character
 
-class(rand_df$pais) # siempre es la misma estructura = base$variable
+class(rand_df$pais)
+
+class(rand_df$pais)
+
+# siempre es la misma estructura = base$variable
 
 # II) Factor
 
