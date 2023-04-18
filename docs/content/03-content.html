@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Estadística Descriptiva - Medición, instrumentos y estándares</title>
+<title>Estadística Descriptiva - Práctica 3. Procesamiento, limpieza y manipulación de datos en R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,69 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -62,15 +125,13 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<meta property="og:title" content="Estadística Descriptiva - Medición, instrumentos y estándares">
-<meta property="og:description" content="Seleccionar alguna pregunta / batería de preguntas en un tema de interés de alguna encuesta (puede ser la misma encuesta sobre la que se realizó la ficha).">
+<meta property="og:title" content="Estadística Descriptiva - Práctica 3. Procesamiento, limpieza y manipulación de datos en R">
 <meta property="og:image" content="https://descriptiva-facso.netlify.app/files/logo.png">
 <meta property="og:site-name" content="Estadística Descriptiva">
 <meta property="og:locale" content="en_US">
 <meta property="og:image:height" content="500">
 <meta property="og:image:width" content="500">
-<meta name="twitter:title" content="Estadística Descriptiva - Medición, instrumentos y estándares">
-<meta name="twitter:description" content="Seleccionar alguna pregunta / batería de preguntas en un tema de interés de alguna encuesta (puede ser la misma encuesta sobre la que se realizó la ficha).">
+<meta name="twitter:title" content="Estadística Descriptiva - Práctica 3. Procesamiento, limpieza y manipulación de datos en R">
 <meta name="twitter:image" content="https://descriptiva-facso.netlify.app/files/social-image-f22.png">
 <meta name="twitter:creator" content="@andreaslaffert">
 <meta name="twitter:site" content="@andreaslaffert">
@@ -79,7 +140,7 @@ ul.task-list li input[type="checkbox"] {
 <meta name="twitter:image-width" content="898">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-sidebar docked nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -104,7 +165,7 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Planificación</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../content/index.html">
+    <a class="nav-link active" href="../content/index.html" aria-current="page">
  <span class="menu-text">Contenidos</span></a>
   </li>  
   <li class="nav-item">
@@ -124,20 +185,96 @@ ul.task-list li input[type="checkbox"] {
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">Práctica 3. Procesamiento, limpieza y manipulación de datos en R</h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Información general</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/index.html" class="sidebar-item-text sidebar-link">Laboratorio de Análisis de Datos</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">Sesiones</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/01-content.html" class="sidebar-item-text sidebar-link">1: Introducción al lenguaje R</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/02-content.html" class="sidebar-item-text sidebar-link">2: Conocimientos básicos de programación en R</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/03-content.html" class="sidebar-item-text sidebar-link active">3: Procesamiento, limpieza y manipulación de datos en R</a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">En esta página</h2>
    
   <ul>
-  <li><a href="#documento-de-presentación" id="toc-documento-de-presentación" class="nav-link active" data-scroll-target="#documento-de-presentación">Documento de presentación</a></li>
+  <li><a href="#presentación" id="toc-presentación" class="nav-link active" data-scroll-target="#presentación">Presentación</a>
+  <ul class="collapse">
+  <li><a href="#objetivo-de-la-práctica" id="toc-objetivo-de-la-práctica" class="nav-link" data-scroll-target="#objetivo-de-la-práctica">Objetivo de la práctica</a></li>
+  <li><a href="#flujo-de-trabajo-reproducible" id="toc-flujo-de-trabajo-reproducible" class="nav-link" data-scroll-target="#flujo-de-trabajo-reproducible">Flujo de trabajo reproducible</a></li>
+  </ul></li>
+  <li><a href="#procesamiento-de-datos" id="toc-procesamiento-de-datos" class="nav-link" data-scroll-target="#procesamiento-de-datos">Procesamiento de datos</a>
+  <ul class="collapse">
+  <li><a href="#cargar-librerías" id="toc-cargar-librerías" class="nav-link" data-scroll-target="#cargar-librerías">1 Cargar librerías</a></li>
+  <li><a href="#importar-datos" id="toc-importar-datos" class="nav-link" data-scroll-target="#importar-datos">2 Importar datos</a>
+  <ul class="collapse">
+  <li><a href="#importar-datos-en-otros-formatos" id="toc-importar-datos-en-otros-formatos" class="nav-link" data-scroll-target="#importar-datos-en-otros-formatos">2.1.1 Importar datos en otros formatos</a></li>
+  </ul></li>
+  <li><a href="#explorar-datos" id="toc-explorar-datos" class="nav-link" data-scroll-target="#explorar-datos">3 Explorar datos</a></li>
+  <li><a href="#limpiar-datos" id="toc-limpiar-datos" class="nav-link" data-scroll-target="#limpiar-datos">4 Limpiar datos</a>
+  <ul class="collapse">
+  <li><a href="#identificar" id="toc-identificar" class="nav-link" data-scroll-target="#identificar">4.1 Identificar</a></li>
+  <li><a href="#seleccionar" id="toc-seleccionar" class="nav-link" data-scroll-target="#seleccionar">4.2 Seleccionar</a></li>
+  <li><a href="#filtrar" id="toc-filtrar" class="nav-link" data-scroll-target="#filtrar">4.3 Filtrar</a></li>
+  <li><a href="#recodificar" id="toc-recodificar" class="nav-link" data-scroll-target="#recodificar">4.4 Recodificar</a></li>
+  <li><a href="#tratamiento-casos-pérdidos" id="toc-tratamiento-casos-pérdidos" class="nav-link" data-scroll-target="#tratamiento-casos-pérdidos">4.5 Tratamiento casos pérdidos</a></li>
+  </ul></li>
+  <li><a href="#transformar-variables" id="toc-transformar-variables" class="nav-link" data-scroll-target="#transformar-variables">5 Transformar variables</a></li>
+  <li><a href="#guardar-y-exportar-datos-procesados" id="toc-guardar-y-exportar-datos-procesados" class="nav-link" data-scroll-target="#guardar-y-exportar-datos-procesados">6 Guardar y exportar datos procesados</a></li>
+  <li><a href="#resumen" id="toc-resumen" class="nav-link" data-scroll-target="#resumen">Resumen</a></li>
   <li><a href="#video-de-clase" id="toc-video-de-clase" class="nav-link" data-scroll-target="#video-de-clase">Video de clase</a></li>
-  <li><a href="#lecturas" id="toc-lecturas" class="nav-link" data-scroll-target="#lecturas">Lecturas</a></li>
-  <li><a href="#actividad-medición" id="toc-actividad-medición" class="nav-link" data-scroll-target="#actividad-medición">Actividad: Medición</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -145,45 +282,145 @@ ul.task-list li input[type="checkbox"] {
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header">
-<h1 class="title display-7">Medición, instrumentos y estándares</h1>
+<h1 class="title d-none d-lg-block display-7">Práctica 3. Procesamiento, limpieza y manipulación de datos en R</h1>
 
 <div class="date-block bg-content text-white p-2">
-  <p class="date">Sesión del jueves, 1 de septiembre de 2022</p>
+  <p class="date">Sesión del jueves, 20 de abril de 2023</p>
 </div>
 </header>
 
-<section id="documento-de-presentación" class="level2">
-<h2 class="anchored" data-anchor-id="documento-de-presentación">Documento de presentación</h2>
-<iframe src="../slides/03-medicion/03-medicion.html" height="550" width="100%" allowfullscreen="true">
-</iframe>
+<section id="presentación" class="level1">
+<h1>Presentación</h1>
+<section id="objetivo-de-la-práctica" class="level2">
+<h2 class="anchored" data-anchor-id="objetivo-de-la-práctica">Objetivo de la práctica</h2>
+<p>El objetivo de esta guía práctica es revisar algunos procedimientos básicos de la preparación de datos con R, que son necesarios para luego poder aplicar los contenidos más específicos de este curso.</p>
+<p>En detalle, aprenderemos:</p>
+<ol type="1">
+<li><p>Establecer un flujo de trabajo ordenado en un script (.R).</p></li>
+<li><p>Instalar y cargar paquetes y librerías, así como también leer bases de datos en R.</p></li>
+<li><p>Limpiar, transformar y exportar bases de datos en R.</p></li>
+</ol>
+<p><strong>¡Al final de esta práctica la idea es que cada un_ elabore y entienda su propio documento de preparación de datos!</strong></p>
+</section>
+<section id="flujo-de-trabajo-reproducible" class="level2">
+<h2 class="anchored" data-anchor-id="flujo-de-trabajo-reproducible">Flujo de trabajo reproducible</h2>
+<p>Por temas de orden y reproducibilidad, en este curso vamos a separar en dos momentos el trabajo con datos, y dos archivos de código correspondientes:</p>
 <ul>
-<li>Para ver en pantalla completa presionar F (con cursor sobre presentación)</li>
+<li><p><strong>Preparación</strong>: corresponde a lo que se conoce generalmente como “limpieza”, es decir, realizar las modificaciones necesarias a los datos para poder efectuar los análisis. Estas modificaciones previas al análisis son necesarias ya que los datos originales con los que se va a trabajar en general no vienen perfectamente adaptados a los análisis que se quieren hacer. Por lo tanto, en cuanto a datos también hacemos la distinción entre datos originales y datos preparados (o procesados).</p></li>
+<li><p><strong>Análisis</strong>: se relaciona tanto con análisis estadísticos, en este caso descriptivos, asociados a las preguntas e hipótesis de investigación.</p></li>
 </ul>
+<p><strong>Los procesos de preparación y análisis vinculados tanto a datos y resultados se presentan en el siguiente esquema:</strong></p>
+<p><img src="../images/image.png" class="img-fluid"></p>
+<p>Tanto la preparación como el análisis (que son parte del concepto más general de procesamiento) quedan registrados cada uno en un archivo de código respectivo.</p>
+<p>En esta guía nos centraremos en la <strong>preparación de datos</strong> con R. El documento de <strong>código de preparación</strong> tiene, por lo menos, 4 partes más una sección de identificación inicial:</p>
+<ol start="0" type="1">
+<li>Identificación y descripción general: Título, autor(es), fecha, información breve sobre el contenido del documento</li>
+<li>Librerías: instalar/cargar librerías a utilizar</li>
+<li>Datos: carga de datos</li>
+<li>Procesamiento: limpiar y transformar datos</li>
+<li>Guardar y exportar: generación de base de datos preparada para el análisis</li>
+</ol>
+<p>En la práctica, tu script debería (ojalá siempre) verse así:</p>
+<p><img src="../images/image (1).png" class="img-fluid"></p>
+<p>En el ejemplo vamos a procesar variables utilizando los datos de la encuesta <a href="https://dataverse.harvard.edu/dataverse/elsoc">ELSOC</a>.</p>
+</section>
+</section>
+<section id="procesamiento-de-datos" class="level1">
+<h1>Procesamiento de datos</h1>
+<section id="cargar-librerías" class="level2">
+<h2 class="anchored" data-anchor-id="cargar-librerías">1 Cargar librerías</h2>
+<p>En R se trabaja a partir de paquetes (packages) o librerías. ¿Qué son? de forma resumida, los paquetes son un conjunto de funciones o herramientas que puedens er usadas en R. La lógica es instalar paquetes y luego cargarlas (o llamarlas) cada vez que es necesario usarlas.</p>
+<p>Usualmente para cargar paquetes lo hacemos de la siguiente manera:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"paquete"</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(paquete)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Pero en esta ocasión utilizaremos un paquete llamado <strong>pacman</strong>, que facilita y agiliza la lectura de los paquetes a utilizar en R. De esta forma lo instalamos 1 única vez así:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"pacman"</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pacman)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Luego instalaremos y cargaremos los paquetes de R de la siguiente manera, volviendo más eficiente el procedimiento de carga de paquetes.</p>
+<p>En este práctico utilizaremos seis paquetes</p>
+<ol type="1">
+<li><p><code>pacman</code>: este facilita y agiliza la lectura de los paquetes a utilizar en R</p></li>
+<li><p><code>sjmisc</code>: explorar datos</p></li>
+<li><p><code>tidyverse</code>: colección de paquetes, de la cual utilizaremos dplyr y haven</p></li>
+<li><p><code>dplyr</code>: nos permite seleccionar variables de un set de datos</p></li>
+<li><p><code>haven</code>: cargar y exportar bases de datos en formatos .sav y .dta</p></li>
+<li><p><code>car</code>: para recodificar/agrupar valores de variables</p></li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(tidyverse,</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>               sjmisc,</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>               dplyr,</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>               haven,</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>               car)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="importar-datos" class="level2">
+<h2 class="anchored" data-anchor-id="importar-datos">2 Importar datos</h2>
+<p>En R es es posible importar y exportar fácilmente datos que se encuentren en <em>cualquier formato</em>: ya sea .csv, .dta, .sav, .xlsx y, por supuesto, .rds y .RData. Sin embargo, para poder hacerlo lo primero es instalar y cargar las librerías que contienen las funciones necesarias para la importación de distintos tipos de archivos.</p>
+<p>Pero, ¿dónde están mis datos? Como hemos mencionado, nuestros datos los dejaremos en la carpeta <code>input/data</code> de nuestro proyecto. La base con la que trabajaremos en este práctico pueden encontrarla en el material docente en U-Cursos, o bien, en n el siguiente enlace podrán descargar el archivo .zip que contiene la base ELSOC 2021.</p>
+<p>Luego de descargar y descomprimir los datos, asegurate de dejar el archivo .sav en la carpeta de tu proyecto <code>input/data</code>. <strong>Nota</strong>: Los datos tendrán distinto nombre según su formato (.sav, .csv, .dta, etc.).</p>
+<p>Una vez descargados los datos y cargado el paquete <code>haven</code>, procedemos a importar nuestra base de datos. Para ello, en nuestro script, dejamos indicado que a partir de la lectura de los datos con <code>read_sav()</code>, crearemos un objeto llamado <code>elsoc_2021</code>. Fijate en el <em>Enviroment</em>, ya que si lo anetrior se logra, el objeto aparecerá allí.</p>
+<p>La estructura general para importar datos es la siguiente:</p>
+<p><code>read_*("ruta_hacia_archivo/nombre_archivo.*")</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>elsoc_2021 <span class="ot">&lt;-</span> <span class="fu">read_sav</span>(<span class="st">"ELSOC W05 v1.0 SPSS.sav"</span>)  <span class="co"># No funciona</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>elsoc_2021 <span class="ot">&lt;-</span> <span class="fu">read_sav</span>(<span class="st">"input/data/ELSOC W05 v1.0 SPSS.sav"</span>) <span class="co"># No funciona</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>elsoc_2021 <span class="ot">&lt;-</span> <span class="fu">read_sav</span>(<span class="st">"input/data/ELSOC_W05_v1.0_SPSS.sav"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p></p>
+<p>Para <strong>importar</strong> los datos en R debemos tener en consideración tres cosas:</p>
+<ol type="1">
+<li><p>Cómo se llaman los datos (en nuestro caso ELSOC_W05_v1.0_SPSS)</p></li>
+<li><p>El formato de nuestros datos (en nuestro caso .sav)</p></li>
+<li><p>El lugar de donde están alojados nuestros datos.</p></li>
+</ol>
+<p></p>
+<section id="importar-datos-en-otros-formatos" class="level3">
+<h3 class="anchored" data-anchor-id="importar-datos-en-otros-formatos">2.1.1 Importar datos en otros formatos</h3>
+<p>¡Bien hecho! Ahora bien, no siempre nuestros datos vendrán en un único formato. Para ello, R cuenta con otras formas de leer distintos tipos de formatos. Puedes ver las principales en el siguiente <a href="">enlace</a>.</p>
+</section>
+</section>
+<section id="explorar-datos" class="level2">
+<h2 class="anchored" data-anchor-id="explorar-datos">3 Explorar datos</h2>
+</section>
+<section id="limpiar-datos" class="level2">
+<h2 class="anchored" data-anchor-id="limpiar-datos">4 Limpiar datos</h2>
+<section id="identificar" class="level3">
+<h3 class="anchored" data-anchor-id="identificar">4.1 Identificar</h3>
+</section>
+<section id="seleccionar" class="level3">
+<h3 class="anchored" data-anchor-id="seleccionar">4.2 Seleccionar</h3>
+</section>
+<section id="filtrar" class="level3">
+<h3 class="anchored" data-anchor-id="filtrar">4.3 Filtrar</h3>
+</section>
+<section id="recodificar" class="level3">
+<h3 class="anchored" data-anchor-id="recodificar">4.4 Recodificar</h3>
+</section>
+<section id="tratamiento-casos-pérdidos" class="level3">
+<h3 class="anchored" data-anchor-id="tratamiento-casos-pérdidos">4.5 Tratamiento casos pérdidos</h3>
+</section>
+</section>
+<section id="transformar-variables" class="level2">
+<h2 class="anchored" data-anchor-id="transformar-variables">5 Transformar variables</h2>
+</section>
+<section id="guardar-y-exportar-datos-procesados" class="level2">
+<h2 class="anchored" data-anchor-id="guardar-y-exportar-datos-procesados">6 Guardar y exportar datos procesados</h2>
+</section>
+<section id="resumen" class="level2">
+<h2 class="anchored" data-anchor-id="resumen">Resumen</h2>
 </section>
 <section id="video-de-clase" class="level2">
 <h2 class="anchored" data-anchor-id="video-de-clase">Video de clase</h2>
-<div style="width: 100%; height: 600px; overflow: hidden;">
-<video style="width: 100%;" controls="">
-<source src="https://www.dropbox.com/s/1ocgr931vhzkdpl/clase3.webm?raw=1" type="video/mp4">
-</video>
-</div>
-</section>
-<section id="lecturas" class="level2">
-<h2 class="anchored" data-anchor-id="lecturas">Lecturas</h2>
-<ul>
-<li><a href="files/lecturas/RatSWD_WP_245.pdf">RatSWD Quality standards for the design of measurement instruments</a></li>
-</ul>
-</section>
-<section id="actividad-medición" class="level2">
-<h2 class="anchored" data-anchor-id="actividad-medición">Actividad: Medición</h2>
-<p>Seleccionar alguna pregunta / batería de preguntas en un tema de interés de alguna encuesta (puede ser la misma encuesta sobre la que se realizó la ficha).</p>
-<ul>
-<li><p>Revisar si es que en el manual /ficha técnica de la encuesta aparece información sobre el origen de la pregunta, validez y confiabilidad</p></li>
-<li><p>Describir posibles problemas de validez en base a lo presentado en clases</p></li>
-<li><p>Analizar utilidad, pertinencia y posibles problemas de construcción de estas preguntas</p></li>
-</ul>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

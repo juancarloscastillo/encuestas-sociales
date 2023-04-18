@@ -68,6 +68,10 @@ website:
           contents:
             - text: "1: Introducción al lenguaje R"
               file: content/01-content.qmd
+            - text: "2: Conocimientos básicos de programación en R"
+              file: content/02-content.qmd
+            - text: "3: Procesamiento, limpieza y manipulación de datos en R"
+              file: content/03-content.qmd
 
     - title: "Recursos"
       style: "docked"
@@ -80,6 +84,8 @@ website:
           file: resource/01-resource.qmd
         - text: "Uso de R"
           file: resource/02-resource.qmd
+        - text: "Importar datos en R"
+          file: resource/03-resource.qmd
 
 
   page-footer:

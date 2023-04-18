@@ -1,0 +1,34 @@
+---
+title: "Importar datos en R"
+date: "2023-04-20"
+lang: es
+output:
+  number_sections: true
+---
+
+# Otras formas de importar datos en R
+
+## 1. Cargar librerías
+
+```{r eval=FALSE, include=TRUE}
+pacman::p_load(tidyverse,
+               sjmisc,
+               dplyr,
+               haven,
+               readxl)
+```
+
+
+## 2. Cargar datos en distintos formatos
+
+### a) `.dta`
+
+
+
+### b) `.csv`
+
+
+### c) `.xlsx`
+
+
+### d) `.RData` y `.rds`

@@ -1,36 +1,170 @@
 ---
-title: "Medición, instrumentos y estándares"
-date: "2022-09-01"
+title: "Práctica 3. Procesamiento, limpieza y manipulación de datos en R"
+date: "2023-04-20"
 lang: es
+output:
+  number_sections: true
 ---
+ 
+# Presentación
 
-## Documento de presentación
+## Objetivo de la práctica
 
-<iframe src=/slides/03-medicion/03-medicion.html height="550" width=100% allowfullscreen="true">
-</iframe>
+El objetivo de esta guía práctica es revisar algunos procedimientos básicos de la preparación de datos con R, que son necesarios para luego poder aplicar los contenidos más específicos de este curso. 
 
-- Para ver en pantalla completa presionar F (con cursor sobre presentación)
+En detalle, aprenderemos:
 
+1. Establecer un flujo de trabajo ordenado en un script (.R).
+
+2. Instalar y cargar paquetes y librerías, así como también leer bases de datos en R.
+
+3. Limpiar, transformar y exportar bases de datos en R.
+
+**¡Al final de esta práctica la idea es que cada un_ elabore y entienda su propio documento de preparación de datos!**
+
+
+## Flujo de trabajo reproducible
+
+Por temas de orden y reproducibilidad, en este curso vamos a separar en dos momentos el trabajo con datos, y dos archivos de código correspondientes:
+
+- **Preparación**: corresponde a lo que se conoce generalmente como “limpieza”, es decir, realizar las modificaciones necesarias a los datos para poder efectuar los análisis. Estas modificaciones previas al análisis son necesarias ya que los datos originales con los que se va a trabajar en general no vienen perfectamente adaptados a los análisis que se quieren hacer. Por lo tanto, en cuanto a datos también hacemos la distinción entre datos originales y datos preparados (o procesados).
+
+- **Análisis**: se relaciona tanto con análisis estadísticos, en este caso descriptivos, asociados a las preguntas e hipótesis de investigación.
+
+**Los procesos de preparación y análisis vinculados tanto a datos y resultados se presentan en el siguiente esquema:** 
+
+![](../images/image.png)
+
+
+Tanto la preparación como el análisis (que son parte del concepto más general de procesamiento) quedan registrados cada uno en un archivo de código respectivo.
+
+En esta guía nos centraremos en la **preparación de datos** con R. El documento de **código de preparación** tiene, por lo menos, 4 partes más una sección de identificación inicial:
+
+  0. Identificación y descripción general: Título, autor(es), fecha, información breve sobre el contenido del documento
+  1. Librerías: instalar/cargar librerías a utilizar
+  2. Datos: carga de datos
+  3. Procesamiento: limpiar y transformar datos
+  4. Guardar y exportar: generación de base de datos preparada para el análisis
+
+En la práctica, tu script debería (ojalá siempre) verse así:
+
+![](../images/image (1).png)
+
+En el ejemplo vamos a procesar variables utilizando los datos de la encuesta [ELSOC](https://dataverse.harvard.edu/dataverse/elsoc).
+
+# Procesamiento de datos
+
+## 1 Cargar librerías
+
+En R se trabaja a partir de paquetes (packages) o librerías. ¿Qué son? de forma resumida, los paquetes son un conjunto de funciones o herramientas que puedens er usadas en R. La lógica es instalar paquetes y luego cargarlas (o llamarlas) cada vez que es necesario usarlas.
+
+Usualmente para cargar paquetes lo hacemos de la siguiente manera:
+
+```{r eval=FALSE, include=TRUE}
+install.packages("paquete")
+library(paquete)
+```
+
+Pero en esta ocasión utilizaremos un paquete llamado **pacman**, que facilita y agiliza la lectura de los paquetes a utilizar en R. De esta forma lo instalamos 1 única vez así:
+
+```{r eval=FALSE, include=TRUE}
+install.packages("pacman")
+library(pacman)
+```
+
+Luego instalaremos y cargaremos los paquetes de R de la siguiente manera, volviendo más eficiente el procedimiento de carga de paquetes. 
+
+En este práctico utilizaremos seis paquetes
+
+1. `pacman`: este facilita y agiliza la lectura de los paquetes a utilizar en R
+
+2. `sjmisc`: explorar datos
+
+3. `tidyverse`: colección de paquetes, de la cual utilizaremos dplyr y haven
+
+4. `dplyr`: nos permite seleccionar variables de un set de datos
+
+5. `haven`: cargar y exportar bases de datos en formatos .sav y .dta
+
+6. `car`: para recodificar/agrupar valores de variables
+
+```{r eval=FALSE, include=TRUE}
+pacman::p_load(tidyverse,
+               sjmisc,
+               dplyr,
+               haven,
+               car)
+```
+
+
+## 2 Importar datos
+
+En R es es posible importar y exportar datos que se encuentren en _cualquier formato_: ya sea .csv, .dta, .sav, .xlsx y, por supuesto, .rds y .RData. Sin embargo, para poder hacerlo lo primero es instalar y cargar las librerías que contienen las funciones necesarias para la importación de distintos tipos de archivos.
+
+Pero, ¿dónde están mis datos? Como hemos mencionado, nuestros datos los dejaremos en la carpeta `input/data` de nuestro proyecto. La base con la que trabajaremos en este práctico pueden encontrarla en el material docente en U-Cursos, o bien, en el siguiente [enlace]() podrán descargar el archivo .zip que contiene la base ELSOC 2021.
+
+Luego de descargar y descomprimir los datos, asegurate de dejar el archivo .sav en la carpeta `input/data` de tu proyecto. **Nota**: Los datos tendrán distinto nombre según su formato (.sav, .csv, .dta, etc.).
+
+Una vez descargados los datos y cargado el paquete `haven`, procedemos a importar nuestra base de datos. Para ello, en nuestro script, dejamos indicado que a partir de la lectura de los datos con `read_sav()`, crearemos un objeto llamado `elsoc_2021`. Fijate en el  _Enviroment_, ya que si lo anterior se logra, el objeto aparecerá allí. 
+
+La estructura general para importar datos es la siguiente:
+
+`read_*("ruta_hacia_archivo/nombre_archivo.*")`
+
+```{r eval=FALSE, include=TRUE}
+elsoc_2021 <- read_sav("ELSOC W05 v1.0 SPSS.sav")  # No funciona
+
+elsoc_2021 <- read_sav("input/data/ELSOC W05 v1.0 SPSS.sav") # No funciona
+
+elsoc_2021 <- read_sav("input/data/ELSOC_W05_v1.0_SPSS.sav")
+
+```
+
+{{< div "note" >}}
+Para **importar** los datos en R debemos tener en consideración tres cosas:
+
+1. Cómo se llaman los datos (en nuestro caso ELSOC_W05_v1.0_SPSS)
+
+2. El formato de nuestros datos (en nuestro caso .sav)
+
+3. El lugar de donde están alojados nuestros datos. 
+{{< /div >}}
+
+
+### 2.1.1 Importar datos en otros formatos
+
+No siempre nuestros datos vendrán en un único formato. Para ello, R cuenta con otras formas de leer distintos tipos de formatos. Puedes ver las principales en el siguiente [enlace](https://descriptiva-facso.netlify.app/resource/03-resource.html).
+
+
+## 3 Explorar datos
+
+m13 = numerica razon
+c18_04 = ordinal
+c15 = nominal 
+sexo = nominal
+edad = numerica 
+
+
+## 4 Limpiar datos
+
+### 4.1 Identificar
+
+### 4.2 Seleccionar
+
+### 4.3 Filtrar
+
+### 4.4 Recodificar
+
+### 4.5 Tratamiento casos pérdidos
+
+## 5 Transformar variables 
+
+## 6 Guardar y exportar datos procesados
+
+
+## Resumen
 
 ## Video de clase
 
-<div style="width: 100%; height: 600px; overflow: hidden;">
-<video  style="width: 100%;" controls>
-<source src="https://www.dropbox.com/s/1ocgr931vhzkdpl/clase3.webm?raw=1" type="video/mp4">
-</video>
-</div>
 
 
-## Lecturas
-
-- [RatSWD Quality standards for the design of measurement instruments](files/lecturas/RatSWD_WP_245.pdf)
-
-## Actividad: Medición
-
-Seleccionar alguna pregunta / batería de preguntas en un tema de interés de alguna encuesta (puede ser la misma encuesta sobre la que se realizó la ficha).
-
-- Revisar si es que en el manual /ficha técnica de la encuesta aparece información sobre el origen de la pregunta, validez y confiabilidad
-
-- Describir posibles problemas de validez en base a lo presentado en clases
-
-- Analizar utilidad, pertinencia y posibles problemas de construcción de estas preguntas
