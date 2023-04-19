@@ -42,7 +42,6 @@ website:
     background: "#069393"
     right:
       - syllabus.qmd
-      - schedule.qmd
       - text: "Contenidos"
         file: content/index.qmd
 #      - text: "Assignments"
