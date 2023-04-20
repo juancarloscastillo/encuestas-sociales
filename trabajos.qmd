@@ -9,7 +9,7 @@ El curso tendrá dos instancias de evaluación:
 
 - **Taller Colectivo**: Este taller grupal (60% de la nota final) tiene por objetivo aplicar los contenidos del curso a una tématica de interés específica en formato de artículo de investigación breve. Esto implica que los estudiantes deberán plantear un fenómeno social a investigar, el problema de investigación y su relevencia, precisar el argumento o hipótesis central, describir la metodología utilizada y analizar descriptivamente variables relativas a dicho fenónomeno. Consistirá en **dos informes**, uno de diseño de investigación (20%) y otro de análisis y conclusiones (40%). Los talleres son elaborados en grupos de máximo 4 integrantes.
 
-- **Tareas Individuales**: Las tareas individuales (40% de la nota final) tienen por objetivo aplicar los contenidos del Laboratorio de Análisis de Datos y también de las clases lectivas del curso a actividades prácticas. Esto implica que los estudiantes deberán demostrar el aprendizaje de herramientas básicas de procesamiento, limpieza y manipulación de datos, además de analizar descriptivamente y visualizar variables, todo ello siendo correctamente reportado. Consistirán en **tres tareas individuales** a lo largo del semestre, en donde cada una equivaldrá a un 13.3%. 
+- **Tareas Individuales**: Las tareas individuales (40% de la nota final) tienen por objetivo aplicar los contenidos del Laboratorio de Análisis de Datos y también de las clases lectivas del curso a actividades prácticas. Esto implica que los estudiantes deberán demostrar el aprendizaje de herramientas básicas de procesamiento, limpieza y manipulación de datos, además de analizar descriptivamente y visualizar variables, todo ello siendo correctamente reportado. Consistirán en **cuatro tareas individuales** a lo largo del semestre, en donde cada una equivaldrá a un 10%. 
 
 ## Taller Colectivo
 
@@ -30,6 +30,8 @@ El curso tendrá dos instancias de evaluación:
 ### Tarea 2
 
 ### Tarea 3
+
+### Tarea 4
 
 
 # Requisitos de aprobación

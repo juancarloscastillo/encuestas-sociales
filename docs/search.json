@@ -81,14 +81,14 @@
     "href": "content/03-content.html#importar-datos",
     "title": "Práctica 3. Procesamiento, limpieza y manipulación de datos en R",
     "section": "2 Importar datos",
-    "text": "2 Importar datos\nEn R es es posible importar y exportar fácilmente datos que se encuentren en cualquier formato: ya sea .csv, .dta, .sav, .xlsx y, por supuesto, .rds y .RData. Sin embargo, para poder hacerlo lo primero es instalar y cargar las librerías que contienen las funciones necesarias para la importación de distintos tipos de archivos.\nPero, ¿dónde están mis datos? Como hemos mencionado, nuestros datos los dejaremos en la carpeta input/data de nuestro proyecto. La base con la que trabajaremos en este práctico pueden encontrarla en el material docente en U-Cursos, o bien, en n el siguiente enlace podrán descargar el archivo .zip que contiene la base ELSOC 2021.\nLuego de descargar y descomprimir los datos, asegurate de dejar el archivo .sav en la carpeta de tu proyecto input/data. Nota: Los datos tendrán distinto nombre según su formato (.sav, .csv, .dta, etc.).\nUna vez descargados los datos y cargado el paquete haven, procedemos a importar nuestra base de datos. Para ello, en nuestro script, dejamos indicado que a partir de la lectura de los datos con read_sav(), crearemos un objeto llamado elsoc_2021. Fijate en el Enviroment, ya que si lo anetrior se logra, el objeto aparecerá allí.\nLa estructura general para importar datos es la siguiente:\nread_*(\"ruta_hacia_archivo/nombre_archivo.*\")\n\nelsoc_2021 <- read_sav(\"ELSOC W05 v1.0 SPSS.sav\")  # No funciona\n\nelsoc_2021 <- read_sav(\"input/data/ELSOC W05 v1.0 SPSS.sav\") # No funciona\n\nelsoc_2021 <- read_sav(\"input/data/ELSOC_W05_v1.0_SPSS.sav\")\n\n\nPara importar los datos en R debemos tener en consideración tres cosas:\n\nCómo se llaman los datos (en nuestro caso ELSOC_W05_v1.0_SPSS)\nEl formato de nuestros datos (en nuestro caso .sav)\nEl lugar de donde están alojados nuestros datos.\n\n\n\n2.1.1 Importar datos en otros formatos\n¡Bien hecho! Ahora bien, no siempre nuestros datos vendrán en un único formato. Para ello, R cuenta con otras formas de leer distintos tipos de formatos. Puedes ver las principales en el siguiente enlace."
+    "text": "2 Importar datos\nEn R es es posible importar y exportar datos que se encuentren en cualquier formato: ya sea .csv, .dta, .sav, .xlsx y, por supuesto, .rds y .RData. Sin embargo, para poder hacerlo lo primero es instalar y cargar las librerías que contienen las funciones necesarias para la importación de distintos tipos de archivos.\nPero, ¿dónde están mis datos? Como hemos mencionado, nuestros datos los dejaremos en la carpeta input/data de nuestro proyecto. La base con la que trabajaremos en este práctico pueden encontrarla en el material docente en U-Cursos, o bien, en el siguiente enlace podrán descargar el archivo .zip que contiene la base ELSOC 2021.\nLuego de descargar y descomprimir los datos, asegurate de dejar el archivo .sav en la carpeta input/data de tu proyecto. Nota: Los datos tendrán distinto nombre según su formato (.sav, .csv, .dta, etc.).\nUna vez descargados los datos y cargado el paquete haven, procedemos a importar nuestra base de datos. Para ello, en nuestro script, dejamos indicado que a partir de la lectura de los datos con read_sav(), crearemos un objeto llamado elsoc_2021. Fijate en el Enviroment, ya que si lo anterior se logra, el objeto aparecerá allí.\nLa estructura general para importar datos es la siguiente:\nread_*(\"ruta_hacia_archivo/nombre_archivo.*\")\n\nelsoc_2021 <- read_sav(\"ELSOC W05 v1.0 SPSS.sav\")  # No funciona\n\nelsoc_2021 <- read_sav(\"input/data/ELSOC W05 v1.0 SPSS.sav\") # No funciona\n\nelsoc_2021 <- read_sav(\"input/data/ELSOC_W05_v1.0_SPSS.sav\")\n\n\nPara importar los datos en R debemos tener en consideración tres cosas:\n\nCómo se llaman los datos (en nuestro caso ELSOC_W05_v1.0_SPSS)\nEl formato de nuestros datos (en nuestro caso .sav)\nEl lugar de donde están alojados nuestros datos.\n\n\n\n2.1.1 Importar datos en otros formatos\nNo siempre nuestros datos vendrán en un único formato. Para ello, R cuenta con otras formas de leer distintos tipos de formatos. Puedes ver las principales en el siguiente enlace."
   },
   {
     "objectID": "content/03-content.html#explorar-datos",
     "href": "content/03-content.html#explorar-datos",
     "title": "Práctica 3. Procesamiento, limpieza y manipulación de datos en R",
     "section": "3 Explorar datos",
-    "text": "3 Explorar datos"
+    "text": "3 Explorar datos\nm13 = numerica razon c18_04 = ordinal c15 = nominal sexo = nominal edad = numerica"
   },
   {
     "objectID": "content/03-content.html#limpiar-datos",
@@ -284,7 +284,7 @@
     "href": "index.html",
     "title": "Estadística Descriptiva",
     "section": "",
-    "text": "Estadística Descriptiva\n        \n        \n            \n        \n        \n            SOC01014-1 • Primer Semestre 2023Departamento de Sociología FACSOUniversidad de Chile\n        \n    \n    \n        \n    \n\n\n\n\n\nProfesor\n\n   Rodrigo Asún\n   Departamento de Sociología FACSO\n   rasun@uchile.cl\n\n\n\nEquipo docente\n\n   Daniela Olivares\n   dsolivares@uc.cl\n   Andreas Laffert\n   andreas.laffert@ug.uchile.cl\n\n\n\nInformación del curso\n\n   Jueves\n   Marzo–Julio, 2023\n   8:30 AM - 11:45 AM\n   Aulario A - sala 7 y 8\n\n\n\nContacto\nA través de correo o U-Cursos"
+    "text": "Estadística Descriptiva\n        \n        \n            \n        \n        \n            SOC01014-1 • Primer Semestre 2023Departamento de Sociología FACSOUniversidad de Chile\n        \n    \n    \n        \n    \n\n\n\n\n\nProfesor\n\n   Rodrigo Asún\n   Departamento de Sociología FACSO\n   rasun@uchile.cl\n\n\n\nEquipo docente\n\n   Daniela Olivares\n   dsolivares@uc.cl\n   Andreas Laffert\n   andreas.laffert@ug.uchile.cl\n\n\n\nInformación del curso\n\n   Jueves\n   Marzo–Julio, 2023\n   8:30 AM - 11:45 AM\n   Aulario A - sala 7 y 8\n   Prácticos Vía Zoom\n\n\n\nContacto\nA través de correo o U-Cursos"
   },
   {
     "objectID": "resource/01-resource.html",
@@ -313,6 +313,13 @@
     "title": "Uso de R",
     "section": "",
     "text": "Recursos web para aprender R\n\nR para Ciencia de Datos\nHands-On Programming with R\nManual de R\nMás libros de R\nAnalizaR Datos Políticos\nR Cheatsheets\nGuías rápidas en R\nRStudio para Estadística Descriptiva en Ciencias Sociales\n\n\n\nVisualización de datos en R\n\nR Graph Gallery\nData to Viz\nData Visualization Course\n\n\n\nSitios de consulta y comunidad de R\n\nStack Overflow\nGeeks for geeks\nChatGPT\nRstudio Community"
+  },
+  {
+    "objectID": "resource/03-resource.html",
+    "href": "resource/03-resource.html",
+    "title": "Importar datos en R",
+    "section": "",
+    "text": "pacman::p_load(tidyverse,\n               sjmisc,\n               dplyr,\n               haven,\n               readxl)"
   },
   {
     "objectID": "resource/05-resource.html",
@@ -375,7 +382,7 @@
     "href": "schedule.html",
     "title": "Planificación",
     "section": "",
-    "text": "Los dos componentes centrales del curso son las clases lectivas y las sesiones de Laboratorio de Análisis de Datos. Las clases se realizarán los días Jueves 08:30 a 11:45  en sala sala 7 y 8 del Aulario A\n\nClases ( ): Lecturas y documentos de presentación.\nPrácticas (): Actividades prácticas en Laboratorio de Análisis de Datos a desarrollar durante el semestre.\nLecturas (): Llegar a la clase con los textos leídos."
+    "text": "Los dos componentes centrales del curso son las clases lectivas y las sesiones de Laboratorio de Análisis de Datos. Las clases se realizarán los días Jueves 08:30 a 11:45  en sala sala 7 y 8 del Aulario A, mientras que las sesiones de Laboratorio se realizarán los días Jueves 08:30 a 11:45  vía Zoom con una periodicidad de cada 2 semanas.\n\nClases ( ): Documentos de presentación y lecturas asociadas.\nPrácticas (): Actividades prácticas en Laboratorio de Análisis de Datos a desarrollar durante el semestre.\nEvaluaciones (): Evaluaciones individuales y colectivas a desarrollar durante el semestre.\n\n\n\n\n\n Clases\n Prácticas\n Evaluaciones\n\n\n\n\n Marzo \n\n\n\n\n\nJueves 16\n1. Presentación e introducción\n\n- Leer detalladamente programa del curso\n\n\n\n\nUNIDAD 1: Sociología y estadística\n\n\n\nJueves 23\n2. Caracterización de la investigación cuantitativa\n\n\n\n\nJueves 30\n3. La medición en ciencias sociales\n\n\n\n\n Abril \n\n\n\n\n\nJueves 6\n4. La medición en ciencias sociales\n\n\n\n\nJueves 13\n\nSesión 1. Introducción al lenguaje R  Sesión 2. Conocimientos básicos de programación en R\n\n\n\n\n\n\nUNIDAD 2: Medidas de tendencia central, dispersión y posición\n\n\n\nJueves 20\n5. Datos y bases de datos  6. Medidas de tendencia central\n\n\n\n\nJueves 27\n7. Medidas de dispersión  8. Medidas de posición\n\nEntrega Tarea Individual 1\n\n\n Mayo \n\n\n\n\n\nJueves 4\nRECESO\n\n\n\n\nJueves 11\n\nSesión 3. Procesamiento, limpieza y manipulación de datos en R   Sesión 4. Medidas de tendencia central, dispersión y posición\n\n\n\n\n\n\nUNIDAD 3: La forma de una distribución\n\n\n\nJueves 18\n9. Visualización y distribución de datos  10. Noción de función y distribución\n\nEntrega Tarea Individual 2\n\n\nJueves 25\n11. Asimetría y curtosis  12. Distribución normal y puntuación Z\n\nEntrega Informe 1 Taller Colectivo\n\n\n Junio \n\n\n\n\n\nJueves 1\n\nSesión 5. Visualización de datos  Sesión 6. Forma de una distribución\n\n\n\nJueves 8\nRECESO\n\n\n\n\nJueves 15\n13. Probabilidades en la distribución normal y otras distribuciones  14. Fundamentos de la significación estadística, universo y muestra \n\nEntrega Tarea Individual 3\n\n\n\n\n\nUNIDAD 4: Inferencia estadística univariada\n\n\n\nJueves 22\n15. Inferencia estadística univarada\n\n\n\n\nJueves 29\n\nSesión 7 y 8. Inferencia univariada (intervalos de confianza, estimadores puntuales y ponderadores)\n\n\n\n Julio \n\n\n\n\n\nJueves 6\n\n\nEntrega Tarea Individual IV\n\n\nJueves 13\n\n\nEntrega Informe 2 Taller Colectivo"
   },
   {
     "objectID": "syllabus.html",
@@ -452,7 +459,7 @@
     "href": "trabajos.html",
     "title": "Trabajos",
     "section": "",
-    "text": "El curso tendrá dos instancias de evaluación:\n\nTaller Colectivo: Este taller grupal (60% de la nota final) tiene por objetivo aplicar los contenidos del curso a una tématica de interés específica en formato de artículo de investigación breve. Esto implica que los estudiantes deberán plantear un fenómeno social a investigar, el problema de investigación y su relevencia, precisar el argumento o hipótesis central, describir la metodología utilizada y analizar descriptivamente variables relativas a dicho fenónomeno. Consistirá en dos informes, uno de diseño de investigación (20%) y otro de análisis y conclusiones (40%). Los talleres son elaborados en grupos de máximo 4 integrantes.\nTareas Individuales: Las tareas individuales (40% de la nota final) tienen por objetivo aplicar los contenidos del Laboratorio de Análisis de Datos y también de las clases lectivas del curso a actividades prácticas. Esto implica que los estudiantes deberán demostrar el aprendizaje de herramientas básicas de procesamiento, limpieza y manipulación de datos, además de analizar descriptivamente y visualizar variables, todo ello siendo correctamente reportado. Consistirán en tres tareas individuales a lo largo del semestre, en donde cada una equivaldrá a un 13.3%."
+    "text": "El curso tendrá dos instancias de evaluación:\n\nTaller Colectivo: Este taller grupal (60% de la nota final) tiene por objetivo aplicar los contenidos del curso a una tématica de interés específica en formato de artículo de investigación breve. Esto implica que los estudiantes deberán plantear un fenómeno social a investigar, el problema de investigación y su relevencia, precisar el argumento o hipótesis central, describir la metodología utilizada y analizar descriptivamente variables relativas a dicho fenónomeno. Consistirá en dos informes, uno de diseño de investigación (20%) y otro de análisis y conclusiones (40%). Los talleres son elaborados en grupos de máximo 4 integrantes.\nTareas Individuales: Las tareas individuales (40% de la nota final) tienen por objetivo aplicar los contenidos del Laboratorio de Análisis de Datos y también de las clases lectivas del curso a actividades prácticas. Esto implica que los estudiantes deberán demostrar el aprendizaje de herramientas básicas de procesamiento, limpieza y manipulación de datos, además de analizar descriptivamente y visualizar variables, todo ello siendo correctamente reportado. Consistirán en cuatro tareas individuales a lo largo del semestre, en donde cada una equivaldrá a un 10%."
   },
   {
     "objectID": "trabajos.html#taller-colectivo",
@@ -466,13 +473,6 @@
     "href": "trabajos.html#tareas-individuales",
     "title": "Trabajos",
     "section": "Tareas Individuales",
-    "text": "Tareas Individuales\n\nTarea 1\n\n\nTarea 2\n\n\nTarea 3"
-  },
-  {
-    "objectID": "resource/03-resource.html",
-    "href": "resource/03-resource.html",
-    "title": "Importar datos en R",
-    "section": "",
-    "text": "pacman::p_load(tidyverse,\n               sjmisc,\n               dplyr,\n               haven,\n               readxl)"
+    "text": "Tareas Individuales\n\nTarea 1\n\n\nTarea 2\n\n\nTarea 3\n\n\nTarea 4"
   }
 ]

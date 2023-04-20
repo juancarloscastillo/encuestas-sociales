@@ -20,6 +20,7 @@ course:
   days: "Jueves"
   time: "8:30 AM - 11:45 AM"
   location: "Aulario A - sala 7 y 8"
+  location2: "Prácticos Vía Zoom"
   dates: "Marzo–Julio, 2023"
   github: "https://github.com/juancarloscastillo/encuestas-sociales"
   copyright_year: "2023"

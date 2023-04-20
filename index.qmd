@@ -49,6 +49,7 @@ withr::with_dir(here::here(), {
 - {{< fa calendar-alt >}} &nbsp; {{< var course.dates >}}
 - {{< fa clock >}} &nbsp; {{< var course.time >}}
 - {{< fa location-dot >}} &nbsp; {{< var course.location >}}
+- {{< fa book-reader >}} &nbsp; {{< var course.location2 >}}
 :::
 
 ::: {.g-col-4 .contact-policy}

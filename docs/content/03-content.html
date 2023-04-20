@@ -360,10 +360,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="importar-datos" class="level2">
 <h2 class="anchored" data-anchor-id="importar-datos">2 Importar datos</h2>
-<p>En R es es posible importar y exportar fácilmente datos que se encuentren en <em>cualquier formato</em>: ya sea .csv, .dta, .sav, .xlsx y, por supuesto, .rds y .RData. Sin embargo, para poder hacerlo lo primero es instalar y cargar las librerías que contienen las funciones necesarias para la importación de distintos tipos de archivos.</p>
-<p>Pero, ¿dónde están mis datos? Como hemos mencionado, nuestros datos los dejaremos en la carpeta <code>input/data</code> de nuestro proyecto. La base con la que trabajaremos en este práctico pueden encontrarla en el material docente en U-Cursos, o bien, en n el siguiente enlace podrán descargar el archivo .zip que contiene la base ELSOC 2021.</p>
-<p>Luego de descargar y descomprimir los datos, asegurate de dejar el archivo .sav en la carpeta de tu proyecto <code>input/data</code>. <strong>Nota</strong>: Los datos tendrán distinto nombre según su formato (.sav, .csv, .dta, etc.).</p>
-<p>Una vez descargados los datos y cargado el paquete <code>haven</code>, procedemos a importar nuestra base de datos. Para ello, en nuestro script, dejamos indicado que a partir de la lectura de los datos con <code>read_sav()</code>, crearemos un objeto llamado <code>elsoc_2021</code>. Fijate en el <em>Enviroment</em>, ya que si lo anetrior se logra, el objeto aparecerá allí.</p>
+<p>En R es es posible importar y exportar datos que se encuentren en <em>cualquier formato</em>: ya sea .csv, .dta, .sav, .xlsx y, por supuesto, .rds y .RData. Sin embargo, para poder hacerlo lo primero es instalar y cargar las librerías que contienen las funciones necesarias para la importación de distintos tipos de archivos.</p>
+<p>Pero, ¿dónde están mis datos? Como hemos mencionado, nuestros datos los dejaremos en la carpeta <code>input/data</code> de nuestro proyecto. La base con la que trabajaremos en este práctico pueden encontrarla en el material docente en U-Cursos, o bien, en el siguiente <a href="">enlace</a> podrán descargar el archivo .zip que contiene la base ELSOC 2021.</p>
+<p>Luego de descargar y descomprimir los datos, asegurate de dejar el archivo .sav en la carpeta <code>input/data</code> de tu proyecto. <strong>Nota</strong>: Los datos tendrán distinto nombre según su formato (.sav, .csv, .dta, etc.).</p>
+<p>Una vez descargados los datos y cargado el paquete <code>haven</code>, procedemos a importar nuestra base de datos. Para ello, en nuestro script, dejamos indicado que a partir de la lectura de los datos con <code>read_sav()</code>, crearemos un objeto llamado <code>elsoc_2021</code>. Fijate en el <em>Enviroment</em>, ya que si lo anterior se logra, el objeto aparecerá allí.</p>
 <p>La estructura general para importar datos es la siguiente:</p>
 <p><code>read_*("ruta_hacia_archivo/nombre_archivo.*")</code></p>
 <div class="cell">
@@ -383,11 +383,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p></p>
 <section id="importar-datos-en-otros-formatos" class="level3">
 <h3 class="anchored" data-anchor-id="importar-datos-en-otros-formatos">2.1.1 Importar datos en otros formatos</h3>
-<p>¡Bien hecho! Ahora bien, no siempre nuestros datos vendrán en un único formato. Para ello, R cuenta con otras formas de leer distintos tipos de formatos. Puedes ver las principales en el siguiente <a href="">enlace</a>.</p>
+<p>No siempre nuestros datos vendrán en un único formato. Para ello, R cuenta con otras formas de leer distintos tipos de formatos. Puedes ver las principales en el siguiente <a href="https://descriptiva-facso.netlify.app/resource/03-resource.html">enlace</a>.</p>
 </section>
 </section>
 <section id="explorar-datos" class="level2">
 <h2 class="anchored" data-anchor-id="explorar-datos">3 Explorar datos</h2>
+<p>m13 = numerica razon c18_04 = ordinal c15 = nominal sexo = nominal edad = numerica</p>
 </section>
 <section id="limpiar-datos" class="level2">
 <h2 class="anchored" data-anchor-id="limpiar-datos">4 Limpiar datos</h2>

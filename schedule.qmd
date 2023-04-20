@@ -5,12 +5,52 @@ toc: false
 page-layout: full
 ---
 
-Los dos componentes centrales del curso son las clases lectivas y las sesiones de Laboratorio de Análisis de Datos. Las **clases** se realizarán los días **Jueves 08:30 a 11:45 ** en sala **sala 7 y 8 del Aulario A**
+Los dos componentes centrales del curso son las clases lectivas y las sesiones de Laboratorio de Análisis de Datos. Las **clases** se realizarán los días **Jueves 08:30 a 11:45 ** en sala **sala 7 y 8 del Aulario A**, mientras que las sesiones de Laboratorio se realizarán los días **Jueves 08:30 a 11:45 ** vía Zoom con una periodicidad de cada 2 semanas.
 
--   [**Clases**]() (<i class="fas fa-chalkboard-teacher"></i> ): Lecturas y  documentos de presentación.
+-   [**Clases**]() (<i class="fas fa-chalkboard-teacher"></i> ): Documentos de presentación y lecturas asociadas.
 
 -   [**Prácticas**]() (<i class="fas fa-user-edit"></i>): Actividades prácticas en Laboratorio de Análisis de Datos a desarrollar durante el semestre.
 
--   [**Lecturas**]() (<i class="fas fa-book-reader"></i>): Llegar a la clase con los textos leídos.
+-   [**Evaluaciones**]() (<i class="fas fa-book-reader"></i>): Evaluaciones individuales y colectivas a desarrollar durante el semestre.
 
 
+| |<i class="fas fa-chalkboard-teacher"></i>  Clases  |  <i class="fas fa-user-edit"></i>   Prácticas | <i class="fas fa-book-reader"></i> Evaluaciones
+-----|------------|----------------------------------|-----------
+<font color="orange"> **Marzo** </font> |   |   |
+Jueves 16 | **1. Presentación e introducción**  |   | - Leer detalladamente [programa del curso](syllabus.html)
+
+### UNIDAD 1: Sociología y estadística
+|||
+-----|------------|-------------------|-----------
+Jueves 23 | **2. Caracterización de la investigación cuantitativa** | | 
+Jueves 30 | **3. La medición en ciencias sociales** | | 
+<font color="orange"> **Abril** </font> |   |   |
+Jueves 6 | **4. La medición en ciencias sociales** | | 
+Jueves 13 |  |  [**Sesión 1. Introducción al lenguaje R**](/content/01-content.html) <br> [**Sesión 2. Conocimientos básicos de programación en R**](/content/02-content.html) |                                                                
+### UNIDAD 2: Medidas de tendencia central, dispersión y posición
+|||
+-----|------------|-------------------|-----------
+Jueves 20 | **5. Datos y bases de datos** <br> **6. Medidas de tendencia central**  |   |
+Jueves 27 | **7. Medidas de dispersión** <br> **8. Medidas de posición** | | **Entrega Tarea Individual 1**
+<font color="orange"> **Mayo** </font> |   |   |
+Jueves 4 | RECESO  |   |
+Jueves 11 |  |  [**Sesión 3. Procesamiento, limpieza y manipulación de datos en R **](/content/03-content.html)  <br> [**Sesión 4. Medidas de tendencia central, dispersión y posición**](/content/04-content.html)|
+
+### UNIDAD 3: La forma de una distribución
+|||
+-----|------------|-------------------|-----------
+Jueves 18 | **9. Visualización y distribución de datos** <br> **10. Noción de función y distribución** | | **Entrega Tarea Individual 2**
+Jueves 25 | **11. Asimetría y curtosis** <br> **12. Distribución normal y puntuación Z** | | **Entrega Informe 1 Taller Colectivo**
+<font color="orange"> **Junio** </font> |   |   |
+Jueves 1 |  |[**Sesión 5. Visualización de datos**](/content/05-content.html)  <br> [**Sesión 6. Forma de una distribución**](/content/06-content.html)|
+Jueves 8 | RECESO  |   |
+Jueves 15 | **13. Probabilidades en la distribución normal y otras distribuciones** <br> **14. Fundamentos de la significación estadística, universo y muestra ** | | **Entrega Tarea Individual 3**
+
+### UNIDAD 4: Inferencia estadística univariada
+|||
+-----|------------|-------------------|-----------
+Jueves 22 | **15. Inferencia estadística univarada** | | 
+Jueves 29 |  |  [**Sesión 7 y 8. Inferencia univariada (intervalos de confianza, estimadores puntuales y ponderadores)**](/content/07-content.html) |
+<font color="orange"> **Julio** </font> |   |   |
+Jueves 6 |   |   | **Entrega Tarea Individual IV**
+Jueves 13 |   |   | **Entrega Informe 2 Taller Colectivo**
