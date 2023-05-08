@@ -59,7 +59,7 @@ En la práctica, tu script debería (ojalá siempre) verse así:
 
 ## 1 Cargar librerías
 
-En R se trabaja a partir de paquetes (packages). ¿Qué son? de forma resumida, los paquetes son un conjunto de funciones o herramientas que pueden ser usadas en R. Los directorios de R donde se almacenan los paquetes se denominan librerías. La lógica es instalar paquetes y luego cargarlas (o llamar las librerías) cada vez que es necesario usarlas.
+En R se trabaja a partir de paquetes (packages). ¿Qué son? De forma resumida, los paquetes son un conjunto de funciones o herramientas que pueden ser usadas en R. Los directorios de R donde se almacenan los paquetes se denominan librerías. La lógica es instalar paquetes y luego cargar (o llamar) las librerías cada vez que es necesario usarlas.
 
 Usualmente para cargar paquetes lo hacemos de la siguiente manera:
 
@@ -89,7 +89,7 @@ En este práctico utilizaremos seis paquetes
 
 5.  `car`: para recodificar/agrupar valores de variables
 
-6.  `magrittr`: para manipular datos con %>% 
+6.  `magrittr`: para manipular datos con `%>%` 
 
 
 
@@ -98,9 +98,10 @@ pacman::p_load(tidyverse, # colección de paquetes para manipulación de datos
                dplyr, # para manipular datos
                haven, # para importar datos
                car, # para recodificar datos
-               magrittr)#para manipular datos
+               magrittr)# para manipular datos
 
 options(scipen = 999) # para desactivar notacion cientifica
+rm(list = ls()) # para limpiar el entorno de trabajo
 ```
 
 
@@ -169,43 +170,30 @@ Tenemos una base de datos con 1000 casos o filas y con 13 variables o columnas.
 
 ## 4 Limpiar datos
 
+Para todos los subprocesos que involucra la "limpieza" de datos, tenemos al menos dos maneras. Por un lado, podemos usar las funciones de R base, es decir, que no requieren paquetes extras. Por el otro, podemos usar las funciones del paquete `dplyr()`, que es una gramática o dialecto de manipulación de datos que proporciona un conjunto de coherente funciones o "verbos" básicos para programar. 
+
+
+```{r echo=FALSE, warning=FALSE, out.width="60%", fig.align='center'}
+knitr::include_graphics("../images/dplyr.jpg", error = FALSE)
+```
+
+
+
+Pero, ¿por qué gramática y verbos? Porque a diferencia de otras formas de programar, `dplyr()` está orientado a escribir código como la escritura normal, es decir, **de izquierda a derecha**. Generalmente, la estructura de `dplyr()` es:
+
+
+`dplyr::funcion(datos, variable1, variable2, variable_n)`
+
+En **este práctico solo nos centraremos en manipular datos con `dplyr()`**. Para conocer cómo hacer **lo mismo pero con `R base` visita este [enlace](https://descriptiva-facso.netlify.app/resource/04-resource.html)**. 
+
+
+![](../images/clean.data.jpg)
+
 ### 4.1 Seleccionar
 
 Una vez tenemos claras cúales son las variables que nos interesan, las _seleccionamos_ y almacenamos en una nueva base de datos. Esto debido que evitará confusiones y hará más eficiente nuestros analísis en términos de memoria.
- 
-Para seleccionar variables tenemos al menos dos maneras. Por un lado, podemos usar las funciones de R base, es decir, que no requieren paquetes extras. Por el otro, utilizaremos la función `select()` del paquete `dplyr`. Con cualquiera de ambas formas, podemos seleccionar variables a partir de su nombre o de su ubicación en la base de datos. 
 
-#### a) Con R base
-
-En R base, el primer argumento dentro del bracket `[]` refiere a las filas y el segundo a las columnas.
-
-```{r collapse=FALSE}
-elsoc_2022[ , 1] 
-
-```
-
-También podemos seleccionar más de una columna/variable utilizando funciones básicas de R. Por ejemplo, usando `c()`
-
-```{r collapse=FALSE}
-elsoc_2022[, c(1,2,4)] #aqui le decimos que queremos las columnas especificas 1 2 y 4 
-```
-
-O bien, indicando desde qué columna hasta cuál quiero seleccionar.
-
-```{r collapse=FALSE}
-elsoc_2022[, 1:4] # aqui le decimos que queremos desde la columna 1 a la 4
-```
-
-Y, obviamente, podemos utilizar el nombre de las variables.
-
-```{r collapse=FALSE}
-elsoc_2022[, c("m0_sexo", "m0_edad")]
-```
-
-
-#### b) Con `select` de `dplyr`
-
-De manera similar, la función `select()` de `dplyr` facilita el trabajo a la hora de seleccionar variables. La estructura general del comando siempre es `select(datos, variable1, variable2, variable3)`. 
+En R base, el primer argumento dentro del bracket `[]` refiere a las filas y el segundo a las columnas. De manera similar, la función `select()` de `dplyr` facilita el trabajo a la hora de seleccionar variables. La estructura general del comando siempre es `select(datos, variable1, variable2, variable3)`. 
 
 Hay distintas formas de usar `select()`, ¡veámoslas!
 
@@ -219,8 +207,7 @@ dplyr::select(elsoc_2022, 1:4) # la primera hasta la cuarta columna
 dplyr::select(elsoc_2022, c(1, 4, 5)) # la primera, la cuarta y la quinta columna
 ```
 
-
-También podemos usar el **nombre** de la variable/columna Si conocemos el nombre de la variable simplemente lo podemos poner y se seleccionará. Con select() no es necesario poner los nombres con comillas `" "`:
+También podemos usar el **nombre** de la variable/columna. Si conocemos el nombre de la variable simplemente lo podemos poner y se seleccionará. Con select() no es necesario poner los nombres con comillas `" "`:
 
 ```{r collapse=FALSE}
 dplyr::select(elsoc_2022, m0_sexo, m0_edad, m13)
@@ -263,28 +250,7 @@ Esta nueva base de datos sigue manteniendo los 1.000 casos/filas, pero ahora sol
 
 ### 4.2 Filtrar
 
-Tal y como regularmente no trabajamos con _todas_ las variables de una base de datos, no siempre desearemos trabajar con todas las observaciones que tenemos en los datos. Habrá ocasiones (_varias_) en las que querremos trabajar con casos que cumplan ciertas condiciones; que sean de determinada edad, residencia, tiempo o que simplemente hayan respondido de determinada forma una pregunta. Como lo hicimos antes, podemos **filtrar** nuestros datos con R base o con `dplyr`. ¡Veámos!
-
-
-#### a) Con R base
-
-Ahora, en vez de trabajar con columnas trabajaremos con las filas. Esto lo haremos especificando condiciones de las variables en el primer argumento de los brackets `[]`.
-
-```{r collapse=FALSE}
-proc_elsoc[proc_elsoc$autor_democ == 1, ] # indicamos que en nuestra base proc_elsoc, queremos que nos deje aquellos casos que cumplen con la condicion de que autor_democr sea 2
-```
-
-Para indicarle a R que nos filtre aquellos casos que cumplen con la condición de ser iguales a 1 (Mujeres), usamos el operador `==`. ¿Y esto de dónde salió? recuerda que los operadores en R los vimos en la [segunda sesión](https://descriptiva-facso.netlify.app/content/02-content.html).
-
-También podemos agregar muchas _condiciones_ para filtrar nuestros datos. Solamente debemos agregarlo. 
-```{r collapse=FALSE}
-
-proc_elsoc[proc_elsoc$autor_democ == 1& proc_elsoc$edad >= 25, ] # aqui le indicamos que nos filtre por casos que son autoritarismo/democracia igual 2 (no confia) y mayores o iguales a 25 años
-
-```
-
-
-#### b) Con `filter()` de `dplyr`
+Tal y como regularmente no trabajamos con _todas_ las variables de una base de datos, no siempre desearemos trabajar con todas las observaciones que tenemos en los datos. Habrá ocasiones (_varias_) en las que querremos trabajar con casos que cumplan ciertas condiciones; que sean de determinada edad, residencia, tiempo o que simplemente hayan respondido de determinada forma una pregunta. 
 
 Con `dplyr` podemos filtrar nuestros datos con el comando `filter()`, en el cual debemos especificar los datos y las condiciones que queremos aplicarle a determinadas variables. 
 
@@ -292,10 +258,12 @@ Con `dplyr` podemos filtrar nuestros datos con el comando `filter()`, en el cual
 dplyr::filter(proc_elsoc, autor_democ == 1)
 ```
 
-Asimismo, podemos agregar varias condicionantes usando los operadores relacionales de R.
+Para indicarle a R que nos filtre aquellos casos que cumplen con la condición de ser iguales a 1 (autor_democ == 1), usamos el operador `==`. ¿Y esto de dónde salió? recuerda que los operadores en R los vimos en la [segunda sesión](https://descriptiva-facso.netlify.app/content/02-content.html)
+
+También podemos agregar muchas condiciones para filtrar nuestros datos. Solamente debemos agregarlo, usando los operadores relacionales de R.
 
 ```{r collapse=FALSE}
-dplyr::filter(proc_elsoc, autor_democ == 1 & jv_delincuentes %in% c(4,5))
+dplyr::filter(proc_elsoc, autor_democ == 1 & edad >= 25)
 ```
 
 Pero, ¿y si tengo variables tipo `character` o `factor`? Tanto en R base como con `dplyr` podemos especificar condiciones y filtrar este tipo de datos usando las comillas `" " `.
@@ -319,7 +287,7 @@ Una parte fundamental del procesamiento e integración de datos es la recodifica
 
 Hay múltiples formas de recodificar en R, pero en este ejemplo trabajaremos con el comando `recode()` del paquete `car`. 
 
-Esta vez, recodificaremos las siguientes variables: `sexo`, `autor_democ` y `jv_delincuentes`. Para esto, nos apoyaremos en el libro de códigos.
+Esta vez, recodificaremos las siguientes variables: `sexo`, `ingreso`, `autor_democ` y `jv_delincuentes`. Para esto, nos apoyaremos en el libro de códigos.
 
 ::: callout-tip
 El comando `recode()` generalmente sigue esta estructura:
@@ -327,12 +295,22 @@ El comando `recode()` generalmente sigue esta estructura:
 `car::recode(datos$variable, recodes = c('valor_orig1=nuevo_valor1;valor_org2=nuevo_valor2'))`
 :::
 
-Recodifiquemos la variable sexo:
+A diferencia de R base, con la función `mutate()` de `dplyr` podemos recodificar todas nuestras variables en un solo código si así lo queremos. Además, nos ahorramos especificar en todo momento la base de datos, ya que esa es la lógica de programación con `dplyr()`. 
+
+La estructura de `mutate()` es generalmente esta:
+
+`dplyr::mutate(datos, nueva_variable = funcion())`
+
+Recodifiquemos las variables sexo e ingresos:
 
 ```{r collapse=FALSE, warning=FALSE}
 
-proc_elsoc$sexo <- car::recode(proc_elsoc$sexo, 
-                               recodes = c("'Hombre' = 'Masculino'; 'Mujer' = 'Femenino'"))
+proc_elsoc <- dplyr::mutate(proc_elsoc,
+                            sexo = car::recode(sexo,
+                                               recodes = c("'Hombre' = 'Masculino'; 'Mujer' = 'Femenino'")),
+                            ingreso = car::recode(ingreso, 
+                                                  recodes = c("-888 = NA; -999 = NA")))
+
 
 proc_elsoc
 ```
@@ -341,17 +319,19 @@ Ahora recodifiquemos las demás variables. Además de recodificar valores propia
 
 ```{r collapse=FALSE, warning=FALSE}
 
-proc_elsoc$autor_democ <- car::recode(proc_elsoc$autor_democ, 
-            recodes = c("1 = 'La democracia es preferible a cualquier otra forma de gobierno'; 
-                        2 = 'En algunas circunstancias, un gobierno autoritario puede ser preferible a uno democratico'; 
-                        3 = 'A la gente como uno, nos da lo mismo un regimen democratico que uno autoritario'; 
-                        4 = 'Ninguna'; 
-                        -888 = NA; 
-                        -999 = NA"),
-            as.factor = TRUE) # convertir a factor
-
-proc_elsoc$jv_delincuentes <- car::recode(proc_elsoc$jv_delincuentes, 
-                                          recodes = c("1 = 'Nunca';
+proc_elsoc <- dplyr::mutate(proc_elsoc,
+                            autor_democ = car::recode(autor_democ,
+                            recodes = c("1 = 'La democracia es preferible a cualquier otra forma de gobierno'; 
+                            2 = 'En algunas circunstancias, un gobierno autoritario puede ser preferible a uno democratico'; 
+                            3 = 'A la gente como uno, nos da lo mismo un regimen democratico que uno autoritario'; 
+                            4 = 'Ninguna'; 
+                            -888 = NA; 
+                            -999 = NA"),
+                            as.factor = TRUE)) # convertir a factor
+            
+proc_elsoc <- dplyr::mutate(proc_elsoc,
+                            jv_delincuentes = car::recode(jv_delincuentes,
+                                            recodes = c("1 = 'Nunca';
                                                        2 = 'Pocas veces';
                                                        3 = 'Algunas veces';
                                                        4 = 'Muchas veces';
@@ -363,13 +343,16 @@ proc_elsoc$jv_delincuentes <- car::recode(proc_elsoc$jv_delincuentes,
                                                      "Pocas veces",
                                                      "Algunas veces",
                                                      "Muchas veces",
-                                                     "Siempre")) # ordenamos niveles
-
+                                                     "Siempre")))# ordenamos niveles
+  
 proc_elsoc
 ```
 
+::: callout-note
+
 Como se puede ver, los valores `-888 y -999` fueron codificados como valores pérdidos ya que estos valores significan no sabe y no responde, respectivamente.
 
+:::
 
 ### 4.4 Tratamiento casos pérdidos
 
@@ -410,71 +393,146 @@ proc_elsoc
 
 ## 5 Transformar variables
 
-Un último paso en el procesamiento de datos es la **creación** o derivación de nuevas variables a partir de los datos que ya tenemos. Esto es relevante no solo para procesar datos, sino porque permite generar variables que se alinien mucho mejor con nuestros objetivos de análisis. 
+Un último paso en el procesamiento de datos es la **creación** o derivación de nuevas variables a partir de los datos que ya tenemos. Esto es relevante no solo para procesar datos, sino porque permite generar variables que se alineen mucho mejor con nuestros objetivos de análisis. 
 
-En este ejemplo, transformaremos las variables `edad` e `ingresos`, y crearemos una nueva variable llamada `año` de la encuesta. Para ello, usaremos la función `mutate()` del paquete `dplyr`. Pero antes...
+La función `mutate()` de `dplyr` no solo nos permite recodificar variables, sino que también _crear_ otras nuevas manteniendo las originales. Para este ejemplo usaremos dos funciones adicionales de `dplyr` que, al combinarlas con `mutate()`, podremos transformar variables de manera muy sencilla. 
 
-::: callout-note
-**Pipes**
+En este ejemplo, transformaremos las variables `edad` e `ingresos`, y crearemos una nueva variable llamada `año` de la encuesta y otra llamada `ingreso_minimo`. 
 
-`Dplyr` es un lenguaje de R que permite escribir código de izquierda a derecha, o sea, más "natural". Para ello, se utilizan los **pipes** `%>%`, que permiten concatenar funciones y códigos bajo la lógica de: 
-
-`primer_paso %>% (luego) segundo_paso`  
-
-Además, podemos sobreescribir la base de datos procesada sin necesidad de indicar la variable.
-
-:::
-
-**¡Veámos cómo se hace!** 
-
-#### a) Crear variables 
+**¡Veámos cómo se hace!**
 
 Generemos las nueva variable año:
 
-```{r eval=FALSE, include=TRUE}
-proc_elsoc <- proc_elsoc %>% mutate(ano = 2022)
+```{r eval=TRUE, include=TRUE, collapse=FALSE}
+proc_elsoc <- mutate(proc_elsoc, ano = 2022)
 
-View(proc_elsoc)
+proc_elsoc
 ```
 
-#### b) Transformar variables con `case_when()` e `if_else()`
+#### Transformar variables con `case_when()` e `if_else()`
 
 Generemos nuevas variables para `edad` e `ingresos` dejándolas como tramos con `case_when()`. 
 
-```{r ceval=FALSE, include=TRUE}
-proc_elsoc <- proc_elsoc %>% 
-  mutate(tramo_edad = case_when(edad <= 29 ~ "Jovenes",
-                                edad >= 30 & edad <= 59 ~ "Adultos",
-                                edad >= 60 ~ "Adutos mayores"))
+```{r eval=TRUE, include=TRUE}
+proc_elsoc <- mutate(proc_elsoc,
+                     tramo_edad = case_when(edad <= 29 ~ "Jovenes",
+                                            edad >= 30 & edad <= 59 ~ "Adultos",
+                                            edad >= 60 ~ "Adutos mayores"))
 
 
-proc_elsoc <- proc_elsoc %>% 
-  mutate(tramo_ingreso = case_when(ingreso <= 250000 ~ "Tramo 1",
-                                   ingreso > 250000 & ingreso <= 500000 ~ "Tramo 2",
-                                   ingreso > 500000 & ingreso <= 750000 ~ "Tramo 3",
-                                   ingreso > 750000 & ingreso <= 1000000 ~ "Tramo 4",
-                                   ingreso > 1000000 ~ "Tramo 5"))
+proc_elsoc <- mutate(proc_elsoc,
+                     tramo_ingreso = case_when(ingreso <= 250000 ~ "Tramo 1",
+                                                ingreso > 250000 & ingreso <= 500000 ~ "Tramo 2",
+                                                ingreso > 500000 & ingreso <= 750000 ~ "Tramo 3",
+                                                ingreso > 750000 & ingreso <= 1000000 ~ "Tramo 4",
+                                                ingreso > 1000000 ~ "Tramo 5"))
+
+proc_elsoc
 ```
 
 Ahora, generemos una nueva variable llamada `ingreso_minimo` con la función `if_else()`.
 
 ```{r collapse=FALSE}
-proc_elsoc <- proc_elsoc %>% 
-  mutate(ingreso_minimo = if_else(ingreso < 410000, "debajo minimo", "sobre minimo"))
+proc_elsoc <- mutate(proc_elsoc,
+                     ingreso_minimo = if_else(ingreso < 410000, "debajo minimo", "sobre minimo"))
 
 select(proc_elsoc, ingreso, ingreso_minimo) #veamosla!
 ```
 
+## 6) Colocando todo en práctica
 
-## 6 Guardar y exportar datos procesados
 
-**¡LLegamos al final!** El último paso que nos queda es guardar y exportar nuestra base de datos procesada. Siguiendo el flujo de trabajo propuesto, guardaremos la base procesada en formato .Rdata y la alojaremos en la carpeta `output` de nuestro proyecto.
+Otra de las venjatas de `dplyr()` es que nos permite **concatenar** funciones siguiendo la misma lógica de programación de izquiera a derecha. Esto lo hacemos a través de los **pipes** ` %>% `, que es un operador proveniente del paquete `magrittr`. 
+
+Una función normal es igual a `f(x,y)`, en donde al elemento `y` del objeto `x` le aplicamos determinada función `f()`. Los ` %>% ` simplifican funciones y concatenan códigos de la siguiente manera:
+
+`x %>% f(y)` es lo mismo que `f(x,y)`.
+
+Esto significa que el ` %>% ` literalmente le dice a R que coloque al objeto `x` dentro de la función `f()`, para aplicarle dicha función a `y`.
+:::
+
+**Veamos cómo se ocupa y porqué simplifica la vida**
+
+
+### a) Seleccionemos y filtremos datos con ` %>% `
+
+```{r eval=TRUE, include=TRUE}
+proc_elsoc <- elsoc_2022 %>% 
+  dplyr::select(edad = m0_edad,
+                sexo = m0_sexo,
+                ingreso = m13,
+                autor_democ = c25,
+                jv_delincuentes = f05_01) %>% 
+  dplyr::filter(edad >= 25)
+
+proc_elsoc
+```
+
+
+### b) Recodifiquemos datos y eliminemos `NAs` con ` %>% `
+
+```{r eval=TRUE, include=TRUE, warning=FALSE}
+
+proc_elsoc <- proc_elsoc %>% 
+  mutate(sexo = car::recode(sexo,
+                            recodes = c("'Hombre' = 'Masculino'; 'Mujer' = 'Femenino'")),
+         ingreso = car::recode(ingreso, 
+                               recodes = c("-888 = NA; -999 = NA")),
+         autor_democ = car::recode(autor_democ,
+                                   recodes = c("1 = 'La democracia es preferible a cualquier otra forma de gobierno'; 
+                            2 = 'En algunas circunstancias, un gobierno autoritario puede ser preferible a uno democratico'; 
+                            3 = 'A la gente como uno, nos da lo mismo un regimen democratico que uno autoritario'; 
+                            4 = 'Ninguna'; 
+                            -888 = NA; 
+                            -999 = NA"),
+                            as.factor = TRUE), # convertir a factor
+         jv_delincuentes = car::recode(jv_delincuentes, 
+                                       recodes = c("1 = 'Nunca';
+                                                    2 = 'Pocas veces';
+                                                    3 = 'Algunas veces';
+                                                    4 = 'Muchas veces';
+                                                    5 = 'Siempre';
+                                                    -888 = NA; 
+                                                   -999 = NA"),
+                                       as.factor = TRUE, # convertir a factor
+                                       levels = c("Nunca",
+                                                  "Pocas veces",
+                                                  "Algunas veces",
+                                                  "Muchas veces",
+                                                  "Siempre"))) %>% 
+  na.omit()
+
+proc_elsoc
+```
+
+### c)  Transformemos variables con ` %>% `
+
+```{r eval=TRUE, include=TRUE}
+
+proc_elsoc <- proc_elsoc %>% 
+  mutate(ano = 2022,
+         tramo_edad = case_when(edad <= 29 ~ "Jovenes",
+                                edad >= 30 & edad <= 59 ~ "Adultos",
+                                edad >= 60 ~ "Adutos mayores"),
+         tramo_ingreso = case_when(ingreso <= 250000 ~ "Tramo 1",
+                                   ingreso > 250000 & ingreso <= 500000 ~ "Tramo 2",
+                                   ingreso > 500000 & ingreso <= 750000 ~ "Tramo 3",
+                                   ingreso > 750000 & ingreso <= 1000000 ~ "Tramo 4",
+                                   ingreso > 1000000 ~ "Tramo 5"),
+         ingreso_minimo = if_else(ingreso < 410000, "debajo minimo", "sobre minimo"))
+
+proc_elsoc
+
+```
+
+## 7 Guardar y exportar datos procesados
+
+**¡Legamos al final!** El último paso que nos queda es guardar y exportar nuestra base de datos procesada. Siguiendo el flujo de trabajo propuesto, guardaremos la base procesada en formato .Rdata y la alojaremos en la carpeta `output` de nuestro proyecto.
 
 Este último paso es bastante sencillo, solo debemos especificar la base que queremos guadar y su ruta:
 
 ```{r collapse=FALSE}
-save(proc_elsoc, file = "output/datos_proc.Rdata")
-
+saveRDS(proc_elsoc, file = "output/datos_proc.Rdata")
 ```
 
 

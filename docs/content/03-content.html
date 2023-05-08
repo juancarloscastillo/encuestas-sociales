@@ -271,7 +271,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#tratamiento-casos-pérdidos" id="toc-tratamiento-casos-pérdidos" class="nav-link" data-scroll-target="#tratamiento-casos-pérdidos">4.4 Tratamiento casos pérdidos</a></li>
   </ul></li>
   <li><a href="#transformar-variables" id="toc-transformar-variables" class="nav-link" data-scroll-target="#transformar-variables">5 Transformar variables</a></li>
-  <li><a href="#guardar-y-exportar-datos-procesados" id="toc-guardar-y-exportar-datos-procesados" class="nav-link" data-scroll-target="#guardar-y-exportar-datos-procesados">6 Guardar y exportar datos procesados</a></li>
+  <li><a href="#colocando-todo-en-práctica" id="toc-colocando-todo-en-práctica" class="nav-link" data-scroll-target="#colocando-todo-en-práctica">6) Colocando todo en práctica</a>
+  <ul class="collapse">
+  <li><a href="#a-seleccionemos-y-filtremos-datos-con" id="toc-a-seleccionemos-y-filtremos-datos-con" class="nav-link" data-scroll-target="#a-seleccionemos-y-filtremos-datos-con">a) Seleccionemos y filtremos datos con <code>%&gt;%</code></a></li>
+  <li><a href="#b-recodifiquemos-datos-y-eliminemos-nas-con" id="toc-b-recodifiquemos-datos-y-eliminemos-nas-con" class="nav-link" data-scroll-target="#b-recodifiquemos-datos-y-eliminemos-nas-con">b) Recodifiquemos datos y eliminemos <code>NAs</code> con <code>%&gt;%</code></a></li>
+  <li><a href="#c-transformemos-variables-con" id="toc-c-transformemos-variables-con" class="nav-link" data-scroll-target="#c-transformemos-variables-con">c) Transformemos variables con <code>%&gt;%</code></a></li>
+  </ul></li>
+  <li><a href="#guardar-y-exportar-datos-procesados" id="toc-guardar-y-exportar-datos-procesados" class="nav-link" data-scroll-target="#guardar-y-exportar-datos-procesados">7 Guardar y exportar datos procesados</a></li>
   <li><a href="#resumen" id="toc-resumen" class="nav-link" data-scroll-target="#resumen">Resumen</a></li>
   <li><a href="#video-de-clase" id="toc-video-de-clase" class="nav-link" data-scroll-target="#video-de-clase">Video de clase</a></li>
   </ul></li>
@@ -333,7 +339,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1>Procesamiento de datos</h1>
 <section id="cargar-librerías" class="level2">
 <h2 class="anchored" data-anchor-id="cargar-librerías">1 Cargar librerías</h2>
-<p>En R se trabaja a partir de paquetes (packages). ¿Qué son? de forma resumida, los paquetes son un conjunto de funciones o herramientas que pueden ser usadas en R. Los directorios de R donde se almacenan los paquetes se denominan librerías. La lógica es instalar paquetes y luego cargarlas (o llamar las librerías) cada vez que es necesario usarlas.</p>
+<p>En R se trabaja a partir de paquetes (packages). ¿Qué son? De forma resumida, los paquetes son un conjunto de funciones o herramientas que pueden ser usadas en R. Los directorios de R donde se almacenan los paquetes se denominan librerías. La lógica es instalar paquetes y luego cargar (o llamar) las librerías cada vez que es necesario usarlas.</p>
 <p>Usualmente para cargar paquetes lo hacemos de la siguiente manera:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"paquete"</span>)</span>
@@ -352,16 +358,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p><code>dplyr</code>: nos permite seleccionar variables de un set de datos</p></li>
 <li><p><code>haven</code>: cargar y exportar bases de datos en formatos .sav y .dta</p></li>
 <li><p><code>car</code>: para recodificar/agrupar valores de variables</p></li>
-<li><p><code>magrittr</code>: para manipular datos con %&gt;%</p></li>
+<li><p><code>magrittr</code>: para manipular datos con <code>%&gt;%</code></p></li>
 </ol>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(tidyverse, <span class="co"># colección de paquetes para manipulación de datos</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>               dplyr, <span class="co"># para manipular datos</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>               haven, <span class="co"># para importar datos</span></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>               car, <span class="co"># para recodificar datos</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>               magrittr)<span class="co">#para manipular datos</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>               magrittr)<span class="co"># para manipular datos</span></span>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen =</span> <span class="dv">999</span>) <span class="co"># para desactivar notacion cientifica</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen =</span> <span class="dv">999</span>) <span class="co"># para desactivar notacion cientifica</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>()) <span class="co"># para limpiar el entorno de trabajo</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Como se puede ver, antes de la función p_load hay un <code>::</code>, esto se refiere a que se “fuerza” que esa función provenga de ese paquete (en este caso del paquete <code>pacman</code>).</p>
 </section>
@@ -417,108 +424,36 @@ Nota
 </section>
 <section id="limpiar-datos" class="level2">
 <h2 class="anchored" data-anchor-id="limpiar-datos">4 Limpiar datos</h2>
+<p>Para todos los subprocesos que involucra la “limpieza” de datos, tenemos al menos dos maneras. Por un lado, podemos usar las funciones de R base, es decir, que no requieren paquetes extras. Por el otro, podemos usar las funciones del paquete <code>dplyr()</code>, que es una gramática o dialecto de manipulación de datos que proporciona un conjunto de coherente funciones o “verbos” básicos para programar.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/dplyr.jpg" class="img-fluid figure-img" style="width:60.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Pero, ¿por qué gramática y verbos? Porque a diferencia de otras formas de programar, <code>dplyr()</code> está orientado a escribir código como la escritura normal, es decir, <strong>de izquierda a derecha</strong>. Generalmente, la estructura de <code>dplyr()</code> es:</p>
+<p><code>dplyr::funcion(datos, variable1, variable2, variable_n)</code></p>
+<p>En <strong>este práctico solo nos centraremos en manipular datos con <code>dplyr()</code></strong>. Para conocer cómo hacer <strong>lo mismo pero con <code>R base</code> visita este <a href="https://descriptiva-facso.netlify.app/resource/04-resource.html">enlace</a></strong>.</p>
+<p><img src="../images/clean.data.jpg" class="img-fluid"></p>
 <section id="seleccionar" class="level3">
 <h3 class="anchored" data-anchor-id="seleccionar">4.1 Seleccionar</h3>
 <p>Una vez tenemos claras cúales son las variables que nos interesan, las <em>seleccionamos</em> y almacenamos en una nueva base de datos. Esto debido que evitará confusiones y hará más eficiente nuestros analísis en términos de memoria.</p>
-<p>Para seleccionar variables tenemos al menos dos maneras. Por un lado, podemos usar las funciones de R base, es decir, que no requieren paquetes extras. Por el otro, utilizaremos la función <code>select()</code> del paquete <code>dplyr</code>. Con cualquiera de ambas formas, podemos seleccionar variables a partir de su nombre o de su ubicación en la base de datos.</p>
-<section id="a-con-r-base" class="level4">
-<h4 class="anchored" data-anchor-id="a-con-r-base">a) Con R base</h4>
-<p>En R base, el primer argumento dentro del bracket <code>[]</code> refiere a las filas y el segundo a las columnas.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>elsoc_2022[ , <span class="dv">1</span>] </span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 1,000 × 1
-   m0_sexo
-   &lt;chr&gt;  
- 1 Hombre 
- 2 Mujer  
- 3 Hombre 
- 4 Hombre 
- 5 Mujer  
- 6 Mujer  
- 7 Mujer  
- 8 Mujer  
- 9 Mujer  
-10 Hombre 
-# … with 990 more rows</code></pre>
-</div>
-</div>
-<p>También podemos seleccionar más de una columna/variable utilizando funciones básicas de R. Por ejemplo, usando <code>c()</code></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>elsoc_2022[, <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">4</span>)] <span class="co">#aqui le decimos que queremos las columnas especificas 1 2 y 4 </span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 1,000 × 3
-   m0_sexo m0_edad   c25
-   &lt;chr&gt;     &lt;dbl&gt; &lt;dbl&gt;
- 1 Hombre       38     1
- 2 Mujer        45     1
- 3 Hombre       42     3
- 4 Hombre       29     1
- 5 Mujer        53     2
- 6 Mujer        52     3
- 7 Mujer        50     2
- 8 Mujer        57     1
- 9 Mujer        47     1
-10 Hombre       79     2
-# … with 990 more rows</code></pre>
-</div>
-</div>
-<p>O bien, indicando desde qué columna hasta cuál quiero seleccionar.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>elsoc_2022[, <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>] <span class="co"># aqui le decimos que queremos desde la columna 1 a la 4</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 1,000 × 4
-   m0_sexo m0_edad   m36   c25
-   &lt;chr&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
- 1 Hombre       38     1     1
- 2 Mujer        45     4     1
- 3 Hombre       42     4     3
- 4 Hombre       29     4     1
- 5 Mujer        53     5     2
- 6 Mujer        52     1     3
- 7 Mujer        50     4     2
- 8 Mujer        57     8     1
- 9 Mujer        47     4     1
-10 Hombre       79     4     2
-# … with 990 more rows</code></pre>
-</div>
-</div>
-<p>Y, obviamente, podemos utilizar el nombre de las variables.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>elsoc_2022[, <span class="fu">c</span>(<span class="st">"m0_sexo"</span>, <span class="st">"m0_edad"</span>)]</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 1,000 × 2
-   m0_sexo m0_edad
-   &lt;chr&gt;     &lt;dbl&gt;
- 1 Hombre       38
- 2 Mujer        45
- 3 Hombre       42
- 4 Hombre       29
- 5 Mujer        53
- 6 Mujer        52
- 7 Mujer        50
- 8 Mujer        57
- 9 Mujer        47
-10 Hombre       79
-# … with 990 more rows</code></pre>
-</div>
-</div>
-</section>
-<section id="b-con-select-de-dplyr" class="level4">
-<h4 class="anchored" data-anchor-id="b-con-select-de-dplyr">b) Con <code>select</code> de <code>dplyr</code></h4>
-<p>De manera similar, la función <code>select()</code> de <code>dplyr</code> facilita el trabajo a la hora de seleccionar variables. La estructura general del comando siempre es <code>select(datos, variable1, variable2, variable3)</code>.</p>
+<p>En R base, el primer argumento dentro del bracket <code>[]</code> refiere a las filas y el segundo a las columnas. De manera similar, la función <code>select()</code> de <code>dplyr</code> facilita el trabajo a la hora de seleccionar variables. La estructura general del comando siempre es <code>select(datos, variable1, variable2, variable3)</code>.</p>
 <p>Hay distintas formas de usar <code>select()</code>, ¡veámoslas!</p>
 <p>Por <strong>indexación o ubicación</strong> en la base de datos:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">select</span>(elsoc_2022, <span class="dv">1</span>, <span class="dv">2</span>) <span class="co"># la primera y la segunda columna</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">select</span>(elsoc_2022, <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>) <span class="co"># la primera hasta la cuarta columna</span></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">select</span>(elsoc_2022, <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">5</span>)) <span class="co"># la primera, la cuarta y la quinta columna</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">select</span>(elsoc_2022, <span class="dv">1</span>, <span class="dv">2</span>) <span class="co"># la primera y la segunda columna</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">select</span>(elsoc_2022, <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>) <span class="co"># la primera hasta la cuarta columna</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">select</span>(elsoc_2022, <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">5</span>)) <span class="co"># la primera, la cuarta y la quinta columna</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>También podemos usar el <strong>nombre</strong> de la variable/columna Si conocemos el nombre de la variable simplemente lo podemos poner y se seleccionará. Con select() no es necesario poner los nombres con comillas <code>" "</code>:</p>
+<p>También podemos usar el <strong>nombre</strong> de la variable/columna. Si conocemos el nombre de la variable simplemente lo podemos poner y se seleccionará. Con select() no es necesario poner los nombres con comillas <code>" "</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">select</span>(elsoc_2022, m0_sexo, m0_edad, m13)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">select</span>(elsoc_2022, m0_sexo, m0_edad, m13)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1,000 × 3
    m0_sexo m0_edad     m13
@@ -538,7 +473,7 @@ Nota
 </div>
 <p>Otra cosa que podemos hacer es <strong>renombrar las variables al momento de seleccionarlas</strong>, para que tengan un sentido más sustantivo para nosotros.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">select</span>(elsoc_2022, <span class="at">sexo =</span> m0_sexo, <span class="at">edad =</span> m0_edad, <span class="at">ingreso =</span> m13)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">select</span>(elsoc_2022, <span class="at">sexo =</span> m0_sexo, <span class="at">edad =</span> m0_edad, <span class="at">ingreso =</span> m13)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1,000 × 3
    sexo    edad ingreso
@@ -558,7 +493,7 @@ Nota
 </div>
 <p>Por último, podemos usar select() para <strong>reordenar</strong> nuestras variables, lo cual es importante por si por ejemplo utilizamos variables de identificación.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">select</span>(elsoc_2022, m0_edad, m0_sexo, c25, m13)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">select</span>(elsoc_2022, m0_edad, m0_sexo, c25, m13)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1,000 × 4
    m0_edad m0_sexo   c25     m13
@@ -586,14 +521,14 @@ Nota
 <li><strong>f05_01</strong>: justificación violencia hacia delincuentes</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>proc_elsoc <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">select</span>(elsoc_2022, </span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>                            <span class="at">edad =</span> m0_edad,</span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>                            <span class="at">sexo =</span> m0_sexo,</span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>                            <span class="at">ingreso =</span> m13,</span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>                            <span class="at">autor_democ =</span> c25,</span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>                            <span class="at">jv_delincuentes =</span> f05_01)</span>
-<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>proc_elsoc</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>proc_elsoc <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">select</span>(elsoc_2022, </span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>                            <span class="at">edad =</span> m0_edad,</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>                            <span class="at">sexo =</span> m0_sexo,</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>                            <span class="at">ingreso =</span> m13,</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>                            <span class="at">autor_democ =</span> c25,</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>                            <span class="at">jv_delincuentes =</span> f05_01)</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>proc_elsoc</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1,000 × 5
     edad sexo   ingreso autor_democ jv_delincuentes
@@ -613,15 +548,12 @@ Nota
 </div>
 <p>Esta nueva base de datos sigue manteniendo los 1.000 casos/filas, pero ahora solo tiene 5 variables/columnas. ¿Qué pasa si solo quiero trabajar con un subconjunto de estos datos, por ejemplo, las mujeres mayores a 25 años? La respuesta es <strong><em>filtrar</em>.</strong></p>
 </section>
-</section>
 <section id="filtrar" class="level3">
 <h3 class="anchored" data-anchor-id="filtrar">4.2 Filtrar</h3>
-<p>Tal y como regularmente no trabajamos con <em>todas</em> las variables de una base de datos, no siempre desearemos trabajar con todas las observaciones que tenemos en los datos. Habrá ocasiones (<em>varias</em>) en las que querremos trabajar con casos que cumplan ciertas condiciones; que sean de determinada edad, residencia, tiempo o que simplemente hayan respondido de determinada forma una pregunta. Como lo hicimos antes, podemos <strong>filtrar</strong> nuestros datos con R base o con <code>dplyr</code>. ¡Veámos!</p>
-<section id="a-con-r-base-1" class="level4">
-<h4 class="anchored" data-anchor-id="a-con-r-base-1">a) Con R base</h4>
-<p>Ahora, en vez de trabajar con columnas trabajaremos con las filas. Esto lo haremos especificando condiciones de las variables en el primer argumento de los brackets <code>[]</code>.</p>
+<p>Tal y como regularmente no trabajamos con <em>todas</em> las variables de una base de datos, no siempre desearemos trabajar con todas las observaciones que tenemos en los datos. Habrá ocasiones (<em>varias</em>) en las que querremos trabajar con casos que cumplan ciertas condiciones; que sean de determinada edad, residencia, tiempo o que simplemente hayan respondido de determinada forma una pregunta.</p>
+<p>Con <code>dplyr</code> podemos filtrar nuestros datos con el comando <code>filter()</code>, en el cual debemos especificar los datos y las condiciones que queremos aplicarle a determinadas variables.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>proc_elsoc[proc_elsoc<span class="sc">$</span>autor_democ <span class="sc">==</span> <span class="dv">1</span>, ] <span class="co"># indicamos que en nuestra base proc_elsoc, queremos que nos deje aquellos casos que cumplen con la condicion de que autor_democr sea 2</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">filter</span>(proc_elsoc, autor_democ <span class="sc">==</span> <span class="dv">1</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 552 × 5
     edad sexo   ingreso autor_democ jv_delincuentes
@@ -639,10 +571,10 @@ Nota
 # … with 542 more rows</code></pre>
 </div>
 </div>
-<p>Para indicarle a R que nos filtre aquellos casos que cumplen con la condición de ser iguales a 1 (Mujeres), usamos el operador <code>==</code>. ¿Y esto de dónde salió? recuerda que los operadores en R los vimos en la <a href="https://descriptiva-facso.netlify.app/content/02-content.html">segunda sesión</a>.</p>
-<p>También podemos agregar muchas <em>condiciones</em> para filtrar nuestros datos. Solamente debemos agregarlo.</p>
+<p>Para indicarle a R que nos filtre aquellos casos que cumplen con la condición de ser iguales a 1 (autor_democ == 1), usamos el operador <code>==</code>. ¿Y esto de dónde salió? recuerda que los operadores en R los vimos en la <a href="https://descriptiva-facso.netlify.app/content/02-content.html">segunda sesión</a></p>
+<p>También podemos agregar muchas condiciones para filtrar nuestros datos. Solamente debemos agregarlo, usando los operadores relacionales de R.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>proc_elsoc[proc_elsoc<span class="sc">$</span>autor_democ <span class="sc">==</span> <span class="dv">1</span><span class="sc">&amp;</span> proc_elsoc<span class="sc">$</span>edad <span class="sc">&gt;=</span> <span class="dv">25</span>, ] <span class="co"># aqui le indicamos que nos filtre por casos que son autoritarismo/democracia igual 2 (no confia) y mayores o iguales a 25 años</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">filter</span>(proc_elsoc, autor_democ <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> edad <span class="sc">&gt;=</span> <span class="dv">25</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 544 × 5
     edad sexo   ingreso autor_democ jv_delincuentes
@@ -660,52 +592,9 @@ Nota
 # … with 534 more rows</code></pre>
 </div>
 </div>
-</section>
-<section id="b-con-filter-de-dplyr" class="level4">
-<h4 class="anchored" data-anchor-id="b-con-filter-de-dplyr">b) Con <code>filter()</code> de <code>dplyr</code></h4>
-<p>Con <code>dplyr</code> podemos filtrar nuestros datos con el comando <code>filter()</code>, en el cual debemos especificar los datos y las condiciones que queremos aplicarle a determinadas variables.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">filter</span>(proc_elsoc, autor_democ <span class="sc">==</span> <span class="dv">1</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 552 × 5
-    edad sexo   ingreso autor_democ jv_delincuentes
-   &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt;       &lt;dbl&gt;           &lt;dbl&gt;
- 1    38 Hombre 4000000           1              NA
- 2    45 Mujer  2700000           1               3
- 3    29 Hombre 1250000           1               1
- 4    57 Mujer        0           1               4
- 5    47 Mujer   600000           1               3
- 6    39 Hombre 1350000           1               4
- 7    61 Mujer       NA           1               3
- 8    25 Hombre      NA           1               2
- 9    42 Hombre 1100000           1               4
-10    51 Hombre  800000           1               1
-# … with 542 more rows</code></pre>
-</div>
-</div>
-<p>Asimismo, podemos agregar varias condicionantes usando los operadores relacionales de R.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">filter</span>(proc_elsoc, autor_democ <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> jv_delincuentes <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">5</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 102 × 5
-    edad sexo   ingreso autor_democ jv_delincuentes
-   &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt;       &lt;dbl&gt;           &lt;dbl&gt;
- 1    57 Mujer        0           1               4
- 2    39 Hombre 1350000           1               4
- 3    42 Hombre 1100000           1               4
- 4    33 Hombre  530000           1               4
- 5    65 Mujer       NA           1               4
- 6    43 Hombre  500000           1               4
- 7    46 Hombre 1000000           1               5
- 8    58 Mujer   300000           1               5
- 9    75 Mujer       NA           1               4
-10    50 Hombre  500000           1               4
-# … with 92 more rows</code></pre>
-</div>
-</div>
 <p>Pero, ¿y si tengo variables tipo <code>character</code> o <code>factor</code>? Tanto en R base como con <code>dplyr</code> podemos especificar condiciones y filtrar este tipo de datos usando las comillas <code>" "</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">filter</span>(proc_elsoc, sexo <span class="sc">==</span> <span class="st">"Mujer"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">filter</span>(proc_elsoc, sexo <span class="sc">==</span> <span class="st">"Mujer"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 656 × 5
     edad sexo  ingreso autor_democ jv_delincuentes
@@ -725,9 +614,9 @@ Nota
 </div>
 <p><strong>¡Apliquémos conocimientos!</strong> Filtremos nuestros datos quedándonos solo con aquellos casos o personas que tengan o sean mayores a 25 años de edad.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>proc_elsoc <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">filter</span>(proc_elsoc, edad <span class="sc">&gt;=</span> <span class="dv">25</span>)</span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>proc_elsoc</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>proc_elsoc <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">filter</span>(proc_elsoc, edad <span class="sc">&gt;=</span> <span class="dv">25</span>)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>proc_elsoc</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 980 × 5
     edad sexo   ingreso autor_democ jv_delincuentes
@@ -746,12 +635,11 @@ Nota
 </div>
 </div>
 </section>
-</section>
 <section id="recodificar" class="level3">
 <h3 class="anchored" data-anchor-id="recodificar">4.3 Recodificar</h3>
 <p>Una parte fundamental del procesamiento e integración de datos es la recodificación de variables. Esto implica que, a determinadas variables, le aplicaremos ciertos cambios de acuerdo a ciertas reglas y criterios establecidos con anterioridad, siempre cuidando la coherencia con nuestro objetivo de investigación.</p>
 <p>Hay múltiples formas de recodificar en R, pero en este ejemplo trabajaremos con el comando <code>recode()</code> del paquete <code>car</code>.</p>
-<p>Esta vez, recodificaremos las siguientes variables: <code>sexo</code>, <code>autor_democ</code> y <code>jv_delincuentes</code>. Para esto, nos apoyaremos en el libro de códigos.</p>
+<p>Esta vez, recodificaremos las siguientes variables: <code>sexo</code>, <code>ingreso</code>, <code>autor_democ</code> y <code>jv_delincuentes</code>. Para esto, nos apoyaremos en el libro de códigos.</p>
 <div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -766,12 +654,19 @@ Tip
 <p><code>car::recode(datos$variable, recodes = c('valor_orig1=nuevo_valor1;valor_org2=nuevo_valor2'))</code></p>
 </div>
 </div>
-<p>Recodifiquemos la variable sexo:</p>
+<p>A diferencia de R base, con la función <code>mutate()</code> de <code>dplyr</code> podemos recodificar todas nuestras variables en un solo código si así lo queremos. Además, nos ahorramos especificar en todo momento la base de datos, ya que esa es la lógica de programación con <code>dplyr()</code>.</p>
+<p>La estructura de <code>mutate()</code> es generalmente esta:</p>
+<p><code>dplyr::mutate(datos, nueva_variable = funcion())</code></p>
+<p>Recodifiquemos las variables sexo e ingresos:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>proc_elsoc<span class="sc">$</span>sexo <span class="ot">&lt;-</span> car<span class="sc">::</span><span class="fu">recode</span>(proc_elsoc<span class="sc">$</span>sexo, </span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>                               <span class="at">recodes =</span> <span class="fu">c</span>(<span class="st">"'Hombre' = 'Masculino'; 'Mujer' = 'Femenino'"</span>))</span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>proc_elsoc</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>proc_elsoc <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">mutate</span>(proc_elsoc,</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>                            <span class="at">sexo =</span> car<span class="sc">::</span><span class="fu">recode</span>(sexo,</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>                                               <span class="at">recodes =</span> <span class="fu">c</span>(<span class="st">"'Hombre' = 'Masculino'; 'Mujer' = 'Femenino'"</span>)),</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>                            <span class="at">ingreso =</span> car<span class="sc">::</span><span class="fu">recode</span>(ingreso, </span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>                                                  <span class="at">recodes =</span> <span class="fu">c</span>(<span class="st">"-888 = NA; -999 = NA"</span>)))</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>proc_elsoc</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 980 × 5
     edad sexo      ingreso autor_democ jv_delincuentes
@@ -791,31 +686,33 @@ Tip
 </div>
 <p>Ahora recodifiquemos las demás variables. Además de recodificar valores propiamente tal, con <code>recode()</code> podemos indicarle, en la misma función, que convierta la variable a <code>factor</code> y/o que le asigne niveles (ej. para variables ordinales).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>proc_elsoc<span class="sc">$</span>autor_democ <span class="ot">&lt;-</span> car<span class="sc">::</span><span class="fu">recode</span>(proc_elsoc<span class="sc">$</span>autor_democ, </span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>            <span class="at">recodes =</span> <span class="fu">c</span>(<span class="st">"1 = 'La democracia es preferible a cualquier otra forma de gobierno'; </span></span>
-<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="st">                        2 = 'En algunas circunstancias, un gobierno autoritario puede ser preferible a uno democratico'; </span></span>
-<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a><span class="st">                        3 = 'A la gente como uno, nos da lo mismo un regimen democratico que uno autoritario'; </span></span>
-<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a><span class="st">                        4 = 'Ninguna'; </span></span>
-<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a><span class="st">                        -888 = NA; </span></span>
-<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a><span class="st">                        -999 = NA"</span>),</span>
-<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">as.factor =</span> <span class="cn">TRUE</span>) <span class="co"># convertir a factor</span></span>
-<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a>proc_elsoc<span class="sc">$</span>jv_delincuentes <span class="ot">&lt;-</span> car<span class="sc">::</span><span class="fu">recode</span>(proc_elsoc<span class="sc">$</span>jv_delincuentes, </span>
-<span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a>                                          <span class="at">recodes =</span> <span class="fu">c</span>(<span class="st">"1 = 'Nunca';</span></span>
-<span id="cb37-12"><a href="#cb37-12" aria-hidden="true" tabindex="-1"></a><span class="st">                                                       2 = 'Pocas veces';</span></span>
-<span id="cb37-13"><a href="#cb37-13" aria-hidden="true" tabindex="-1"></a><span class="st">                                                       3 = 'Algunas veces';</span></span>
-<span id="cb37-14"><a href="#cb37-14" aria-hidden="true" tabindex="-1"></a><span class="st">                                                       4 = 'Muchas veces';</span></span>
-<span id="cb37-15"><a href="#cb37-15" aria-hidden="true" tabindex="-1"></a><span class="st">                                                       5 = 'Siempre';</span></span>
-<span id="cb37-16"><a href="#cb37-16" aria-hidden="true" tabindex="-1"></a><span class="st">                                                       -888 = NA; </span></span>
-<span id="cb37-17"><a href="#cb37-17" aria-hidden="true" tabindex="-1"></a><span class="st">                                                       -999 = NA"</span>),</span>
-<span id="cb37-18"><a href="#cb37-18" aria-hidden="true" tabindex="-1"></a>                                          <span class="at">as.factor =</span> <span class="cn">TRUE</span>, <span class="co"># convertir a factor</span></span>
-<span id="cb37-19"><a href="#cb37-19" aria-hidden="true" tabindex="-1"></a>                                          <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Nunca"</span>,</span>
-<span id="cb37-20"><a href="#cb37-20" aria-hidden="true" tabindex="-1"></a>                                                     <span class="st">"Pocas veces"</span>,</span>
-<span id="cb37-21"><a href="#cb37-21" aria-hidden="true" tabindex="-1"></a>                                                     <span class="st">"Algunas veces"</span>,</span>
-<span id="cb37-22"><a href="#cb37-22" aria-hidden="true" tabindex="-1"></a>                                                     <span class="st">"Muchas veces"</span>,</span>
-<span id="cb37-23"><a href="#cb37-23" aria-hidden="true" tabindex="-1"></a>                                                     <span class="st">"Siempre"</span>)) <span class="co"># ordenamos niveles</span></span>
-<span id="cb37-24"><a href="#cb37-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-25"><a href="#cb37-25" aria-hidden="true" tabindex="-1"></a>proc_elsoc</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>proc_elsoc <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">mutate</span>(proc_elsoc,</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>                            <span class="at">autor_democ =</span> car<span class="sc">::</span><span class="fu">recode</span>(autor_democ,</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>                            <span class="at">recodes =</span> <span class="fu">c</span>(<span class="st">"1 = 'La democracia es preferible a cualquier otra forma de gobierno'; </span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="st">                            2 = 'En algunas circunstancias, un gobierno autoritario puede ser preferible a uno democratico'; </span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="st">                            3 = 'A la gente como uno, nos da lo mismo un regimen democratico que uno autoritario'; </span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="st">                            4 = 'Ninguna'; </span></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a><span class="st">                            -888 = NA; </span></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a><span class="st">                            -999 = NA"</span>),</span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>                            <span class="at">as.factor =</span> <span class="cn">TRUE</span>)) <span class="co"># convertir a factor</span></span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>proc_elsoc <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">mutate</span>(proc_elsoc,</span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>                            <span class="at">jv_delincuentes =</span> car<span class="sc">::</span><span class="fu">recode</span>(jv_delincuentes,</span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>                                            <span class="at">recodes =</span> <span class="fu">c</span>(<span class="st">"1 = 'Nunca';</span></span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a><span class="st">                                                       2 = 'Pocas veces';</span></span>
+<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a><span class="st">                                                       3 = 'Algunas veces';</span></span>
+<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a><span class="st">                                                       4 = 'Muchas veces';</span></span>
+<span id="cb25-17"><a href="#cb25-17" aria-hidden="true" tabindex="-1"></a><span class="st">                                                       5 = 'Siempre';</span></span>
+<span id="cb25-18"><a href="#cb25-18" aria-hidden="true" tabindex="-1"></a><span class="st">                                                       -888 = NA; </span></span>
+<span id="cb25-19"><a href="#cb25-19" aria-hidden="true" tabindex="-1"></a><span class="st">                                                       -999 = NA"</span>),</span>
+<span id="cb25-20"><a href="#cb25-20" aria-hidden="true" tabindex="-1"></a>                                          <span class="at">as.factor =</span> <span class="cn">TRUE</span>, <span class="co"># convertir a factor</span></span>
+<span id="cb25-21"><a href="#cb25-21" aria-hidden="true" tabindex="-1"></a>                                          <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Nunca"</span>,</span>
+<span id="cb25-22"><a href="#cb25-22" aria-hidden="true" tabindex="-1"></a>                                                     <span class="st">"Pocas veces"</span>,</span>
+<span id="cb25-23"><a href="#cb25-23" aria-hidden="true" tabindex="-1"></a>                                                     <span class="st">"Algunas veces"</span>,</span>
+<span id="cb25-24"><a href="#cb25-24" aria-hidden="true" tabindex="-1"></a>                                                     <span class="st">"Muchas veces"</span>,</span>
+<span id="cb25-25"><a href="#cb25-25" aria-hidden="true" tabindex="-1"></a>                                                     <span class="st">"Siempre"</span>)))<span class="co"># ordenamos niveles</span></span>
+<span id="cb25-26"><a href="#cb25-26" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb25-27"><a href="#cb25-27" aria-hidden="true" tabindex="-1"></a>proc_elsoc</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 980 × 5
     edad sexo      ingreso autor_democ                                   jv_de…¹
@@ -833,7 +730,19 @@ Tip
 # … with 970 more rows, and abbreviated variable name ¹​jv_delincuentes</code></pre>
 </div>
 </div>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Nota
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>Como se puede ver, los valores <code>-888 y -999</code> fueron codificados como valores pérdidos ya que estos valores significan no sabe y no responde, respectivamente.</p>
+</div>
+</div>
 </section>
 <section id="tratamiento-casos-pérdidos" class="level3">
 <h3 class="anchored" data-anchor-id="tratamiento-casos-pérdidos">4.4 Tratamiento casos pérdidos</h3>
@@ -841,32 +750,32 @@ Tip
 <p>Hay diversas maneras de trabajar los valores nulos. Sin embargo, la más sencilla consiste en eliminar los valores nulos que se encuentran presentes en nuestros datos.</p>
 <p>El primer paso es identificar valores nulos en el conjunto de datos en general, o en alguna variable en específico. Para ello, empleamos la función <code>is.na()</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.na</span>(proc_elsoc)</span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="fu">is.na</span>(proc_elsoc<span class="sc">$</span>ingreso)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.na</span>(proc_elsoc)</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="fu">is.na</span>(proc_elsoc<span class="sc">$</span>ingreso)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Pero esto es poco útil. Como opción, podemos sumar o contar la cantidad de valores pérdidos.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(proc_elsoc))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(proc_elsoc))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 474</code></pre>
+<pre><code>[1] 515</code></pre>
 </div>
 </div>
 <p>¿Y si no sabemos qué variables o columnas tienen casos pérdidos? Una forma es usar la función <code>colSums()</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colSums</span>(<span class="fu">is.na</span>(proc_elsoc))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colSums</span>(<span class="fu">is.na</span>(proc_elsoc))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>           edad            sexo         ingreso     autor_democ jv_delincuentes 
-              0               0             394              13              67 </code></pre>
+              0               0             435              13              67 </code></pre>
 </div>
 </div>
 <p>Una vez identificamos los valores nulos, podemos proceder a <strong>removerlos</strong> de la base de datos. El comando <code>na.omit()</code> eliminará todas las filas que presenten casos perdidos.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>proc_elsoc <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(proc_elsoc)</span>
-<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>proc_elsoc</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>proc_elsoc <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(proc_elsoc)</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>proc_elsoc</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 530 × 5
+<pre><code># A tibble: 496 × 5
     edad sexo      ingreso autor_democ                                   jv_de…¹
    &lt;dbl&gt; &lt;chr&gt;       &lt;dbl&gt; &lt;fct&gt;                                         &lt;fct&gt;  
  1    45 Femenino  2700000 La democracia es preferible a cualquier otra… Alguna…
@@ -879,66 +788,83 @@ Tip
  8    51 Masculino  800000 La democracia es preferible a cualquier otra… Nunca  
  9    38 Masculino 1600000 A la gente como uno, nos da lo mismo un regi… Alguna…
 10    45 Femenino   500000 La democracia es preferible a cualquier otra… Nunca  
-# … with 520 more rows, and abbreviated variable name ¹​jv_delincuentes</code></pre>
+# … with 486 more rows, and abbreviated variable name ¹​jv_delincuentes</code></pre>
 </div>
 </div>
 </section>
 </section>
 <section id="transformar-variables" class="level2">
 <h2 class="anchored" data-anchor-id="transformar-variables">5 Transformar variables</h2>
-<p>Un último paso en el procesamiento de datos es la <strong>creación</strong> o derivación de nuevas variables a partir de los datos que ya tenemos. Esto es relevante no solo para procesar datos, sino porque permite generar variables que se alinien mucho mejor con nuestros objetivos de análisis.</p>
-<p>En este ejemplo, transformaremos las variables <code>edad</code> e <code>ingresos</code>, y crearemos una nueva variable llamada <code>año</code> de la encuesta. Para ello, usaremos la función <code>mutate()</code> del paquete <code>dplyr</code>. Pero antes…</p>
-<div class="callout-note callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Nota
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><strong>Pipes</strong></p>
-<p><code>Dplyr</code> es un lenguaje de R que permite escribir código de izquierda a derecha, o sea, más “natural”. Para ello, se utilizan los <strong>pipes</strong> <code>%&gt;%</code>, que permiten concatenar funciones y códigos bajo la lógica de:</p>
-<p><code>primer_paso %&gt;% (luego) segundo_paso</code></p>
-<p>Además, podemos sobreescribir la base de datos procesada sin necesidad de indicar la variable.</p>
-</div>
-</div>
+<p>Un último paso en el procesamiento de datos es la <strong>creación</strong> o derivación de nuevas variables a partir de los datos que ya tenemos. Esto es relevante no solo para procesar datos, sino porque permite generar variables que se alineen mucho mejor con nuestros objetivos de análisis.</p>
+<p>La función <code>mutate()</code> de <code>dplyr</code> no solo nos permite recodificar variables, sino que también <em>crear</em> otras nuevas manteniendo las originales. Para este ejemplo usaremos dos funciones adicionales de <code>dplyr</code> que, al combinarlas con <code>mutate()</code>, podremos transformar variables de manera muy sencilla.</p>
+<p>En este ejemplo, transformaremos las variables <code>edad</code> e <code>ingresos</code>, y crearemos una nueva variable llamada <code>año</code> de la encuesta y otra llamada <code>ingreso_minimo</code>.</p>
 <p><strong>¡Veámos cómo se hace!</strong></p>
-<section id="a-crear-variables" class="level4">
-<h4 class="anchored" data-anchor-id="a-crear-variables">a) Crear variables</h4>
 <p>Generemos las nueva variable año:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>proc_elsoc <span class="ot">&lt;-</span> proc_elsoc <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">ano =</span> <span class="dv">2022</span>)</span>
-<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(proc_elsoc)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>proc_elsoc <span class="ot">&lt;-</span> <span class="fu">mutate</span>(proc_elsoc, <span class="at">ano =</span> <span class="dv">2022</span>)</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>proc_elsoc</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 496 × 6
+    edad sexo      ingreso autor_democ                             jv_de…¹   ano
+   &lt;dbl&gt; &lt;chr&gt;       &lt;dbl&gt; &lt;fct&gt;                                   &lt;fct&gt;   &lt;dbl&gt;
+ 1    45 Femenino  2700000 La democracia es preferible a cualquie… Alguna…  2022
+ 2    29 Masculino 1250000 La democracia es preferible a cualquie… Nunca    2022
+ 3    53 Femenino   500000 En algunas circunstancias, un gobierno… Alguna…  2022
+ 4    57 Femenino        0 La democracia es preferible a cualquie… Muchas…  2022
+ 5    47 Femenino   600000 La democracia es preferible a cualquie… Alguna…  2022
+ 6    39 Masculino 1350000 La democracia es preferible a cualquie… Muchas…  2022
+ 7    42 Masculino 1100000 La democracia es preferible a cualquie… Muchas…  2022
+ 8    51 Masculino  800000 La democracia es preferible a cualquie… Nunca    2022
+ 9    38 Masculino 1600000 A la gente como uno, nos da lo mismo u… Alguna…  2022
+10    45 Femenino   500000 La democracia es preferible a cualquie… Nunca    2022
+# … with 486 more rows, and abbreviated variable name ¹​jv_delincuentes</code></pre>
 </div>
-</section>
-<section id="b-transformar-variables-con-case_when-e-if_else" class="level4">
-<h4 class="anchored" data-anchor-id="b-transformar-variables-con-case_when-e-if_else">b) Transformar variables con <code>case_when()</code> e <code>if_else()</code></h4>
+</div>
+<section id="transformar-variables-con-case_when-e-if_else" class="level4">
+<h4 class="anchored" data-anchor-id="transformar-variables-con-case_when-e-if_else">Transformar variables con <code>case_when()</code> e <code>if_else()</code></h4>
 <p>Generemos nuevas variables para <code>edad</code> e <code>ingresos</code> dejándolas como tramos con <code>case_when()</code>.</p>
-<div class="cell" data-ceval="false">
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>proc_elsoc <span class="ot">&lt;-</span> proc_elsoc <span class="sc">%&gt;%</span> </span>
-<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">tramo_edad =</span> <span class="fu">case_when</span>(edad <span class="sc">&lt;=</span> <span class="dv">29</span> <span class="sc">~</span> <span class="st">"Jovenes"</span>,</span>
-<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>                                edad <span class="sc">&gt;=</span> <span class="dv">30</span> <span class="sc">&amp;</span> edad <span class="sc">&lt;=</span> <span class="dv">59</span> <span class="sc">~</span> <span class="st">"Adultos"</span>,</span>
-<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>                                edad <span class="sc">&gt;=</span> <span class="dv">60</span> <span class="sc">~</span> <span class="st">"Adutos mayores"</span>))</span>
-<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a>proc_elsoc <span class="ot">&lt;-</span> proc_elsoc <span class="sc">%&gt;%</span> </span>
-<span id="cb47-8"><a href="#cb47-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">tramo_ingreso =</span> <span class="fu">case_when</span>(ingreso <span class="sc">&lt;=</span> <span class="dv">250000</span> <span class="sc">~</span> <span class="st">"Tramo 1"</span>,</span>
-<span id="cb47-9"><a href="#cb47-9" aria-hidden="true" tabindex="-1"></a>                                   ingreso <span class="sc">&gt;</span> <span class="dv">250000</span> <span class="sc">&amp;</span> ingreso <span class="sc">&lt;=</span> <span class="dv">500000</span> <span class="sc">~</span> <span class="st">"Tramo 2"</span>,</span>
-<span id="cb47-10"><a href="#cb47-10" aria-hidden="true" tabindex="-1"></a>                                   ingreso <span class="sc">&gt;</span> <span class="dv">500000</span> <span class="sc">&amp;</span> ingreso <span class="sc">&lt;=</span> <span class="dv">750000</span> <span class="sc">~</span> <span class="st">"Tramo 3"</span>,</span>
-<span id="cb47-11"><a href="#cb47-11" aria-hidden="true" tabindex="-1"></a>                                   ingreso <span class="sc">&gt;</span> <span class="dv">750000</span> <span class="sc">&amp;</span> ingreso <span class="sc">&lt;=</span> <span class="dv">1000000</span> <span class="sc">~</span> <span class="st">"Tramo 4"</span>,</span>
-<span id="cb47-12"><a href="#cb47-12" aria-hidden="true" tabindex="-1"></a>                                   ingreso <span class="sc">&gt;</span> <span class="dv">1000000</span> <span class="sc">~</span> <span class="st">"Tramo 5"</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>proc_elsoc <span class="ot">&lt;-</span> <span class="fu">mutate</span>(proc_elsoc,</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>                     <span class="at">tramo_edad =</span> <span class="fu">case_when</span>(edad <span class="sc">&lt;=</span> <span class="dv">29</span> <span class="sc">~</span> <span class="st">"Jovenes"</span>,</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>                                            edad <span class="sc">&gt;=</span> <span class="dv">30</span> <span class="sc">&amp;</span> edad <span class="sc">&lt;=</span> <span class="dv">59</span> <span class="sc">~</span> <span class="st">"Adultos"</span>,</span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>                                            edad <span class="sc">&gt;=</span> <span class="dv">60</span> <span class="sc">~</span> <span class="st">"Adutos mayores"</span>))</span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>proc_elsoc <span class="ot">&lt;-</span> <span class="fu">mutate</span>(proc_elsoc,</span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>                     <span class="at">tramo_ingreso =</span> <span class="fu">case_when</span>(ingreso <span class="sc">&lt;=</span> <span class="dv">250000</span> <span class="sc">~</span> <span class="st">"Tramo 1"</span>,</span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a>                                                ingreso <span class="sc">&gt;</span> <span class="dv">250000</span> <span class="sc">&amp;</span> ingreso <span class="sc">&lt;=</span> <span class="dv">500000</span> <span class="sc">~</span> <span class="st">"Tramo 2"</span>,</span>
+<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a>                                                ingreso <span class="sc">&gt;</span> <span class="dv">500000</span> <span class="sc">&amp;</span> ingreso <span class="sc">&lt;=</span> <span class="dv">750000</span> <span class="sc">~</span> <span class="st">"Tramo 3"</span>,</span>
+<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a>                                                ingreso <span class="sc">&gt;</span> <span class="dv">750000</span> <span class="sc">&amp;</span> ingreso <span class="sc">&lt;=</span> <span class="dv">1000000</span> <span class="sc">~</span> <span class="st">"Tramo 4"</span>,</span>
+<span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a>                                                ingreso <span class="sc">&gt;</span> <span class="dv">1000000</span> <span class="sc">~</span> <span class="st">"Tramo 5"</span>))</span>
+<span id="cb36-13"><a href="#cb36-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-14"><a href="#cb36-14" aria-hidden="true" tabindex="-1"></a>proc_elsoc</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 496 × 8
+    edad sexo      ingreso autor_democ             jv_de…¹   ano tramo…² tramo…³
+   &lt;dbl&gt; &lt;chr&gt;       &lt;dbl&gt; &lt;fct&gt;                   &lt;fct&gt;   &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;  
+ 1    45 Femenino  2700000 La democracia es prefe… Alguna…  2022 Adultos Tramo 5
+ 2    29 Masculino 1250000 La democracia es prefe… Nunca    2022 Jovenes Tramo 5
+ 3    53 Femenino   500000 En algunas circunstanc… Alguna…  2022 Adultos Tramo 2
+ 4    57 Femenino        0 La democracia es prefe… Muchas…  2022 Adultos Tramo 1
+ 5    47 Femenino   600000 La democracia es prefe… Alguna…  2022 Adultos Tramo 3
+ 6    39 Masculino 1350000 La democracia es prefe… Muchas…  2022 Adultos Tramo 5
+ 7    42 Masculino 1100000 La democracia es prefe… Muchas…  2022 Adultos Tramo 5
+ 8    51 Masculino  800000 La democracia es prefe… Nunca    2022 Adultos Tramo 4
+ 9    38 Masculino 1600000 A la gente como uno, n… Alguna…  2022 Adultos Tramo 5
+10    45 Femenino   500000 La democracia es prefe… Nunca    2022 Adultos Tramo 2
+# … with 486 more rows, and abbreviated variable names ¹​jv_delincuentes,
+#   ²​tramo_edad, ³​tramo_ingreso</code></pre>
+</div>
 </div>
 <p>Ahora, generemos una nueva variable llamada <code>ingreso_minimo</code> con la función <code>if_else()</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>proc_elsoc <span class="ot">&lt;-</span> proc_elsoc <span class="sc">%&gt;%</span> </span>
-<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ingreso_minimo =</span> <span class="fu">if_else</span>(ingreso <span class="sc">&lt;</span> <span class="dv">410000</span>, <span class="st">"debajo minimo"</span>, <span class="st">"sobre minimo"</span>))</span>
-<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(proc_elsoc, ingreso, ingreso_minimo) <span class="co">#veamosla!</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>proc_elsoc <span class="ot">&lt;-</span> <span class="fu">mutate</span>(proc_elsoc,</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>                     <span class="at">ingreso_minimo =</span> <span class="fu">if_else</span>(ingreso <span class="sc">&lt;</span> <span class="dv">410000</span>, <span class="st">"debajo minimo"</span>, <span class="st">"sobre minimo"</span>))</span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(proc_elsoc, ingreso, ingreso_minimo) <span class="co">#veamosla!</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 530 × 2
+<pre><code># A tibble: 496 × 2
    ingreso ingreso_minimo
      &lt;dbl&gt; &lt;chr&gt;         
  1 2700000 sobre minimo  
@@ -951,17 +877,141 @@ Nota
  8  800000 sobre minimo  
  9 1600000 sobre minimo  
 10  500000 sobre minimo  
-# … with 520 more rows</code></pre>
+# … with 486 more rows</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="colocando-todo-en-práctica" class="level2">
+<h2 class="anchored" data-anchor-id="colocando-todo-en-práctica">6) Colocando todo en práctica</h2>
+<p>Otra de las venjatas de <code>dplyr()</code> es que nos permite <strong>concatenar</strong> funciones siguiendo la misma lógica de programación de izquiera a derecha. Esto lo hacemos a través de los <strong>pipes</strong> <code>%&gt;%</code>, que es un operador proveniente del paquete <code>magrittr</code>.</p>
+<p>Una función normal es igual a <code>f(x,y)</code>, en donde al elemento <code>y</code> del objeto <code>x</code> le aplicamos determinada función <code>f()</code>. Los <code>%&gt;%</code> simplifican funciones y concatenan códigos de la siguiente manera:</p>
+<p><code>x %&gt;% f(y)</code> es lo mismo que <code>f(x,y)</code>.</p>
+<p>Esto significa que el <code>%&gt;%</code> literalmente le dice a R que coloque al objeto <code>x</code> dentro de la función <code>f()</code>, para aplicarle dicha función a <code>y</code>. :::</p>
+<p><strong>Veamos cómo se ocupa y porqué simplifica la vida</strong></p>
+<section id="a-seleccionemos-y-filtremos-datos-con" class="level3">
+<h3 class="anchored" data-anchor-id="a-seleccionemos-y-filtremos-datos-con">a) Seleccionemos y filtremos datos con <code>%&gt;%</code></h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>proc_elsoc <span class="ot">&lt;-</span> elsoc_2022 <span class="sc">%&gt;%</span> </span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="at">edad =</span> m0_edad,</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">sexo =</span> m0_sexo,</span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">ingreso =</span> m13,</span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>                <span class="at">autor_democ =</span> c25,</span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>                <span class="at">jv_delincuentes =</span> f05_01) <span class="sc">%&gt;%</span> </span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(edad <span class="sc">&gt;=</span> <span class="dv">25</span>)</span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a>proc_elsoc</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 980 × 5
+    edad sexo   ingreso autor_democ jv_delincuentes
+   &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt;       &lt;dbl&gt;           &lt;dbl&gt;
+ 1    38 Hombre 4000000           1              NA
+ 2    45 Mujer  2700000           1               3
+ 3    42 Hombre  600000           3              NA
+ 4    29 Hombre 1250000           1               1
+ 5    53 Mujer   500000           2               3
+ 6    52 Mujer       NA           3               2
+ 7    50 Mujer       NA           2               5
+ 8    57 Mujer        0           1               4
+ 9    47 Mujer   600000           1               3
+10    79 Hombre      NA           2               1
+# … with 970 more rows</code></pre>
+</div>
+</div>
+</section>
+<section id="b-recodifiquemos-datos-y-eliminemos-nas-con" class="level3">
+<h3 class="anchored" data-anchor-id="b-recodifiquemos-datos-y-eliminemos-nas-con">b) Recodifiquemos datos y eliminemos <code>NAs</code> con <code>%&gt;%</code></h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>proc_elsoc <span class="ot">&lt;-</span> proc_elsoc <span class="sc">%&gt;%</span> </span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sexo =</span> car<span class="sc">::</span><span class="fu">recode</span>(sexo,</span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>                            <span class="at">recodes =</span> <span class="fu">c</span>(<span class="st">"'Hombre' = 'Masculino'; 'Mujer' = 'Femenino'"</span>)),</span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">ingreso =</span> car<span class="sc">::</span><span class="fu">recode</span>(ingreso, </span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>                               <span class="at">recodes =</span> <span class="fu">c</span>(<span class="st">"-888 = NA; -999 = NA"</span>)),</span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">autor_democ =</span> car<span class="sc">::</span><span class="fu">recode</span>(autor_democ,</span>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">recodes =</span> <span class="fu">c</span>(<span class="st">"1 = 'La democracia es preferible a cualquier otra forma de gobierno'; </span></span>
+<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a><span class="st">                            2 = 'En algunas circunstancias, un gobierno autoritario puede ser preferible a uno democratico'; </span></span>
+<span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a><span class="st">                            3 = 'A la gente como uno, nos da lo mismo un regimen democratico que uno autoritario'; </span></span>
+<span id="cb42-10"><a href="#cb42-10" aria-hidden="true" tabindex="-1"></a><span class="st">                            4 = 'Ninguna'; </span></span>
+<span id="cb42-11"><a href="#cb42-11" aria-hidden="true" tabindex="-1"></a><span class="st">                            -888 = NA; </span></span>
+<span id="cb42-12"><a href="#cb42-12" aria-hidden="true" tabindex="-1"></a><span class="st">                            -999 = NA"</span>),</span>
+<span id="cb42-13"><a href="#cb42-13" aria-hidden="true" tabindex="-1"></a>                            <span class="at">as.factor =</span> <span class="cn">TRUE</span>), <span class="co"># convertir a factor</span></span>
+<span id="cb42-14"><a href="#cb42-14" aria-hidden="true" tabindex="-1"></a>         <span class="at">jv_delincuentes =</span> car<span class="sc">::</span><span class="fu">recode</span>(jv_delincuentes, </span>
+<span id="cb42-15"><a href="#cb42-15" aria-hidden="true" tabindex="-1"></a>                                       <span class="at">recodes =</span> <span class="fu">c</span>(<span class="st">"1 = 'Nunca';</span></span>
+<span id="cb42-16"><a href="#cb42-16" aria-hidden="true" tabindex="-1"></a><span class="st">                                                    2 = 'Pocas veces';</span></span>
+<span id="cb42-17"><a href="#cb42-17" aria-hidden="true" tabindex="-1"></a><span class="st">                                                    3 = 'Algunas veces';</span></span>
+<span id="cb42-18"><a href="#cb42-18" aria-hidden="true" tabindex="-1"></a><span class="st">                                                    4 = 'Muchas veces';</span></span>
+<span id="cb42-19"><a href="#cb42-19" aria-hidden="true" tabindex="-1"></a><span class="st">                                                    5 = 'Siempre';</span></span>
+<span id="cb42-20"><a href="#cb42-20" aria-hidden="true" tabindex="-1"></a><span class="st">                                                    -888 = NA; </span></span>
+<span id="cb42-21"><a href="#cb42-21" aria-hidden="true" tabindex="-1"></a><span class="st">                                                   -999 = NA"</span>),</span>
+<span id="cb42-22"><a href="#cb42-22" aria-hidden="true" tabindex="-1"></a>                                       <span class="at">as.factor =</span> <span class="cn">TRUE</span>, <span class="co"># convertir a factor</span></span>
+<span id="cb42-23"><a href="#cb42-23" aria-hidden="true" tabindex="-1"></a>                                       <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Nunca"</span>,</span>
+<span id="cb42-24"><a href="#cb42-24" aria-hidden="true" tabindex="-1"></a>                                                  <span class="st">"Pocas veces"</span>,</span>
+<span id="cb42-25"><a href="#cb42-25" aria-hidden="true" tabindex="-1"></a>                                                  <span class="st">"Algunas veces"</span>,</span>
+<span id="cb42-26"><a href="#cb42-26" aria-hidden="true" tabindex="-1"></a>                                                  <span class="st">"Muchas veces"</span>,</span>
+<span id="cb42-27"><a href="#cb42-27" aria-hidden="true" tabindex="-1"></a>                                                  <span class="st">"Siempre"</span>))) <span class="sc">%&gt;%</span> </span>
+<span id="cb42-28"><a href="#cb42-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">na.omit</span>()</span>
+<span id="cb42-29"><a href="#cb42-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-30"><a href="#cb42-30" aria-hidden="true" tabindex="-1"></a>proc_elsoc</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 496 × 5
+    edad sexo      ingreso autor_democ                                   jv_de…¹
+   &lt;dbl&gt; &lt;chr&gt;       &lt;dbl&gt; &lt;fct&gt;                                         &lt;fct&gt;  
+ 1    45 Femenino  2700000 La democracia es preferible a cualquier otra… Alguna…
+ 2    29 Masculino 1250000 La democracia es preferible a cualquier otra… Nunca  
+ 3    53 Femenino   500000 En algunas circunstancias, un gobierno autor… Alguna…
+ 4    57 Femenino        0 La democracia es preferible a cualquier otra… Muchas…
+ 5    47 Femenino   600000 La democracia es preferible a cualquier otra… Alguna…
+ 6    39 Masculino 1350000 La democracia es preferible a cualquier otra… Muchas…
+ 7    42 Masculino 1100000 La democracia es preferible a cualquier otra… Muchas…
+ 8    51 Masculino  800000 La democracia es preferible a cualquier otra… Nunca  
+ 9    38 Masculino 1600000 A la gente como uno, nos da lo mismo un regi… Alguna…
+10    45 Femenino   500000 La democracia es preferible a cualquier otra… Nunca  
+# … with 486 more rows, and abbreviated variable name ¹​jv_delincuentes</code></pre>
+</div>
+</div>
+</section>
+<section id="c-transformemos-variables-con" class="level3">
+<h3 class="anchored" data-anchor-id="c-transformemos-variables-con">c) Transformemos variables con <code>%&gt;%</code></h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>proc_elsoc <span class="ot">&lt;-</span> proc_elsoc <span class="sc">%&gt;%</span> </span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ano =</span> <span class="dv">2022</span>,</span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">tramo_edad =</span> <span class="fu">case_when</span>(edad <span class="sc">&lt;=</span> <span class="dv">29</span> <span class="sc">~</span> <span class="st">"Jovenes"</span>,</span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>                                edad <span class="sc">&gt;=</span> <span class="dv">30</span> <span class="sc">&amp;</span> edad <span class="sc">&lt;=</span> <span class="dv">59</span> <span class="sc">~</span> <span class="st">"Adultos"</span>,</span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>                                edad <span class="sc">&gt;=</span> <span class="dv">60</span> <span class="sc">~</span> <span class="st">"Adutos mayores"</span>),</span>
+<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">tramo_ingreso =</span> <span class="fu">case_when</span>(ingreso <span class="sc">&lt;=</span> <span class="dv">250000</span> <span class="sc">~</span> <span class="st">"Tramo 1"</span>,</span>
+<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a>                                   ingreso <span class="sc">&gt;</span> <span class="dv">250000</span> <span class="sc">&amp;</span> ingreso <span class="sc">&lt;=</span> <span class="dv">500000</span> <span class="sc">~</span> <span class="st">"Tramo 2"</span>,</span>
+<span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a>                                   ingreso <span class="sc">&gt;</span> <span class="dv">500000</span> <span class="sc">&amp;</span> ingreso <span class="sc">&lt;=</span> <span class="dv">750000</span> <span class="sc">~</span> <span class="st">"Tramo 3"</span>,</span>
+<span id="cb44-9"><a href="#cb44-9" aria-hidden="true" tabindex="-1"></a>                                   ingreso <span class="sc">&gt;</span> <span class="dv">750000</span> <span class="sc">&amp;</span> ingreso <span class="sc">&lt;=</span> <span class="dv">1000000</span> <span class="sc">~</span> <span class="st">"Tramo 4"</span>,</span>
+<span id="cb44-10"><a href="#cb44-10" aria-hidden="true" tabindex="-1"></a>                                   ingreso <span class="sc">&gt;</span> <span class="dv">1000000</span> <span class="sc">~</span> <span class="st">"Tramo 5"</span>),</span>
+<span id="cb44-11"><a href="#cb44-11" aria-hidden="true" tabindex="-1"></a>         <span class="at">ingreso_minimo =</span> <span class="fu">if_else</span>(ingreso <span class="sc">&lt;</span> <span class="dv">410000</span>, <span class="st">"debajo minimo"</span>, <span class="st">"sobre minimo"</span>))</span>
+<span id="cb44-12"><a href="#cb44-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-13"><a href="#cb44-13" aria-hidden="true" tabindex="-1"></a>proc_elsoc</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 496 × 9
+    edad sexo      ingreso autor_democ     jv_de…¹   ano tramo…² tramo…³ ingre…⁴
+   &lt;dbl&gt; &lt;chr&gt;       &lt;dbl&gt; &lt;fct&gt;           &lt;fct&gt;   &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;  
+ 1    45 Femenino  2700000 La democracia … Alguna…  2022 Adultos Tramo 5 sobre …
+ 2    29 Masculino 1250000 La democracia … Nunca    2022 Jovenes Tramo 5 sobre …
+ 3    53 Femenino   500000 En algunas cir… Alguna…  2022 Adultos Tramo 2 sobre …
+ 4    57 Femenino        0 La democracia … Muchas…  2022 Adultos Tramo 1 debajo…
+ 5    47 Femenino   600000 La democracia … Alguna…  2022 Adultos Tramo 3 sobre …
+ 6    39 Masculino 1350000 La democracia … Muchas…  2022 Adultos Tramo 5 sobre …
+ 7    42 Masculino 1100000 La democracia … Muchas…  2022 Adultos Tramo 5 sobre …
+ 8    51 Masculino  800000 La democracia … Nunca    2022 Adultos Tramo 4 sobre …
+ 9    38 Masculino 1600000 A la gente com… Alguna…  2022 Adultos Tramo 5 sobre …
+10    45 Femenino   500000 La democracia … Nunca    2022 Adultos Tramo 2 sobre …
+# … with 486 more rows, and abbreviated variable names ¹​jv_delincuentes,
+#   ²​tramo_edad, ³​tramo_ingreso, ⁴​ingreso_minimo</code></pre>
 </div>
 </div>
 </section>
 </section>
 <section id="guardar-y-exportar-datos-procesados" class="level2">
-<h2 class="anchored" data-anchor-id="guardar-y-exportar-datos-procesados">6 Guardar y exportar datos procesados</h2>
-<p><strong>¡LLegamos al final!</strong> El último paso que nos queda es guardar y exportar nuestra base de datos procesada. Siguiendo el flujo de trabajo propuesto, guardaremos la base procesada en formato .Rdata y la alojaremos en la carpeta <code>output</code> de nuestro proyecto.</p>
+<h2 class="anchored" data-anchor-id="guardar-y-exportar-datos-procesados">7 Guardar y exportar datos procesados</h2>
+<p><strong>¡Legamos al final!</strong> El último paso que nos queda es guardar y exportar nuestra base de datos procesada. Siguiendo el flujo de trabajo propuesto, guardaremos la base procesada en formato .Rdata y la alojaremos en la carpeta <code>output</code> de nuestro proyecto.</p>
 <p>Este último paso es bastante sencillo, solo debemos especificar la base que queremos guadar y su ruta:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(proc_elsoc, <span class="at">file =</span> <span class="st">"output/datos_proc.Rdata"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(proc_elsoc, <span class="at">file =</span> <span class="st">"output/datos_proc.Rdata"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="resumen" class="level2">

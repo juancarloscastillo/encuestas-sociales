@@ -220,6 +220,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <a href="../resource/03-resource.html" class="sidebar-item-text sidebar-link active">Importar datos en R</a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../resource/04-resource.html" class="sidebar-item-text sidebar-link">Procesamiento, limpieza y manipulación de datos en R base</a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
@@ -237,7 +242,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#a-.dta" id="toc-a-.dta" class="nav-link" data-scroll-target="#a-.dta">a) <code>.dta</code></a></li>
   <li><a href="#b-.csv" id="toc-b-.csv" class="nav-link" data-scroll-target="#b-.csv">b) <code>.csv</code></a></li>
   <li><a href="#c-.xlsx" id="toc-c-.xlsx" class="nav-link" data-scroll-target="#c-.xlsx">c) <code>.xlsx</code></a></li>
-  <li><a href="#d-.rdata-y-.rds" id="toc-d-.rdata-y-.rds" class="nav-link" data-scroll-target="#d-.rdata-y-.rds">d) <code>.RData</code> y <code>.rds</code></a></li>
+  <li><a href="#d-.rdata-o-.rds" id="toc-d-.rdata-o-.rds" class="nav-link" data-scroll-target="#d-.rdata-o-.rds">d) <code>.RData</code> o <code>.rds</code></a></li>
   </ul></li>
   </ul></li>
   </ul>
@@ -277,23 +282,205 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(tidyverse,</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>               sjmisc,</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>               dplyr,</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>               haven,</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>               readxl)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>               haven, <span class="co"># para .dta, .sav</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>               readr, <span class="co"># para .csv</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>               readxl) <span class="co"># para archivos excel </span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="cargar-datos-en-distintos-formatos" class="level2">
 <h2 class="anchored" data-anchor-id="cargar-datos-en-distintos-formatos">2. Cargar datos en distintos formatos</h2>
 <section id="a-.dta" class="level3">
 <h3 class="anchored" data-anchor-id="a-.dta">a) <code>.dta</code></h3>
+<p>Los archivos con extensión <code>.dta</code> generalmente provienen de Stata, es decir, son bases o datos procesadas en dicho software. Para estos archivos, así como aquellos que vienen en <code>.sav</code>, usamos el paquete <code>haven()</code>. En estos casos siempre es conveniente señalar el tipo de <code>encoding</code> en el argumento, en este caso, usamos <code>"UTF-8"</code> que corresponde al estandar.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>elsoc_2022 <span class="ot">&lt;-</span> haven<span class="sc">::</span><span class="fu">read_dta</span>(<span class="at">file =</span> <span class="st">"input/data/ELSOC_W06_v1.0_Stata.dta"</span>, <span class="at">encoding =</span> <span class="st">"UTF-8"</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>elsoc_2022</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2,730 × 437
+   idencuesta ola       version muestra   cuest…¹ cuest…² formato segme…³ comuna
+        &lt;dbl&gt; &lt;dbl+lbl&gt;   &lt;dbl&gt; &lt;dbl+lbl&gt; &lt;dbl+l&gt; &lt;dbl+l&gt; &lt;dbl+l&gt;   &lt;dbl&gt; &lt;chr&gt; 
+ 1    1101011 6 [2022]   202201 1 [Muest… 2 [Ven… 1 [Com… 1 [CAP…  110101 Iquiq…
+ 2    1101012 6 [2022]   202201 1 [Muest… 2 [Ven… 1 [Com… 1 [CAP…  110101 Iquiq…
+ 3    1101023 6 [2022]   202201 1 [Muest… 2 [Ven… 1 [Com… 1 [CAP…  110102 Iquiq…
+ 4    1101041 6 [2022]   202201 1 [Muest… 2 [Ven… 1 [Com… 1 [CAP…  110104 Iquiq…
+ 5    1101081 6 [2022]   202201 1 [Muest… 2 [Ven… 1 [Com… 1 [CAP…  110108 Iquiq…
+ 6    1101082 6 [2022]   202201 1 [Muest… 1 [Per… 1 [Com… 1 [CAP…  110108 Iquiq…
+ 7    1101102 6 [2022]   202201 1 [Muest… 2 [Ven… 1 [Com… 1 [CAP…  110110 San F…
+ 8    1101103 6 [2022]   202201 1 [Muest… 1 [Per… 1 [Com… 1 [CAP…  110110 Iquiq…
+ 9    1101111 6 [2022]   202201 1 [Muest… 2 [Ven… 1 [Com… 1 [CAP…  110111 Iquiq…
+10    1101113 6 [2022]   202201 1 [Muest… 1 [Per… 1 [Com… 1 [CAP…  110111 Iquiq…
+# … with 2,720 more rows, 428 more variables: comuna_cod &lt;dbl+lbl&gt;,
+#   region &lt;chr&gt;, region_cod &lt;dbl+lbl&gt;, estrato &lt;dbl+lbl&gt;, ponderador01 &lt;dbl&gt;,
+#   ponderador02 &lt;dbl&gt;, fact_exp01 &lt;dbl&gt;, fact_exp02 &lt;dbl&gt;, r05_01 &lt;dbl+lbl&gt;,
+#   r05_02 &lt;dbl+lbl&gt;, r06 &lt;dbl+lbl&gt;, r07 &lt;dbl+lbl&gt;, r08 &lt;dbl+lbl&gt;,
+#   r09 &lt;dbl+lbl&gt;, r10 &lt;dbl+lbl&gt;, r11 &lt;dbl+lbl&gt;, r12_01 &lt;dbl+lbl&gt;,
+#   r12_02 &lt;dbl+lbl&gt;, r12_03 &lt;dbl+lbl&gt;, r12_04 &lt;dbl+lbl&gt;, r12_05 &lt;dbl+lbl&gt;,
+#   r12_06 &lt;dbl+lbl&gt;, r12_07 &lt;dbl+lbl&gt;, r13_nredes &lt;dbl&gt;, …</code></pre>
+</div>
+</div>
 </section>
 <section id="b-.csv" class="level3">
 <h3 class="anchored" data-anchor-id="b-.csv">b) <code>.csv</code></h3>
+<p>Para los archivos con extension <code>.csv</code> usamos el paquete <code>readr::</code>. Importante es que los archivos <code>.csv</code> vienen separados por comas <code>,</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>elsoc_2022 <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="at">file =</span><span class="st">"input/data/ELSOC_W06_v1.0_CSV.csv"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 2730 Columns: 437
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr   (14): comuna, region, c12_09_otro, c16_otro, c17_otro, c20_otro, m36_o...
+dbl  (422): idencuesta, ola, version, muestra, cuestion_mig, cuestion_comple...
+date   (1): fecha_entr
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>elsoc_2022</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2,730 × 437
+   idencu…¹   ola version muestra cuest…² cuest…³ formato segme…⁴ comuna comun…⁵
+      &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt;
+ 1  1101011     6  202201       1       2       1       1  110101 Iquiq…    1101
+ 2  1101012     6  202201       1       2       1       1  110101 Iquiq…    1101
+ 3  1101023     6  202201       1       2       1       1  110102 Iquiq…    1101
+ 4  1101041     6  202201       1       2       1       1  110104 Iquiq…    1101
+ 5  1101081     6  202201       1       2       1       1  110108 Iquiq…    1101
+ 6  1101082     6  202201       1       1       1       1  110108 Iquiq…    1101
+ 7  1101102     6  202201       1       2       1       1  110110 San F…    6301
+ 8  1101103     6  202201       1       1       1       1  110110 Iquiq…    1101
+ 9  1101111     6  202201       1       2       1       1  110111 Iquiq…    1101
+10  1101113     6  202201       1       1       1       1  110111 Iquiq…    1101
+# … with 2,720 more rows, 427 more variables: region &lt;chr&gt;, region_cod &lt;dbl&gt;,
+#   estrato &lt;dbl&gt;, ponderador01 &lt;dbl&gt;, ponderador02 &lt;dbl&gt;, fact_exp01 &lt;dbl&gt;,
+#   fact_exp02 &lt;dbl&gt;, r05_01 &lt;dbl&gt;, r05_02 &lt;dbl&gt;, r06 &lt;dbl&gt;, r07 &lt;dbl&gt;,
+#   r08 &lt;dbl&gt;, r09 &lt;dbl&gt;, r10 &lt;dbl&gt;, r11 &lt;dbl&gt;, r12_01 &lt;dbl&gt;, r12_02 &lt;dbl&gt;,
+#   r12_03 &lt;dbl&gt;, r12_04 &lt;dbl&gt;, r12_05 &lt;dbl&gt;, r12_06 &lt;dbl&gt;, r12_07 &lt;dbl&gt;,
+#   r13_nredes &lt;dbl&gt;, r13_sexo_01 &lt;dbl&gt;, r13_edad_01 &lt;dbl&gt;,
+#   r13_relacion_01 &lt;dbl&gt;, r13_tiempo_01 &lt;dbl&gt;, r13_barrio_01 &lt;dbl&gt;, …</code></pre>
+</div>
+</div>
 </section>
 <section id="c-.xlsx" class="level3">
 <h3 class="anchored" data-anchor-id="c-.xlsx">c) <code>.xlsx</code></h3>
+<p>Para los archivos que provienen de Excel, tales como los <code>.xlsx</code> usamos el paquete <code>readxl::</code>. Noten que podemos cargar la base completa, como en el primer ejemplo, pero también podemos especificarle que queremos determinadas columnas y filas de un archivo Excel, como en el segundo ejmplo.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>elsoc_2022 <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="st">"input/data/ELSOC_W06_v1.0_EXCEL.xlsx"</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>elsoc_2022</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2,730 × 437
+   idencu…¹   ola version muestra cuest…² cuest…³ formato segme…⁴ comuna comun…⁵
+      &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt;
+ 1  1101011     6  202201       1       2       1       1  110101 Iquiq…    1101
+ 2  1101012     6  202201       1       2       1       1  110101 Iquiq…    1101
+ 3  1101023     6  202201       1       2       1       1  110102 Iquiq…    1101
+ 4  1101041     6  202201       1       2       1       1  110104 Iquiq…    1101
+ 5  1101081     6  202201       1       2       1       1  110108 Iquiq…    1101
+ 6  1101082     6  202201       1       1       1       1  110108 Iquiq…    1101
+ 7  1101102     6  202201       1       2       1       1  110110 San F…    6301
+ 8  1101103     6  202201       1       1       1       1  110110 Iquiq…    1101
+ 9  1101111     6  202201       1       2       1       1  110111 Iquiq…    1101
+10  1101113     6  202201       1       1       1       1  110111 Iquiq…    1101
+# … with 2,720 more rows, 427 more variables: region &lt;chr&gt;, region_cod &lt;dbl&gt;,
+#   estrato &lt;dbl&gt;, ponderador01 &lt;dbl&gt;, ponderador02 &lt;dbl&gt;, fact_exp01 &lt;dbl&gt;,
+#   fact_exp02 &lt;dbl&gt;, r05_01 &lt;dbl&gt;, r05_02 &lt;dbl&gt;, r06 &lt;dbl&gt;, r07 &lt;dbl&gt;,
+#   r08 &lt;dbl&gt;, r09 &lt;dbl&gt;, r10 &lt;dbl&gt;, r11 &lt;dbl&gt;, r12_01 &lt;dbl&gt;, r12_02 &lt;dbl&gt;,
+#   r12_03 &lt;dbl&gt;, r12_04 &lt;dbl&gt;, r12_05 &lt;dbl&gt;, r12_06 &lt;dbl&gt;, r12_07 &lt;dbl&gt;,
+#   r13_nredes &lt;dbl&gt;, r13_sexo_01 &lt;dbl&gt;, r13_edad_01 &lt;dbl&gt;,
+#   r13_relacion_01 &lt;dbl&gt;, r13_tiempo_01 &lt;dbl&gt;, r13_barrio_01 &lt;dbl&gt;, …</code></pre>
+</div>
+</div>
+<p>En este caso le especificamos la hoja del excel en donde están los datos, y también le indicamos el rango que son las columnas y filas que queremos ver. Esto siempre sigue el mismo formato: “COLUMNAFILA_INICIO:COLUMNAFILA_FINAL”. No necesariamente tienen que ser todas las columnas o filas, eso lo podemos cambiar según necesitemos.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>elsoc_2022 <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="at">path =</span> <span class="st">"input/data/ELSOC_W06_v1.0_EXCEL.xlsx"</span>,</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">sheet =</span> <span class="dv">1</span>, <span class="co"># indicamos la hoja del excel,</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">range =</span> <span class="st">"A1:PU2731"</span>)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>elsoc_2022</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2,730 × 437
+   idencu…¹   ola version muestra cuest…² cuest…³ formato segme…⁴ comuna comun…⁵
+      &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt;
+ 1  1101011     6  202201       1       2       1       1  110101 Iquiq…    1101
+ 2  1101012     6  202201       1       2       1       1  110101 Iquiq…    1101
+ 3  1101023     6  202201       1       2       1       1  110102 Iquiq…    1101
+ 4  1101041     6  202201       1       2       1       1  110104 Iquiq…    1101
+ 5  1101081     6  202201       1       2       1       1  110108 Iquiq…    1101
+ 6  1101082     6  202201       1       1       1       1  110108 Iquiq…    1101
+ 7  1101102     6  202201       1       2       1       1  110110 San F…    6301
+ 8  1101103     6  202201       1       1       1       1  110110 Iquiq…    1101
+ 9  1101111     6  202201       1       2       1       1  110111 Iquiq…    1101
+10  1101113     6  202201       1       1       1       1  110111 Iquiq…    1101
+# … with 2,720 more rows, 427 more variables: region &lt;chr&gt;, region_cod &lt;dbl&gt;,
+#   estrato &lt;dbl&gt;, ponderador01 &lt;dbl&gt;, ponderador02 &lt;dbl&gt;, fact_exp01 &lt;dbl&gt;,
+#   fact_exp02 &lt;dbl&gt;, r05_01 &lt;dbl&gt;, r05_02 &lt;dbl&gt;, r06 &lt;dbl&gt;, r07 &lt;dbl&gt;,
+#   r08 &lt;dbl&gt;, r09 &lt;dbl&gt;, r10 &lt;dbl&gt;, r11 &lt;dbl&gt;, r12_01 &lt;dbl&gt;, r12_02 &lt;dbl&gt;,
+#   r12_03 &lt;dbl&gt;, r12_04 &lt;dbl&gt;, r12_05 &lt;dbl&gt;, r12_06 &lt;dbl&gt;, r12_07 &lt;dbl&gt;,
+#   r13_nredes &lt;dbl&gt;, r13_sexo_01 &lt;dbl&gt;, r13_edad_01 &lt;dbl&gt;,
+#   r13_relacion_01 &lt;dbl&gt;, r13_tiempo_01 &lt;dbl&gt;, r13_barrio_01 &lt;dbl&gt;, …</code></pre>
+</div>
+</div>
+<p>Seleccionamos solo algunas columnas. Ahora vemos que solo tenemos 26 columnas:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>elsoc_2022 <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="at">path =</span> <span class="st">"input/data/ELSOC_W06_v1.0_EXCEL.xlsx"</span>,</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">sheet =</span> <span class="dv">1</span>, <span class="co"># indicamos la hoja del excel,</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">range =</span> <span class="st">"A1:Z2731"</span>)</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>elsoc_2022</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2,730 × 26
+   idencu…¹   ola version muestra cuest…² cuest…³ formato segme…⁴ comuna comun…⁵
+      &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt;
+ 1  1101011     6  202201       1       2       1       1  110101 Iquiq…    1101
+ 2  1101012     6  202201       1       2       1       1  110101 Iquiq…    1101
+ 3  1101023     6  202201       1       2       1       1  110102 Iquiq…    1101
+ 4  1101041     6  202201       1       2       1       1  110104 Iquiq…    1101
+ 5  1101081     6  202201       1       2       1       1  110108 Iquiq…    1101
+ 6  1101082     6  202201       1       1       1       1  110108 Iquiq…    1101
+ 7  1101102     6  202201       1       2       1       1  110110 San F…    6301
+ 8  1101103     6  202201       1       1       1       1  110110 Iquiq…    1101
+ 9  1101111     6  202201       1       2       1       1  110111 Iquiq…    1101
+10  1101113     6  202201       1       1       1       1  110111 Iquiq…    1101
+# … with 2,720 more rows, 16 more variables: region &lt;chr&gt;, region_cod &lt;dbl&gt;,
+#   estrato &lt;dbl&gt;, ponderador01 &lt;dbl&gt;, ponderador02 &lt;dbl&gt;, fact_exp01 &lt;dbl&gt;,
+#   fact_exp02 &lt;dbl&gt;, r05_01 &lt;dbl&gt;, r05_02 &lt;dbl&gt;, r06 &lt;dbl&gt;, r07 &lt;dbl&gt;,
+#   r08 &lt;dbl&gt;, r09 &lt;dbl&gt;, r10 &lt;dbl&gt;, r11 &lt;dbl&gt;, r12_01 &lt;dbl&gt;, and abbreviated
+#   variable names ¹​idencuesta, ²​cuestion_mig, ³​cuestion_completo, ⁴​segmento,
+#   ⁵​comuna_cod</code></pre>
+</div>
+</div>
 </section>
-<section id="d-.rdata-y-.rds" class="level3">
-<h3 class="anchored" data-anchor-id="d-.rdata-y-.rds">d) <code>.RData</code> y <code>.rds</code></h3>
+<section id="d-.rdata-o-.rds" class="level3">
+<h3 class="anchored" data-anchor-id="d-.rdata-o-.rds">d) <code>.RData</code> o <code>.rds</code></h3>
+<p>Cuando los datos vienen en formato <code>.R</code> no es necesario asinarle un objeto, lo podemos hacer después de ser necesario. Para leer estos archivos usamos la función <code>load()</code> de R base.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>base<span class="sc">::</span><span class="fu">load</span>(<span class="at">file =</span> <span class="st">"input/data/ELSOC_W06_v1.0_R.RData"</span>) </span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>elsoc_2022</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2,730 × 437
+   idencu…¹   ola version muestra cuest…² cuest…³ formato segme…⁴ comuna comun…⁵
+      &lt;dbl&gt; &lt;dbl&gt;   &lt;int&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt;
+ 1  1101011     6  202201       1       2       1       1  110101 Iquiq…    1101
+ 2  1101012     6  202201       1       2       1       1  110101 Iquiq…    1101
+ 3  1101023     6  202201       1       2       1       1  110102 Iquiq…    1101
+ 4  1101041     6  202201       1       2       1       1  110104 Iquiq…    1101
+ 5  1101081     6  202201       1       2       1       1  110108 Iquiq…    1101
+ 6  1101082     6  202201       1       1       1       1  110108 Iquiq…    1101
+ 7  1101102     6  202201       1       2       1       1  110110 San F…    6301
+ 8  1101103     6  202201       1       1       1       1  110110 Iquiq…    1101
+ 9  1101111     6  202201       1       2       1       1  110111 Iquiq…    1101
+10  1101113     6  202201       1       1       1       1  110111 Iquiq…    1101
+# … with 2,720 more rows, 427 more variables: region &lt;chr&gt;, region_cod &lt;dbl&gt;,
+#   estrato &lt;dbl&gt;, ponderador01 &lt;dbl&gt;, ponderador02 &lt;dbl&gt;, fact_exp01 &lt;dbl&gt;,
+#   fact_exp02 &lt;dbl&gt;, r05_01 &lt;dbl&gt;, r05_02 &lt;dbl&gt;, r06 &lt;dbl&gt;, r07 &lt;dbl&gt;,
+#   r08 &lt;dbl&gt;, r09 &lt;dbl&gt;, r10 &lt;dbl&gt;, r11 &lt;dbl&gt;, r12_01 &lt;dbl&gt;, r12_02 &lt;dbl&gt;,
+#   r12_03 &lt;dbl&gt;, r12_04 &lt;dbl&gt;, r12_05 &lt;dbl&gt;, r12_06 &lt;dbl&gt;, r12_07 &lt;dbl&gt;,
+#   r13_nredes &lt;dbl&gt;, r13_sexo_01 &lt;dbl&gt;, r13_edad_01 &lt;dbl&gt;,
+#   r13_relacion_01 &lt;dbl&gt;, r13_tiempo_01 &lt;dbl&gt;, r13_barrio_01 &lt;dbl&gt;, …</code></pre>
+</div>
+</div>
 
 
 </section>

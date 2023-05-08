@@ -86,6 +86,8 @@ website:
           file: resource/02-resource.qmd
         - text: "Importar datos en R"
           file: resource/03-resource.qmd
+        - text: "Procesamiento, limpieza y manipulación de datos en R base"
+          file: resource/04-resource.qmd
 
 
   page-footer:

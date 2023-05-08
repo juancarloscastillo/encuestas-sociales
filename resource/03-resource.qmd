@@ -14,8 +14,9 @@ output:
 pacman::p_load(tidyverse,
                sjmisc,
                dplyr,
-               haven,
-               readxl)
+               haven, # para .dta, .sav
+               readr, # para .csv
+               readxl) # para archivos excel 
 ```
 
 
@@ -23,12 +24,65 @@ pacman::p_load(tidyverse,
 
 ### a) `.dta`
 
+Los archivos con extensión `.dta` generalmente provienen de Stata, es decir, son bases o datos procesadas en dicho software. Para estos archivos, así como aquellos que vienen en `.sav`, usamos el paquete `haven()`. En estos casos siempre es conveniente señalar el tipo de `encoding` en el argumento, en este caso, usamos `"UTF-8"` que corresponde al estandar.
+
+```{r eval=TRUE, include=TRUE}
+elsoc_2022 <- haven::read_dta(file = "input/data/ELSOC_W06_v1.0_Stata.dta", encoding = "UTF-8")
+
+elsoc_2022
+```
 
 
 ### b) `.csv`
 
+Para los archivos con extension `.csv` usamos el paquete `readr::`. Importante es que los archivos `.csv` vienen separados por comas `,`.
+
+```{r eval=TRUE, include=TRUE, warning=FALSE}
+elsoc_2022 <- readr::read_csv(file ="input/data/ELSOC_W06_v1.0_CSV.csv")
+
+elsoc_2022
+```
+
 
 ### c) `.xlsx`
 
+Para los archivos que provienen de Excel, tales como los `.xlsx` usamos el paquete `readxl::`. Noten que podemos cargar la base completa, como en el primer ejemplo, pero también podemos especificarle que queremos determinadas columnas y filas de un archivo Excel, como en el segundo ejmplo.
 
-### d) `.RData` y `.rds`
+```{r eval=TRUE, include=TRUE, warning=FALSE}
+
+elsoc_2022 <- readxl::read_excel("input/data/ELSOC_W06_v1.0_EXCEL.xlsx")
+
+elsoc_2022
+```
+
+En este caso le especificamos la hoja del excel en donde están los datos, y también le indicamos el rango que son las columnas y filas que queremos ver. Esto siempre sigue el mismo formato: "COLUMNAFILA_INICIO:COLUMNAFILA_FINAL". No necesariamente tienen que ser todas las columnas o filas, eso lo podemos cambiar según necesitemos. 
+
+```{r eval=TRUE, include=TRUE, warning=FALSE}
+
+elsoc_2022 <- readxl::read_excel(path = "input/data/ELSOC_W06_v1.0_EXCEL.xlsx",
+                                 sheet = 1, # indicamos la hoja del excel,
+                                 range = "A1:PU2731")
+
+elsoc_2022
+```
+Seleccionamos solo algunas columnas. Ahora vemos que solo tenemos 26 columnas: 
+
+```{r eval=TRUE, include=TRUE, warning=FALSE}
+
+elsoc_2022 <- readxl::read_excel(path = "input/data/ELSOC_W06_v1.0_EXCEL.xlsx",
+                                 sheet = 1, # indicamos la hoja del excel,
+                                 range = "A1:Z2731")
+
+elsoc_2022
+```
+
+### d) `.RData` o `.rds`
+
+Cuando los datos vienen en formato `.R` no es necesario asinarle un objeto, lo podemos hacer después de ser necesario. Para leer estos archivos usamos la función `load()` de R base.
+
+```{r eval=TRUE, include=TRUE}
+
+base::load(file = "input/data/ELSOC_W06_v1.0_R.RData") 
+
+elsoc_2022
+```

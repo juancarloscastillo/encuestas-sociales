@@ -1,0 +1,378 @@
+---
+title: "Procesamiento, limpieza y manipulación de datos en R"
+date: "2023-04-20"
+lang: es
+output:
+  number_sections: true
+---
+
+# Presentación
+
+## Objetivo de la práctica
+
+El objetivo de esta guía práctica adicional es revisar algunos procedimientos básicos de la preparación de datos con R base, sirviendo como material complementario a lo apredendido en la [sesión n° 3 del laboratorio](https://descriptiva-facso.netlify.app/content/03-content.html).
+
+# Procesamiento de datos
+
+## 1 Cargar librerías
+
+En R se trabaja a partir de paquetes (packages). ¿Qué son? De forma resumida, los paquetes son un conjunto de funciones o herramientas que pueden ser usadas en R. Los directorios de R donde se almacenan los paquetes se denominan librerías. La lógica es instalar paquetes y luego cargar (o llamar) las librerías cada vez que es necesario usarlas.
+
+Usualmente para cargar paquetes lo hacemos de la siguiente manera:
+
+```{r eval=FALSE, include=TRUE}
+install.packages("paquete")
+library(paquete)
+```
+
+Pero en esta ocasión utilizaremos un paquete llamado **pacman**, que facilita y agiliza la lectura (instalación y carga) de los paquetes a utilizar en R. De esta forma lo instalamos 1 única vez así:
+
+```{r eval=FALSE, include=TRUE}
+install.packages("pacman")
+library(pacman)
+```
+
+Luego instalaremos y cargaremos los paquetes de R de la siguiente manera, volviendo más eficiente el procedimiento de carga de paquetes.
+
+En este práctico utilizaremos seis paquetes
+
+1.  `pacman`: este facilita y agiliza la lectura de los paquetes a utilizar en R
+
+2.  `tidyverse`: colección de paquetes, de la cual utilizaremos dplyr y haven
+
+3.  `dplyr`: nos permite seleccionar variables de un set de datos
+
+4.  `haven`: cargar y exportar bases de datos en formatos .sav y .dta
+
+5.  `car`: para recodificar/agrupar valores de variables
+
+6.  `magrittr`: para manipular datos con `%>%` 
+
+
+
+```{r echo=TRUE}
+pacman::p_load(tidyverse, # colección de paquetes para manipulación de datos
+               dplyr, # para manipular datos
+               haven, # para importar datos
+               car, # para recodificar datos
+               magrittr)# para manipular datos
+
+options(scipen = 999) # para desactivar notacion cientifica
+rm(list = ls()) # para limpiar el entorno de trabajo
+```
+
+
+Como se puede ver, antes de la función p_load hay un `::`, esto se refiere a que se “fuerza” que esa función provenga de ese paquete (en este caso del paquete `pacman`). 
+
+
+## 2 Importar datos
+
+En R es es posible importar y exportar datos que se encuentren en *cualquier formato*: ya sea .csv, .dta, .sav, .xlsx y, por supuesto, .rds y .RData. Sin embargo, para poder hacerlo lo primero es instalar y cargar las librerías que contienen las funciones necesarias para la importación de distintos tipos de archivos.
+
+Pero, ¿dónde están mis datos? Como hemos mencionado, nuestros datos los dejaremos en la carpeta `input/data` de nuestro proyecto. La base con la que trabajaremos en este práctico pueden encontrarla en el material docente en U-Cursos, o bien, en el siguiente [enlace](https://github.com/Andreas-Lafferte/descriptiva/raw/main/content/input/data/ELSOC_W06_v1.0_SPSS.sav). 
+
+Luego de descargar la base de datos, asegurate de dejar el archivo .sav en la carpeta `input/data` de tu proyecto. **Nota**: Los datos tendrán distinto nombre según su formato (.sav, .csv, .dta, etc.).
+
+Una vez descargados los datos y cargado el paquete `haven`, procedemos a importar nuestra base de datos. Para ello, en nuestro script, dejamos indicado que a partir de la lectura de los datos con `read_sav()`, crearemos un objeto llamado `elsoc_2022`. Fijate en el *Enviroment*, ya que si lo anterior se logra, el objeto aparecerá allí.
+
+La estructura general para importar datos es la siguiente:
+
+`read_*("ruta_hacia_archivo/nombre_archivo.*")`
+
+```{r include=FALSE}
+
+elsoc_2022 <- haven::read_sav("input/data/ELSOC_W06_v1.0_SPSS.sav")
+
+```
+
+
+```{r eval=FALSE, include=TRUE}
+elsoc_2022 <- read_sav("ELSOC W06 v1.0 SPSS.sav")  # No funciona
+
+elsoc_2022 <- read_sav("input/data/ELSOC W06 v1.0 SPSS.sav") # No funciona
+
+elsoc_2022 <- read_sav("input/data/ELSOC_W06_v1.0_SPSS.sav") # Si funciona!
+
+```
+
+::: callout-note
+Para **importar** los datos en R debemos tener en consideración tres cosas:
+
+1.  Cómo se llaman los datos (en nuestro caso ELSOC_W05_v1.0_SPSS)
+
+2.  El formato de nuestros datos (en nuestro caso .sav)
+
+3.  El lugar de donde están alojados nuestros datos
+:::
+
+### 2.1.1 Importar datos en otros formatos
+
+No siempre nuestros datos vendrán en un único formato. Para ello, R cuenta con otras formas de leer distintos tipos de formatos. Puedes ver las principales en el siguiente [enlace](https://descriptiva-facso.netlify.app/resource/03-resource.html).
+
+## 3 Explorar datos
+
+Lo más probable es que no trabajemos con _todos_ los datos que importamos, por lo que debemos seleccionar aquellas variables con las que trabajaremos para nuestro problema de investigación (cualquiera sea). 
+
+Pero, para ello primero debemos _explorar_ nuestros datos, si no ¿cómo puedo saber qué seleccionar y qué no? En R, las funciones más comunes para explorar datos son: 
+
+```{r eval = F}
+View(elsoc_2022) # Ver datos
+names(elsoc_2022) # Nombre de columnas
+dim(elsoc_2022) # Dimensiones
+str(elsoc_2022) # Estructura de los datos (las clases y categorias de repuesta)
+```
+
+Tenemos una base de datos con 1000 casos o filas y con 13 variables o columnas. 
+
+
+## 4 Limpiar datos
+
+Para todos los subprocesos que involucra la "limpieza" de datos, tenemos al menos dos maneras. Por un lado, podemos usar las funciones de R base, es decir, que no requieren paquetes extras. Por el otro, podemos usar las funciones del paquete `dplyr()`, que es una gramática o dialecto de manipulación de datos que proporciona un conjunto de coherente funciones o "verbos" básicos para programar. 
+
+**En este práctico nos centraremos solo en cómo manipular datos con el lenguaje de `R base` **
+
+![](../images/clean.data.jpg)
+
+### 4.1 Seleccionar
+
+Una vez tenemos claras cúales son las variables que nos interesan, las _seleccionamos_ y almacenamos en una nueva base de datos. Esto debido que evitará confusiones y hará más eficiente nuestros analísis en términos de memoria.
+
+En R base, el primer argumento dentro del bracket `[]` refiere a las filas y el segundo a las columnas.
+
+```{r collapse=FALSE}
+elsoc_2022[ , 1] 
+
+```
+
+También podemos seleccionar más de una columna/variable utilizando funciones básicas de R. Por ejemplo, usando `c()`
+
+```{r collapse=FALSE}
+elsoc_2022[, c(1,2,4)] #aqui le decimos que queremos las columnas especificas 1 2 y 4 
+```
+
+O bien, indicando desde qué columna hasta cuál quiero seleccionar.
+
+```{r collapse=FALSE}
+elsoc_2022[, 1:4] # aqui le decimos que queremos desde la columna 1 a la 4
+```
+
+Y, obviamente, podemos utilizar el nombre de las variables.
+
+```{r collapse=FALSE}
+elsoc_2022[, c("m0_sexo", "m0_edad")]
+```
+
+Ahora, **¡apliquemos conocimientos!** _seleccionando y renombrando_ las variables de interés en un nueva base llamada `proc_elsoc`.
+
+En este ejemplo utilizaremos las siguientes variables: 
+
+ * **m0_sexo**: sexo del entrevistado
+ * **m0_edad**: edad del entrevistado
+ * **m13**: ingreso mensual entrevistado
+ * **c25**: preferencia entre autoritarismo y democracia
+ * **f05_01**: justificación violencia hacia delincuentes
+
+```{r eval=TRUE, include=TRUE, collapse=FALSE}
+proc_elsoc <- elsoc_2022[, c(2,1,8,4,7)] # seleccionamos
+
+proc_elsoc
+
+colnames(proc_elsoc) <- c("edad", "sexo", "ingreso", "autor_democ", "jv_delincuentes") # renonbramos
+
+proc_elsoc
+```
+
+Esta nueva base de datos sigue manteniendo los 1.000 casos/filas, pero ahora solo tiene 5 variables/columnas. ¿Qué pasa si solo quiero trabajar con un subconjunto de estos datos, por ejemplo, las mujeres mayores a 25 años? La respuesta es **_filtrar_.** 
+
+### 4.2 Filtrar
+
+Tal y como regularmente no trabajamos con _todas_ las variables de una base de datos, no siempre desearemos trabajar con todas las observaciones que tenemos en los datos. Habrá ocasiones (_varias_) en las que querremos trabajar con casos que cumplan ciertas condiciones; que sean de determinada edad, residencia, tiempo o que simplemente hayan respondido de determinada forma una pregunta. 
+
+Ahora, en vez de trabajar con columnas trabajaremos con las filas. Esto lo haremos especificando condiciones de las variables en el primer argumento de los brackets `[]`.
+
+```{r collapse=FALSE}
+proc_elsoc[proc_elsoc$autor_democ == 1, ] # indicamos que en nuestra base proc_elsoc, queremos que nos deje aquellos casos que cumplen con la condicion de que autor_democr sea 2
+```
+
+Para indicarle a R que nos filtre aquellos casos que cumplen con la condición de ser iguales a 1 (autor_democ == 1), usamos el operador `==`. ¿Y esto de dónde salió? recuerda que los operadores en R los vimos en la [segunda sesión](https://descriptiva-facso.netlify.app/content/02-content.html).
+
+También podemos agregar muchas _condiciones_ para filtrar nuestros datos. Solamente debemos agregarlo. 
+
+```{r collapse=FALSE}
+
+proc_elsoc[proc_elsoc$autor_democ == 1 & proc_elsoc$edad >= 25, ] # aqui le indicamos que nos filtre por casos que son autoritarismo/democracia igual 2 (no confia) y mayores o iguales a 25 años
+
+```
+
+Pero, ¿y si tengo variables tipo `character` o `factor`? Tanto en R base como con `dplyr` podemos especificar condiciones y filtrar este tipo de datos usando las comillas `" " `.
+
+```{r collapse=FALSE}
+
+proc_elsoc[proc_elsoc$sexo == "Mujer", ] 
+
+```
+
+
+**¡Apliquémos conocimientos!** Filtremos nuestros datos quedándonos solo con aquellos casos o personas que tengan o sean mayores a 25 años de edad. 
+
+```{r eval=TRUE, include=TRUE, collapse=FALSE}
+proc_elsoc <- proc_elsoc[proc_elsoc$edad >= 25, ] 
+
+proc_elsoc
+```
+
+
+### 4.3 Recodificar
+
+Una parte fundamental del procesamiento e integración de datos es la recodificación de variables. Esto implica que, a determinadas variables, le aplicaremos ciertos cambios de acuerdo a ciertas reglas y criterios establecidos con anterioridad, siempre cuidando la coherencia con nuestro objetivo de investigación. 
+
+Hay múltiples formas de recodificar en R, pero en este ejemplo trabajaremos con el comando `recode()` del paquete `car`. 
+
+Esta vez, recodificaremos las siguientes variables: `sexo`, `ingreso`, `autor_democ` y `jv_delincuentes`. Para esto, nos apoyaremos en el libro de códigos.
+
+::: callout-tip
+El comando `recode()` generalmente sigue esta estructura:
+
+`car::recode(datos$variable, recodes = c('valor_orig1=nuevo_valor1;valor_org2=nuevo_valor2'))`
+:::
+
+Recodifiquemos la variable sexo e ingresos:
+
+```{r collapse=FALSE, warning=FALSE}
+
+proc_elsoc$sexo <- car::recode(proc_elsoc$sexo, 
+                               recodes = c("'Hombre' = 'Masculino'; 'Mujer' = 'Femenino'"))
+
+proc_elsoc$ingreso <- car::recode(proc_elsoc$ingreso,
+                                  recodes = c("-888 = NA; -999 = NA"))
+
+proc_elsoc
+```
+
+Ahora recodifiquemos las demás variables. Además de recodificar valores propiamente tal, con `recode()` podemos indicarle, en la misma función, que convierta la variable a `factor` y/o que le asigne niveles (ej. para variables ordinales).
+
+```{r collapse=FALSE, warning=FALSE}
+
+proc_elsoc$autor_democ <- car::recode(proc_elsoc$autor_democ, 
+            recodes = c("1 = 'La democracia es preferible a cualquier otra forma de gobierno'; 
+                        2 = 'En algunas circunstancias, un gobierno autoritario puede ser preferible a uno democratico'; 
+                        3 = 'A la gente como uno, nos da lo mismo un regimen democratico que uno autoritario'; 
+                        4 = 'Ninguna'; 
+                        -888 = NA; 
+                        -999 = NA"),
+            as.factor = TRUE) # convertir a factor
+
+proc_elsoc$jv_delincuentes <- car::recode(proc_elsoc$jv_delincuentes, 
+                                          recodes = c("1 = 'Nunca';
+                                                       2 = 'Pocas veces';
+                                                       3 = 'Algunas veces';
+                                                       4 = 'Muchas veces';
+                                                       5 = 'Siempre';
+                                                       -888 = NA; 
+                                                       -999 = NA"),
+                                          as.factor = TRUE, # convertir a factor
+                                          levels = c("Nunca",
+                                                     "Pocas veces",
+                                                     "Algunas veces",
+                                                     "Muchas veces",
+                                                     "Siempre")) # ordenamos niveles
+
+proc_elsoc
+```
+
+::: callout-note
+
+Como se puede ver, los valores `-888 y -999` fueron codificados como valores pérdidos ya que estos valores significan no sabe y no responde, respectivamente.
+
+:::
+
+### 4.4 Tratamiento casos pérdidos
+
+Comúnmente, los datos con los que trabajamos suelen tener valores pérdidos o nulos que en R se denominan como `NA`. Estos valores no nos entregan información útil para nuestros análisis, y pueden generar problemas al momento de, por ejemplo, calcular medidas de tendencia central, u otros procedimientos estadísticos.
+
+Hay diversas maneras de trabajar los valores nulos. Sin embargo, la más sencilla consiste en eliminar los valores nulos que se encuentran presentes en nuestros datos.
+
+El primer paso es identificar valores nulos en el conjunto de datos en general, o en alguna variable en específico. Para ello, empleamos la función `is.na()`.
+
+```{r eval=FALSE, include=TRUE, collapse=FALSE}
+is.na(proc_elsoc)
+
+is.na(proc_elsoc$ingreso)
+```
+
+Pero esto es poco útil. Como opción, podemos sumar o contar la cantidad de valores pérdidos. 
+
+```{r eval=TRUE, include=TRUE, collapse=FALSE}
+sum(is.na(proc_elsoc))
+
+```
+
+¿Y si no sabemos qué variables o columnas tienen casos pérdidos? Una forma es usar la función `colSums()`.
+
+```{r collapse=FALSE}
+colSums(is.na(proc_elsoc))
+```
+
+
+Una vez identificamos los valores nulos, podemos proceder a **removerlos** de la base de datos. El comando `na.omit()` eliminará todas las filas que presenten casos perdidos.
+
+```{r collapse=FALSE}
+proc_elsoc <- na.omit(proc_elsoc)
+
+proc_elsoc
+```
+
+
+## 5 Transformar variables
+
+Un último paso en el procesamiento de datos es la **creación** o derivación de nuevas variables a partir de los datos que ya tenemos. Esto es relevante no solo para procesar datos, sino porque permite generar variables que se alineen mucho mejor con nuestros objetivos de análisis. 
+
+En este ejemplo, transformaremos las variables `edad` e `ingresos`, y crearemos una nueva variable llamada `año` de la encuesta y otra llamada `ingreso_minimo`. 
+
+**¡Veámos cómo se hace!**
+
+
+Generemos las nueva variable año:
+
+```{r eval=FALSE, include=TRUE}
+proc_elsoc$ano <- 2022
+
+proc_elsoc
+```
+
+Generemos nuevas variables para `edad` e `ingresos` dejándolas como tramos con `ifelse()`. 
+
+```{r ceval=FALSE, include=TRUE}
+
+proc_elsoc$tramo_edad <- ifelse(proc_elsoc$edad <= 29, "Jovenes", proc_elsoc$edad)
+proc_elsoc$tramo_edad <- ifelse(proc_elsoc$edad >= 30 & proc_elsoc$edad <= 59, "Adultos", proc_elsoc$tramo_edad)
+proc_elsoc$tramo_edad <- ifelse(proc_elsoc$edad >= 60, "Adultos mayores", proc_elsoc$tramo_edad)
+
+proc_elsoc$tramo_ingreso <- ifelse(proc_elsoc$ingreso <= 250000, "Tramo 1", proc_elsoc$ingreso)
+proc_elsoc$tramo_ingreso <- ifelse(proc_elsoc$ingreso > 250000 & proc_elsoc$ingreso <= 500000, "Tramo 2", proc_elsoc$tramo_ingreso)
+proc_elsoc$tramo_ingreso <- ifelse(proc_elsoc$ingreso > 500000 & proc_elsoc$ingreso <= 750000, "Tramo 3", proc_elsoc$tramo_ingreso)
+proc_elsoc$tramo_ingreso <- ifelse(proc_elsoc$ingreso > 750000 & proc_elsoc$ingreso <= 1000000, "Tramo 4", proc_elsoc$tramo_ingreso)
+proc_elsoc$tramo_ingreso <- ifelse(proc_elsoc$ingreso > 1000000, "Tramo 5", proc_elsoc$tramo_ingreso)
+
+proc_elsoc
+```
+
+
+Ahora, generemos una nueva variable llamada `ingreso_minimo` con la función `ifelse()`.
+
+```{r collapse=FALSE}
+proc_elsoc$ingreso_minimo <- ifelse(proc_elsoc$ingreso < 410000, "debajo minimo", "sobre minimo")
+
+proc_elsoc[, c("ingreso", "ingreso_minimo")] #veamosla!
+```
+
+
+## 7 Guardar y exportar datos procesados
+
+**¡Legamos al final!** El último paso que nos queda es guardar y exportar nuestra base de datos procesada. Siguiendo el flujo de trabajo propuesto, guardaremos la base procesada en formato .Rdata y la alojaremos en la carpeta `output` de nuestro proyecto.
+
+Este último paso es bastante sencillo, solo debemos especificar la base que queremos guadar y su ruta:
+
+```{r collapse=FALSE}
+saveRDS(proc_elsoc, file = "output/datos_proc.Rdata")
+```
