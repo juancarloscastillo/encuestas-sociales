@@ -1,6 +1,6 @@
 ---
 title: "Procesamiento, limpieza y manipulación de datos en R"
-date: "2023-04-20"
+date: "2023-05-11"
 lang: es
 output:
   number_sections: true

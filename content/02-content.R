@@ -1,7 +1,7 @@
 #*******************************************************************************************************************
 #
 #                          LABORATORIO DE ANALISIS DE DATOS
-#                      SESIÓN N° 1: INTRODUCCIÓN AL LENGUAJE R.
+#                      SESIÓN N° 2: INTRODUCCIÓN AL LENGUAJE R.
 #                     ESTADÍSTICA DESCRIPTIVA FACSO-UCHILE
 #
 #                           13 de abril del 2023

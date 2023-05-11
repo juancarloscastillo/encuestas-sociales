@@ -20,11 +20,51 @@ En detalle, aprenderemos:
 
 3. Cómo crear un script (hoja) en R
 
+## 1. R y RStudio
+
+**R es un lenguaje y ambiente de programación**, dentro del cual se pueden implementar técnicas estadísticas y de ciencia de datos. Por su parte, **RStudio es** un IDE (integrated development enviroment) para R, o en pocas palabras, es una **interfaz** más amigable que nos permite interactuar con R. 
+
+¿Y por qué aprender R? Existen **muchas razones**, pero algunas de las principales son:
+
+- Empleabilidad 
+- Crisis de reproducibilidad y Ciencia Abierta
+- Facilita manipulación, almacenaje, cálculos y visualización de datos
+- Facilita la colaboración y trabajo en equipo
+- Simple, pero potente
+- Puede integrarse con otros ambientes y herramientas
+
+
+```{r echo=FALSE, warning=FALSE, out.width="50%", fig.align='center'}
+
+knitr::include_graphics("../images/erre.gif", error = FALSE)
+```
+
+Al momento de abrir RStudio por primera vez puede que nos asustemos, pues es un entorno nuevo lleno de posibilidades en donde todavía no conocemos mucho. 
+
+```{r echo=FALSE, warning=FALSE, out.width="50%", fig.align='center'}
+
+knitr::include_graphics("../images/the-office.gif", error = FALSE)
+```
+
+**¡Pero que no cunda el pánico!** ya que estas posibilidades son nuevas oportunidades de aprendizaje en un software libre, gratuito y cada vez más utilizado en las ciencias sociales. ¿Nos vamos a equivocar? Claro que sí, y esperemos que así sea pues más aprenderemos. 
+
+```{r echo=FALSE, warning=FALSE, out.width="80%", fig.align='center'}
+
+knitr::include_graphics("../images/r_rollercoaster.png", error = FALSE)
+```
+
+
+Al ver RStudio por primera vez se nos presentará una interfaz de al menos cuatro paneles.
+
+```{r echo=FALSE, warning=FALSE, out.width="70%", fig.align='center'}
+
+knitr::include_graphics("../images/panel.png", error = FALSE)
+```
+
+
+**¡VEAMOS COMO COMENZAR A USAR R!**
+
 ## 1. Flujo de trabajo en R
-
-En presentación. Prontamente síntesis aquí.
-
-
 
 
 
