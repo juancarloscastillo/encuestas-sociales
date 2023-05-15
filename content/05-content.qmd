@@ -1,25 +1,249 @@
 ---
-title: "Cuestionario: formr"
-date: "2022-09-22"
+title: "Práctica 5. Repaso procesamiento y análisis de datos en R"
+date: "2023-05-18"
 lang: es
+output:
+  number_sections: true
 ---
 
-## Tutorial
+# Presentación
 
-Los contenidos principales de esta clase están relacionados con el [tutorial de **formr**](/resource/03-resource.html) (sección recursos de este sitio)
+## Objetivo de la práctica
 
-## Documento de presentación
+El objetivo de esta guía práctica es repasar los procedimientos básicos para el procesamiento y análisis descripivo de datos en R, los cuales fueron vistos en las sesiones pasadas del laboratorio.
 
-<iframe src=/slides/05-cuestionario/05-cuestionario.html height="550" width=100% allowfullscreen="true">
-</iframe>
+En detalle, aprenderemos:
 
-- Para ver en pantalla completa presionar F (con cursor sobre presentación)
+1.  Establecer un flujo de trabajo en R.
 
-## Presentación Encuesta Microemprendimiento
+2.  Procesar, limpiar y transformar bases de datos en R.
 
-Disponible en la sección de recursos, link [aquí](/resource/04-resource.html)
+3.  Realizar análisis desciptivos (frecuencias, medias de posición, tendencia central y despersión) en R.
 
 
-## Lecturas
+**¡Al final de esta práctica la idea es que cada un\_ elabore y entienda su propio documento de preparación y análisis de datos!**
 
-- Czaja & Blair (2005) Cap. 5 Questionnaire Design, Organizing the questions
+## Recursos de la práctica
+
+En esta práctica trabajaremos con un subset de los datos del Estudio Longitudinal Social de Chile (ELSOC) realizado por [COES](https://coes.cl/encuesta-panel/). Esta base la pueden encontrar en el canal de U-Cursos sección Material Docente, o bien, en el siguiente enlace [{{< fa table >}} `ELSOC 2022`](https://github.com/Andreas-Lafferte/descriptiva/raw/main/content/input/data/ELSOC_W06_v1.0_SPSS.sav) podrán descargar el archivo que contiene la base ELSOC 2022.
+
+Recuerden que siempre es importante trabajar con el manual/libro de códigos de las bases de datos. El manual de la ELSOC 2022 lo pueden encontrar [aquí](https://coes.cl/wp-content/uploads/Listado-de-Variables-ELSOC-2.xlsx).
+
+
+# Establecer flujo de trabajo en R
+
+Pasos a seguir: 
+
+- Descargar la base de datos vía U-Cursos o mediante el enlace [{{< fa table >}} `ELSOC 2022`](https://github.com/Andreas-Lafferte/descriptiva/raw/main/content/input/data/ELSOC_W06_v1.0_SPSS.sav) 
+- Crear un proyecto de R (.Rproj) que se llame _"laboratorio02"_
+- Crear carpetas de **Input, Procesamiento y Output**
+- Ubicar la base de datos en la carpeta Input
+- Crear un Script (.R) en la carpeta Procesamiento _"01proc-data"_ 
+
+
+# Procesamiento, limpieza y manipulación de datos
+
+### 1 Cargar librerías
+
+En este ejemplo vamos a usar la siguientes librerías:
+
+1.  `pacman`: este facilita y agiliza la lectura de los paquetes a utilizar en R
+
+2.  `tidyverse`: colección de paquetes, de la cual utilizaremos dplyr y haven
+
+3.  `dplyr`: nos permite seleccionar variables de un set de datos
+
+4.  `haven`: cargar y exportar bases de datos en formatos .sav y .dta
+
+5.  `car`: para recodificar/agrupar valores de variables
+
+6. `psych`: para análisis descriptivo de datos
+
+
+Primero, si nos tenemos instalado el paquete `pacman`, debemos instalarlo y y llamarlo tradicionalmente. Si ya lo tienes instalado, no es necesario este paso, solo debes llamarlo con `library`.
+
+```{r eval=FALSE, include=TRUE}
+install.packages("pacman") #para instalar
+library(pacman) # para llamar/cargar
+```
+
+Luego de tener cargado el paquete `pacman`, procedemos a usarlo para instalar y cargar las demás librerías:
+
+```{r echo=TRUE}
+pacman::p_load(tidyverse, # colección de paquetes para manipulación de datos
+               dplyr, # para manipular datos
+               haven, # para importar datos
+               car, # para recodificar datos
+               psych, # para analizar datos
+               sjmisc) # para analizar datos
+
+options(scipen = 999) # para desactivar notacion cientifica
+rm(list = ls()) # para limpiar el entorno de trabajo
+```
+
+
+### 2 Importar datos
+
+```{r eval=FALSE, include=TRUE}
+elsoc_2022 <- read_sav("input/data/ELSOC_W06_v1.0_SPSS.sav") # Funciona 
+```
+
+
+### 3 Explorar datos
+
+```{r eval = F}
+View(elsoc_2022) # Ver datos
+names(elsoc_2022) # Nombre de columnas
+dim(elsoc_2022) # Dimensiones
+str(elsoc_2022) # Estructura de los datos (las clases y categorias de repuesta)
+```
+
+
+### 4 Limpiar datos
+
+![](../images/clean.data.jpg)
+
+#### 4.1 Seleccionar
+
+En este ejemplo utilizaremos las siguientes variables: 
+
+ * **m0_sexo**: sexo del entrevistado
+ * **m0_edad**: edad del entrevistado
+ * **m13**: ingreso mensual entrevistado
+ * **c03**: altruismo social generalizado
+ * **c05_03**: grado de confianza en carabineros
+ 
+```{r eval=TRUE, include=TRUE, collapse=FALSE}
+proc_elsoc <- proc_elsoc %>% 
+  select(edad = m0_edad,
+         sexo = m0_sexo,
+         ingreso = m13,
+         altruismo = c03,
+         confianza_carab = c05_03)
+
+proc_elsoc
+```
+
+
+#### 4.2 Filtrar
+
+Quedémnos con aquellos casos cuya edad sea mayor o igual a 15 años.
+
+```{r eval=TRUE, include=TRUE, collapse=FALSE}
+proc_elsoc <- proc_elsoc %>% filter(edad >= 15)
+
+proc_elsoc
+```
+
+
+
+#### 4.3 Recodificar
+
+Recodifiquemos las variables `sexo` e `ingreso`:
+
+```{r eval=TRUE, include=TRUE, collapse=FALSE}
+proc_elsoc <- proc_elsoc %>% 
+  mutate(sexo = car::recode(sexo,
+                            recodes = c("'Hombre' = 'Masculino'; 'Mujer' = 'Femenino'")),
+         ingreso = car::recode(ingreso, 
+                               recodes = c("-888 = NA; -999 = NA")))
+```
+
+
+Ahora, las variables `altruismo` y `confianza_carab`: 
+
+```{r eval=TRUE, include=TRUE, collapse=FALSE}
+
+
+```
+
+
+#### 4.4 Tratamiento casos pérdidos
+
+```{r eval=FALSE, include=TRUE, collapse=FALSE}
+is.na(proc_elsoc)
+
+is.na(proc_elsoc$ingreso)
+```
+
+```{r eval=TRUE, include=TRUE, collapse=FALSE}
+sum(is.na(proc_elsoc))
+
+```
+
+```{r collapse=FALSE}
+colSums(is.na(proc_elsoc))
+```
+
+Una vez identificamos los valores nulos, podemos proceder a **removerlos** de la base de datos. El comando `na.omit()` eliminará todas las filas que presenten casos perdidos.
+
+```{r collapse=FALSE}
+proc_elsoc <- na.omit(proc_elsoc)
+
+proc_elsoc
+```
+
+### 5 Transformar variables 
+
+En este ejemplo, transformaremos las variables `edad` e `ingresos`, y crearemos una nueva variable llamada `año` de la encuesta y otra llamada `ingreso_minimo`. 
+
+**¡Veámos cómo se hace!**
+
+Generemos las nueva variable año:
+
+```{r eval=TRUE, include=TRUE, collapse=FALSE}
+proc_elsoc <- proc_elsoc %>% mutate(ano = 2022)
+
+proc_elsoc
+```
+
+
+#### Transformar variables con `case_when()` e `if_else()`
+
+Generemos nuevas variables para `edad` e `ingresos` dejándolas como tramos con `case_when()`. 
+
+```{r eval=TRUE, include=TRUE, collapse=FALSE}
+proc_elsoc <- proc_elsoc %>% 
+  mutate(tramo_edad = case_when(edad <= 29 ~ "Jovenes",
+                                edad >= 30 & edad <= 59 ~ "Adultos",
+                                edad >= 60 ~ "Adutos mayores"),
+         tramo_ingreso = case_when(ingreso <= 250000 ~ "Tramo 1",
+                                   ingreso > 250000 & ingreso <= 500000 ~ "Tramo 2",
+                                   ingreso > 500000 & ingreso <= 750000 ~ "Tramo 3",
+                                   ingreso > 750000 & ingreso <= 1000000 ~ "Tramo 4",
+                                   ingreso > 1000000 ~ "Tramo 5"))
+
+proc_elsoc
+```
+
+
+Ahora, generemos una nueva variable llamada `ingreso_minimo` con la función `if_else()`.
+
+```{r eval=TRUE, include=TRUE, collapse=FALSE}
+
+proc_elsoc <- proc_elsoc %>% 
+  mutate(ingreso_minimo = if_else(ingreso < 410000, "debajo minimo", "sobre minimo"))
+
+proc_elsoc
+```
+
+
+### 6 Guardar y exportar
+
+```{r collapse=FALSE}
+save(proc_elsoc, file = "output/datos_proc.Rdata")
+```
+
+
+## Análisis descriptivo
+
+### Para variables categóricas
+
+
+
+### Para variables númericas 
+
+
+
+
+

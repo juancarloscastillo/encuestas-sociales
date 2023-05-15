@@ -441,7 +441,7 @@ proc_elsoc <- mutate(proc_elsoc,
 select(proc_elsoc, ingreso, ingreso_minimo) #veamosla!
 ```
 
-## 6) Colocando todo en práctica
+## 6 Colocando todo en práctica
 
 
 Otra de las venjatas de `dplyr()` es que nos permite **concatenar** funciones siguiendo la misma lógica de programación de izquiera a derecha. Esto lo hacemos a través de los **pipes** ` %>% `, que es un operador proveniente del paquete `magrittr`. 
