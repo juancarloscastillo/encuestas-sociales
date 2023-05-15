@@ -15,7 +15,9 @@ El curso tendrá dos instancias de evaluación:
 
 ### Informe 1
 
+El objetivo general de la evaluación es que los estudiantes planteen un fenómeno social a investigar, el problema de investigación y su relevancia, precisar el argumento o hipótesis central, formular una pregunta y un objetivo general de investigación, y definir la base de datos y las variables a utilizar para analizar dicho fenómeno.
 
+Términos de referencia del Informe N°1 Taller Colectivo: [{{< fa file-archive >}} TDR1.pdf](/projects/TDR1_Informe_Taller_Colectivo_ED_2023.pdf)
 
 ### Informe 2
 
@@ -27,7 +29,16 @@ El curso tendrá dos instancias de evaluación:
 
 ### Tarea 1
 
+El objetivo de esta tarea es que los estudiantes demuestren el aprendizaje de las herramientas básicas sobre procesamiento, limpieza y manipulación de datos en los softwares Excel y SPSS (aprendidas en clases).
+
+Pauta Tarea Individual N°1: [{{< fa file-archive >}} Tarea01.pdf](/projects/pauta_tarea01.pdf)
+
+
 ### Tarea 2
+
+El objetivo de esta tarea es que los estudiantes demuestren el aprendizaje de las herramientas básicas sobre procesamiento, limpieza y manipulación de datos en el software Rstudio (aprendidas en las sesiones 2 y 3 del Laboratorio), además de que analicen variables a través de medidas de tendencia central, dispersión y posición (aprendidas en sesión 4 del Laboratorio), sabiendo interpretar y reflexionar críticamente sobre los resultados obtenidos.
+
+Pauta Tarea Individual N°2: [{{< fa file-archive >}} Tarea02.pdf](/projects/pauta_tarea02_ED_2023.pdf)
 
 ### Tarea 3
 

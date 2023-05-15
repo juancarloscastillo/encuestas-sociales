@@ -24,7 +24,9 @@ En detalle, aprenderemos:
 
 ## Recursos de la práctica
 
-En esta práctica trabajaremos con un subset de los datos del Estudio Longitudinal Social de Chile (ELSOC) realizado por [COES](https://coes.cl/encuesta-panel/). Esta base la pueden encontrar en el canal de U-Cursos sección Material Docente, o bien, en el siguiente [enlace](https://github.com/Andreas-Lafferte/descriptiva/raw/main/content/input/data/ELSOC_W06_v1.0_SPSS.sav) podrán descargar el archivo que contiene la base ELSOC 2022.
+En esta práctica trabajaremos con un subset de los datos del Estudio Longitudinal Social de Chile (ELSOC) realizado por [COES](https://coes.cl/encuesta-panel/). Esta base la pueden encontrar en el canal de U-Cursos sección Material Docente, o bien, en el siguiente enlace [{{< fa table >}} `ELSOC 2022`](https://github.com/Andreas-Lafferte/descriptiva/raw/main/content/input/data/ELSOC_W06_v1.0_SPSS.sav) podrán descargar el archivo que contiene la base ELSOC 2022.
+
+
 
 Recuerden que siempre es importante trabajar con el manual/libro de códigos de las bases de datos. El manual de la ELSOC 2022 lo pueden encontrar [aquí](https://coes.cl/wp-content/uploads/Listado-de-Variables-ELSOC-2.xlsx).
 
@@ -547,3 +549,19 @@ Hoy aprendimos a procesar datos en R. En detalle, vimos:
 3.  Limpiar, transformar y exportar bases de datos en R.
 
 ## Video de clase
+
+#### Primer bloque
+
+<div style="width: 100%; height: 600px; overflow: hidden;">
+<video  style="width: 100%;" controls>
+<source src="https://www.icloud.com/iclouddrive/014AsMYGzwMbdhvv8hN2I6Hvw#sesion03">
+</video>
+</div>
+
+#### Segundo bloque
+
+<div style="width: 100%; height: 600px; overflow: hidden;">
+<video  style="width: 100%;" controls>
+<source src="https://www.icloud.com/iclouddrive/014AsMYGzwMbdhvv8hN2I6Hvw#sesion03">
+</video>
+</div>

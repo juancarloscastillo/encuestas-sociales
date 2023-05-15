@@ -190,7 +190,11 @@ ul.task-list li input[type="checkbox"] {
   <ul class="collapse">
   <li><a href="#objetivo-de-la-práctica" id="toc-objetivo-de-la-práctica" class="nav-link" data-scroll-target="#objetivo-de-la-práctica">0. Objetivo de la práctica</a></li>
   <li><a href="#r-y-rstudio" id="toc-r-y-rstudio" class="nav-link" data-scroll-target="#r-y-rstudio">1. R y RStudio</a></li>
-  <li><a href="#flujo-de-trabajo-en-r" id="toc-flujo-de-trabajo-en-r" class="nav-link" data-scroll-target="#flujo-de-trabajo-en-r">1. Flujo de trabajo en R</a></li>
+  <li><a href="#flujo-de-trabajo-en-r" id="toc-flujo-de-trabajo-en-r" class="nav-link" data-scroll-target="#flujo-de-trabajo-en-r">2. Flujo de trabajo en R</a></li>
+  <li><a href="#proyecto-de-r-.rproject" id="toc-proyecto-de-r-.rproject" class="nav-link" data-scroll-target="#proyecto-de-r-.rproject">3. Proyecto de R (.Rproject)</a></li>
+  <li><a href="#crear-un-nuevo-script-.r" id="toc-crear-un-nuevo-script-.r" class="nav-link" data-scroll-target="#crear-un-nuevo-script-.r">4. Crear un nuevo Script (.R)</a></li>
+  <li><a href="#resumen" id="toc-resumen" class="nav-link" data-scroll-target="#resumen">Resumen</a></li>
+  <li><a href="#presentación-de-la-clase" id="toc-presentación-de-la-clase" class="nav-link" data-scroll-target="#presentación-de-la-clase">Presentación de la clase</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -272,7 +276,260 @@ ul.task-list li input[type="checkbox"] {
 <p><strong>¡VEAMOS COMO COMENZAR A USAR R!</strong></p>
 </section>
 <section id="flujo-de-trabajo-en-r" class="level2">
-<h2 class="anchored" data-anchor-id="flujo-de-trabajo-en-r">1. Flujo de trabajo en R</h2>
+<h2 class="anchored" data-anchor-id="flujo-de-trabajo-en-r">2. Flujo de trabajo en R</h2>
+<p>Tal vez una de las dificultades más comunes o cotidianas del uso de R es el orden de trabajo, en donde tenemos cientos de archivos, scripts, gráficos, bases de datos u otros repartidos desordenadamente en nuestro computador. También se da mucho el caso en que, cuando queremos trabajar con alguien, tenemos que cambiar las rutas de los archivos, por ejemplo en dónde están las bases de datos, ya que nuestros ordenadores y usuarios se llaman y son escencialmente distintos.</p>
+<p>¿Cómo podemos sortear eso? Siguiendo un flujo de trabajo reproducible, autocontenido y ordenado. <strong>En este curso trabajaremos R con un flujo de trabajo reproducible, basado en el sistema <a href="https://lisa-coes.com/ipo-data/">IPO</a></strong>. El protocolor IPO es una plantilla/protocolo de estructura digital de carpetas que tiene por objetivo el organizar, procesar y documentar los datos de un proyecto de investigación con miras a la apertura de los datos en un repositorio público y de acceso libre. En concreto, el sistema IPO se propone abordar brevemente todo lo referente a los Datos, Métodos y Resultados.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/image (3).png" class="img-fluid figure-img" style="width:80.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Lleva este nombre por el sistema de carpetas que se implementan: <strong>I</strong>nput, <strong>P</strong>rocesamiento y <strong>O</strong>utput. En la carpeta <strong>Input</strong> guardaremos todos aquellso recursos iniciales que usaremos, como las bases de datos, el libro de códigos, entre otros. En la carpeta de <strong>Procesamiento</strong>, como dice el nombre, guardaremos todos los archivos que procesen y analicen datos. En la carpeta <strong>Output</strong> guardaremos todo aquello que hayamos producido en los archivos de procesamiento, como las bases de datos procesadas listas para compartir o publicas, los documentos de reporte, informes o analísis, gráficos o tablas.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/image (2).png" class="img-fluid figure-img" style="width:80.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>La implementación de la reproducibilidad en este tipo de protocolos se basa en generar un conjunto de archivos auto-contenidos organizado en una estructura de proyecto que cualquier persona pueda compartir y ejecutar. En otras palabras, debe tener todo lo que necesita para ejecutar y volver a ejecutar el análisis. Para conocer más, visita el <a href="https://lisa-coes.com/03componentes/">Laboratorio de Ciencia Abierta</a>.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/image.png" class="img-fluid figure-img" style="width:80.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="proyecto-de-r-.rproject" class="level2">
+<h2 class="anchored" data-anchor-id="proyecto-de-r-.rproject">3. Proyecto de R (.Rproject)</h2>
+<p>¿Y cómo hacemos lo anterior? Mediante los <strong>Rproject</strong>. Los proyectos en R, o R Projects, serán el centro a partir del cual estaremos trabajando el resto de archivos incluidos en nuestro trabajo con los datos (Input, Procesamiento y Output). En pocas palabras, el <strong>Rproject</strong> será el elemento raíz de nuestro proyecto y que articula o abraza todos los demás componentes.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/cora1.png" class="img-fluid figure-img" style="width:80.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>¿Cómo lo hacemos? Es bastante sencillo. Nos dirigiremos a la sección superior derecha de RStudio, donde se encuentra una R dentro de un cubo:</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/rproj.png" class="img-fluid figure-img" style="width:70.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Hacemos click en ella, y luego se nos desplegará una ventana con distintas opciones. Seleccionamos <strong>New Project</strong>.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/new.png" class="img-fluid figure-img" style="width:70.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Luego, seleccionamos <strong>New Directory &gt; New Project</strong></p>
+<div class="cell" data-layout-align="left">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-left">
+<figure class="figure">
+<p><img src="../images/directort.png" class="img-fluid figure-img" style="width:60.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell" data-layout-align="right">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-right">
+<figure class="figure">
+<p><img src="../images/projee.png" class="img-fluid figure-img" style="width:60.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Una vez realizado lo anterior, nos pedirá asignar un <strong>Directory name</strong>, que es como se llamará nuestro proyecto. Se recomienda que tenga nombres sustantivos. En este ejemplo, le llamaremos <em>tarea01</em>.</p>
+<div class="cell" data-layout-align="left">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-left">
+<figure class="figure">
+<p><img src="../images/name.png" class="img-fluid figure-img" style="width:60.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell" data-layout-align="right">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-right">
+<figure class="figure">
+<p><img src="../images/brow.png" class="img-fluid figure-img" style="width:60.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Luego debemos indicarle <strong>dónde queremos que esté alojado en nuestro computador este proyecto</strong>. Para ello pinchamos en el <strong>Browse</strong>, y se nos desplegará nuestro sistema de carpetas de nuestro computador. Supongamos que queremos guardarlo en una carpeta que llamaremos <em>Estadistica Descriptiva 2023</em>.</p>
+<div class="cell" data-layout-align="left">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-left">
+<figure class="figure">
+<p><img src="../images/carpet.png" class="img-fluid figure-img" style="width:60.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Seleccionamos la carpeta y le damos a <strong>Open</strong> o <strong>Abrir</strong>. Una vez realizado lo anterior, volveremos a RStudio y tendremos nuestro projecto abierto. Además, podemos ver que nuestro <strong>.Rproj</strong> se creó en la carpeta respectiva en la esquina inferior derecha de la pantalla.</p>
+<div class="cell" data-layout-align="right">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-right">
+<figure class="figure">
+<p><img src="../images/ver.png" class="img-fluid figure-img" style="width:60.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Ahora, <strong>tenemos que darle el formato de flujo de trabajo reproducible</strong>. Para ello, crearemos las carpetas de Input, Procesamiento y Ouput en la misma carpeta <em>Estadistica Descriptiva 2023</em> donde tenemos alojado el <strong>.Rproject</strong>.</p>
+<div class="cell" data-layout-align="left">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-left">
+<figure class="figure">
+<p><img src="../images/carpeta2.png" class="img-fluid figure-img" style="width:60.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell" data-layout-align="right">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-right">
+<figure class="figure">
+<p><img src="../images/ipo.png" class="img-fluid figure-img" style="width:60.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>¿Y podemos ver esto mismo pero en RStudio? ¡Claro que sí!, cada carpeta que creemos se irá sumando al visualizador de <strong>Files</strong>, así como también si subimos archivos (como bases de datos) en las respectivas subcarpetas, irán apareciendo allí.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/projectoo.png" class="img-fluid figure-img" style="width:60.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>¡HEMOS CREADO NUESTRO PROYECTO Y SISTEMA DE TRABAJO REPRODUCIBLE!</strong></p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/the-office-dwight.gif" class="img-fluid figure-img" style="width:80.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="crear-un-nuevo-script-.r" class="level2">
+<h2 class="anchored" data-anchor-id="crear-un-nuevo-script-.r">4. Crear un nuevo Script (.R)</h2>
+<p>Para comenzar a trabajar en R, lo primero es crear un <strong>Script</strong>. ¿Qué es un script? En términos simples, un <em>script</em> es la <em>hoja</em> en donde escribiremos y guardaremos nuestro código, y en donde a la vez podremos ir ordenando nuestros pasos e incluso ir comentándolos. Cuando hablamos de <strong>Sintaxis</strong> estamos refiriéndonos, en escencia, a un <strong>Script</strong>.</p>
+<p>Imaginen que un Script es como una <em>hoja</em> de receta de cocina, allí anotamos todos los ingredientes, fases y procedimientos que debemos seguir e ir ejecutando. Esta receta la podemos compartir con otros, volver a verla cuando queramos hacer lo mismo o algo similar. Esa es la gracia de un <strong>Script</strong>.</p>
+<p>Si bien podemos escribir y ejecutar código directamente en la consola, estos se eliminarán una vez que cerremos la sesión en RStudio.</p>
+<p><strong>¿Cómo crear un Script?</strong> Hacerlo es bastante sencillo. En la sección superior izquierda de RStudio, debe hacerse click en la hoja con un signo + verde y, luego, seleccionar la opción R Script en el menú desplegado:</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/script.png" class="img-fluid figure-img" style="width:80.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Otra manera de abrir un nuevo script es hacer click en la opción File de la barra superior. Posteriormente seleccionar New File &gt; R Script en los menús desplegados:</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/file.png" class="img-fluid figure-img" style="width:80.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Por último, podemos mantener presionadas las teclas Ctrl + Shift + N en Windows, o ⌘ + Shift + N en Mac.</p>
+<p>¡Hemos abierto un nuevo script¡, que se debe ver de la siguiente manera:</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/result.png" class="img-fluid figure-img" style="width:80.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Podemos escribir en él los códigos, que se ejecutarán en la consola una vez mantengamos presionadas las teclas Control + Enter al inicio de la línea</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/print.png" class="img-fluid figure-img" style="width:80.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>¿Y cómo guardo mi código? Podemos hacer click en el <strong>disquete</strong> situado en la barra que se encuentra sobre el código, o bien, apretar Ctrl + S.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/save.png" class="img-fluid figure-img" style="width:80.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>La primera vez que guardemos un Script, nos pedirá que le asignemos un nombre y una ruta donde guardarlo. <strong>Este nombre debe ser sustantivo (como procesamiento o análisis), y debemos alojarlo en las subcarpetas que creamos en el paso anterior</strong>. Generalmente, guardaremos los scripts en la carpeta de <strong>Procesamiento</strong>. En este ejemplo, lo llamaremos <em>script01</em>:</p>
+<div class="cell" data-layout-align="left">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-left">
+<figure class="figure">
+<p><img src="../images/nombre.png" class="img-fluid figure-img" style="width:70.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell" data-layout-align="right">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-right">
+<figure class="figure">
+<p><img src="../images/nombre2.png" class="img-fluid figure-img" style="width:70.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Una vez almacenado en una carpeta, cada vez que clickeemos en los casetes o mantengamos presionadas las teclas Control + S, el archivo se actualizará a la última versión que hayamos guardado</p>
+</section>
+<section id="resumen" class="level2">
+<h2 class="anchored" data-anchor-id="resumen">Resumen</h2>
+<p>Hoy aprendimos a procesar datos en R. En detalle, vimos:</p>
+<ol type="1">
+<li><p>Cómo establecer un flujo de trabajo mediante <strong>scripts</strong> y <strong>Rprojects</strong> siguiendo el protocolo <a href="https://lisa-coes.com/ipo-data/">IPO</a></p></li>
+<li><p>Cómo crear un proyecto de R (R.proyect)</p></li>
+<li><p>Cómo crear un script (hoja) en R</p></li>
+</ol>
+</section>
+<section id="presentación-de-la-clase" class="level2">
+<h2 class="anchored" data-anchor-id="presentación-de-la-clase">Presentación de la clase</h2>
+<ul>
+<li><a href="../projects/ppt.pdf"><i class="fa-solid fa-file-archive" aria-hidden="true"></i> Presentación Sesión 1.pdf</a></li>
+</ul>
 
 
 </section>
