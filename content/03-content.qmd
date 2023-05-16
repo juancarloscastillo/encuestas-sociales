@@ -552,16 +552,8 @@ Hoy aprendimos a procesar datos en R. En detalle, vimos:
 
 #### Primer bloque
 
-<div style="width: 100%; height: 600px; overflow: hidden;">
-<video  style="width: 100%;" controls>
-<source src="https://www.icloud.com/iclouddrive/014AsMYGzwMbdhvv8hN2I6Hvw#sesion03">
-</video>
-</div>
+{{< video https://youtu.be/8aheYiilBL4 >}}
 
 #### Segundo bloque
 
-<div style="width: 100%; height: 600px; overflow: hidden;">
-<video  style="width: 100%;" controls>
-<source src="https://www.icloud.com/iclouddrive/014AsMYGzwMbdhvv8hN2I6Hvw#sesion03">
-</video>
-</div>
+{{< video https://youtu.be/2Z2KYScppPA >}}

@@ -108,8 +108,8 @@
     "objectID": "content/03-content.html#colocando-todo-en-práctica",
     "href": "content/03-content.html#colocando-todo-en-práctica",
     "title": "Práctica 3. Procesamiento, limpieza y manipulación de datos en R",
-    "section": "6) Colocando todo en práctica",
-    "text": "6) Colocando todo en práctica\nOtra de las venjatas de dplyr() es que nos permite concatenar funciones siguiendo la misma lógica de programación de izquiera a derecha. Esto lo hacemos a través de los pipes %>%, que es un operador proveniente del paquete magrittr.\nUna función normal es igual a f(x,y), en donde al elemento y del objeto x le aplicamos determinada función f(). Los %>% simplifican funciones y concatenan códigos de la siguiente manera:\nx %>% f(y) es lo mismo que f(x,y).\nEsto significa que el %>% literalmente le dice a R que coloque al objeto x dentro de la función f(), para aplicarle dicha función a y. :::\nVeamos cómo se ocupa y porqué simplifica la vida\n\na) Seleccionemos y filtremos datos con %>%\n\nproc_elsoc <- elsoc_2022 %>% \n  dplyr::select(edad = m0_edad,\n                sexo = m0_sexo,\n                ingreso = m13,\n                autor_democ = c25,\n                jv_delincuentes = f05_01) %>% \n  dplyr::filter(edad >= 25)\n\nproc_elsoc\n\n# A tibble: 980 × 5\n    edad sexo   ingreso autor_democ jv_delincuentes\n   <dbl> <chr>    <dbl>       <dbl>           <dbl>\n 1    38 Hombre 4000000           1              NA\n 2    45 Mujer  2700000           1               3\n 3    42 Hombre  600000           3              NA\n 4    29 Hombre 1250000           1               1\n 5    53 Mujer   500000           2               3\n 6    52 Mujer       NA           3               2\n 7    50 Mujer       NA           2               5\n 8    57 Mujer        0           1               4\n 9    47 Mujer   600000           1               3\n10    79 Hombre      NA           2               1\n# … with 970 more rows\n\n\n\n\nb) Recodifiquemos datos y eliminemos NAs con %>%\n\nproc_elsoc <- proc_elsoc %>% \n  mutate(sexo = car::recode(sexo,\n                            recodes = c(\"'Hombre' = 'Masculino'; 'Mujer' = 'Femenino'\")),\n         ingreso = car::recode(ingreso, \n                               recodes = c(\"-888 = NA; -999 = NA\")),\n         autor_democ = car::recode(autor_democ,\n                                   recodes = c(\"1 = 'La democracia es preferible a cualquier otra forma de gobierno'; \n                            2 = 'En algunas circunstancias, un gobierno autoritario puede ser preferible a uno democratico'; \n                            3 = 'A la gente como uno, nos da lo mismo un regimen democratico que uno autoritario'; \n                            4 = 'Ninguna'; \n                            -888 = NA; \n                            -999 = NA\"),\n                            as.factor = TRUE), # convertir a factor\n         jv_delincuentes = car::recode(jv_delincuentes, \n                                       recodes = c(\"1 = 'Nunca';\n                                                    2 = 'Pocas veces';\n                                                    3 = 'Algunas veces';\n                                                    4 = 'Muchas veces';\n                                                    5 = 'Siempre';\n                                                    -888 = NA; \n                                                   -999 = NA\"),\n                                       as.factor = TRUE, # convertir a factor\n                                       levels = c(\"Nunca\",\n                                                  \"Pocas veces\",\n                                                  \"Algunas veces\",\n                                                  \"Muchas veces\",\n                                                  \"Siempre\"))) %>% \n  na.omit()\n\nproc_elsoc\n\n# A tibble: 496 × 5\n    edad sexo      ingreso autor_democ                                   jv_de…¹\n   <dbl> <chr>       <dbl> <fct>                                         <fct>  \n 1    45 Femenino  2700000 La democracia es preferible a cualquier otra… Alguna…\n 2    29 Masculino 1250000 La democracia es preferible a cualquier otra… Nunca  \n 3    53 Femenino   500000 En algunas circunstancias, un gobierno autor… Alguna…\n 4    57 Femenino        0 La democracia es preferible a cualquier otra… Muchas…\n 5    47 Femenino   600000 La democracia es preferible a cualquier otra… Alguna…\n 6    39 Masculino 1350000 La democracia es preferible a cualquier otra… Muchas…\n 7    42 Masculino 1100000 La democracia es preferible a cualquier otra… Muchas…\n 8    51 Masculino  800000 La democracia es preferible a cualquier otra… Nunca  \n 9    38 Masculino 1600000 A la gente como uno, nos da lo mismo un regi… Alguna…\n10    45 Femenino   500000 La democracia es preferible a cualquier otra… Nunca  \n# … with 486 more rows, and abbreviated variable name ¹​jv_delincuentes\n\n\n\n\nc) Transformemos variables con %>%\n\nproc_elsoc <- proc_elsoc %>% \n  mutate(ano = 2022,\n         tramo_edad = case_when(edad <= 29 ~ \"Jovenes\",\n                                edad >= 30 & edad <= 59 ~ \"Adultos\",\n                                edad >= 60 ~ \"Adutos mayores\"),\n         tramo_ingreso = case_when(ingreso <= 250000 ~ \"Tramo 1\",\n                                   ingreso > 250000 & ingreso <= 500000 ~ \"Tramo 2\",\n                                   ingreso > 500000 & ingreso <= 750000 ~ \"Tramo 3\",\n                                   ingreso > 750000 & ingreso <= 1000000 ~ \"Tramo 4\",\n                                   ingreso > 1000000 ~ \"Tramo 5\"),\n         ingreso_minimo = if_else(ingreso < 410000, \"debajo minimo\", \"sobre minimo\"))\n\nproc_elsoc\n\n# A tibble: 496 × 9\n    edad sexo      ingreso autor_democ     jv_de…¹   ano tramo…² tramo…³ ingre…⁴\n   <dbl> <chr>       <dbl> <fct>           <fct>   <dbl> <chr>   <chr>   <chr>  \n 1    45 Femenino  2700000 La democracia … Alguna…  2022 Adultos Tramo 5 sobre …\n 2    29 Masculino 1250000 La democracia … Nunca    2022 Jovenes Tramo 5 sobre …\n 3    53 Femenino   500000 En algunas cir… Alguna…  2022 Adultos Tramo 2 sobre …\n 4    57 Femenino        0 La democracia … Muchas…  2022 Adultos Tramo 1 debajo…\n 5    47 Femenino   600000 La democracia … Alguna…  2022 Adultos Tramo 3 sobre …\n 6    39 Masculino 1350000 La democracia … Muchas…  2022 Adultos Tramo 5 sobre …\n 7    42 Masculino 1100000 La democracia … Muchas…  2022 Adultos Tramo 5 sobre …\n 8    51 Masculino  800000 La democracia … Nunca    2022 Adultos Tramo 4 sobre …\n 9    38 Masculino 1600000 A la gente com… Alguna…  2022 Adultos Tramo 5 sobre …\n10    45 Femenino   500000 La democracia … Nunca    2022 Adultos Tramo 2 sobre …\n# … with 486 more rows, and abbreviated variable names ¹​jv_delincuentes,\n#   ²​tramo_edad, ³​tramo_ingreso, ⁴​ingreso_minimo"
+    "section": "6 Colocando todo en práctica",
+    "text": "6 Colocando todo en práctica\nOtra de las venjatas de dplyr() es que nos permite concatenar funciones siguiendo la misma lógica de programación de izquiera a derecha. Esto lo hacemos a través de los pipes %>%, que es un operador proveniente del paquete magrittr.\nUna función normal es igual a f(x,y), en donde al elemento y del objeto x le aplicamos determinada función f(). Los %>% simplifican funciones y concatenan códigos de la siguiente manera:\nx %>% f(y) es lo mismo que f(x,y).\nEsto significa que el %>% literalmente le dice a R que coloque al objeto x dentro de la función f(), para aplicarle dicha función a y. :::\nVeamos cómo se ocupa y porqué simplifica la vida\n\na) Seleccionemos y filtremos datos con %>%\n\nproc_elsoc <- elsoc_2022 %>% \n  dplyr::select(edad = m0_edad,\n                sexo = m0_sexo,\n                ingreso = m13,\n                autor_democ = c25,\n                jv_delincuentes = f05_01) %>% \n  dplyr::filter(edad >= 25)\n\nproc_elsoc\n\n# A tibble: 980 × 5\n    edad sexo   ingreso autor_democ jv_delincuentes\n   <dbl> <chr>    <dbl>       <dbl>           <dbl>\n 1    38 Hombre 4000000           1              NA\n 2    45 Mujer  2700000           1               3\n 3    42 Hombre  600000           3              NA\n 4    29 Hombre 1250000           1               1\n 5    53 Mujer   500000           2               3\n 6    52 Mujer       NA           3               2\n 7    50 Mujer       NA           2               5\n 8    57 Mujer        0           1               4\n 9    47 Mujer   600000           1               3\n10    79 Hombre      NA           2               1\n# … with 970 more rows\n\n\n\n\nb) Recodifiquemos datos y eliminemos NAs con %>%\n\nproc_elsoc <- proc_elsoc %>% \n  mutate(sexo = car::recode(sexo,\n                            recodes = c(\"'Hombre' = 'Masculino'; 'Mujer' = 'Femenino'\")),\n         ingreso = car::recode(ingreso, \n                               recodes = c(\"-888 = NA; -999 = NA\")),\n         autor_democ = car::recode(autor_democ,\n                                   recodes = c(\"1 = 'La democracia es preferible a cualquier otra forma de gobierno'; \n                            2 = 'En algunas circunstancias, un gobierno autoritario puede ser preferible a uno democratico'; \n                            3 = 'A la gente como uno, nos da lo mismo un regimen democratico que uno autoritario'; \n                            4 = 'Ninguna'; \n                            -888 = NA; \n                            -999 = NA\"),\n                            as.factor = TRUE), # convertir a factor\n         jv_delincuentes = car::recode(jv_delincuentes, \n                                       recodes = c(\"1 = 'Nunca';\n                                                    2 = 'Pocas veces';\n                                                    3 = 'Algunas veces';\n                                                    4 = 'Muchas veces';\n                                                    5 = 'Siempre';\n                                                    -888 = NA; \n                                                   -999 = NA\"),\n                                       as.factor = TRUE, # convertir a factor\n                                       levels = c(\"Nunca\",\n                                                  \"Pocas veces\",\n                                                  \"Algunas veces\",\n                                                  \"Muchas veces\",\n                                                  \"Siempre\"))) %>% \n  na.omit()\n\nproc_elsoc\n\n# A tibble: 496 × 5\n    edad sexo      ingreso autor_democ                                   jv_de…¹\n   <dbl> <chr>       <dbl> <fct>                                         <fct>  \n 1    45 Femenino  2700000 La democracia es preferible a cualquier otra… Alguna…\n 2    29 Masculino 1250000 La democracia es preferible a cualquier otra… Nunca  \n 3    53 Femenino   500000 En algunas circunstancias, un gobierno autor… Alguna…\n 4    57 Femenino        0 La democracia es preferible a cualquier otra… Muchas…\n 5    47 Femenino   600000 La democracia es preferible a cualquier otra… Alguna…\n 6    39 Masculino 1350000 La democracia es preferible a cualquier otra… Muchas…\n 7    42 Masculino 1100000 La democracia es preferible a cualquier otra… Muchas…\n 8    51 Masculino  800000 La democracia es preferible a cualquier otra… Nunca  \n 9    38 Masculino 1600000 A la gente como uno, nos da lo mismo un regi… Alguna…\n10    45 Femenino   500000 La democracia es preferible a cualquier otra… Nunca  \n# … with 486 more rows, and abbreviated variable name ¹​jv_delincuentes\n\n\n\n\nc) Transformemos variables con %>%\n\nproc_elsoc <- proc_elsoc %>% \n  mutate(ano = 2022,\n         tramo_edad = case_when(edad <= 29 ~ \"Jovenes\",\n                                edad >= 30 & edad <= 59 ~ \"Adultos\",\n                                edad >= 60 ~ \"Adutos mayores\"),\n         tramo_ingreso = case_when(ingreso <= 250000 ~ \"Tramo 1\",\n                                   ingreso > 250000 & ingreso <= 500000 ~ \"Tramo 2\",\n                                   ingreso > 500000 & ingreso <= 750000 ~ \"Tramo 3\",\n                                   ingreso > 750000 & ingreso <= 1000000 ~ \"Tramo 4\",\n                                   ingreso > 1000000 ~ \"Tramo 5\"),\n         ingreso_minimo = if_else(ingreso < 410000, \"debajo minimo\", \"sobre minimo\"))\n\nproc_elsoc\n\n# A tibble: 496 × 9\n    edad sexo      ingreso autor_democ     jv_de…¹   ano tramo…² tramo…³ ingre…⁴\n   <dbl> <chr>       <dbl> <fct>           <fct>   <dbl> <chr>   <chr>   <chr>  \n 1    45 Femenino  2700000 La democracia … Alguna…  2022 Adultos Tramo 5 sobre …\n 2    29 Masculino 1250000 La democracia … Nunca    2022 Jovenes Tramo 5 sobre …\n 3    53 Femenino   500000 En algunas cir… Alguna…  2022 Adultos Tramo 2 sobre …\n 4    57 Femenino        0 La democracia … Muchas…  2022 Adultos Tramo 1 debajo…\n 5    47 Femenino   600000 La democracia … Alguna…  2022 Adultos Tramo 3 sobre …\n 6    39 Masculino 1350000 La democracia … Muchas…  2022 Adultos Tramo 5 sobre …\n 7    42 Masculino 1100000 La democracia … Muchas…  2022 Adultos Tramo 5 sobre …\n 8    51 Masculino  800000 La democracia … Nunca    2022 Adultos Tramo 4 sobre …\n 9    38 Masculino 1600000 A la gente com… Alguna…  2022 Adultos Tramo 5 sobre …\n10    45 Femenino   500000 La democracia … Nunca    2022 Adultos Tramo 2 sobre …\n# … with 486 more rows, and abbreviated variable names ¹​jv_delincuentes,\n#   ²​tramo_edad, ³​tramo_ingreso, ⁴​ingreso_minimo"
   },
   {
     "objectID": "content/03-content.html#guardar-y-exportar-datos-procesados",
@@ -130,7 +130,7 @@
     "href": "content/03-content.html#video-de-clase",
     "title": "Práctica 3. Procesamiento, limpieza y manipulación de datos en R",
     "section": "Video de clase",
-    "text": "Video de clase\n\nPrimer bloque\n\n\n\n\n\n\n\nSegundo bloque"
+    "text": "Video de clase\n\nPrimer bloque\n\n\n\nSegundo bloque"
   },
   {
     "objectID": "content/04-content.html",
@@ -159,111 +159,6 @@
     "title": "Preguntas",
     "section": "Actividad: Comenzar a preparar trabajo 1:",
     "text": "Actividad: Comenzar a preparar trabajo 1:\n\ngrupos de 3 integrantes\nseleccionar tema de interés general (ej: migración, género, clase social, pueblos originarios, uso del tiempo, bienestar, etc.)\ndefinir hipótesis y conceptos más específicos\ndefinir población objetivo\noperacionalizar\nbúsqueda de preguntas en bases de datos y literatura especializada\nadaptar / diseñar preguntas de distintos ámbitos y con distintas escalas de respuestas\nutilizar calificativos"
-  },
-  {
-    "objectID": "content/05-content.html",
-    "href": "content/05-content.html",
-    "title": "Cuestionario: formr",
-    "section": "",
-    "text": "Los contenidos principales de esta clase están relacionados con el tutorial de formr (sección recursos de este sitio)"
-  },
-  {
-    "objectID": "content/05-content.html#documento-de-presentación",
-    "href": "content/05-content.html#documento-de-presentación",
-    "title": "Cuestionario: formr",
-    "section": "Documento de presentación",
-    "text": "Documento de presentación\n\n\n\nPara ver en pantalla completa presionar F (con cursor sobre presentación)"
-  },
-  {
-    "objectID": "content/05-content.html#presentación-encuesta-microemprendimiento",
-    "href": "content/05-content.html#presentación-encuesta-microemprendimiento",
-    "title": "Cuestionario: formr",
-    "section": "Presentación Encuesta Microemprendimiento",
-    "text": "Presentación Encuesta Microemprendimiento\nDisponible en la sección de recursos, link aquí"
-  },
-  {
-    "objectID": "content/05-content.html#lecturas",
-    "href": "content/05-content.html#lecturas",
-    "title": "Cuestionario: formr",
-    "section": "Lecturas",
-    "text": "Lecturas\n\nCzaja & Blair (2005) Cap. 5 Questionnaire Design, Organizing the questions"
-  },
-  {
-    "objectID": "content/08-content.html",
-    "href": "content/08-content.html",
-    "title": "Flujo de trabajo reproducible y colaborativo",
-    "section": "",
-    "text": "Para ver en pantalla completa presionar F (con cursor sobre presentación)"
-  },
-  {
-    "objectID": "content/08-content.html#video-de-la-clase",
-    "href": "content/08-content.html#video-de-la-clase",
-    "title": "Flujo de trabajo reproducible y colaborativo",
-    "section": "Video de la clase",
-    "text": "Video de la clase"
-  },
-  {
-    "objectID": "content/08-content.html#lecturasmaterial",
-    "href": "content/08-content.html#lecturasmaterial",
-    "title": "Flujo de trabajo reproducible y colaborativo",
-    "section": "Lecturas/material",
-    "text": "Lecturas/material\n\nProtocolo reproducible IPO"
-  },
-  {
-    "objectID": "content/09-content.html",
-    "href": "content/09-content.html",
-    "title": "Documentos dinámicos y (R)Markdown",
-    "section": "",
-    "text": "Para ver en pantalla completa presionar F (con cursor sobre presentación)"
-  },
-  {
-    "objectID": "content/09-content.html#video-de-la-clase",
-    "href": "content/09-content.html#video-de-la-clase",
-    "title": "Documentos dinámicos y (R)Markdown",
-    "section": "Video de la clase",
-    "text": "Video de la clase"
-  },
-  {
-    "objectID": "content/09-content.html#lecturasmaterial",
-    "href": "content/09-content.html#lecturasmaterial",
-    "title": "Documentos dinámicos y (R)Markdown",
-    "section": "Lecturas/material",
-    "text": "Lecturas/material\n\nM Editor.md - editor markdown online\nTutorial Markdown online\nThe Plain Person’s Guide to Plain Text Social Science\nIntroducción a RMarkdown\nRmarkdown / Rstudio\nRmarkdown en R4DS"
-  },
-  {
-    "objectID": "content/10-content.html",
-    "href": "content/10-content.html",
-    "title": "Baterías e índices",
-    "section": "",
-    "text": "Para ver en pantalla completa presionar F (con cursor sobre presentación)"
-  },
-  {
-    "objectID": "content/10-content.html#video-de-la-clase",
-    "href": "content/10-content.html#video-de-la-clase",
-    "title": "Baterías e índices",
-    "section": "Video de la clase",
-    "text": "Video de la clase\nParte1\n\n\n\n\n\nParte 2"
-  },
-  {
-    "objectID": "content/11-content.html",
-    "href": "content/11-content.html",
-    "title": "Análisis factorial",
-    "section": "",
-    "text": "Para ver en pantalla completa presionar F (con cursor sobre presentación)"
-  },
-  {
-    "objectID": "content/11-content.html#video-de-la-clase",
-    "href": "content/11-content.html#video-de-la-clase",
-    "title": "Análisis factorial",
-    "section": "Video de la clase",
-    "text": "Video de la clase"
-  },
-  {
-    "objectID": "content/11-content.html#recursos",
-    "href": "content/11-content.html#recursos",
-    "title": "Análisis factorial",
-    "section": "Recursos",
-    "text": "Recursos\n\nBrown (2015)The Common Factor Model and Exploratory Factor Analysis"
   },
   {
     "objectID": "content/index.html",
