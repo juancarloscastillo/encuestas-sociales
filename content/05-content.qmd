@@ -84,7 +84,7 @@ rm(list = ls()) # para limpiar el entorno de trabajo
 
 ### 2 Importar datos
 
-```{r eval=FALSE, include=TRUE}
+```{r eval=TRUE, include=TRUE, collapse=FALSE}
 elsoc_2022 <- read_dta("input/data/elsoc_w06_subset.dta") # Funciona 
 ```
 
@@ -114,12 +114,12 @@ En este ejemplo utilizaremos las siguientes variables:
  * **c05_03**: grado de confianza en carabineros
  
 ```{r eval=TRUE, include=TRUE, collapse=FALSE}
-proc_elsoc <- elsoc_2022 %>% 
-  select(edad = m0_edad,
-         sexo = m0_sexo,
-         ingreso = m13,
-         altruismo = c03,
-         confianza_carab = c05_03)
+
+proc_elsoc <- elsoc_2022 %>% dplyr::select(edad = m0_edad,
+                sexo = m0_sexo,
+                ingreso = m13,
+                altruismo = c03,
+                confianza_carab = c05_03)
 
 proc_elsoc
 ```
@@ -130,7 +130,7 @@ proc_elsoc
 Quedémnos con aquellos casos cuya edad sea mayor o igual a 15 años.
 
 ```{r eval=TRUE, include=TRUE, collapse=FALSE}
-proc_elsoc <- proc_elsoc %>% filter(edad >= 25)
+proc_elsoc <- proc_elsoc %>% dplyr::filter(edad >= 25)
 
 proc_elsoc
 ```
@@ -143,9 +143,9 @@ Recodifiquemos las variables `sexo` e `ingreso`:
 
 ```{r eval=TRUE, include=TRUE, collapse=FALSE}
 proc_elsoc <- proc_elsoc %>% 
-  mutate(sexo = car::recode(sexo,
+  dplyr::mutate(sexo = car::recode(sexo,
                             recodes = c("'Hombre' = 'Masculino'; 'Mujer' = 'Femenino'")),
-         ingreso = car::recode(ingreso, 
+                ingreso = car::recode(ingreso, 
                                recodes = c("-888 = NA; -999 = NA")))
 ```
 
@@ -154,7 +154,32 @@ Ahora, las variables `altruismo` y `confianza_carab`:
 
 ```{r eval=TRUE, include=TRUE, collapse=FALSE}
 
-
+proc_elsoc <- proc_elsoc %>%
+  dplyr::mutate(altruismo = car::recode(altruismo,
+                                 recodes = c("1 = 'La mayoria de las veces tratan de ayudar a los demas';
+                                              2 = 'La mayoria de las veces se preocupan solo de si mismas';
+                                              3 = 'Depende';
+                                              -666 = NA;
+                                              -777 = NA;
+                                              -888 = NA;
+                                              -999 = NA"),
+                                 as.factor = TRUE),
+         confianza_carab = car::recode(confianza_carab,
+                                       recodes = c("1 = 'Nada';
+                                                    2 = 'Poca';
+                                                    3 = 'Algo';
+                                                    4 = 'Bastante';
+                                                    5 = 'Mucha';
+                                                    -666 = NA;
+                                                    -777 = NA;
+                                                    -888 = NA;
+                                                    -999 = NA"),
+                                       as.factor = TRUE,
+                                       levels = c("Nada",
+                                                  "Poca",
+                                                  "Algo",
+                                                  "Bastante",
+                                                  "Mucha")))
 ```
 
 
@@ -192,7 +217,7 @@ En este ejemplo, transformaremos las variables `edad` e `ingresos`, y crearemos 
 Generemos las nueva variable año:
 
 ```{r eval=TRUE, include=TRUE, collapse=FALSE}
-proc_elsoc <- proc_elsoc %>% mutate(ano = 2022)
+proc_elsoc <- proc_elsoc %>% dplyr::mutate(ano = 2022)
 
 proc_elsoc
 ```
@@ -204,14 +229,14 @@ Generemos nuevas variables para `edad` e `ingresos` dejándolas como tramos con 
 
 ```{r eval=TRUE, include=TRUE, collapse=FALSE}
 proc_elsoc <- proc_elsoc %>% 
-  mutate(tramo_edad = case_when(edad <= 29 ~ "Jovenes",
-                                edad >= 30 & edad <= 59 ~ "Adultos",
-                                edad >= 60 ~ "Adutos mayores"),
-         tramo_ingreso = case_when(ingreso <= 250000 ~ "Tramo 1",
-                                   ingreso > 250000 & ingreso <= 500000 ~ "Tramo 2",
-                                   ingreso > 500000 & ingreso <= 750000 ~ "Tramo 3",
-                                   ingreso > 750000 & ingreso <= 1000000 ~ "Tramo 4",
-                                   ingreso > 1000000 ~ "Tramo 5"))
+  dplyr::mutate(tramo_edad = case_when(edad <= 29 ~ "Jovenes",
+                                       edad >= 30 & edad <= 59 ~ "Adultos",
+                                       edad >= 60 ~ "Adutos mayores"),
+                tramo_ingreso = case_when(ingreso <= 250000 ~ "Tramo 1",
+                                          ingreso > 250000 & ingreso <= 500000 ~ "Tramo 2",      
+                                          ingreso > 500000 & ingreso <= 750000 ~ "Tramo 3",      
+                                          ingreso > 750000 & ingreso <= 1000000 ~ "Tramo 4",       
+                                          ingreso > 1000000 ~ "Tramo 5"))
 
 proc_elsoc
 ```
@@ -222,7 +247,7 @@ Ahora, generemos una nueva variable llamada `ingreso_minimo` con la función `if
 ```{r eval=TRUE, include=TRUE, collapse=FALSE}
 
 proc_elsoc <- proc_elsoc %>% 
-  mutate(ingreso_minimo = if_else(ingreso < 410000, "debajo minimo", "sobre minimo"))
+  dplyr::mutate(ingreso_minimo = if_else(ingreso < 410000, "debajo minimo", "sobre minimo"))
 
 proc_elsoc
 ```

@@ -161,6 +161,20 @@
     "text": "Actividad: Comenzar a preparar trabajo 1:\n\ngrupos de 3 integrantes\nseleccionar tema de interés general (ej: migración, género, clase social, pueblos originarios, uso del tiempo, bienestar, etc.)\ndefinir hipótesis y conceptos más específicos\ndefinir población objetivo\noperacionalizar\nbúsqueda de preguntas en bases de datos y literatura especializada\nadaptar / diseñar preguntas de distintos ámbitos y con distintas escalas de respuestas\nutilizar calificativos"
   },
   {
+    "objectID": "content/05-content.html",
+    "href": "content/05-content.html",
+    "title": "Práctica 5. Repaso procesamiento y análisis de datos en R",
+    "section": "",
+    "text": "El objetivo de esta guía práctica es repasar los procedimientos básicos para el procesamiento y análisis descripivo de datos en R, los cuales fueron vistos en las sesiones pasadas del laboratorio.\nEn detalle, aprenderemos:\n\nEstablecer un flujo de trabajo en R.\nProcesar, limpiar y transformar bases de datos en R.\nRealizar análisis desciptivos (frecuencias, medias de posición, tendencia central y despersión) en R.\n\n¡Al final de esta práctica la idea es que cada un_ elabore y entienda su propio documento de preparación y análisis de datos!\n\n\n\nEn esta práctica trabajaremos con un subset de los datos del Estudio Longitudinal Social de Chile (ELSOC) realizado por COES. Esta base la pueden encontrar en el canal de U-Cursos sección Material Docente, o bien, en el siguiente enlace  ELSOC 2022 podrán descargar el archivo que contiene la base ELSOC 2022.\nRecuerden que siempre es importante trabajar con el manual/libro de códigos de las bases de datos. El manual de la ELSOC 2022 lo pueden encontrar aquí."
+  },
+  {
+    "objectID": "content/05-content.html#análisis-descriptivo",
+    "href": "content/05-content.html#análisis-descriptivo",
+    "title": "Práctica 5. Repaso procesamiento y análisis de datos en R",
+    "section": "Análisis descriptivo",
+    "text": "Análisis descriptivo\n\nPara variables categóricas\n\n\nPara variables númericas"
+  },
+  {
     "objectID": "content/index.html",
     "href": "content/index.html",
     "title": "Laboratorio de Análisis de Datos",

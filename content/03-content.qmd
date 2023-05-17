@@ -552,7 +552,7 @@ Hoy aprendimos a procesar datos en R. En detalle, vimos:
 
 #### Primer bloque
 
-{{< video https://youtu.be/8aheYiilBL4 >}}
+{{< video https://youtu.be/fESt6tGNH0U >}}
 
 #### Segundo bloque
 
