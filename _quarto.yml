@@ -28,7 +28,7 @@ website:
   favicon: "/files/logo-removebg-preview.png"
 
   twitter-card:
-    image: "/files/social-image-f22.png"
+    image: "/files/logo.png"
     card-style: summary_large_image
     creator: "@andreaslaffert"
     site: "@andreaslaffert"
@@ -72,6 +72,8 @@ website:
               file: content/02-content.qmd
             - text: "3: Procesamiento, limpieza y manipulación de datos en R"
               file: content/03-content.qmd
+            - text: "5: Procesamiento y análisis de datos en R"
+              file: content/05-content.qmd
 
     - title: "Recursos"
       style: "docked"

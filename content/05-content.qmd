@@ -25,7 +25,7 @@ En detalle, aprenderemos:
 
 ## Recursos de la práctica
 
-En esta práctica trabajaremos con un subset de los datos del Estudio Longitudinal Social de Chile (ELSOC) realizado por [COES](https://coes.cl/encuesta-panel/). Esta base la pueden encontrar en el canal de U-Cursos sección Material Docente, o bien, en el siguiente enlace [{{< fa table >}} `ELSOC 2022`](https://github.com/Andreas-Lafferte/descriptiva/raw/main/content/input/data/ELSOC_W06_v1.0_SPSS.sav) podrán descargar el archivo que contiene la base ELSOC 2022.
+En esta práctica trabajaremos con un subset de los datos del Estudio Longitudinal Social de Chile (ELSOC) realizado por [COES](https://coes.cl/encuesta-panel/). Esta base la pueden encontrar en el canal de U-Cursos sección Material Docente, o bien, en el siguiente enlace [{{< fa table >}} `ELSOC 2022`](https://github.com/Andreas-Lafferte/descriptiva/raw/main/content/input/data/elsoc_w06_subset.dta) podrán descargar el archivo que contiene la base ELSOC 2022.
 
 Recuerden que siempre es importante trabajar con el manual/libro de códigos de las bases de datos. El manual de la ELSOC 2022 lo pueden encontrar [aquí](https://coes.cl/wp-content/uploads/Listado-de-Variables-ELSOC-2.xlsx).
 
@@ -34,11 +34,12 @@ Recuerden que siempre es importante trabajar con el manual/libro de códigos de 
 
 Pasos a seguir: 
 
-- Descargar la base de datos vía U-Cursos o mediante el enlace [{{< fa table >}} `ELSOC 2022`](https://github.com/Andreas-Lafferte/descriptiva/raw/main/content/input/data/ELSOC_W06_v1.0_SPSS.sav) 
-- Crear un proyecto de R (.Rproj) que se llame _"laboratorio02"_
+- Descargar la base de datos vía U-Cursos o mediante el enlace [{{< fa table >}} `ELSOC 2022`](https://github.com/Andreas-Lafferte/descriptiva/raw/main/content/input/data/elsoc_w06_subset.dta) 
+- Crear un proyecto de R (.Rproj) que se llame _"laboratorio03"_
 - Crear carpetas de **Input, Procesamiento y Output**
 - Ubicar la base de datos en la carpeta Input
-- Crear un Script (.R) en la carpeta Procesamiento _"01proc-data"_ 
+- Crear un Script (.R) en la carpeta Procesamiento que se llame _"01proc-data"_ 
+- Crear un Script (.R) en la carpeta Procesamiento que se llame _"02analisis"_ 
 
 
 # Procesamiento, limpieza y manipulación de datos
@@ -59,8 +60,10 @@ En este ejemplo vamos a usar la siguientes librerías:
 
 6. `psych`: para análisis descriptivo de datos
 
+7. `crosstable`: para tablas de contingencia o doble entrada
 
-Primero, si nos tenemos instalado el paquete `pacman`, debemos instalarlo y y llamarlo tradicionalmente. Si ya lo tienes instalado, no es necesario este paso, solo debes llamarlo con `library`.
+
+Primero, si nos tenemos instalado el paquete `pacman`, debemos instalarlo y y llamarlo tradicionalmente. Si ya lo tienes instalado, no es necesario este paso, solo debes llamarlo con `library()`.
 
 ```{r eval=FALSE, include=TRUE}
 install.packages("pacman") #para instalar
@@ -75,8 +78,14 @@ pacman::p_load(tidyverse, # colección de paquetes para manipulación de datos
                haven, # para importar datos
                car, # para recodificar datos
                psych, # para analizar datos
-               sjmisc) # para analizar datos
+               sjmisc, # para analizar datos
+               crosstable) # para tablas de contingencia
+```
 
+
+También se recomienda limpiar nuestro entorno de trabajo y eliminar la notación cientifica, seteando ciertas funciones. 
+
+```{r echo=TRUE}
 options(scipen = 999) # para desactivar notacion cientifica
 rm(list = ls()) # para limpiar el entorno de trabajo
 ```
@@ -85,7 +94,7 @@ rm(list = ls()) # para limpiar el entorno de trabajo
 ### 2 Importar datos
 
 ```{r eval=TRUE, include=TRUE, collapse=FALSE}
-elsoc_2022 <- read_dta("input/data/elsoc_w06_subset.dta") # Funciona 
+elsoc_2022 <- read_dta("Input/data/elsoc_w06_subset.dta") # Funciona 
 ```
 
 
@@ -115,7 +124,8 @@ En este ejemplo utilizaremos las siguientes variables:
  
 ```{r eval=TRUE, include=TRUE, collapse=FALSE}
 
-proc_elsoc <- elsoc_2022 %>% dplyr::select(edad = m0_edad,
+proc_elsoc <- elsoc_2022 %>% 
+  dplyr::select(edad = m0_edad,
                 sexo = m0_sexo,
                 ingreso = m13,
                 altruismo = c03,
@@ -127,7 +137,7 @@ proc_elsoc
 
 #### 4.2 Filtrar
 
-Quedémnos con aquellos casos cuya edad sea mayor o igual a 15 años.
+Quedémonos con aquellos casos cuya edad sea mayor o igual a 15 años.
 
 ```{r eval=TRUE, include=TRUE, collapse=FALSE}
 proc_elsoc <- proc_elsoc %>% dplyr::filter(edad >= 25)
@@ -141,16 +151,18 @@ proc_elsoc
 
 Recodifiquemos las variables `sexo` e `ingreso`:
 
-```{r eval=TRUE, include=TRUE, collapse=FALSE}
+```{r eval=TRUE, include=TRUE, collapse=FALSE, warning=FALSE}
 proc_elsoc <- proc_elsoc %>% 
   dplyr::mutate(sexo = car::recode(sexo,
                             recodes = c("'Hombre' = 'Masculino'; 'Mujer' = 'Femenino'")),
                 ingreso = car::recode(ingreso, 
                                recodes = c("-888 = NA; -999 = NA")))
+
+proc_elsoc
 ```
 
 
-Ahora, las variables `altruismo` y `confianza_carab`: 
+Ahora, las variables `altruismo` y `confianza_carab` conviertiéndolas a factor y, si es pertinente, asigarles niveles.
 
 ```{r eval=TRUE, include=TRUE, collapse=FALSE}
 
@@ -163,7 +175,7 @@ proc_elsoc <- proc_elsoc %>%
                                               -777 = NA;
                                               -888 = NA;
                                               -999 = NA"),
-                                 as.factor = TRUE),
+                                 as.factor = TRUE), # transformar a factor
          confianza_carab = car::recode(confianza_carab,
                                        recodes = c("1 = 'Nada';
                                                     2 = 'Poca';
@@ -174,16 +186,20 @@ proc_elsoc <- proc_elsoc %>%
                                                     -777 = NA;
                                                     -888 = NA;
                                                     -999 = NA"),
-                                       as.factor = TRUE,
+                                       as.factor = TRUE, # transformar a factor
                                        levels = c("Nada",
                                                   "Poca",
                                                   "Algo",
                                                   "Bastante",
-                                                  "Mucha")))
+                                                  "Mucha"))) # asignar niveles
+
+proc_elsoc
 ```
 
 
 #### 4.4 Tratamiento casos pérdidos
+
+Identifiquemos primero los casos pérdidos tanto en la base de datos completa como en las respectivas variables. 
 
 ```{r eval=FALSE, include=TRUE, collapse=FALSE}
 is.na(proc_elsoc)
@@ -195,6 +211,9 @@ is.na(proc_elsoc$ingreso)
 sum(is.na(proc_elsoc))
 
 ```
+
+
+En toda la base, tenemos 454 casos pérdidos. Ahora veamos cuántos hay por cada columna/variable.
 
 ```{r collapse=FALSE}
 colSums(is.na(proc_elsoc))
@@ -256,7 +275,7 @@ proc_elsoc
 ### 6 Guardar y exportar
 
 ```{r collapse=FALSE}
-save(proc_elsoc, file = "output/datos_proc.Rdata")
+save(proc_elsoc, file = "Output/datos_proc.Rdata")
 ```
 
 

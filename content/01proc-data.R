@@ -11,9 +11,7 @@ library(pacman) # para llamar/cargar
 pacman::p_load(tidyverse, # colección de paquetes para manipulación de datos
                dplyr, # para manipular datos
                haven, # para importar datos
-               car, # para recodificar datos
-               psych, # para analizar datos
-               sjmisc) # para analizar datos
+               car) # para analizar datos
 
 options(scipen = 999) # para desactivar notacion cientifica
 rm(list = ls()) # para limpiar el entorno de trabajo
