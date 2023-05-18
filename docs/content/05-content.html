@@ -270,11 +270,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#limpiar-datos" id="toc-limpiar-datos" class="nav-link" data-scroll-target="#limpiar-datos">4 Limpiar datos</a></li>
   <li><a href="#transformar-variables" id="toc-transformar-variables" class="nav-link" data-scroll-target="#transformar-variables">5 Transformar variables</a></li>
   <li><a href="#guardar-y-exportar" id="toc-guardar-y-exportar" class="nav-link" data-scroll-target="#guardar-y-exportar">6 Guardar y exportar</a></li>
-  <li><a href="#análisis-descriptivo" id="toc-análisis-descriptivo" class="nav-link" data-scroll-target="#análisis-descriptivo">Análisis descriptivo</a>
-  <ul class="collapse">
-  <li><a href="#para-variables-categóricas" id="toc-para-variables-categóricas" class="nav-link" data-scroll-target="#para-variables-categóricas">Para variables categóricas</a></li>
-  <li><a href="#para-variables-númericas" id="toc-para-variables-númericas" class="nav-link" data-scroll-target="#para-variables-númericas">Para variables númericas</a></li>
   </ul></li>
+  <li><a href="#análisis-descriptivo-de-datos" id="toc-análisis-descriptivo-de-datos" class="nav-link" data-scroll-target="#análisis-descriptivo-de-datos">Análisis descriptivo de datos</a>
+  <ul class="collapse">
+  <li><a href="#cargar-librerías-1" id="toc-cargar-librerías-1" class="nav-link" data-scroll-target="#cargar-librerías-1">1 Cargar librerías</a></li>
+  <li><a href="#importar-datos-1" id="toc-importar-datos-1" class="nav-link" data-scroll-target="#importar-datos-1">2 Importar datos</a></li>
+  <li><a href="#estadísticos-descriptivos-para-variables-categóricas" id="toc-estadísticos-descriptivos-para-variables-categóricas" class="nav-link" data-scroll-target="#estadísticos-descriptivos-para-variables-categóricas">3 Estadísticos descriptivos para variables categóricas</a></li>
+  <li><a href="#estadísticos-descriptivos-para-variables-numéricas" id="toc-estadísticos-descriptivos-para-variables-numéricas" class="nav-link" data-scroll-target="#estadísticos-descriptivos-para-variables-numéricas">4 Estadísticos descriptivos para variables numéricas</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -320,6 +322,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Crear un Script (.R) en la carpeta Procesamiento que se llame <em>“01proc-data”</em></li>
 <li>Crear un Script (.R) en la carpeta Procesamiento que se llame <em>“02analisis”</em></li>
 </ul>
+<p>En esta parte, trabajaremos sobre el script de <em>01proc-data</em></p>
 </section>
 <section id="procesamiento-limpieza-y-manipulación-de-datos" class="level1">
 <h1>Procesamiento, limpieza y manipulación de datos</h1>
@@ -333,6 +336,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p><code>haven</code>: cargar y exportar bases de datos en formatos .sav y .dta</p></li>
 <li><p><code>car</code>: para recodificar/agrupar valores de variables</p></li>
 <li><p><code>psych</code>: para análisis descriptivo de datos</p></li>
+<li><p><code>sjmisc</code>: para análisis descriptivo de datos</p></li>
 <li><p><code>crosstable</code>: para tablas de contingencia o doble entrada</p></li>
 </ol>
 <p>Primero, si nos tenemos instalado el paquete <code>pacman</code>, debemos instalarlo y y llamarlo tradicionalmente. Si ya lo tienes instalado, no es necesario este paso, solo debes llamarlo con <code>library()</code>.</p>
@@ -646,19 +650,157 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="guardar-y-exportar" class="level3">
 <h3 class="anchored" data-anchor-id="guardar-y-exportar">6 Guardar y exportar</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(proc_elsoc, <span class="at">file =</span> <span class="st">"Output/datos_proc.Rdata"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(proc_elsoc, <span class="at">file =</span> <span class="st">"Output/datos_proc.Rdata"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="análisis-descriptivo" class="level2">
-<h2 class="anchored" data-anchor-id="análisis-descriptivo">Análisis descriptivo</h2>
-<section id="para-variables-categóricas" class="level3">
-<h3 class="anchored" data-anchor-id="para-variables-categóricas">Para variables categóricas</h3>
 </section>
-<section id="para-variables-númericas" class="level3">
-<h3 class="anchored" data-anchor-id="para-variables-númericas">Para variables númericas</h3>
+<section id="análisis-descriptivo-de-datos" class="level1">
+<h1>Análisis descriptivo de datos</h1>
+<p>Recordemos que el flujo recomendado de trabajo en R corresponde a:</p>
+<ul>
+<li>Descargar la base de datos</li>
+<li>Crear un proyecto de R (.Rproj)</li>
+<li>Crear carpetas de <strong>Input, Procesamiento y Output</strong></li>
+<li>Ubicar la base de datos en la carpeta Input</li>
+<li>Crear un Script (.R) en la carpeta Procesamiento que se llame <em>“01proc-data”</em></li>
+<li>Crear un Script (.R) en la carpeta Procesamiento que se llame <em>“02analisis”</em></li>
+</ul>
+<p>Como ya tenemos creado el archivo de sintaxis llamado <em>“02analisis”</em> trabajamos sobre él.</p>
+<section id="cargar-librerías-1" class="level3">
+<h3 class="anchored" data-anchor-id="cargar-librerías-1">1 Cargar librerías</h3>
+<p>Este paso ya lo realizamos y cargamos todas las librerías necesarias. Pero si, al trabajar los distintos script lo hacemos en sesiones diferentes, debemos volver a cargar las librerías.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"pacman"</span>) <span class="co">#para instalar</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pacman) <span class="co"># para llamar/cargar</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(tidyverse, <span class="co"># colección de paquetes para manipulación de datos</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>               dplyr, <span class="co"># para manipular datos</span></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>               haven, <span class="co"># para importar datos</span></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>               car, <span class="co"># para recodificar datos</span></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>               psych, <span class="co"># para analizar datos</span></span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>               crosstable, <span class="co"># para tablas de contingencia</span></span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>               sjmisc) <span class="co"># para analizar datos</span></span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen =</span> <span class="dv">999</span>) <span class="co"># para desactivar notacion cientifica</span></span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>()) <span class="co"># para limpiar el entorno de trabajo</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="importar-datos-1" class="level3">
+<h3 class="anchored" data-anchor-id="importar-datos-1">2 Importar datos</h3>
+<p>Usamos los datos creados en el procesamiento que se encuentran guardados en la carpeta output.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>datos_proc <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"output/datos_proc.Rdata"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="estadísticos-descriptivos-para-variables-categóricas" class="level3">
+<h3 class="anchored" data-anchor-id="estadísticos-descriptivos-para-variables-categóricas">3 Estadísticos descriptivos para variables categóricas</h3>
+<p>Para analizar de manera descriptiva a las variables categóricas, esto es, con nivel de medición nominal y ordinal, podemos calcular tablas de frecuencias.</p>
+<section id="frecuencias-absolutas-y-relativas" class="level4">
+<h4 class="anchored" data-anchor-id="frecuencias-absolutas-y-relativas">3.1. Frecuencias absolutas y relativas</h4>
+<p>Para las variables nominales podemos usar tablas de frecuencias absolutas y relativas, y con ellas conocer la moda, es dedcir, el valor con mayor cantidad de observaciones.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>(freq_table1 <span class="ot">&lt;-</span><span class="fu">table</span>(datos_proc<span class="sc">$</span>altruismo))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+                                               Depende 
+                                                    27 
+La mayoria de las veces se preocupan solo de si mismas 
+                                                   421 
+  La mayoria de las veces tratan de ayudar a los demas 
+                                                    80 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(freq_table1)<span class="sc">*</span><span class="dv">100</span> </span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+                                               Depende 
+                                              5.113636 
+La mayoria de las veces se preocupan solo de si mismas 
+                                             79.734848 
+  La mayoria de las veces tratan de ayudar a los demas 
+                                             15.151515 </code></pre>
+</div>
+</div>
+<p>Acá podemos ver que el valor con mayor cantidad de obervaciones corresponde a <em>“La mayoria de las veces se preocupan solo de si mismas”</em>.</p>
+</section>
+<section id="frecuencias-acumuladas" class="level4">
+<h4 class="anchored" data-anchor-id="frecuencias-acumuladas">3.2. Frecuencias acumuladas</h4>
+<p>Mientras que si trabajamos con variables ordinales, podemos usar también la frecuencia acumulada:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>(freq_table2 <span class="ot">&lt;-</span> <span class="fu">table</span>(datos_proc<span class="sc">$</span>tramo_ingreso))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Tramo 1 Tramo 2 Tramo 3 Tramo 4 Tramo 5 
+     81     197     106      71      73 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>(freq_table3 <span class="ot">&lt;-</span> <span class="fu">prop.table</span>(freq_table2)<span class="sc">*</span><span class="dv">100</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+ Tramo 1  Tramo 2  Tramo 3  Tramo 4  Tramo 5 
+15.34091 37.31061 20.07576 13.44697 13.82576 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cumsum</span>(freq_table3)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Tramo 1   Tramo 2   Tramo 3   Tramo 4   Tramo 5 
+ 15.34091  52.65152  72.72727  86.17424 100.00000 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>tbl3 <span class="ot">&lt;-</span> <span class="fu">table</span>(datos_proc<span class="sc">$</span>tramo_ingreso)</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cbind</span>(<span class="at">Freq=</span>tbl3, <span class="at">Cum =</span> <span class="fu">cumsum</span>(tbl3), <span class="at">relat =</span> <span class="fu">prop.table</span>(tbl3)<span class="sc">*</span><span class="dv">100</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        Freq Cum    relat
+Tramo 1   81  81 15.34091
+Tramo 2  197 278 37.31061
+Tramo 3  106 384 20.07576
+Tramo 4   71 455 13.44697
+Tramo 5   73 528 13.82576</code></pre>
+</div>
+</div>
+</section>
+<section id="tablas-de-contingencia" class="level4">
+<h4 class="anchored" data-anchor-id="tablas-de-contingencia">3.3. Tablas de contingencia</h4>
+<p>Finalmente, también podemos cruzar dos variables:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">crosstable</span>(datos_proc, <span class="at">cols =</span> tramo_edad, <span class="at">by =</span> sexo, <span class="at">total =</span> <span class="st">"both"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4 × 6
+  .id        label      variable       Femenino     Masculino    Total        
+  &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;          &lt;chr&gt;        &lt;chr&gt;        &lt;chr&gt;        
+1 tramo_edad tramo_edad Adultos        222 (57.81%) 162 (42.19%) 384 (72.73%) 
+2 tramo_edad tramo_edad Adutos mayores 44 (43.56%)  57 (56.44%)  101 (19.13%) 
+3 tramo_edad tramo_edad Jovenes        30 (69.77%)  13 (30.23%)  43 (8.14%)   
+4 tramo_edad tramo_edad Total          296 (56.06%) 232 (43.94%) 528 (100.00%)</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="estadísticos-descriptivos-para-variables-numéricas" class="level3">
+<h3 class="anchored" data-anchor-id="estadísticos-descriptivos-para-variables-numéricas">4 Estadísticos descriptivos para variables numéricas</h3>
+<p>A diferencia de las variables categóricas, a las variables numéricas les podemos calcular una mayor cantidad de estadísticos descriptivos, como medidas de tendencia central, dispersión o posición.</p>
+<p>Como ya vimos en clases:</p>
+<ul>
+<li>dentro de las medidas de tendencia central que podemos calcular para describir a una variable numérica encontramos: media, mediana;</li>
+<li>dentro de las medidas de dispersión podemos señalar: desviación estándar, variancia, coeficiente de variación, rango;</li>
+<li>dentro de las medidas de posición podemos mencionar: mediana, q1, q3, mínimo, máximo.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>psych<span class="sc">::</span><span class="fu">describe</span>(datos_proc<span class="sc">$</span>edad)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   vars   n  mean    sd median trimmed   mad min max range skew kurtosis   se
+X1    1 528 47.01 12.15     47   46.95 14.83  25  84    59 0.08    -0.83 0.53</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>sjmisc<span class="sc">::</span><span class="fu">descr</span>(datos_proc<span class="sc">$</span>edad)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+## Basic descriptive statistics
+
+ var    type                 label   n NA.prc  mean    sd   se md trimmed
+  dd numeric Edad del entrevistado 528      0 47.01 12.15 0.53 47   46.95
+      range iqr skew
+ 59 (25-84)  19 0.08</code></pre>
+</div>
+</div>
 
 
-</section>
 </section>
 </section>
 

@@ -42,6 +42,8 @@ Pasos a seguir:
 - Crear un Script (.R) en la carpeta Procesamiento que se llame _"02analisis"_ 
 
 
+En esta parte, trabajaremos sobre el script de _01proc-data_
+
 # Procesamiento, limpieza y manipulación de datos
 
 ### 1 Cargar librerías
@@ -382,8 +384,8 @@ Como ya vimos en clases:
 
 ```{r eval=TRUE, include=TRUE, collapse=FALSE}
 
-psych::describe(proc_elsoc$edad)
+psych::describe(datos_proc$edad)
 
-sjmisc::descr(proc_elsoc$edad)
+sjmisc::descr(datos_proc$edad)
 
 ```
