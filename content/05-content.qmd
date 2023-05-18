@@ -58,9 +58,11 @@ En este ejemplo vamos a usar la siguientes librerías:
 
 5.  `car`: para recodificar/agrupar valores de variables
 
-6. `psych`: para análisis descriptivo de datos
+6.  `psych`: para análisis descriptivo de datos
 
-7. `crosstable`: para tablas de contingencia o doble entrada
+7.  `sjmisc`: para análisis descriptivo de datos
+ 
+8.  `crosstable`: para tablas de contingencia o doble entrada
 
 
 Primero, si nos tenemos instalado el paquete `pacman`, debemos instalarlo y y llamarlo tradicionalmente. Si ya lo tienes instalado, no es necesario este paso, solo debes llamarlo con `library()`.
@@ -275,14 +277,113 @@ proc_elsoc
 ### 6 Guardar y exportar
 
 ```{r collapse=FALSE}
-save(proc_elsoc, file = "Output/datos_proc.Rdata")
+saveRDS(proc_elsoc, file = "Output/datos_proc.Rdata")
 ```
 
 
-## Análisis descriptivo
+# Análisis descriptivo de datos
 
-### Para variables categóricas
+Recordemos que el flujo recomendado de trabajo en R corresponde a:
+
+- Descargar la base de datos 
+- Crear un proyecto de R (.Rproj) 
+- Crear carpetas de **Input, Procesamiento y Output**
+- Ubicar la base de datos en la carpeta Input
+- Crear un Script (.R) en la carpeta Procesamiento que se llame _"01proc-data"_ 
+- Crear un Script (.R) en la carpeta Procesamiento que se llame _"02analisis"_
+
+Como ya tenemos creado el archivo de sintaxis llamado _"02analisis"_ trabajamos sobre él.
+
+
+### 1 Cargar librerías
+
+Este paso ya lo realizamos y cargamos todas las librerías necesarias. Pero si, al trabajar los distintos script lo hacemos en sesiones diferentes, debemos volver a cargar las librerías.
+
+```{r eval=FALSE, include=TRUE}
+install.packages("pacman") #para instalar
+library(pacman) # para llamar/cargar
+```
+
+
+```{r echo=TRUE}
+pacman::p_load(tidyverse, # colección de paquetes para manipulación de datos
+               dplyr, # para manipular datos
+               haven, # para importar datos
+               car, # para recodificar datos
+               psych, # para analizar datos
+               crosstable, # para tablas de contingencia
+               sjmisc) # para analizar datos
+
+options(scipen = 999) # para desactivar notacion cientifica
+rm(list = ls()) # para limpiar el entorno de trabajo
+```
+
+### 2 Importar datos
+
+Usamos los datos creados en el procesamiento que se encuentran guardados en la carpeta output.
+
+```{r collapse=FALSE}
+datos_proc <- readRDS("output/datos_proc.Rdata")
+
+```
 
 
 
-### Para variables númericas 
+### 3 Estadísticos descriptivos para variables categóricas
+
+Para analizar de manera descriptiva a las variables categóricas, esto es, con nivel de medición nominal y ordinal, podemos calcular tablas de frecuencias.
+
+#### 3.1. Frecuencias absolutas y relativas
+
+Para las variables nominales podemos usar tablas de frecuencias absolutas y relativas, y con ellas conocer la moda, es dedcir, el valor con mayor cantidad de observaciones. 
+
+
+```{r eval=TRUE, include=TRUE, collapse=FALSE}
+(freq_table1 <-table(datos_proc$altruismo))
+prop.table(freq_table1)*100 
+
+```
+
+Acá podemos ver que el valor con mayor cantidad de obervaciones corresponde a _"La mayoria de las veces se preocupan solo de si mismas"_.
+
+#### 3.2. Frecuencias acumuladas
+
+Mientras que si trabajamos con variables ordinales, podemos usar también la frecuencia acumulada:
+
+```{r eval=TRUE, include=TRUE, collapse=FALSE}
+(freq_table2 <- table(datos_proc$tramo_ingreso))
+(freq_table3 <- prop.table(freq_table2)*100)
+cumsum(freq_table3)
+
+tbl3 <- table(datos_proc$tramo_ingreso)
+cbind(Freq=tbl3, Cum = cumsum(tbl3), relat = prop.table(tbl3)*100)
+```
+
+#### 3.3. Tablas de contingencia
+
+Finalmente, también podemos cruzar dos variables:
+
+```{r eval=TRUE, include=TRUE, collapse=FALSE}
+
+crosstable(datos_proc, cols = tramo_edad, by = sexo, total = "both")
+
+```
+
+
+### 4 Estadísticos descriptivos para variables numéricas 
+
+A diferencia de las variables categóricas, a las variables numéricas les podemos calcular una mayor cantidad de estadísticos descriptivos, como medidas de tendencia central, dispersión o posición. 
+
+Como ya vimos en clases:
+
+- dentro de las medidas de tendencia central que podemos calcular para describir a una variable numérica encontramos: media, mediana;
+- dentro de las medidas de dispersión podemos señalar: desviación estándar, variancia, coeficiente de variación, rango;
+- dentro de las medidas de posición podemos mencionar: mediana, q1, q3, mínimo, máximo.
+
+```{r eval=TRUE, include=TRUE, collapse=FALSE}
+
+psych::describe(proc_elsoc$edad)
+
+sjmisc::descr(proc_elsoc$edad)
+
+```
