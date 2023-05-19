@@ -277,6 +277,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#importar-datos-1" id="toc-importar-datos-1" class="nav-link" data-scroll-target="#importar-datos-1">2 Importar datos</a></li>
   <li><a href="#estadísticos-descriptivos-para-variables-categóricas" id="toc-estadísticos-descriptivos-para-variables-categóricas" class="nav-link" data-scroll-target="#estadísticos-descriptivos-para-variables-categóricas">3 Estadísticos descriptivos para variables categóricas</a></li>
   <li><a href="#estadísticos-descriptivos-para-variables-numéricas" id="toc-estadísticos-descriptivos-para-variables-numéricas" class="nav-link" data-scroll-target="#estadísticos-descriptivos-para-variables-numéricas">4 Estadísticos descriptivos para variables numéricas</a></li>
+  <li><a href="#video-de-clase" id="toc-video-de-clase" class="nav-link" data-scroll-target="#video-de-clase">Video de clase</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -301,7 +302,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ol type="1">
 <li><p>Establecer un flujo de trabajo en R.</p></li>
 <li><p>Procesar, limpiar y transformar bases de datos en R.</p></li>
-<li><p>Realizar análisis desciptivos (frecuencias, medias de posición, tendencia central y despersión) en R.</p></li>
+<li><p>Realizar análisis desciptivos (medidas de posición, tendencia central y dispersión) en R.</p></li>
 </ol>
 <p><strong>¡Al final de esta práctica la idea es que cada un_ elabore y entienda su propio documento de preparación y análisis de datos!</strong></p>
 </section>
@@ -349,10 +350,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(tidyverse, <span class="co"># colección de paquetes para manipulación de datos</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>               dplyr, <span class="co"># para manipular datos</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>               haven, <span class="co"># para importar datos</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>               car, <span class="co"># para recodificar datos</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>               psych, <span class="co"># para analizar datos</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>               sjmisc, <span class="co"># para analizar datos</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>               crosstable) <span class="co"># para tablas de contingencia</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>               car) <span class="co"># para recodificar datos</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>También se recomienda limpiar nuestro entorno de trabajo y eliminar la notación cientifica, seteando ciertas funciones.</p>
 <div class="cell">
@@ -676,14 +674,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="cell">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(tidyverse, <span class="co"># colección de paquetes para manipulación de datos</span></span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>               dplyr, <span class="co"># para manipular datos</span></span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>               haven, <span class="co"># para importar datos</span></span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>               car, <span class="co"># para recodificar datos</span></span>
-<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>               psych, <span class="co"># para analizar datos</span></span>
-<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>               crosstable, <span class="co"># para tablas de contingencia</span></span>
-<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>               sjmisc) <span class="co"># para analizar datos</span></span>
-<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen =</span> <span class="dv">999</span>) <span class="co"># para desactivar notacion cientifica</span></span>
-<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>()) <span class="co"># para limpiar el entorno de trabajo</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>               psych, <span class="co"># para analizar datos</span></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>               crosstable, <span class="co"># para tablas de contingencia</span></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>               sjmisc) <span class="co"># para analizar datos</span></span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen =</span> <span class="dv">999</span>) <span class="co"># para desactivar notacion cientifica</span></span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>()) <span class="co"># para limpiar el entorno de trabajo</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="importar-datos-1" class="level3">
@@ -745,30 +741,71 @@ Tramo 1 Tramo 2 Tramo 3 Tramo 4 Tramo 5
  15.34091  52.65152  72.72727  86.17424 100.00000 </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>tbl3 <span class="ot">&lt;-</span> <span class="fu">table</span>(datos_proc<span class="sc">$</span>tramo_ingreso)</span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cbind</span>(<span class="at">Freq=</span>tbl3, <span class="at">Cum =</span> <span class="fu">cumsum</span>(tbl3), <span class="at">relat =</span> <span class="fu">prop.table</span>(tbl3)<span class="sc">*</span><span class="dv">100</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cbind</span>(<span class="at">Freq=</span>tbl3, <span class="at">relat =</span> <span class="fu">prop.table</span>(tbl3)<span class="sc">*</span><span class="dv">100</span>, <span class="at">Cum =</span> <span class="fu">cumsum</span>(tbl3))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>        Freq Cum    relat
-Tramo 1   81  81 15.34091
-Tramo 2  197 278 37.31061
-Tramo 3  106 384 20.07576
-Tramo 4   71 455 13.44697
-Tramo 5   73 528 13.82576</code></pre>
+<pre><code>        Freq    relat Cum
+Tramo 1   81 15.34091  81
+Tramo 2  197 37.31061 278
+Tramo 3  106 20.07576 384
+Tramo 4   71 13.44697 455
+Tramo 5   73 13.82576 528</code></pre>
+</div>
+</div>
+<p>Otra manera de calcular frecuencias (absolutas, relativas y acumuladas) en R, es mediante la función <code>frq()</code> del paquete <code>sjmisc</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>sjmisc<span class="sc">::</span><span class="fu">frq</span>(datos_proc<span class="sc">$</span>tramo_ingreso)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>x &lt;character&gt; 
+# total N=528 valid N=528 mean=2.73 sd=1.27
+
+Value   |   N | Raw % | Valid % | Cum. %
+----------------------------------------
+Tramo 1 |  81 | 15.34 |   15.34 |  15.34
+Tramo 2 | 197 | 37.31 |   37.31 |  52.65
+Tramo 3 | 106 | 20.08 |   20.08 |  72.73
+Tramo 4 |  71 | 13.45 |   13.45 |  86.17
+Tramo 5 |  73 | 13.83 |   13.83 | 100.00
+&lt;NA&gt;    |   0 |  0.00 |    &lt;NA&gt; |   &lt;NA&gt;</code></pre>
 </div>
 </div>
 </section>
 <section id="tablas-de-contingencia" class="level4">
 <h4 class="anchored" data-anchor-id="tablas-de-contingencia">3.3. Tablas de contingencia</h4>
-<p>Finalmente, también podemos cruzar dos variables:</p>
+<p>También podemos cruzar dos variables mediante las llamadas tablas de contingencia o tablas cruzadas. Además de conocer la frecuencia absoluta en cada casilla, podemos también conocer la proporción o frecuencia relativa para cada casilla y el total de la filas y columnas.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">crosstable</span>(datos_proc, <span class="at">cols =</span> tramo_edad, <span class="at">by =</span> sexo, <span class="at">total =</span> <span class="st">"both"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">crosstable</span>(datos_proc, <span class="at">cols =</span> sexo, <span class="at">by =</span> tramo_edad)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 4 × 6
-  .id        label      variable       Femenino     Masculino    Total        
-  &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;          &lt;chr&gt;        &lt;chr&gt;        &lt;chr&gt;        
-1 tramo_edad tramo_edad Adultos        222 (57.81%) 162 (42.19%) 384 (72.73%) 
-2 tramo_edad tramo_edad Adutos mayores 44 (43.56%)  57 (56.44%)  101 (19.13%) 
-3 tramo_edad tramo_edad Jovenes        30 (69.77%)  13 (30.23%)  43 (8.14%)   
-4 tramo_edad tramo_edad Total          296 (56.06%) 232 (43.94%) 528 (100.00%)</code></pre>
+<pre><code># A tibble: 2 × 6
+  .id   label variable  Adultos      `Adutos mayores` Jovenes    
+  &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;        &lt;chr&gt;            &lt;chr&gt;      
+1 sexo  sexo  Femenino  222 (75.00%) 44 (14.86%)      30 (10.14%)
+2 sexo  sexo  Masculino 162 (69.83%) 57 (24.57%)      13 (5.60%) </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">crosstable</span>(datos_proc, <span class="at">cols =</span> sexo, <span class="at">by =</span> tramo_edad, <span class="at">total =</span> <span class="st">"both"</span>) <span class="co">#fila y columna</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 7
+  .id   label variable  Adultos      `Adutos mayores` Jovenes     Total        
+  &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;        &lt;chr&gt;            &lt;chr&gt;       &lt;chr&gt;        
+1 sexo  sexo  Femenino  222 (75.00%) 44 (14.86%)      30 (10.14%) 296 (56.06%) 
+2 sexo  sexo  Masculino 162 (69.83%) 57 (24.57%)      13 (5.60%)  232 (43.94%) 
+3 sexo  sexo  Total     384 (72.73%) 101 (19.13%)     43 (8.14%)  528 (100.00%)</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">crosstable</span>(datos_proc, <span class="at">cols =</span> sexo, <span class="at">by =</span> tramo_edad, <span class="at">total =</span> <span class="st">"row"</span>) <span class="co">#solo fila</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 7
+  .id   label variable  Adultos      `Adutos mayores` Jovenes     Total       
+  &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;        &lt;chr&gt;            &lt;chr&gt;       &lt;chr&gt;       
+1 sexo  sexo  Femenino  222 (75.00%) 44 (14.86%)      30 (10.14%) 296 (56.06%)
+2 sexo  sexo  Masculino 162 (69.83%) 57 (24.57%)      13 (5.60%)  232 (43.94%)</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">crosstable</span>(datos_proc, <span class="at">cols =</span> sexo, <span class="at">by =</span> tramo_edad, <span class="at">total =</span> <span class="st">"column"</span>) <span class="co">#solo columna</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 6
+  .id   label variable  Adultos      `Adutos mayores` Jovenes    
+  &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;        &lt;chr&gt;            &lt;chr&gt;      
+1 sexo  sexo  Femenino  222 (75.00%) 44 (14.86%)      30 (10.14%)
+2 sexo  sexo  Masculino 162 (69.83%) 57 (24.57%)      13 (5.60%) 
+3 sexo  sexo  Total     384 (72.73%) 101 (19.13%)     43 (8.14%) </code></pre>
 </div>
 </div>
 </section>
@@ -783,24 +820,43 @@ Tramo 5   73 528 13.82576</code></pre>
 <li>dentro de las medidas de posición podemos mencionar: mediana, q1, q3, mínimo, máximo.</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>psych<span class="sc">::</span><span class="fu">describe</span>(datos_proc<span class="sc">$</span>edad)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>psych<span class="sc">::</span><span class="fu">describe</span>(datos_proc<span class="sc">$</span>edad)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   vars   n  mean    sd median trimmed   mad min max range skew kurtosis   se
 X1    1 528 47.01 12.15     47   46.95 14.83  25  84    59 0.08    -0.83 0.53</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>sjmisc<span class="sc">::</span><span class="fu">descr</span>(datos_proc<span class="sc">$</span>edad)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>psych<span class="sc">::</span><span class="fu">describe</span>(datos_proc<span class="sc">$</span>edad,</span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>                <span class="at">quant =</span> <span class="fu">c</span>(.<span class="dv">25</span>,.<span class="dv">75</span>),</span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">IQR =</span> <span class="cn">TRUE</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>
-## Basic descriptive statistics
-
- var    type                 label   n NA.prc  mean    sd   se md trimmed
-  dd numeric Edad del entrevistado 528      0 47.01 12.15 0.53 47   46.95
-      range iqr skew
- 59 (25-84)  19 0.08</code></pre>
+<pre><code>  vars   n  mean    sd median trimmed   mad min max range skew kurtosis   se
+1    1 528 47.01 12.15     47   46.95 14.83  25  84    59 0.08    -0.83 0.53
+  IQR Q0.25 Q0.75
+1  19    38    57</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>psych<span class="sc">::</span><span class="fu">describe</span>(datos_proc<span class="sc">$</span>ingreso,</span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>                <span class="at">quant =</span> <span class="fu">c</span>(.<span class="dv">25</span>,.<span class="dv">75</span>),</span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">IQR =</span> T)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  vars   n     mean       sd median  trimmed    mad min      max    range  skew
+1    1 528 689268.9 844589.1 500000 569325.5 296520   0 15000000 15000000 10.12
+  kurtosis       se    IQR  Q0.25  Q0.75
+1   156.57 36756.02 450000 350000 800000</code></pre>
 </div>
 </div>
+</section>
+<section id="video-de-clase" class="level2">
+<h2 class="anchored" data-anchor-id="video-de-clase">Video de clase</h2>
+<section id="primer-bloque" class="level4">
+<h4 class="anchored" data-anchor-id="primer-bloque">Primer bloque</h4>
+<div class="quarto-video ratio ratio-16x9"><iframe src="https://www.youtube.com/embed/2ugaq1OAL94" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+</section>
+<section id="segundo-bloque" class="level4">
+<h4 class="anchored" data-anchor-id="segundo-bloque">Segundo bloque</h4>
+<div class="quarto-video ratio ratio-16x9"><iframe src="https://www.youtube.com/embed/1_lAulfXv_w" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
 
 
+</section>
 </section>
 </section>
 

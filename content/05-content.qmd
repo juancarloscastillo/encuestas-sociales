@@ -18,7 +18,7 @@ En detalle, aprenderemos:
 
 2.  Procesar, limpiar y transformar bases de datos en R.
 
-3.  Realizar análisis desciptivos (frecuencias, medias de posición, tendencia central y despersión) en R.
+3.  Realizar análisis desciptivos (medidas de posición, tendencia central y dispersión) en R.
 
 
 **¡Al final de esta práctica la idea es que cada un\_ elabore y entienda su propio documento de preparación y análisis de datos!**
@@ -80,10 +80,8 @@ Luego de tener cargado el paquete `pacman`, procedemos a usarlo para instalar y 
 pacman::p_load(tidyverse, # colección de paquetes para manipulación de datos
                dplyr, # para manipular datos
                haven, # para importar datos
-               car, # para recodificar datos
-               psych, # para analizar datos
-               sjmisc, # para analizar datos
-               crosstable) # para tablas de contingencia
+               car) # para recodificar datos
+              
 ```
 
 
@@ -310,8 +308,6 @@ library(pacman) # para llamar/cargar
 ```{r echo=TRUE}
 pacman::p_load(tidyverse, # colección de paquetes para manipulación de datos
                dplyr, # para manipular datos
-               haven, # para importar datos
-               car, # para recodificar datos
                psych, # para analizar datos
                crosstable, # para tablas de contingencia
                sjmisc) # para analizar datos
@@ -326,7 +322,6 @@ Usamos los datos creados en el procesamiento que se encuentran guardados en la c
 
 ```{r collapse=FALSE}
 datos_proc <- readRDS("output/datos_proc.Rdata")
-
 ```
 
 
@@ -358,16 +353,30 @@ Mientras que si trabajamos con variables ordinales, podemos usar también la fre
 cumsum(freq_table3)
 
 tbl3 <- table(datos_proc$tramo_ingreso)
-cbind(Freq=tbl3, Cum = cumsum(tbl3), relat = prop.table(tbl3)*100)
+cbind(Freq=tbl3, relat = prop.table(tbl3)*100, Cum = cumsum(tbl3))
+```
+
+Otra manera de calcular frecuencias (absolutas, relativas y acumuladas) en R, es mediante la función `frq()` del paquete `sjmisc`. 
+
+```{r eval=TRUE, include=TRUE, collapse=FALSE}
+
+sjmisc::frq(datos_proc$tramo_ingreso)
+
 ```
 
 #### 3.3. Tablas de contingencia
 
-Finalmente, también podemos cruzar dos variables:
+También podemos cruzar dos variables mediante las llamadas tablas de contingencia o tablas cruzadas. Además de conocer la frecuencia absoluta en cada casilla, podemos también conocer la proporción o frecuencia relativa para cada casilla y el total de la filas y columnas.
 
 ```{r eval=TRUE, include=TRUE, collapse=FALSE}
 
-crosstable(datos_proc, cols = tramo_edad, by = sexo, total = "both")
+crosstable(datos_proc, cols = sexo, by = tramo_edad)
+
+crosstable(datos_proc, cols = sexo, by = tramo_edad, total = "both") #fila y columna
+
+crosstable(datos_proc, cols = sexo, by = tramo_edad, total = "row") #solo fila
+
+crosstable(datos_proc, cols = sexo, by = tramo_edad, total = "column") #solo columna
 
 ```
 
@@ -386,6 +395,24 @@ Como ya vimos en clases:
 
 psych::describe(datos_proc$edad)
 
-sjmisc::descr(datos_proc$edad)
+psych::describe(datos_proc$edad,
+                quant = c(.25,.75),
+                IQR = TRUE)
+
+psych::describe(datos_proc$ingreso,
+                quant = c(.25,.75),
+                IQR = T)
+
 
 ```
+
+## Video de clase
+
+#### Primer bloque
+
+{{< video https://youtu.be/2ugaq1OAL94 >}}
+
+#### Segundo bloque
+
+{{< video https://youtu.be/1_lAulfXv_w >}}
+
