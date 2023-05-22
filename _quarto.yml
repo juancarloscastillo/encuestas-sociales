@@ -72,6 +72,8 @@ website:
               file: content/02-content.qmd
             - text: "3: Procesamiento, limpieza y manipulación de datos en R"
               file: content/03-content.qmd
+            - text: "4: Análisis descriptivo de datos en R"
+              file: content/04-content.qmd
             - text: "5: Procesamiento y análisis de datos en R"
               file: content/05-content.qmd
 
