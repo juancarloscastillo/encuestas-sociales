@@ -76,6 +76,8 @@ website:
               file: content/04-content.qmd
             - text: "5: Procesamiento y análisis de datos en R"
               file: content/05-content.qmd
+            - text: "6: Visualización de datos con R"
+              file: content/06-content.qmd
 
     - title: "Recursos"
       style: "docked"

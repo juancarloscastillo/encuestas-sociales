@@ -196,6 +196,48 @@
     "text": "Video de clase\n\nPrimer bloque\n\n\n\nSegundo bloque"
   },
   {
+    "objectID": "content/06-content.html",
+    "href": "content/06-content.html",
+    "title": "Práctica 6. Visualización de datos con R",
+    "section": "",
+    "text": "El objetivo de esta guía práctica es introducir a la visualización de datos con R, considerando las mejores prácticas para comunicar datos y análisis en ciencias sociales.\nEn detalle, aprenderemos:\n\nQué es la visualización de datos y cómo comunicarlos a una audiencia de manera eficiente, completa e insesgada.\nVisualizar datos univariados con {ggplot2}.\n\n\n\n\nEn esta práctica trabajaremos con la base de datos de la Encuesta de Opinión Pública (CEP) de Diciembre del 2019 realizada por el Centro de Estudios Públicos. Esta base la pueden encontrar en el canal de U-Cursos sección Material Docente, o bien, en el siguiente enlace  CEP 2019 podrán descargar el archivo que contiene la base CEP Diciembre 2019."
+  },
+  {
+    "objectID": "content/06-content.html#cargar-librerías",
+    "href": "content/06-content.html#cargar-librerías",
+    "title": "Práctica 6. Visualización de datos con R",
+    "section": "1. Cargar librerías",
+    "text": "1. Cargar librerías\nPara esta sesión, usaremos librerías que ya conocemos en prácticos pasados:\n\npacman::p_load(tidyverse, # colección de paquetes para manipulación de datos\n               haven, # para importar datos\n               car,# para recodificar datos\n               psych, # para analizar datos\n               sjmisc) # para analizar datos\n\noptions(scipen = 999) # para desactivar notacion cientifica\nrm(list = ls()) # para limpiar el entorno de trabajo"
+  },
+  {
+    "objectID": "content/06-content.html#importar-datos",
+    "href": "content/06-content.html#importar-datos",
+    "title": "Práctica 6. Visualización de datos con R",
+    "section": "2. Importar datos",
+    "text": "2. Importar datos\nCargamos la base de datos CEP Diciembre 2019 mediante el paquete haven\n\ncep <- haven::read_sav(\"Input/data/CEP_dic2019.sav\")"
+  },
+  {
+    "objectID": "content/06-content.html#limpiar-datos",
+    "href": "content/06-content.html#limpiar-datos",
+    "title": "Práctica 6. Visualización de datos con R",
+    "section": "3. Limpiar datos",
+    "text": "3. Limpiar datos\nSeleccionamos las variables de interés y las renombramos:\n\nproc_cep <- cep %>% \n  select(edad = DS_P2_EXACTA,\n         sexo = DS_P1,\n         empleo = DS_P5, \n         satisfaccion = SV_1)\n\nRecodificamos las variables satisfaccion, sexo y empleo. Ademas, transformamos la variable edad a tramos:\n\nproc_cep$sexo <- as.factor(proc_cep$sexo) # primero pasamos a factor la variable al venir con etiquetas\nproc_cep$empleo <- as.factor(proc_cep$empleo)\n\nproc_cep <- proc_cep %>% \n  mutate(satisfaccion=car::recode(satisfaccion, recodes = c(\"88 = NA; 99 = NA\")),\n         sexo = car::recode(sexo, recodes = c(\"1 = 'Hombre'; 2 = 'Mujer'\")),\n         empleo = car::recode(empleo, recodes = c(\"1 = 'Ocupado'; 2 = 'Desocupado'; 3 = 'Nunca ha trabajado'; 99 = NA\")),\n         tramo_edad = case_when(edad <= 29 ~ \"Jovenes\",\n                                edad >= 30 & edad <= 59 ~ \"Adultos\",\n                                edad >= 60 ~ \"Adutos mayores\")) \n\nRemovemos los valores perdidos o missing.\n\nproc_cep <- na.omit(proc_cep)"
+  },
+  {
+    "objectID": "content/06-content.html#resumen",
+    "href": "content/06-content.html#resumen",
+    "title": "Práctica 6. Visualización de datos con R",
+    "section": "Resumen",
+    "text": "Resumen\nHoy aprendimos a visualizar datos en R. En detalle, vimos:\n\nQué es la visualización de datos y cómo comunicarlos a una audiencia de manera eficiente, completa e insesgada.\nVisualizar datos univariados de diversas formas con {ggplot2}."
+  },
+  {
+    "objectID": "content/06-content.html#video-tutorial",
+    "href": "content/06-content.html#video-tutorial",
+    "title": "Práctica 6. Visualización de datos con R",
+    "section": "Video tutorial",
+    "text": "Video tutorial"
+  },
+  {
     "objectID": "content/index.html",
     "href": "content/index.html",
     "title": "Laboratorio de Análisis de Datos",
