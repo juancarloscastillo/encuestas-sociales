@@ -78,6 +78,8 @@ website:
               file: content/05-content.qmd
             - text: "6: Visualización de datos con R"
               file: content/06-content.qmd
+            - text: "7: Forma de una distribución"
+              file: content/07-content.qmd
 
     - title: "Recursos"
       style: "docked"

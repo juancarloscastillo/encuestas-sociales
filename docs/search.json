@@ -221,7 +221,7 @@
     "href": "content/06-content.html#limpiar-datos",
     "title": "Práctica 6. Visualización de datos con R",
     "section": "3. Limpiar datos",
-    "text": "3. Limpiar datos\nSeleccionamos las variables de interés y las renombramos:\n\nproc_cep <- cep %>% \n  select(edad = DS_P2_EXACTA,\n         sexo = DS_P1,\n         empleo = DS_P5, \n         satisfaccion = SV_1)\n\nRecodificamos las variables satisfaccion, sexo y empleo. Ademas, transformamos la variable edad a tramos:\n\nproc_cep$sexo <- as.factor(proc_cep$sexo) # primero pasamos a factor la variable al venir con etiquetas\nproc_cep$empleo <- as.factor(proc_cep$empleo)\n\nproc_cep <- proc_cep %>% \n  mutate(satisfaccion=car::recode(satisfaccion, recodes = c(\"88 = NA; 99 = NA\")),\n         sexo = car::recode(sexo, recodes = c(\"1 = 'Hombre'; 2 = 'Mujer'\")),\n         empleo = car::recode(empleo, recodes = c(\"1 = 'Ocupado'; 2 = 'Desocupado'; 3 = 'Nunca ha trabajado'; 99 = NA\")),\n         tramo_edad = case_when(edad <= 29 ~ \"Jovenes\",\n                                edad >= 30 & edad <= 59 ~ \"Adultos\",\n                                edad >= 60 ~ \"Adutos mayores\")) \n\nRemovemos los valores perdidos o missing.\n\nproc_cep <- na.omit(proc_cep)"
+    "text": "3. Limpiar datos\nSeleccionamos las variables de interés y las renombramos:\n\nproc_cep <- cep %>% \n  select(edad = DS_P2_EXACTA,\n         sexo = DS_P1,\n         empleo = DS_P5, \n         satisfaccion = SV_1)\n\nRecodificamos las variables satisfaccion, sexo y empleo. Ademas, transformamos la variable edad a tramos:\n\nproc_cep$sexo <- as.factor(proc_cep$sexo) # primero pasamos a factor la variable al venir con etiquetas\nproc_cep$empleo <- as.factor(proc_cep$empleo)\n\nproc_cep <- proc_cep %>% \n  mutate(satisfaccion=car::recode(satisfaccion, recodes = c(\"88 = NA; 99 = NA\")),\n         sexo = car::recode(sexo, recodes = c(\"1 = 'Hombre'; 2 = 'Mujer'\")),\n         empleo = car::recode(empleo, recodes = c(\"1 = 'Ocupado'; 2 = 'Desocupado'; 3 = 'Nunca ha trabajado'; 99 = NA\")),\n         tramo_edad = case_when(edad <= 29 ~ \"Jovenes\",\n                                edad >= 30 & edad <= 59 ~ \"Adultos\",\n                                edad >= 60 ~ \"Adutos mayores\")) \n\nRemovemos los valores perdidos o missing.\n\nproc_cep <- na.omit(proc_cep)\n\nPor último, guardamos la base procesada.\n\nsaveRDS(proc_cep, file = \"Output/proc_cep.RData\")"
   },
   {
     "objectID": "content/06-content.html#resumen",
@@ -234,6 +234,48 @@
     "objectID": "content/06-content.html#video-tutorial",
     "href": "content/06-content.html#video-tutorial",
     "title": "Práctica 6. Visualización de datos con R",
+    "section": "Video tutorial",
+    "text": "Video tutorial"
+  },
+  {
+    "objectID": "content/07-content.html",
+    "href": "content/07-content.html",
+    "title": "Práctica 7. Forma de una distribución",
+    "section": "",
+    "text": "El objetivo de esta guía práctica es aplicar los conocimientos aprendidos en clases sobre la forma de una distribución en R, comprendiendo sus usos, relevancia y formas de analizarla.\nEn detalle, aprenderemos:\n\nLa noción de una distribución y sus tipos (continuas y discretas)\nEstimar e interpretar la asimetría y curtosis de una distribución\nContrastar distribuciones empíricas con teóricas\n\n\n\n\nEn esta práctica trabajeremos con los datos procesados que obtuvimos en la práctica anterior, en la cual trabajamos sobre la Encuesta de Opinión Pública (CEP) de Diciembre del 2019 realizada por el Centro de Estudios Públicos."
+  },
+  {
+    "objectID": "content/07-content.html#distribuciones-continuas-y-discretas",
+    "href": "content/07-content.html#distribuciones-continuas-y-discretas",
+    "title": "Práctica 7. Forma de una distribución",
+    "section": "1. Distribuciones continuas y discretas",
+    "text": "1. Distribuciones continuas y discretas\nExisten dos tipos de distribuciones según el nivel de medición de las variables: las continuas y las discretas.\nComo cabe esperar, las distribuciones continuas aplican a variables numericas (intervalares y de razón). Es una distribución que describe la probabilidad o frecuencia de que una variable continua tome un valor particular dado un intervalo o un rango. Toma valores a lo largo de un continuo de dominio (\\(R\\)), es decir, su dominio son todos los números reales.\n\n\n`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.\n\n\n\n\n\nPor su parte, las distribuciones discretas son comunmente utilizadas con variables categóricas (nominales y ordinales). Son distribuciones en las que una variable sólo puede tomar un número contable de valores distintos. En otras palabras, es una distribución en la que la variable sólo puede tomar valores específicos, en lugar de cualquier valor dentro de un intervalo. Su dominio es un conjunto de valores enteros (\\(N, Z, Q\\))."
+  },
+  {
+    "objectID": "content/07-content.html#preparación-de-datos",
+    "href": "content/07-content.html#preparación-de-datos",
+    "title": "Práctica 7. Forma de una distribución",
+    "section": "1. Preparación de datos",
+    "text": "1. Preparación de datos\nCargamos las librerías y datos que ocuparemos\n\npacman::p_load(tidyverse, \n               psych, \n               sjmisc) \n\noptions(scipen = 999) \nrm(list = ls()) \n\nproc_cep <- readRDS(\"Output/proc_cep.RData\")"
+  },
+  {
+    "objectID": "content/07-content.html#análisis-de-la-forma-de-distribución",
+    "href": "content/07-content.html#análisis-de-la-forma-de-distribución",
+    "title": "Práctica 7. Forma de una distribución",
+    "section": "2. Análisis de la forma de distribución",
+    "text": "2. Análisis de la forma de distribución\nAnalicemos e interpretemos la forma de la distribución de nuestras variables. En este ejemplo tenemos:\n\nuna de razón,\nuna ordinal de 10 categorías.\n\n\npsych::describe(proc_cep$edad)\n\n   vars    n  mean    sd median trimmed  mad min max range skew kurtosis   se\nX1    1 1474 48.43 17.84   48.5   48.01 21.5  18  99    81 0.14    -0.93 0.46\n\nggplot(data = proc_cep, \n       mapping = aes(x = edad)) + \n  geom_density(color = \"black\", fill = \"#FA8072\", alpha = 0.8)  + \n  labs(title =\"Diagrama densidad: Edad\", \n       x = \"Edad\", \n       y = \"Frecuencia\",\n       caption = \"Fuente: Elaboración propia en base a Encuesta CEP Diciembre 2019.\") \n\n\n\n\nA partir de los estadísticos entregados, sabemos que la variable edad tiene una asimetría positiva (skew = 0.14) pero baja (< 0.5), lo cual indica que los datos se tienden a distribuir hacía los menores valores del eje X. Por su parte, la curtosis es negativa (kurtosis = -0.93) o platicúrtica, lo cual indica que existe una baja concentración en el centro de los datos.\n\npsych::describe(proc_cep$satisfaccion)\n\n   vars    n mean   sd median trimmed  mad min max range  skew kurtosis   se\nX1    1 1474 6.87 2.18      7    6.97 2.97   1  10     9 -0.32    -0.45 0.06\n\nggplot(data = proc_cep, \n       mapping = aes(x = satisfaccion)) + \n  geom_density(color = \"black\", fill = \"darkred\", alpha = 0.8)  + \n  labs(title =\"Histograma densidad: Satisfaccion\", \n       x = \"Satisfaccion\", \n       y = \"Frecuencia\",\n       caption = \"Fuente: Elaboración propia en base a Encuesta CEP Diciembre 2019.\") \n\n\n\n\nEn cuanto a la variable satisfaccion, tenemos una asimetría negativa (skew = -0.32) aunque baja, indicando que los datos se tienden a distribuir hacia la parte superior de la variable. Además, la curtosis también es negativa o platicúrtica (kurtosis = -0.45), por lo que existe una baja concentración en el centro de los datos."
+  },
+  {
+    "objectID": "content/07-content.html#resumen",
+    "href": "content/07-content.html#resumen",
+    "title": "Práctica 7. Forma de una distribución",
+    "section": "Resumen",
+    "text": "Resumen\nHoy aprendimos a visualizar datos en R. En detalle, vimos:\n\nLa noción de una distribución y sus tipos (continuas y discretas)\nEstimar e interpretar la asimetría y curtosis de una distribución\nContrastar distribuciones empíricas con teóricas"
+  },
+  {
+    "objectID": "content/07-content.html#video-tutorial",
+    "href": "content/07-content.html#video-tutorial",
+    "title": "Práctica 7. Forma de una distribución",
     "section": "Video tutorial",
     "text": "Video tutorial"
   },
@@ -487,7 +529,7 @@
     "href": "trabajos.html",
     "title": "Trabajos",
     "section": "",
-    "text": "El curso tendrá dos instancias de evaluación:\n\nTaller Colectivo: Este taller grupal (60% de la nota final) tiene por objetivo aplicar los contenidos del curso a una tématica de interés específica en formato de artículo de investigación breve. Esto implica que los estudiantes deberán plantear un fenómeno social a investigar, el problema de investigación y su relevencia, precisar el argumento o hipótesis central, describir la metodología utilizada y analizar descriptivamente variables relativas a dicho fenónomeno. Consistirá en dos informes, uno de diseño de investigación (20%) y otro de análisis y conclusiones (40%). Los talleres son elaborados en grupos de máximo 4 integrantes.\nTareas Individuales: Las tareas individuales (40% de la nota final) tienen por objetivo aplicar los contenidos del Laboratorio de Análisis de Datos y también de las clases lectivas del curso a actividades prácticas. Esto implica que los estudiantes deberán demostrar el aprendizaje de herramientas básicas de procesamiento, limpieza y manipulación de datos, además de analizar descriptivamente y visualizar variables, todo ello siendo correctamente reportado. Consistirán en cuatro tareas individuales a lo largo del semestre, en donde cada una equivaldrá a un 10%."
+    "text": "El curso tendrá dos instancias de evaluación:\n\nTaller Colectivo: Este taller grupal (60% de la nota final) tiene por objetivo aplicar los contenidos del curso a una tématica de interés específica en formato de artículo de investigación breve. Esto implica que los estudiantes deberán plantear un fenómeno social a investigar, el problema de investigación y su relevencia, precisar el argumento o hipótesis central, describir la metodología utilizada y analizar descriptivamente variables relativas a dicho fenónomeno. Consistirá en dos informes, uno de diseño de investigación (20%) y otro de análisis y conclusiones (40%). Los talleres son elaborados en grupos de máximo 4 integrantes.\nTareas Individuales: Las tareas individuales (40% de la nota final) tienen por objetivo aplicar los contenidos del Laboratorio de Análisis de Datos y también de las clases lectivas del curso a actividades prácticas. Esto implica que los estudiantes deberán demostrar el aprendizaje de herramientas básicas de procesamiento, limpieza y manipulación de datos, además de analizar descriptivamente y visualizar variables, todo ello siendo correctamente reportado. Consistirán en 3 tareas individuales a lo largo del semestre, en donde cada una equivaldrá a un 13.3%."
   },
   {
     "objectID": "trabajos.html#taller-colectivo",
@@ -501,6 +543,6 @@
     "href": "trabajos.html#tareas-individuales",
     "title": "Trabajos",
     "section": "Tareas Individuales",
-    "text": "Tareas Individuales\n\nTarea 1\nEl objetivo de esta tarea es que los estudiantes demuestren el aprendizaje de las herramientas básicas sobre procesamiento, limpieza y manipulación de datos en los softwares Excel y SPSS (aprendidas en clases).\nPauta Tarea Individual N°1:  Tarea01.pdf\n\n\nTarea 2\nEl objetivo de esta tarea es que los estudiantes demuestren el aprendizaje de las herramientas básicas sobre procesamiento, limpieza y manipulación de datos en el software Rstudio (aprendidas en las sesiones 2 y 3 del Laboratorio), además de que analicen variables a través de medidas de tendencia central, dispersión y posición (aprendidas en sesión 4 del Laboratorio), sabiendo interpretar y reflexionar críticamente sobre los resultados obtenidos.\nPauta Tarea Individual N°2:  Tarea02.pdf\n\n\nTarea 3\n\n\nTarea 4"
+    "text": "Tareas Individuales\n\nTarea 1\nEl objetivo de esta tarea es que los estudiantes demuestren el aprendizaje de las herramientas básicas sobre procesamiento, limpieza y manipulación de datos en los softwares Excel y SPSS (aprendidas en clases).\nPauta Tarea Individual N°1:  Tarea01.pdf\n\n\nTarea 2\nEl objetivo de esta tarea es que los estudiantes demuestren el aprendizaje de las herramientas básicas sobre procesamiento, limpieza y manipulación de datos en el software Rstudio (aprendidas en las sesiones 2 y 3 del Laboratorio), además de que analicen variables a través de medidas de tendencia central, dispersión y posición (aprendidas en sesión 4 del Laboratorio), sabiendo interpretar y reflexionar críticamente sobre los resultados obtenidos.\nPauta Tarea Individual N°2:  Tarea02.pdf\n\n\nTarea 3"
   }
 ]

@@ -21,7 +21,7 @@ En detalle, aprenderemos:
 
 ## Recursos de la práctica
 
-En esta práctica trabajaremos con la base de datos de la Encuesta de Opinión Pública (CEP) de Diciembre del 2019 realizada por el [Centro de Estudios Públicos](https://www.cepchile.cl/). Esta base la pueden encontrar en el canal de U-Cursos sección Material Docente, o bien, en el siguiente enlace [{{< fa table >}} `CEP 2019`](https://github.com/Andreas-Lafferte/descriptiva/raw/main/content/input/data/CEP_dic2019.sav) podrán descargar el archivo que contiene la base CEP Diciembre 2019.
+En esta práctica trabajaremos con la base de datos de la Encuesta de Opinión Pública (CEP) de Diciembre del 2019 realizada por el [Centro de Estudios Públicos](https://www.cepchile.cl/). Esta base la pueden encontrar en el canal de U-Cursos sección Material Docente, o bien, en el siguiente enlace [{{< fa table >}} `CEP 2019`](https://github.com/Andreas-Lafferte/descriptiva/raw/main/content/Input/data/CEP_dic2019.sav) podrán descargar el archivo que contiene la base CEP Diciembre 2019.
 
 # ¿Qué es visualizar datos?
 
@@ -156,6 +156,13 @@ proc_cep <- na.omit(proc_cep)
 ```
 
 
+Por último, guardamos la base procesada. 
+
+```{r eval=TRUE, include=TRUE, collapse=FALSE}
+
+saveRDS(proc_cep, file = "Output/proc_cep.RData")
+```
+
 
 # Análisis de la forma de distribución
 
@@ -240,6 +247,18 @@ ggplot(data = proc_cep,
        y = "Frecuencia",
        caption = "Fuente: Elaboración propia en base a Encuesta CEP Diciembre 2019.") # agregamos titulo, nombres a los ejes y fuente
 
+ggplot(data = proc_cep, 
+       mapping = aes(x = empleo)) + # especificamos datos y mapping 
+  geom_bar(color = "black", fill = "darkblue") + # agregamos geometria y color y relleno
+  scale_y_continuous(limits = c(0,1000)) +# agregamos escala en eje Y y ponemos limites minimos y maximos
+  labs(title ="Condición de empleo 2019", 
+       x = "Situación empleo", 
+       y = "Frecuencia",
+       caption = "Fuente: Elaboración propia en base a Encuesta CEP Diciembre 2019.") +# agregamos titulo, nombres a los ejes y fuente
+  geom_text(aes(label = ..count..), stat = "count", vjust = 1.5, colour = "white") # agregamos las freq de cada barra
+
+
+
 ```
 
 ¿Y podemos diferenciar por sexo en este mismo gráfico? **Claro que sí**, debemos indicar la variable que agrupa en el mapping o coordenadas mediante el argumento _fill_.
@@ -253,7 +272,8 @@ ggplot(data = proc_cep,
   labs(title ="Condición de empleo, segun sexo 2019", 
        x = "Situación empleo", 
        y = "Frecuencia",
-       caption = "Fuente: Elaboración propia en base a Encuesta CEP Diciembre 2019.") # agregamos titulo, nombres a los ejes y fuente
+       caption = "Fuente: Elaboración propia en base a Encuesta CEP Diciembre 2019.") +# agregamos titulo, nombres a los ejes y fuente
+  geom_text(aes(label = ..count..), stat = "count", colour = "white", position = position_stack(.1)) # agregams freq de cada barra por grupo
 
 
 ```
@@ -270,8 +290,9 @@ ggplot(data = proc_cep,
   labs(title ="Condición de empleo, segun sexo 2019", 
        x = "Situación empleo", 
        y = "Frecuencia",
-       caption = "Fuente: Elaboración propia en base a Encuesta CEP Diciembre 2019.") # agregamos titulo, nombres a los ejes y fuente
-
+       caption = "Fuente: Elaboración propia en base a Encuesta CEP Diciembre 2019.") +# agregamos titulo, nombres a los ejes y fuente
+  geom_text(aes(label = ..count..), stat = "count", colour = "white", 
+    vjust = 1.5, position = position_dodge(.9)) # agregamos freq de cada barra por grupo
 ```
 
 ```{r eval=TRUE, warning=FALSE, include=TRUE}
@@ -282,7 +303,9 @@ ggplot(data = proc_cep,
   labs(title ="Condición de empleo, segun tramo etario 2019", 
        x = "Situación empleo", 
        y = "Frecuencia",
-       caption = "Fuente: Elaboración propia en base a Encuesta CEP Diciembre 2019.") # agregamos titulo, nombres a los ejes y fuente
+       caption = "Fuente: Elaboración propia en base a Encuesta CEP Diciembre 2019.") +# agregamos titulo, nombres a los ejes y fuente
+  geom_text(aes(label = ..count..), stat = "count", colour = "white", 
+    vjust = 1.5, position = position_dodge(.9)) # agregamos freq de cada barra por grupo
 
 ```
 

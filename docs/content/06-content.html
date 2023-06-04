@@ -255,6 +255,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <a href="../content/06-content.html" class="sidebar-item-text sidebar-link active">6: Visualización de datos con R</a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/07-content.html" class="sidebar-item-text sidebar-link">7: Forma de una distribución</a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -321,7 +326,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="recursos-de-la-práctica" class="level2">
 <h2 class="anchored" data-anchor-id="recursos-de-la-práctica">Recursos de la práctica</h2>
-<p>En esta práctica trabajaremos con la base de datos de la Encuesta de Opinión Pública (CEP) de Diciembre del 2019 realizada por el <a href="https://www.cepchile.cl/">Centro de Estudios Públicos</a>. Esta base la pueden encontrar en el canal de U-Cursos sección Material Docente, o bien, en el siguiente enlace <a href="https://github.com/Andreas-Lafferte/descriptiva/raw/main/content/input/data/CEP_dic2019.sav"><i class="fa-solid fa-table" aria-hidden="true"></i> <code>CEP 2019</code></a> podrán descargar el archivo que contiene la base CEP Diciembre 2019.</p>
+<p>En esta práctica trabajaremos con la base de datos de la Encuesta de Opinión Pública (CEP) de Diciembre del 2019 realizada por el <a href="https://www.cepchile.cl/">Centro de Estudios Públicos</a>. Esta base la pueden encontrar en el canal de U-Cursos sección Material Docente, o bien, en el siguiente enlace <a href="https://github.com/Andreas-Lafferte/descriptiva/raw/main/content/Input/data/CEP_dic2019.sav"><i class="fa-solid fa-table" aria-hidden="true"></i> <code>CEP 2019</code></a> podrán descargar el archivo que contiene la base CEP Diciembre 2019.</p>
 </section>
 </section>
 <section id="qué-es-visualizar-datos" class="level1">
@@ -430,6 +435,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>proc_cep <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(proc_cep)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p>Por último, guardamos la base procesada.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(proc_cep, <span class="at">file =</span> <span class="st">"Output/proc_cep.RData"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 </section>
 <section id="análisis-de-la-forma-de-distribución" class="level1">
@@ -455,7 +464,7 @@ Nota
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>sjmisc<span class="sc">::</span><span class="fu">frq</span>(proc_cep<span class="sc">$</span>empleo)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>sjmisc<span class="sc">::</span><span class="fu">frq</span>(proc_cep<span class="sc">$</span>empleo)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>x &lt;categorical&gt; 
 # total N=1474 valid N=1474 mean=2.18 sd=0.92
@@ -467,18 +476,18 @@ Nunca ha trabajado | 180 | 12.21 |   12.21 |  47.01
 Ocupado            | 781 | 52.99 |   52.99 | 100.00
 &lt;NA&gt;               |   0 |  0.00 |    &lt;NA&gt; |   &lt;NA&gt;</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>psych<span class="sc">::</span><span class="fu">describe</span>(proc_cep<span class="sc">$</span>edad,</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>                <span class="at">quant =</span> <span class="fu">c</span>(.<span class="dv">25</span>,.<span class="dv">75</span>),</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">IQR =</span> <span class="cn">TRUE</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>psych<span class="sc">::</span><span class="fu">describe</span>(proc_cep<span class="sc">$</span>edad,</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>                <span class="at">quant =</span> <span class="fu">c</span>(.<span class="dv">25</span>,.<span class="dv">75</span>),</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">IQR =</span> <span class="cn">TRUE</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  vars    n  mean    sd median trimmed  mad min max range skew kurtosis   se
 1    1 1474 48.43 17.84   48.5   48.01 21.5  18  99    81 0.14    -0.93 0.46
   IQR Q0.25 Q0.75
 1  29    33    62</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>psych<span class="sc">::</span><span class="fu">describe</span>(proc_cep<span class="sc">$</span>satisfaccion,</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>                <span class="at">quant =</span> <span class="fu">c</span>(.<span class="dv">25</span>,.<span class="dv">75</span>),</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">IQR =</span> <span class="cn">TRUE</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>psych<span class="sc">::</span><span class="fu">describe</span>(proc_cep<span class="sc">$</span>satisfaccion,</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>                <span class="at">quant =</span> <span class="fu">c</span>(.<span class="dv">25</span>,.<span class="dv">75</span>),</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">IQR =</span> <span class="cn">TRUE</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  vars    n mean   sd median trimmed  mad min max range  skew kurtosis   se IQR
 1    1 1474 6.87 2.18      7    6.97 2.97   1  10     9 -0.32    -0.45 0.06   4
@@ -512,80 +521,97 @@ Ocupado            | 781 | 52.99 |   52.99 | 100.00
 <p>La forma más común de presentar variables nominales es mediante un gráfico de barras.</p>
 <p>En este primer ejemplo iremos capa por capa (o paso por paso), para entender la logica de <code>ggplot2</code>, en los siguientes lo haremos en conjunto.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> proc_cep, </span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> empleo)) <span class="co"># especificamos datos y mapping </span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="06-content_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
-</div>
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> proc_cep, </span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> empleo)) <span class="sc">+</span> <span class="co"># especificamos datos y mapping </span></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>() <span class="co"># agregamos geometria o forma </span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> empleo)) <span class="co"># especificamos datos y mapping </span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="06-content_files/figure-html/unnamed-chunk-10-2.png" class="img-fluid" width="672"></p>
+<p><img src="06-content_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="672"></p>
 </div>
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> proc_cep, </span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> empleo)) <span class="sc">+</span> <span class="co"># especificamos datos y mapping </span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">color =</span> <span class="st">"black"</span>, <span class="at">fill =</span> <span class="st">"darkblue"</span>) <span class="co"># agregamos geometria y color y relleno</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>() <span class="co"># agregamos geometria o forma </span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="06-content_files/figure-html/unnamed-chunk-10-3.png" class="img-fluid" width="672"></p>
+<p><img src="06-content_files/figure-html/unnamed-chunk-11-2.png" class="img-fluid" width="672"></p>
 </div>
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> proc_cep, </span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> empleo)) <span class="sc">+</span> <span class="co"># especificamos datos y mapping </span></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">color =</span> <span class="st">"black"</span>, <span class="at">fill =</span> <span class="st">"darkblue"</span>) <span class="sc">+</span> <span class="co"># agregamos geometria y color y relleno</span></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1000</span>)) <span class="co"># agregamos escala en eje Y y ponemos limites minimos y maximos</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">color =</span> <span class="st">"black"</span>, <span class="at">fill =</span> <span class="st">"darkblue"</span>) <span class="co"># agregamos geometria y color y relleno</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="06-content_files/figure-html/unnamed-chunk-10-4.png" class="img-fluid" width="672"></p>
+<p><img src="06-content_files/figure-html/unnamed-chunk-11-3.png" class="img-fluid" width="672"></p>
 </div>
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> proc_cep, </span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> empleo)) <span class="sc">+</span> <span class="co"># especificamos datos y mapping </span></span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">color =</span> <span class="st">"black"</span>, <span class="at">fill =</span> <span class="st">"darkblue"</span>) <span class="sc">+</span> <span class="co"># agregamos geometria y color y relleno</span></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1000</span>)) <span class="sc">+</span><span class="co"># agregamos escala en eje Y y ponemos limites minimos y maximos</span></span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span><span class="st">"Condición de empleo 2019"</span>, </span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Situación empleo"</span>, </span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Frecuencia"</span>,</span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">"Fuente: Elaboración propia en base a Encuesta CEP Diciembre 2019."</span>) <span class="co"># agregamos titulo, nombres a los ejes y fuente</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1000</span>)) <span class="co"># agregamos escala en eje Y y ponemos limites minimos y maximos</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="06-content_files/figure-html/unnamed-chunk-10-5.png" class="img-fluid" width="672"></p>
+<p><img src="06-content_files/figure-html/unnamed-chunk-11-4.png" class="img-fluid" width="672"></p>
 </div>
-</div>
-<p>¿Y podemos diferenciar por sexo en este mismo gráfico? <strong>Claro que sí</strong>, debemos indicar la variable que agrupa en el mapping o coordenadas mediante el argumento <em>fill</em>.</p>
-<div class="cell">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> proc_cep, </span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> empleo, <span class="at">fill =</span> sexo)) <span class="sc">+</span> <span class="co"># especificamos datos y mapping </span></span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span> <span class="co"># agregamos geometria </span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> empleo)) <span class="sc">+</span> <span class="co"># especificamos datos y mapping </span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">color =</span> <span class="st">"black"</span>, <span class="at">fill =</span> <span class="st">"darkblue"</span>) <span class="sc">+</span> <span class="co"># agregamos geometria y color y relleno</span></span>
 <span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1000</span>)) <span class="sc">+</span><span class="co"># agregamos escala en eje Y y ponemos limites minimos y maximos</span></span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span><span class="st">"Condición de empleo, segun sexo 2019"</span>, </span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span><span class="st">"Condición de empleo 2019"</span>, </span>
 <span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Situación empleo"</span>, </span>
 <span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Frecuencia"</span>,</span>
 <span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">"Fuente: Elaboración propia en base a Encuesta CEP Diciembre 2019."</span>) <span class="co"># agregamos titulo, nombres a los ejes y fuente</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="06-content_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="672"></p>
+<p><img src="06-content_files/figure-html/unnamed-chunk-11-5.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> proc_cep, </span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> empleo)) <span class="sc">+</span> <span class="co"># especificamos datos y mapping </span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">color =</span> <span class="st">"black"</span>, <span class="at">fill =</span> <span class="st">"darkblue"</span>) <span class="sc">+</span> <span class="co"># agregamos geometria y color y relleno</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1000</span>)) <span class="sc">+</span><span class="co"># agregamos escala en eje Y y ponemos limites minimos y maximos</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span><span class="st">"Condición de empleo 2019"</span>, </span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Situación empleo"</span>, </span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Frecuencia"</span>,</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">"Fuente: Elaboración propia en base a Encuesta CEP Diciembre 2019."</span>) <span class="sc">+</span><span class="co"># agregamos titulo, nombres a los ejes y fuente</span></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> ..count..), <span class="at">stat =</span> <span class="st">"count"</span>, <span class="at">vjust =</span> <span class="fl">1.5</span>, <span class="at">colour =</span> <span class="st">"white"</span>) <span class="co"># agregamos las freq de cada barra</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="06-content_files/figure-html/unnamed-chunk-11-6.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>¿Y podemos diferenciar por sexo en este mismo gráfico? <strong>Claro que sí</strong>, debemos indicar la variable que agrupa en el mapping o coordenadas mediante el argumento <em>fill</em>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> proc_cep, </span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> empleo, <span class="at">fill =</span> sexo)) <span class="sc">+</span> <span class="co"># especificamos datos y mapping </span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span> <span class="co"># agregamos geometria </span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1000</span>)) <span class="sc">+</span><span class="co"># agregamos escala en eje Y y ponemos limites minimos y maximos</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span><span class="st">"Condición de empleo, segun sexo 2019"</span>, </span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Situación empleo"</span>, </span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Frecuencia"</span>,</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">"Fuente: Elaboración propia en base a Encuesta CEP Diciembre 2019."</span>) <span class="sc">+</span><span class="co"># agregamos titulo, nombres a los ejes y fuente</span></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> ..count..), <span class="at">stat =</span> <span class="st">"count"</span>, <span class="at">colour =</span> <span class="st">"white"</span>, <span class="at">position =</span> <span class="fu">position_stack</span>(.<span class="dv">1</span>)) <span class="co"># agregams freq de cada barra por grupo</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="06-content_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>Ahora tenemos un gráfico de barras apiladas según el sexo de los entrevistados, y dicha agrupación nos aparece como una leyenda en la parte izquierda del grafico con el nombre de los grupos.</p>
 <p>¿Y si en vez de que sea apilado, quiero que las barras por sexo estén una al lado de la otra? Fácil, debemos especifícarlo dentro de la geometría.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> proc_cep, </span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> empleo, <span class="at">fill =</span> sexo)) <span class="sc">+</span> <span class="co"># especificamos datos y mapping </span></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"dodge2"</span>) <span class="sc">+</span> <span class="co"># agregamos geometria y especificamos posicion </span></span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span><span class="st">"Condición de empleo, segun sexo 2019"</span>, </span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Situación empleo"</span>, </span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Frecuencia"</span>,</span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">"Fuente: Elaboración propia en base a Encuesta CEP Diciembre 2019."</span>) <span class="co"># agregamos titulo, nombres a los ejes y fuente</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> proc_cep, </span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> empleo, <span class="at">fill =</span> sexo)) <span class="sc">+</span> <span class="co"># especificamos datos y mapping </span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"dodge2"</span>) <span class="sc">+</span> <span class="co"># agregamos geometria y especificamos posicion </span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span><span class="st">"Condición de empleo, segun sexo 2019"</span>, </span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Situación empleo"</span>, </span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Frecuencia"</span>,</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">"Fuente: Elaboración propia en base a Encuesta CEP Diciembre 2019."</span>) <span class="sc">+</span><span class="co"># agregamos titulo, nombres a los ejes y fuente</span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> ..count..), <span class="at">stat =</span> <span class="st">"count"</span>, <span class="at">colour =</span> <span class="st">"white"</span>, </span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">vjust =</span> <span class="fl">1.5</span>, <span class="at">position =</span> <span class="fu">position_dodge</span>(.<span class="dv">9</span>)) <span class="co"># agregamos freq de cada barra por grupo</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="06-content_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="672"></p>
+<p><img src="06-content_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> proc_cep, </span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> empleo, <span class="at">fill =</span> tramo_edad)) <span class="sc">+</span> <span class="co"># especificamos datos y mapping </span></span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"dodge2"</span>) <span class="sc">+</span> <span class="co"># agregamos geometria y especificamos posicion </span></span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span><span class="st">"Condición de empleo, segun tramo etario 2019"</span>, </span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Situación empleo"</span>, </span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Frecuencia"</span>,</span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">"Fuente: Elaboración propia en base a Encuesta CEP Diciembre 2019."</span>) <span class="co"># agregamos titulo, nombres a los ejes y fuente</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> proc_cep, </span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> empleo, <span class="at">fill =</span> tramo_edad)) <span class="sc">+</span> <span class="co"># especificamos datos y mapping </span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"dodge2"</span>) <span class="sc">+</span> <span class="co"># agregamos geometria y especificamos posicion </span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span><span class="st">"Condición de empleo, segun tramo etario 2019"</span>, </span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Situación empleo"</span>, </span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Frecuencia"</span>,</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">"Fuente: Elaboración propia en base a Encuesta CEP Diciembre 2019."</span>) <span class="sc">+</span><span class="co"># agregamos titulo, nombres a los ejes y fuente</span></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> ..count..), <span class="at">stat =</span> <span class="st">"count"</span>, <span class="at">colour =</span> <span class="st">"white"</span>, </span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">vjust =</span> <span class="fl">1.5</span>, <span class="at">position =</span> <span class="fu">position_dodge</span>(.<span class="dv">9</span>)) <span class="co"># agregamos freq de cada barra por grupo</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="06-content_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="672"></p>
+<p><img src="06-content_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>
@@ -593,42 +619,42 @@ Ocupado            | 781 | 52.99 |   52.99 | 100.00
 <h3 class="anchored" data-anchor-id="histogramas">2. Histogramas</h3>
 <p>Cuando tenemos variables con muchas categorías de respuesta, como las variables continuas u ordinales de más de 7 categorías, podemos usar histogramas para representar su distribución.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> proc_cep, </span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> edad)) <span class="sc">+</span> <span class="co"># especificamos datos y mapping </span></span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()<span class="co"># agregamos geometria </span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
-</div>
-<div class="cell-output-display">
-<p><img src="06-content_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="672"></p>
-</div>
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> proc_cep, </span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> edad)) <span class="sc">+</span> <span class="co"># especificamos datos y mapping </span></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">color =</span> <span class="st">"black"</span>, <span class="at">fill =</span> <span class="st">"#FA8072"</span>)  <span class="sc">+</span> <span class="co"># agregamos geometria y colores</span></span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span><span class="st">"Histograma frecuencias abs: Edad"</span>, </span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Edad"</span>, </span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Frecuencia"</span>,</span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">"Fuente: Elaboración propia en base a Encuesta CEP Diciembre 2019."</span>) <span class="co"># agregamos titulo, nombres a los ejes y fuente</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()<span class="co"># agregamos geometria </span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
 </div>
 <div class="cell-output-display">
-<p><img src="06-content_files/figure-html/unnamed-chunk-14-2.png" class="img-fluid" width="672"></p>
+<p><img src="06-content_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid" width="672"></p>
 </div>
-</div>
-<div class="cell">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> proc_cep, </span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> satisfaccion)) <span class="sc">+</span> <span class="co"># especificamos datos y mapping </span></span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">color =</span> <span class="st">"black"</span>, <span class="at">fill =</span> <span class="st">"darkred"</span>)  <span class="sc">+</span> <span class="co"># agregamos geometria y colores</span></span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span><span class="st">"Histograma frecuencias abs: Satisfaccion"</span>, </span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Satisfaccion"</span>, </span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> edad)) <span class="sc">+</span> <span class="co"># especificamos datos y mapping </span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">color =</span> <span class="st">"black"</span>, <span class="at">fill =</span> <span class="st">"#FA8072"</span>)  <span class="sc">+</span> <span class="co"># agregamos geometria y colores</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span><span class="st">"Histograma frecuencias abs: Edad"</span>, </span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Edad"</span>, </span>
 <span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Frecuencia"</span>,</span>
 <span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">"Fuente: Elaboración propia en base a Encuesta CEP Diciembre 2019."</span>) <span class="co"># agregamos titulo, nombres a los ejes y fuente</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
 </div>
 <div class="cell-output-display">
-<p><img src="06-content_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid" width="672"></p>
+<p><img src="06-content_files/figure-html/unnamed-chunk-15-2.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> proc_cep, </span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> satisfaccion)) <span class="sc">+</span> <span class="co"># especificamos datos y mapping </span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">color =</span> <span class="st">"black"</span>, <span class="at">fill =</span> <span class="st">"darkred"</span>)  <span class="sc">+</span> <span class="co"># agregamos geometria y colores</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span><span class="st">"Histograma frecuencias abs: Satisfaccion"</span>, </span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Satisfaccion"</span>, </span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Frecuencia"</span>,</span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">"Fuente: Elaboración propia en base a Encuesta CEP Diciembre 2019."</span>) <span class="co"># agregamos titulo, nombres a los ejes y fuente</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="06-content_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>
@@ -636,25 +662,25 @@ Ocupado            | 781 | 52.99 |   52.99 | 100.00
 <h3 class="anchored" data-anchor-id="digrama-de-densidad">3. Digrama de densidad</h3>
 <p>Los diagramas de densidad son una forma más suavizada de observar la distribución de una variable, siendo comunmente utilizados para contrastar distribuciones empíricas con las teóricas.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> proc_cep, </span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> edad)) <span class="sc">+</span> <span class="co"># especificamos datos y mapping </span></span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">color =</span> <span class="st">"black"</span>, <span class="at">fill =</span> <span class="st">"#FA8072"</span>, <span class="at">alpha =</span> <span class="fl">0.8</span>)  <span class="sc">+</span> <span class="co"># agregamos geometria y colores</span></span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span><span class="st">"Diagrama densidad: Edad"</span>, </span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Edad"</span>, </span>
-<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Frecuencia"</span>,</span>
-<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">"Fuente: Elaboración propia en base a Encuesta CEP Diciembre 2019."</span>) <span class="co"># agregamos titulo, nombres a los ejes y fuente</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> proc_cep, </span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> edad)) <span class="sc">+</span> <span class="co"># especificamos datos y mapping </span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">color =</span> <span class="st">"black"</span>, <span class="at">fill =</span> <span class="st">"#FA8072"</span>, <span class="at">alpha =</span> <span class="fl">0.8</span>)  <span class="sc">+</span> <span class="co"># agregamos geometria y colores</span></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span><span class="st">"Diagrama densidad: Edad"</span>, </span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Edad"</span>, </span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Frecuencia"</span>,</span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">"Fuente: Elaboración propia en base a Encuesta CEP Diciembre 2019."</span>) <span class="co"># agregamos titulo, nombres a los ejes y fuente</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="06-content_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid" width="672"></p>
+<p><img src="06-content_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid" width="672"></p>
 </div>
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> proc_cep, </span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> satisfaccion)) <span class="sc">+</span> <span class="co"># especificamos datos y mapping </span></span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">color =</span> <span class="st">"black"</span>, <span class="at">fill =</span> <span class="st">"darkred"</span>, <span class="at">alpha =</span> <span class="fl">0.8</span>)  <span class="sc">+</span> <span class="co"># agregamos geometria y colores</span></span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span><span class="st">"Histograma densidad: Satisfaccion"</span>, </span>
-<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Satisfaccion"</span>, </span>
-<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Frecuencia"</span>,</span>
-<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">"Fuente: Elaboración propia en base a Encuesta CEP Diciembre 2019."</span>) <span class="co"># agregamos titulo, nombres a los ejes y fuente</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> proc_cep, </span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> satisfaccion)) <span class="sc">+</span> <span class="co"># especificamos datos y mapping </span></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">color =</span> <span class="st">"black"</span>, <span class="at">fill =</span> <span class="st">"darkred"</span>, <span class="at">alpha =</span> <span class="fl">0.8</span>)  <span class="sc">+</span> <span class="co"># agregamos geometria y colores</span></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span><span class="st">"Histograma densidad: Satisfaccion"</span>, </span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Satisfaccion"</span>, </span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Frecuencia"</span>,</span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">"Fuente: Elaboración propia en base a Encuesta CEP Diciembre 2019."</span>) <span class="co"># agregamos titulo, nombres a los ejes y fuente</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="06-content_files/figure-html/unnamed-chunk-16-2.png" class="img-fluid" width="672"></p>
+<p><img src="06-content_files/figure-html/unnamed-chunk-17-2.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>
@@ -662,35 +688,35 @@ Ocupado            | 781 | 52.99 |   52.99 | 100.00
 <h3 class="anchored" data-anchor-id="gráficos-de-caja-y-bigote">4. Gráficos de caja y bigote</h3>
 <p>Como vimos en clases, los graficos de cajas y bigotes nos sirven para observar la mediana de los datos, el Q1 y Q3, el IQR, los valores minimos y maximos, y los valores atípicos.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> proc_cep, </span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">y =</span> edad)) <span class="sc">+</span> <span class="co"># especificamos datos y mapping </span></span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">fill =</span> <span class="st">"darkblue"</span>, <span class="at">alpha =</span> <span class="fl">0.8</span>)  <span class="sc">+</span> <span class="co"># agregamos geometria y colores</span></span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span><span class="st">"Gráfico de cajas: Edad"</span>, </span>
-<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Edad"</span>, </span>
-<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">"Fuente: Elaboración propia en base a Encuesta CEP Diciembre 2019."</span>) <span class="co"># agregamos titulo, nombres a los ejes y fuente</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> proc_cep, </span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">y =</span> edad)) <span class="sc">+</span> <span class="co"># especificamos datos y mapping </span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">fill =</span> <span class="st">"darkblue"</span>, <span class="at">alpha =</span> <span class="fl">0.8</span>)  <span class="sc">+</span> <span class="co"># agregamos geometria y colores</span></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span><span class="st">"Gráfico de cajas: Edad"</span>, </span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Edad"</span>, </span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">"Fuente: Elaboración propia en base a Encuesta CEP Diciembre 2019."</span>) <span class="co"># agregamos titulo, nombres a los ejes y fuente</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="06-content_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid" width="672"></p>
+<p><img src="06-content_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid" width="672"></p>
 </div>
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> proc_cep, </span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">y =</span> satisfaccion)) <span class="sc">+</span> <span class="co"># especificamos datos y mapping </span></span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">fill =</span> <span class="st">"darkred"</span>, <span class="at">alpha =</span> <span class="fl">0.8</span>)  <span class="sc">+</span> <span class="co"># agregamos geometria y colores</span></span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span><span class="st">"Gráfico de cajas: Satisfaccion"</span>, </span>
-<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Satisfaccion"</span>, </span>
-<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">"Fuente: Elaboración propia en base a Encuesta CEP Diciembre 2019."</span>) <span class="co"># agregamos titulo, nombres a los ejes y fuente</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> proc_cep, </span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">y =</span> satisfaccion)) <span class="sc">+</span> <span class="co"># especificamos datos y mapping </span></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">fill =</span> <span class="st">"darkred"</span>, <span class="at">alpha =</span> <span class="fl">0.8</span>)  <span class="sc">+</span> <span class="co"># agregamos geometria y colores</span></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span><span class="st">"Gráfico de cajas: Satisfaccion"</span>, </span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Satisfaccion"</span>, </span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">"Fuente: Elaboración propia en base a Encuesta CEP Diciembre 2019."</span>) <span class="co"># agregamos titulo, nombres a los ejes y fuente</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="06-content_files/figure-html/unnamed-chunk-17-2.png" class="img-fluid" width="672"></p>
+<p><img src="06-content_files/figure-html/unnamed-chunk-18-2.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>Ahora, segmentemos en un grafico de cajas la variable satisfaccion por tramo etario.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> proc_cep, </span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">y =</span> satisfaccion, <span class="at">fill =</span> tramo_edad)) <span class="sc">+</span> <span class="co"># especificamos datos y mapping </span></span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">alpha =</span> <span class="fl">0.8</span>)  <span class="sc">+</span> <span class="co"># agregamos geometria y colores</span></span>
-<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span><span class="st">"Gráfico de cajas: Satisfaccion por tramo etario"</span>, </span>
-<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Satisfaccion"</span>, </span>
-<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">"Fuente: Elaboración propia en base a Encuesta CEP Diciembre 2019."</span>) <span class="co"># agregamos titulo, nombres a los ejes y fuente</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> proc_cep, </span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">y =</span> satisfaccion, <span class="at">fill =</span> tramo_edad)) <span class="sc">+</span> <span class="co"># especificamos datos y mapping </span></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">alpha =</span> <span class="fl">0.8</span>)  <span class="sc">+</span> <span class="co"># agregamos geometria y colores</span></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span><span class="st">"Gráfico de cajas: Satisfaccion por tramo etario"</span>, </span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Satisfaccion"</span>, </span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">"Fuente: Elaboración propia en base a Encuesta CEP Diciembre 2019."</span>) <span class="co"># agregamos titulo, nombres a los ejes y fuente</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="06-content_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid" width="672"></p>
+<p><img src="06-content_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>
@@ -698,14 +724,14 @@ Ocupado            | 781 | 52.99 |   52.99 | 100.00
 <h3 class="anchored" data-anchor-id="graficos-de-violin">5. Graficos de violin</h3>
 <p>Los gráficos de violin permiten visualizar la distribución de una variable numérica para uno o varios grupos. Es muy parecido a un boxplot, pero permite una comprensión más profunda de la distribución.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> proc_cep, </span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">y =</span> satisfaccion, <span class="at">x =</span> tramo_edad, <span class="at">fill =</span> tramo_edad)) <span class="sc">+</span> <span class="co"># especificamos datos y mapping </span></span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>(<span class="at">alpha =</span> <span class="fl">0.8</span>)  <span class="sc">+</span> <span class="co"># agregamos geometria y colores</span></span>
-<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span><span class="st">"Gráfico de violin: Satisfaccion por tramo etario"</span>, </span>
-<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Satisfaccion"</span>, </span>
-<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">"Fuente: Elaboración propia en base a Encuesta CEP Diciembre 2019."</span>) <span class="co"># agregamos titulo, nombres a los ejes y fuente</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> proc_cep, </span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">y =</span> satisfaccion, <span class="at">x =</span> tramo_edad, <span class="at">fill =</span> tramo_edad)) <span class="sc">+</span> <span class="co"># especificamos datos y mapping </span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>(<span class="at">alpha =</span> <span class="fl">0.8</span>)  <span class="sc">+</span> <span class="co"># agregamos geometria y colores</span></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span><span class="st">"Gráfico de violin: Satisfaccion por tramo etario"</span>, </span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Satisfaccion"</span>, </span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">"Fuente: Elaboración propia en base a Encuesta CEP Diciembre 2019."</span>) <span class="co"># agregamos titulo, nombres a los ejes y fuente</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="06-content_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid" width="672"></p>
+<p><img src="06-content_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>
@@ -714,16 +740,16 @@ Ocupado            | 781 | 52.99 |   52.99 | 100.00
 <p>Hay veces en que queremos la distribución univariada de una variable para dos o más grupos, pero que cada uno de estos grupos tenga su propio gráfico. Podemos hacerlo con <code>ggplot2</code> de manera bastante optimizada.</p>
 <p>Por ejemplo, separemos en dos graficos o grillas un diagrama de densidad de la variable satisfacción segun la condicion de empleo usando <code>facet_wrap()</code></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> proc_cep, </span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> satisfaccion)) <span class="sc">+</span> <span class="co"># especificamos datos y mapping </span></span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">color =</span> <span class="st">"black"</span>, <span class="at">fill =</span> <span class="st">"darkblue"</span>, <span class="at">alpha =</span> <span class="fl">0.8</span>)  <span class="sc">+</span> <span class="co"># agregamos geometria y colores</span></span>
-<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(.<span class="sc">~</span>empleo)<span class="sc">+</span> <span class="co"># agregamos el facet o paneles para diferenciar</span></span>
-<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span><span class="st">"Diagramas de densidad de satisfaccion según situación del empleo"</span>, </span>
-<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Satisfaccion"</span>, </span>
-<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Frecuencia"</span>,</span>
-<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">"Fuente: Elaboración propia en base a Encuesta CEP Diciembre 2019."</span>) <span class="co"># agregamos titulo, nombres a los ejes y fuente</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> proc_cep, </span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> satisfaccion)) <span class="sc">+</span> <span class="co"># especificamos datos y mapping </span></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">color =</span> <span class="st">"black"</span>, <span class="at">fill =</span> <span class="st">"darkblue"</span>, <span class="at">alpha =</span> <span class="fl">0.8</span>)  <span class="sc">+</span> <span class="co"># agregamos geometria y colores</span></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(.<span class="sc">~</span>empleo)<span class="sc">+</span> <span class="co"># agregamos el facet o paneles para diferenciar</span></span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span><span class="st">"Diagramas de densidad de satisfaccion según situación del empleo"</span>, </span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Satisfaccion"</span>, </span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Frecuencia"</span>,</span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">"Fuente: Elaboración propia en base a Encuesta CEP Diciembre 2019."</span>) <span class="co"># agregamos titulo, nombres a los ejes y fuente</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="06-content_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid" width="672"></p>
+<p><img src="06-content_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>
