@@ -451,6 +451,6 @@ Hoy aprendimos a visualizar datos en R. En detalle, vimos:
 
 ## Video tutorial
 
-
+{{< video https://youtu.be/QXP0NKIEV7I >}}
 
 
