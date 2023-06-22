@@ -36,24 +36,24 @@ Jueves 27 | **7. Medidas de dispersión** <br> **8. Medidas de posición** | |
 Jueves 4 | RECESO  |   |
 Lunes 8 | | | **Entrega Tarea Individual 1**
 Jueves 11 |  |  [**Sesión 3. Procesamiento, limpieza y manipulación de datos en R **](/content/03-content.html)  <br> [**Sesión 4. Medidas de tendencia central, dispersión y posición**](/content/04-content.html)|
-Jueves 18 | **Repaso Procesamiento y análisis descriptivo de datos en R** | |
-Domingo 21 | | | **Entrega Tarea Individual 2**
+Jueves 18 | | [**Sesión 5. Repaso Procesamiento y análisis descriptivo de datos en R**](/content/05-content.html) | 
 
 ### UNIDAD 3: La forma de una distribución
 |||
 -----|------------|-------------------|-----------
-Jueves 25 | **9. Visualización y distribución de datos** <br> **10. Noción de función y distribución** | | 
+Jueves 25 | **9. Visualización y distribución de datos** <br> **10. Noción de función y distribución** | | **Entrega Tarea Individual 2**
 Lunes 29 | | | **Entrega Informe 1 Taller Colectivo**
 <font color="orange"> **Junio** </font> |   |   |
-Jueves 1 | **11. Asimetría y curtosis** <br> **12. Distribución normal y puntuación Z** | | 
+Jueves 1 | | [**Sesión 6. Visualización de datos**](/content/06-content.html)  <br> [**Sesión 7. Forma de una distribución**](/content/07-content.html) |
 Jueves 8 | RECESO  |   |
-Jueves 15 |  |[**Sesión 5. Visualización de datos**](/content/05-content.html)  <br> [**Sesión 6. Forma de una distribución**](/content/06-content.html)|
-Jueves 22 | **13. Probabilidades en la distribución normal y otras distribuciones** <br> **14. Fundamentos de la significación estadística, universo y muestra ** | | 
+Jueves 15 | **11. Asimetría y curtosis** <br> **12. Distribución normal y puntuación Z**||
+Jueves 22 | **13. Probabilidades en la distribución normal y otras distribuciones** <br> **14. Fundamentos de la significación estadística, universo y muestra ** <br> **15. Inferencia estadística univarada**| | 
 
 ### UNIDAD 4: Inferencia estadística univariada
 |||
 -----|------------|-------------------|-----------
-Jueves 29 | **15. Inferencia estadística univarada** | | 
+Jueves 29 |  | [**Sesión 8. Inferencia univariada**](/content/08-content.html) | **Entrega Tarea Individual 3**
 <font color="orange"> **Julio** </font> |   |   |
-Jueves 6 |  |  [**Sesión 7 y 8. Inferencia univariada (intervalos de confianza, estimadores puntuales y ponderadores)**](/content/07-content.html) |
+Domingo 9 | | | **Entrega Informe 2 Taller Colectivo**
+
 

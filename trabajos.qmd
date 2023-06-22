@@ -21,8 +21,9 @@ Términos de referencia del Informe N°1 Taller Colectivo: [{{< fa file-archive 
 
 ### Informe 2
 
+El objetivo general de la evaluación es que los estudiantes elaboren un reporte de investigación que desarrolle de forma integrada los aspectos de diseño de la investigación, análisis estadístico y presentación de resultados, así como la elaboración de conclusiones. Se espera que se integren las correcciones realizadas en la entrega previa.
 
-
+Términos de referencia del Informe N°2 Taller Colectivo: [{{< fa file-archive >}} TDR2.pdf](/projects/TDR2_Informe_Taller_Colectivo_ED_2023.pdf)
 
 
 ## Tareas Individuales
