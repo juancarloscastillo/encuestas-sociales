@@ -52,8 +52,9 @@ Jueves 22 | **13. Probabilidades en la distribución normal y otras distribucion
 ### UNIDAD 4: Inferencia estadística univariada
 |||
 -----|------------|-------------------|-----------
-Jueves 29 |  | [**Sesión 8. Inferencia univariada**](/content/08-content.html) | **Entrega Tarea Individual 3**
+Jueves 29 |  | [**Sesión 8. Inferencia univariada**](/content/08-content.html) | 
 <font color="orange"> **Julio** </font> |   |   |
+Jueves 6 | | | **Entrega Tarea Individual 3**
 Domingo 9 | | | **Entrega Informe 2 Taller Colectivo**
 
 
