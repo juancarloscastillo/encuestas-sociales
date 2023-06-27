@@ -280,6 +280,48 @@
     "text": "Video tutorial"
   },
   {
+    "objectID": "content/08-content.html",
+    "href": "content/08-content.html",
+    "title": "Inferencia estadística univariada",
+    "section": "",
+    "text": "El objetivo de esta guía práctica es aplicar los conocimientos aprendidos en clases sobre inferencia estadística univariada, comprendiendo sus fundamentos, relevancia y aplicación a un caso concreto en R.\nEn detalle, aprenderemos:\n\nEstablecer el diseño muestral de una base de datos en R.\nRealizar estimaciones puntuales e intervalares para medias y proporciones.\nContrastar hipótesis univariadas.\n\n\n\n\nEn esta práctica trabajaremos con la base de datos de la Encuesta Suplementaria de Ingresos (ESI) del 2021 realizada por el Instituto Nacional de Estadísticas (INE). Esta base la pueden encontrar en el canal de U-Cursos sección Material Docente, o bien, en el siguiente enlace  ESI 2021 podrán descargar el archivo que contiene la base ESI 2021."
+  },
+  {
+    "objectID": "content/08-content.html#cargar-librerías",
+    "href": "content/08-content.html#cargar-librerías",
+    "title": "Inferencia estadística univariada",
+    "section": "1. Cargar librerías",
+    "text": "1. Cargar librerías\nPara esta sesión, usaremos librerías que ya conocemos en prácticos pasados y una nueva, llamada srvyr:\n\npacman::p_load(tidyverse, # colección de paquetes para manipulación de datos\n               car, # para recodificar\n               psych, # para analizar datos\n               sjmisc,  # para analizar datos\n               srvyr) # para estimación de IC y ponderadores\n\noptions(scipen = 999) # para desactivar notacion cientifica\nrm(list = ls()) # para limpiar el entorno de trabajo"
+  },
+  {
+    "objectID": "content/08-content.html#importar-datos",
+    "href": "content/08-content.html#importar-datos",
+    "title": "Inferencia estadística univariada",
+    "section": "2. Importar datos",
+    "text": "2. Importar datos\nCargamos la base de datos ESI 2021 con readRDS\n\nesi <- readRDS(\"Input/data/esi-2021-ocupados.RData\")"
+  },
+  {
+    "objectID": "content/08-content.html#recodificar",
+    "href": "content/08-content.html#recodificar",
+    "title": "Inferencia estadística univariada",
+    "section": "3. Recodificar",
+    "text": "3. Recodificar\nSolo recodificamos y convertiremos a factor la variable sexo.\n\nesi$sexo <- car::recode(esi$sexo, recodes = c(\" 1 = 'Hombre'; 2 = 'Mujer'\"), as.factor = T)"
+  },
+  {
+    "objectID": "content/08-content.html#resumen",
+    "href": "content/08-content.html#resumen",
+    "title": "Inferencia estadística univariada",
+    "section": "Resumen",
+    "text": "Resumen\nHoy aprendimos a realizar inferencia estádistica en R. En detalle, vimos:\n\nEstablecer el diseño muestral de una base de datos en R.\nRealizar estimaciones puntuales e intervalares para medias y proporciones.\nContrastar hipótesis univariadas."
+  },
+  {
+    "objectID": "content/08-content.html#video-de-la-sesión",
+    "href": "content/08-content.html#video-de-la-sesión",
+    "title": "Inferencia estadística univariada",
+    "section": "Video de la sesión",
+    "text": "Video de la sesión"
+  },
+  {
     "objectID": "content/index.html",
     "href": "content/index.html",
     "title": "Laboratorio de Análisis de Datos",
