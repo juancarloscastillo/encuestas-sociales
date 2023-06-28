@@ -261,7 +261,7 @@ esi_pond %>%
 
 ```
 
-Con este resultado podemos afirmar que, con un 95% de confianza, el ingreso medio de la población ocupada es 681.039 IC[666.563 ; 695.516], por lo que la $H_{0}$ debe ser rechazada (o bien, la $H_{a}$ recibe apoyo).
+Con este resultado podemos afirmar que la media de la variable es 681,039 con un IC del 95% que oscila entre 666,563 y 695,516, por lo que la $H_{0}$ debe ser rechazada (o bien, la $H_{a}$ recibe apoyo).
 
 
 ## Resumen
