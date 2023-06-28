@@ -399,7 +399,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">survey.lonely.psu =</span> <span class="st">"certainty"</span>) <span class="co"># seteamos para que ids no moleste</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Ahora tenemos una base de ponderada además de la original. Esta base ponderada reconoce el diseño muestral y nos permitirá realizar estimaciones que se acerquen al paramétro poblacional.</p>
+<p>Ahora tenemos una base ponderada además de la original. Esta base ponderada reconoce el diseño muestral y nos permitirá realizar estimaciones que se acerquen al paramétro poblacional.</p>
 </section>
 <section id="estimaciones-de-punto-y-de-intervalo" class="level1">
 <h1>Estimaciones de punto y de intervalo</h1>
@@ -420,13 +420,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div class="alert alert-info">
 <p>Los IC nos indican un rango de valores que pueden contener el valor poblacional o parámetro desconocido, con un determinado nivel de confianza. Piensa en un IC como una red: es un rango de valores posibles para los parámetros de la población, y podemos tener un X% de confianza (normalmente el 95%) en que la red recoge el parámetro de la población.</p>
-<p>Dado que normalmente conocemos cosas solo de nuestra muestra, nuestra estimación tendrá cierto grado de incertudumbre. Un IC aborda esta incertidumbre proporcionando un rango de valores dentro del cual creemos que es probable que se encuentre el verdadero parámetro de la población.</p>
-<p>Importante: cuando se habla de intervalos de confianza, en realidad no se puede decir nada sobre la estimación del parámetro en sí. Los IC se refieren a la red o al rango en sí.</p>
+<p>Dado que normalmente conocemos valores solo de nuestra muestra, nuestra estimación tendrá cierto grado de incertudumbre. Un IC aborda esta incertidumbre proporcionando un rango de valores dentro del cual creemos que es probable que se encuentre el verdadero parámetro de la población.</p>
+<p>Importante: cuando se habla de intervalos de confianza, en realidad no se puede decir nada sobre la estimación del parámetro propiamente tal, sino que nos referimos a la red o al rango en sí.</p>
 <p>Se puede decir legalmente lo siguiente</p>
 <blockquote class="blockquote">
-<p>Con un 95% de confianza se puede soster que este intervalo de confianza capta el verdadero parámetro de población</p>
+<p>Con un 95% de confianza se puede sostener que este intervalo de confianza capta el verdadero parámetro de población</p>
 </blockquote>
-<p>El nivel de confianza refiere al grado de certeza que tenemos de que el parámetro estará contenido en el intervalo que hemos estimado. Por ejemplo al 95%, esto significa que en un 95% de los intervalos obtenidos comprenderán el verdadero parámetro.</p>
+<p>El nivel de confianza refiere al grado de certeza que tenemos de que el parámetro estará contenido en el intervalo que hemos estimado. Por ejemplo, al decir “con un 95% de confianza”, significa que en un 95% de las muestras los intervalos obtenidos comprenderán al verdadero parámetro.</p>
 </div>
 <p>En este práctico realizaremos inferencia sobre dos estimaciones: 1) el ingreso promedio del trabajo de las personas ocupadas y 2) la proporción de hombres y mujeres ocupadas, ambos en Chile en el año 2021.</p>
 <p><strong>!MANOS A LA OBRA!</strong></p>
@@ -446,7 +446,7 @@ X1 38206253   12   402.32 3619.36</code></pre>
 <p>Como podemos apreciar, en nuestra muestra el valor promedio del ingreso mensual de las personas ocupadas fue igual a $586.360, por lo cual ya sabemos que se encuentra lejos del parámetro. En inferencia, más que el valor promedio de una variable en la muestra, nos interesa saber en qué medida ese promedio da cuenta del promedio de la población.</p>
 <p>Veamos cómo realizar un IC que considere también la estimación puntual pero que sea extrapolable a la población.</p>
 <p>La fórmula de IC para medias es:</p>
-<p><span class="math display">\[[\overline{x} + z_{a/2}*\frac{sd}{\sqrt{n}} , \overline{x} - z_{a/2}*\frac{sd}{\sqrt{n}}]\]</span> Pero R hace este cálculo por nosotros, aunque es importante entender la lógica que hay detrás. Ahora, estimemos el IC para el ingreso medio de la población ocupada:</p>
+<p><span class="math display">\[[\overline{x} - z_{a/2}*\frac{sd}{\sqrt{n}} , \overline{x} + z_{a/2}*\frac{sd}{\sqrt{n}}]\]</span> Pero R hace este cálculo por nosotros, aunque es importante entender la lógica que hay detrás. Ahora, estimemos el IC para el ingreso medio de la población ocupada:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>esi_pond <span class="sc">%&gt;%</span> </span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">media =</span> <span class="fu">survey_mean</span>(ing_t_p, <span class="at">vartype =</span> <span class="st">"ci"</span>, <span class="at">levels =</span> <span class="fl">0.95</span>, <span class="at">na.rm=</span><span class="cn">TRUE</span>)) <span class="co"># usamos funcion survey_mean</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -467,7 +467,7 @@ X1 38206253   12   402.32 3619.36</code></pre>
 <h3 class="anchored" data-anchor-id="b-ic-para-proporciones-con-diseño-muestral">b) IC para proporciones con diseño muestral</h3>
 <p>Según el informe mencionado, en el año 2021, la composición de la población ocupada a nivel nacional se distribuyó de la siguiente manera: aproximadamente el 58% corresponde a hombres y el 42% a mujeres.</p>
 <p>La fórmula de IC para proporciones es:</p>
-<p><span class="math display">\[[\overline{p} + z_{a/2}*\sqrt{\frac{p*(1-\overline{p})}{n}} , \overline{p} - z_{a/2}*\sqrt{\frac{p*(1-\overline{p})}{n}}]\]</span></p>
+<p><span class="math display">\[[\overline{p} - z_{a/2}*\sqrt{\frac{p*(1-\overline{p})}{n}} , \overline{p} + z_{a/2}*\sqrt{\frac{p*(1-\overline{p})}{n}}]\]</span></p>
 <p>Veamos primero las frecuencias en nuestra muestra o base de datos:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>sjmisc<span class="sc">::</span><span class="fu">frq</span>(esi<span class="sc">$</span>sexo)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>

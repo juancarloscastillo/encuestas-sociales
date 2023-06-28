@@ -103,7 +103,7 @@ esi_pond <- esi %>% as_survey_design(ids = 1, # indica conglomerados de muestreo
 options(survey.lonely.psu = "certainty") # seteamos para que ids no moleste
 ```
 
-Ahora tenemos una base de ponderada además de la original. Esta base ponderada reconoce el diseño muestral y nos permitirá realizar estimaciones que se acerquen al paramétro poblacional.
+Ahora tenemos una base ponderada además de la original. Esta base ponderada reconoce el diseño muestral y nos permitirá realizar estimaciones que se acerquen al paramétro poblacional.
 
 # Estimaciones de punto y de intervalo
 
@@ -127,16 +127,16 @@ knitr::include_graphics("../images/ci.jpeg", error = FALSE)
 
 Los IC nos indican un rango de valores que pueden contener el valor poblacional o parámetro desconocido, con un determinado nivel de confianza. Piensa en un IC como una red: es un rango de valores posibles para los parámetros de la población, y podemos tener un X% de confianza (normalmente el 95%) en que la red recoge el parámetro de la población. 
 
-Dado que normalmente conocemos cosas solo de nuestra muestra, nuestra estimación tendrá cierto grado de incertudumbre. Un IC aborda esta incertidumbre proporcionando un rango de valores dentro del cual creemos que es probable que se encuentre el verdadero parámetro de la población.
+Dado que normalmente conocemos valores solo de nuestra muestra, nuestra estimación tendrá cierto grado de incertudumbre. Un IC aborda esta incertidumbre proporcionando un rango de valores dentro del cual creemos que es probable que se encuentre el verdadero parámetro de la población.
 
-Importante: cuando se habla de intervalos de confianza, en realidad no se puede decir nada sobre la estimación del parámetro en sí. Los IC se refieren a la red o al rango en sí. 
+Importante: cuando se habla de intervalos de confianza, en realidad no se puede decir nada sobre la estimación del parámetro propiamente tal, sino que nos referimos a la red o al rango en sí.
 
 Se puede decir legalmente lo siguiente
 
- > Con un 95% de confianza se puede soster que este intervalo de confianza capta el verdadero parámetro de población
+ > Con un 95% de confianza se puede sostener que este intervalo de confianza capta el verdadero parámetro de población
  
 
-El nivel de confianza refiere al grado de certeza que tenemos de que el parámetro estará contenido en el intervalo que hemos estimado. Por ejemplo al 95%, esto significa que en un 95% de los intervalos obtenidos comprenderán el verdadero parámetro.
+El nivel de confianza refiere al grado de certeza que tenemos de que el parámetro estará contenido en el intervalo que hemos estimado. Por ejemplo, al decir "con un 95% de confianza", significa que en un 95% de las muestras los intervalos obtenidos comprenderán al verdadero parámetro.
 
 </div>
 
@@ -162,7 +162,7 @@ Veamos cómo realizar un IC que considere también la estimación puntual pero q
 
 La fórmula de IC para medias es:
 
-$$[\overline{x} + z_{a/2}*\frac{sd}{\sqrt{n}} , \overline{x} - z_{a/2}*\frac{sd}{\sqrt{n}}]$$
+$$[\overline{x} - z_{a/2}*\frac{sd}{\sqrt{n}} , \overline{x} + z_{a/2}*\frac{sd}{\sqrt{n}}]$$
 Pero R hace este cálculo por nosotros, aunque es importante entender la lógica que hay detrás. Ahora, estimemos el IC para el ingreso medio de la población ocupada:
 
 ```{r include=TRUE, eval=TRUE}
@@ -182,7 +182,7 @@ Según el informe mencionado, en el año 2021, la composición de la población 
 
 La fórmula de IC para proporciones es:
 
-$$[\overline{p} + z_{a/2}*\sqrt{\frac{p*(1-\overline{p})}{n}} , \overline{p} - z_{a/2}*\sqrt{\frac{p*(1-\overline{p})}{n}}]$$
+$$[\overline{p} - z_{a/2}*\sqrt{\frac{p*(1-\overline{p})}{n}} , \overline{p} + z_{a/2}*\sqrt{\frac{p*(1-\overline{p})}{n}}]$$
 
 Veamos primero las frecuencias en nuestra muestra o base de datos:
 
