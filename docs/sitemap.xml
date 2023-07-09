@@ -2,82 +2,122 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://descriptiva-facso.netlify.app/assignment/index.html</loc>
-    <lastmod>2023-06-29T03:17:42.335Z</lastmod>
+    <lastmod>2023-07-09T21:42:18.618Z</lastmod>
+  </url>
+  <url>
+    <loc>https://descriptiva-facso.netlify.app/class/01-class.html</loc>
+    <lastmod>2023-07-09T21:42:22.556Z</lastmod>
+  </url>
+  <url>
+    <loc>https://descriptiva-facso.netlify.app/class/02-class.html</loc>
+    <lastmod>2023-07-09T21:42:22.946Z</lastmod>
+  </url>
+  <url>
+    <loc>https://descriptiva-facso.netlify.app/class/03-class.html</loc>
+    <lastmod>2023-07-09T21:42:23.313Z</lastmod>
+  </url>
+  <url>
+    <loc>https://descriptiva-facso.netlify.app/class/04-class.html</loc>
+    <lastmod>2023-07-09T21:42:23.701Z</lastmod>
+  </url>
+  <url>
+    <loc>https://descriptiva-facso.netlify.app/class/05-class.html</loc>
+    <lastmod>2023-07-09T21:42:24.101Z</lastmod>
+  </url>
+  <url>
+    <loc>https://descriptiva-facso.netlify.app/class/06-class.html</loc>
+    <lastmod>2023-07-09T21:42:24.477Z</lastmod>
+  </url>
+  <url>
+    <loc>https://descriptiva-facso.netlify.app/class/07-class.html</loc>
+    <lastmod>2023-07-09T21:42:24.846Z</lastmod>
+  </url>
+  <url>
+    <loc>https://descriptiva-facso.netlify.app/class/08-class.html</loc>
+    <lastmod>2023-07-09T21:42:25.225Z</lastmod>
+  </url>
+  <url>
+    <loc>https://descriptiva-facso.netlify.app/class/09-class.html</loc>
+    <lastmod>2023-07-09T21:42:25.613Z</lastmod>
+  </url>
+  <url>
+    <loc>https://descriptiva-facso.netlify.app/class/index.html</loc>
+    <lastmod>2023-07-09T21:42:25.999Z</lastmod>
   </url>
   <url>
     <loc>https://descriptiva-facso.netlify.app/content/01-content.html</loc>
-    <lastmod>2023-06-29T03:17:46.700Z</lastmod>
+    <lastmod>2023-07-09T21:42:26.517Z</lastmod>
   </url>
   <url>
     <loc>https://descriptiva-facso.netlify.app/content/02-content.html</loc>
-    <lastmod>2023-06-29T03:17:47.443Z</lastmod>
+    <lastmod>2023-07-09T21:42:27.184Z</lastmod>
   </url>
   <url>
     <loc>https://descriptiva-facso.netlify.app/content/03-content.html</loc>
-    <lastmod>2023-06-29T03:17:48.308Z</lastmod>
+    <lastmod>2023-07-09T21:42:27.987Z</lastmod>
   </url>
   <url>
     <loc>https://descriptiva-facso.netlify.app/content/04-content.html</loc>
-    <lastmod>2023-06-29T03:17:48.957Z</lastmod>
+    <lastmod>2023-07-09T21:42:28.687Z</lastmod>
   </url>
   <url>
     <loc>https://descriptiva-facso.netlify.app/content/05-content.html</loc>
-    <lastmod>2023-06-29T03:17:49.709Z</lastmod>
+    <lastmod>2023-07-09T21:42:29.409Z</lastmod>
   </url>
   <url>
     <loc>https://descriptiva-facso.netlify.app/content/06-content.html</loc>
-    <lastmod>2023-06-29T03:17:50.483Z</lastmod>
+    <lastmod>2023-07-09T21:42:30.139Z</lastmod>
   </url>
   <url>
     <loc>https://descriptiva-facso.netlify.app/content/07-content.html</loc>
-    <lastmod>2023-06-29T03:17:51.118Z</lastmod>
+    <lastmod>2023-07-09T21:42:30.813Z</lastmod>
   </url>
   <url>
     <loc>https://descriptiva-facso.netlify.app/content/08-content.html</loc>
-    <lastmod>2023-06-29T03:19:41.182Z</lastmod>
+    <lastmod>2023-07-09T21:42:31.506Z</lastmod>
   </url>
   <url>
     <loc>https://descriptiva-facso.netlify.app/content/index.html</loc>
-    <lastmod>2023-06-29T03:17:55.706Z</lastmod>
+    <lastmod>2023-07-09T21:42:31.937Z</lastmod>
   </url>
   <url>
     <loc>https://descriptiva-facso.netlify.app/index.html</loc>
-    <lastmod>2023-06-29T03:17:56.111Z</lastmod>
+    <lastmod>2023-07-09T21:42:32.340Z</lastmod>
   </url>
   <url>
     <loc>https://descriptiva-facso.netlify.app/resource/01-resource.html</loc>
-    <lastmod>2023-06-29T03:17:56.507Z</lastmod>
+    <lastmod>2023-07-09T21:42:32.730Z</lastmod>
   </url>
   <url>
     <loc>https://descriptiva-facso.netlify.app/resource/02-resource.html</loc>
-    <lastmod>2023-06-29T03:17:56.933Z</lastmod>
+    <lastmod>2023-07-09T21:42:33.107Z</lastmod>
   </url>
   <url>
     <loc>https://descriptiva-facso.netlify.app/resource/03-resource.html</loc>
-    <lastmod>2023-06-29T03:17:57.504Z</lastmod>
+    <lastmod>2023-07-09T21:42:33.668Z</lastmod>
   </url>
   <url>
     <loc>https://descriptiva-facso.netlify.app/resource/04-resource.html</loc>
-    <lastmod>2023-06-29T03:17:58.284Z</lastmod>
+    <lastmod>2023-07-09T21:42:34.397Z</lastmod>
   </url>
   <url>
     <loc>https://descriptiva-facso.netlify.app/resource/05-resource.html</loc>
-    <lastmod>2023-06-29T03:17:58.984Z</lastmod>
+    <lastmod>2023-07-09T21:42:35.069Z</lastmod>
   </url>
   <url>
     <loc>https://descriptiva-facso.netlify.app/resource/index.html</loc>
-    <lastmod>2023-06-29T03:17:59.367Z</lastmod>
+    <lastmod>2023-07-09T21:42:35.430Z</lastmod>
   </url>
   <url>
     <loc>https://descriptiva-facso.netlify.app/schedule.html</loc>
-    <lastmod>2023-06-29T03:17:59.809Z</lastmod>
+    <lastmod>2023-07-09T21:42:35.839Z</lastmod>
   </url>
   <url>
     <loc>https://descriptiva-facso.netlify.app/syllabus.html</loc>
-    <lastmod>2023-06-29T03:18:00.326Z</lastmod>
+    <lastmod>2023-07-09T21:42:36.337Z</lastmod>
   </url>
   <url>
     <loc>https://descriptiva-facso.netlify.app/trabajos.html</loc>
-    <lastmod>2023-06-29T03:18:00.749Z</lastmod>
+    <lastmod>2023-07-09T21:42:36.759Z</lastmod>
   </url>
 </urlset>

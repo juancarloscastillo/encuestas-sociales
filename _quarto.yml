@@ -43,7 +43,9 @@ website:
     right:
       - syllabus.qmd
       - schedule.qmd
-      - text: "Contenidos"
+      - text: "Clases"
+        file: class/index.qmd
+      - text: "Prácticos"
         file: content/index.qmd
 #      - text: "Assignments"
 #        file: assignment/index.qmd
@@ -56,7 +58,34 @@ website:
         href: "https://login.rstudio.cloud/login?redirect=%2F"
 
   sidebar:
-    - title: "Contenidos"
+    - title: "Clases"
+      style: "docked"
+      search: false
+      background: dark
+      contents:
+        - section: "Información general"
+          contents:
+            - class/index.qmd
+        - section: "Sesiones"
+          contents:
+            - text: "1: Presentación al curso"
+              file: class/01-class.qmd
+            - text: "2: Caracterización de la investigación cuantitativa"
+              file: class/02-class.qmd
+            - text: "3: Medición y operacionalización"
+              file: class/03-class.qmd
+            - text: "4: Manejo de bases de datos"
+              file: class/04-class.qmd
+            - text: "5: Descripción de los datos"
+              file: class/05-class.qmd
+            - text: "6: Función y distribución de variables"
+              file: class/06-class.qmd
+            - text: "7: Introducción a la inferencia estadística"
+              file: class/07-class.qmd
+
+
+
+    - title: "Practicos"
       style: "docked"
       search: false
       background: dark
@@ -98,6 +127,9 @@ website:
           file: resource/03-resource.qmd
         - text: "Procesamiento, limpieza y manipulación de datos en R base"
           file: resource/04-resource.qmd
+
+
+
 
 
   page-footer:

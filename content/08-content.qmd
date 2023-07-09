@@ -283,3 +283,6 @@ Hoy aprendimos a realizar inferencia estádistica en R. En detalle, vimos:
 
 
 ## Video de la sesión 
+
+{{< video https://youtu.be/2KY10sfhXcQ >}}
+
