@@ -2,7 +2,6 @@ author: Andreas Laffert
 
 instructor:
   name: Rodrigo Asún
-  name_no_title: Andreas Laffert
   email: rasun@uchile.cl
   office: "Departamento de Sociología FACSO"
   contact_policy: >-
@@ -10,20 +9,22 @@ instructor:
 
 other:
   email: andreas.laffert@ug.uchile.cl
+  appointment_url: https://calendly.com/andreas-laffert
 
 other2:
   email: danielaolivarescollio@gmail.com
+  appointment_url: https://calendly.com/juancastillov/horas-oficina
 
 course:
   number: "SOC01014-1"
-  semester: "Primer Semestre 2023"
-  days: "Jueves"
-  time: "8:30 AM - 11:45 AM"
-  location: "Aulario A - sala 7 y 8"
+  semester: "Primer Semestre 2024"
+  days: "Lunes y Miércoles"
+  time: "8:30 AM - 10:00 AM"
+  location: "Aulario B - sala B1"
   location2: "Prácticos Vía Zoom"
-  dates: "Marzo–Julio, 2023"
-  github: "https://github.com/Andreas-Lafferte/descriptiva"
-  copyright_year: "2023"
+  dates: "Marzo–Julio, 2024"
+  github: "https://github.com/cursos-metodos-facso/descriptiva"
+  copyright_year: "2024"
   slack: ""
 
 university:
@@ -33,3 +34,5 @@ university:
 school:
   name: Departamento de Sociología - Facultad de Ciencias Sociales
   url: "https://facso.uchile.cl/"
+
+
