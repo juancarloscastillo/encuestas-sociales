@@ -2,19 +2,24 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.0.37">
+<meta name="generator" content="quarto-1.2.269">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Encuestas Sociales - Planificación</title>
+<title>Estadística Descriptiva - Planificación</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-span.underline{text-decoration: underline;}
-div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
 </style>
 
 
@@ -24,7 +29,7 @@ ul.task-list{list-style: none;}
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href=".//files/icon-513.png" rel="icon" type="image/png">
+<link href=".//files/logo-removebg-preview.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -57,20 +62,21 @@ ul.task-list{list-style: none;}
 }</script>
 
 
-<meta property="og:title" content="Encuestas Sociales - Planificación">
-<meta property="og:description" content="Los dos componentes centrales del curso son las clases teóricas y las actividades prácticas. Las clases se realizarán los días Jueves 14:30 a 16:30 en sala 43">
-<meta property="og:image" content="https://encuestas-sociales.netlify.app/files/social-image-f22.png">
-<meta property="og:site-name" content="Encuestas Sociales">
+<meta property="og:title" content="Estadística Descriptiva - Planificación">
+<meta property="og:description" content="Los dos componentes centrales del curso son las clases lectivas y las sesiones de Laboratorio de Análisis de Datos.">
+<meta property="og:image" content="https://descriptiva-facso.netlify.app/files/logo.png">
+<meta property="og:site-name" content="Estadística Descriptiva">
 <meta property="og:locale" content="en_US">
-<meta property="og:image:height" content="490">
-<meta property="og:image:width" content="898">
-<meta name="twitter:title" content="Encuestas Sociales - Planificación">
-<meta name="twitter:description" content="Los dos componentes centrales del curso son las clases teóricas y las actividades prácticas. Las clases se realizarán los días Jueves 14:30 a 16:30 en sala 43">
-<meta name="twitter:image" content="https://encuestas-sociales.netlify.app/files/social-image-f22.png">
-<meta name="twitter:creator" content="@juankcastillo">
+<meta property="og:image:height" content="500">
+<meta property="og:image:width" content="500">
+<meta name="twitter:title" content="Estadística Descriptiva - Planificación">
+<meta name="twitter:description" content="Los dos componentes centrales del curso son las clases lectivas y las sesiones de Laboratorio de Análisis de Datos.">
+<meta name="twitter:image" content="https://descriptiva-facso.netlify.app/files/logo.png">
+<meta name="twitter:creator" content="@andreaslaffert">
+<meta name="twitter:site" content="@andreaslaffert">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image-height" content="490">
-<meta name="twitter:image-width" content="898">
+<meta name="twitter:image-height" content="500">
+<meta name="twitter:image-width" content="500">
 </head>
 
 <body class="nav-fixed">
@@ -79,33 +85,44 @@ ul.task-list{list-style: none;}
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
-      <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">Encuestas Sociales</span>
-  </a>
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Estadística Descriptiva</span>
+    </a>
+  </div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./syllabus.html">Programa</a>
+    <a class="nav-link" href="./syllabus.html">
+ <span class="menu-text">Programa</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./schedule.html" aria-current="page">Planificación</a>
+    <a class="nav-link active" href="./schedule.html" aria-current="page">
+ <span class="menu-text">Planificación</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./content/index.html">Contenidos</a>
+    <a class="nav-link" href="./class/index.html">
+ <span class="menu-text">Clases</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./trabajos.html">Trabajos</a>
+    <a class="nav-link" href="./assignment/index.html">
+ <span class="menu-text">Prácticos</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./resource/index.html">Recursos</a>
+    <a class="nav-link" href="./trabajos.html">
+ <span class="menu-text">Trabajos</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./resource/index.html">
+ <span class="menu-text">Recursos</span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://www.slack.com"><i class="bi bi-slack" role="img" aria-label="Slack">
+    <a class="nav-link" href="https://rstudio.cloud"><i class="bi bi-cloud-fill" role="img" aria-label="RStudio.cloud">
 </i> 
- </a>
+ <span class="menu-text"></span></a>
   </li>  
 </ul>
               <div id="quarto-search" class="" title="Search"></div>
@@ -131,154 +148,205 @@ ul.task-list{list-style: none;}
 <div class="quarto-title-meta">
 
     
+  
     
   </div>
   
 
 </header>
 
-<p>Los dos componentes centrales del curso son las clases teóricas y las actividades prácticas. Las <strong>clases</strong> se realizarán los días <strong>Jueves 14:30 a 16:30</strong> en sala <strong>43</strong></p>
+<p>Los dos componentes centrales del curso son las clases lectivas y las sesiones de Laboratorio de Análisis de Datos. Las <strong>clases</strong> se realizarán los días <strong>Jueves 08:30 a 11:45 </strong> en sala <strong>sala 7 y 8 del Aulario A</strong>, mientras que las sesiones de Laboratorio se realizarán los días <strong>Jueves 08:30 a 11:45 </strong> vía Zoom con una periodicidad de cada 2 semanas.</p>
 <ul>
-<li><p><a href=""><strong>Clases</strong></a> (<i class="fas fa-chalkboard-teacher"></i> ): Lecturas, documentos de presentación y video (en caso que la sesión sea grabada)</p></li>
-<li><p><a href=""><strong>Prácticas y evaluaciones</strong></a> (<i class="fas fa-user-edit"></i>): Actividades prácticas a desarrollar durante la semana.</p></li>
-<li><p><a href=""><strong>Lecturas</strong></a> (<i class="fas fa-book-reader"></i>): Llegar a la clase con los textos leídos.</p></li>
+<li><p><a href=""><strong>Clases</strong></a> (<i class="fas fa-chalkboard-teacher"></i> ): Documentos de presentación y lecturas asociadas.</p></li>
+<li><p><a href=""><strong>Prácticas</strong></a> (<i class="fas fa-user-edit"></i>): Actividades prácticas en Laboratorio de Análisis de Datos a desarrollar durante el semestre.</p></li>
+<li><p><a href=""><strong>Evaluaciones</strong></a> (<i class="fas fa-book-reader"></i>): Evaluaciones individuales y colectivas a desarrollar durante el semestre.</p></li>
 </ul>
 <table class="table">
 <thead>
 <tr class="header">
 <th></th>
 <th><i class="fas fa-chalkboard-teacher"></i> Clases</th>
-<th><i class="fas fa-user-edit"></i> Prácticas y evaluaciones</th>
-<th><i class="fas fa-book-reader"></i> Lecturas y material adicional</th>
+<th><i class="fas fa-user-edit"></i> Prácticas</th>
+<th><i class="fas fa-book-reader"></i> Evaluaciones</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td><font color="orange"> <strong>Agosto</strong> </font></td>
+<td><font color="orange"> <strong>Marzo</strong> </font></td>
 <td></td>
 <td></td>
 <td></td>
 </tr>
 <tr class="even">
-<td>Jueves 18</td>
-<td><a href="./content/01-content.html"><strong>1. Presentación e introducción</strong></a></td>
+<td>Jueves 16</td>
+<td><strong>1. Presentación e introducción</strong></td>
 <td></td>
 <td>- Leer detalladamente <a href="syllabus.html">programa del curso</a></td>
 </tr>
 </tbody>
 </table>
-<section id="unidad-1-diseño" class="level3">
-<h3 class="anchored" data-anchor-id="unidad-1-diseño">UNIDAD 1: DISEÑO</h3>
+<section id="unidad-1-sociología-y-estadística" class="level3">
+<h3 class="anchored" data-anchor-id="unidad-1-sociología-y-estadística">UNIDAD 1: Sociología y estadística</h3>
+<table class="table">
+<tbody>
+<tr class="odd">
+<td>Jueves 23</td>
+<td><strong>2. Caracterización de la investigación cuantitativa</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Jueves 30</td>
+<td><strong>3. La medición en ciencias sociales</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><font color="orange"> <strong>Abril</strong> </font></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Jueves 6</td>
+<td><strong>4. La medición en ciencias sociales</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Jueves 13</td>
+<td></td>
+<td><a href="./content/01-content.html"><strong>Sesión 1. Introducción al lenguaje R</strong></a> <br> <a href="./content/02-content.html"><strong>Sesión 2. Conocimientos básicos de programación en R</strong></a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="unidad-2-medidas-de-tendencia-central-dispersión-y-posición" class="level3">
+<h3 class="anchored" data-anchor-id="unidad-2-medidas-de-tendencia-central-dispersión-y-posición">UNIDAD 2: Medidas de tendencia central, dispersión y posición</h3>
+<table class="table">
+<tbody>
+<tr class="odd">
+<td>Jueves 20</td>
+<td><strong>5. Datos y bases de datos</strong> <br> <strong>6. Medidas de tendencia central</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Jueves 27</td>
+<td><strong>7. Medidas de dispersión</strong> <br> <strong>8. Medidas de posición</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><font color="orange"> <strong>Mayo</strong> </font></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Jueves 4</td>
+<td>RECESO</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Lunes 8</td>
+<td></td>
+<td></td>
+<td><strong>Entrega Tarea Individual 1</strong></td>
+</tr>
+<tr class="even">
+<td>Jueves 11</td>
+<td></td>
+<td><a href="./content/03-content.html"><strong>Sesión 3. Procesamiento, limpieza y manipulación de datos en R </strong></a> <br> <a href="./content/04-content.html"><strong>Sesión 4. Medidas de tendencia central, dispersión y posición</strong></a></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Jueves 18</td>
+<td></td>
+<td><a href="./content/05-content.html"><strong>Sesión 5. Repaso Procesamiento y análisis descriptivo de datos en R</strong></a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="unidad-3-la-forma-de-una-distribución" class="level3">
+<h3 class="anchored" data-anchor-id="unidad-3-la-forma-de-una-distribución">UNIDAD 3: La forma de una distribución</h3>
 <table class="table">
 <tbody>
 <tr class="odd">
 <td>Jueves 25</td>
-<td><a href="./content/02-content.html"><strong>2.Encuestas: tipos, características e implementación </strong></a></td>
-<td><a href="02-content.html#actividad-ficha-de-encuestas">Ficha de Encuesta</a></td>
-<td>- <a href="01-content.html#lecturas">Lecturas</a> <br> - <a href="files/lecturas/Font&amp;Pasadas2016LasEncuestasdeOpinion.pdf">Font &amp; Pasadas, cap.1: ¿Qué es una encuesta y qué no es una encuesta?</a> <br>- <a href="files/lecturas/Font&amp;Pasadas2016LasEncuestasdeOpinion.pdf">Font &amp; Pasadas, cap.2: ¿Para qué sirve una encuesta?</a> <br>- <a href="files/lecturas/Fowler2013Survey%20Research%20Methods.pdf">Fowler Cap 1: Introduction</a></td>
+<td><strong>9. Visualización y distribución de datos</strong> <br> <strong>10. Noción de función y distribución</strong></td>
+<td></td>
+<td><strong>Entrega Tarea Individual 2</strong></td>
 </tr>
 <tr class="even">
-<td><font color="orange"> <strong>Septiembre</strong> </font></td>
+<td>Lunes 29</td>
+<td></td>
+<td></td>
+<td><strong>Entrega Informe 1 Taller Colectivo</strong></td>
+</tr>
+<tr class="odd">
+<td><font color="orange"> <strong>Junio</strong> </font></td>
 <td></td>
 <td></td>
 <td></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>Jueves 1</td>
-<td><a href="./content/03-content.html"><strong>3. Medición, instrumentos y estándares</strong></a></td>
 <td></td>
-<td>- <a href="files/lecturas/RatSWD_WP_245.pdf">RatSWD Quality standards for the design of measurement instruments</a></td>
-</tr>
-<tr class="even">
-<td>Jueves 8</td>
-<td><a href="./content/04-content.html"><strong>4. Preguntas, cuestionarios y aplicación</strong></a></td>
+<td><a href="./content/06-content.html"><strong>Sesión 6. Visualización de datos</strong></a> <br> <a href="./content/07-content.html"><strong>Sesión 7. Forma de una distribución</strong></a></td>
 <td></td>
-<td><a href="files/lecturas/Czaja&amp;Blair2005Designing-Surveys.pdf">- Czaja &amp; Blair (2005) Cap. 4- Questionnaire Design, Writing the questions</a></td>
 </tr>
 <tr class="odd">
-<td>Jueves 15</td>
+<td>Jueves 8</td>
 <td>RECESO</td>
 <td></td>
 <td></td>
 </tr>
 <tr class="even">
+<td>Jueves 15</td>
+<td><strong>11. Asimetría y curtosis</strong> <br> <strong>12. Distribución normal y puntuación Z</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
 <td>Jueves 22</td>
-<td><a href="./content/05-content.html"><strong>5. Diseño de cuestionarios</strong></a></td>
-<td></td>
-<td>- <a href="files/lecturas/Czaja&amp;Blair2005Designing-Surveys.pdf">Czaja &amp; Blair (2005) Cap. 5 Organizing the questions <br> - Czaja &amp; Blair (2005) Cap. 6 Testing the questions</a></td>
-</tr>
-<tr class="odd">
-<td>Jueves 29</td>
-<td><a href=""><strong>6. Asesorías grupales</strong></a></td>
-<td>- Entrega 1: Diseño de instrumento de medición</td>
-<td>- <a href="files/lecturas/Czaja&amp;Blair2005Designing-Surveys.pdf">Czaja &amp; Blair (2005) Cap. 7 Designing the sample <br> - Czaja &amp; Blair (2005) Cap. 8 Selecting a sample</a></td>
-</tr>
-<tr class="even">
-<td><font color="orange"> <strong>Octubre</strong> </font></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>Jueves 6</td>
-<td><a href=""><strong>7. Presentación informe 1</strong></a></td>
+<td><strong>13. Probabilidades en la distribución normal y otras distribuciones</strong> <br> <strong>14. Fundamentos de la significación estadística, universo y muestra </strong> <br> <strong>15. Inferencia estadística univarada</strong></td>
 <td></td>
 <td></td>
 </tr>
 </tbody>
 </table>
 </section>
-<section id="unidad-2-análisis" class="level3">
-<h3 class="anchored" data-anchor-id="unidad-2-análisis">UNIDAD 2: ANÁLISIS</h3>
+<section id="unidad-4-inferencia-estadística-univariada" class="level3">
+<h3 class="anchored" data-anchor-id="unidad-4-inferencia-estadística-univariada">UNIDAD 4: Inferencia estadística univariada</h3>
 <table class="table">
 <tbody>
 <tr class="odd">
-<td>Jueves 13</td>
-<td><a href="./content/08-content.html"><strong>8. Flujo de trabajo reproducible</strong></a></td>
+<td>Jueves 29</td>
 <td></td>
-<td>- <a href="https://lisa-coes.com/ipo-repro/">IPO</a></td>
-</tr>
-<tr class="even">
-<td>Jueves 20</td>
-<td><a href="./content/09-content.html"><strong>9. Reportes dinámicos</strong></a></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>Jueves 27</td>
-<td><a href=""><strong>Semana de recolección de datos</strong></a></td>
-<td></td>
+<td><a href="./content/08-content.html"><strong>Sesión 8. Inferencia univariada</strong></a></td>
 <td></td>
 </tr>
 <tr class="even">
-<td><font color="orange"> <strong>Noviembre</strong> </font></td>
+<td><font color="orange"> <strong>Julio</strong> </font></td>
 <td></td>
 <td></td>
 <td></td>
 </tr>
 <tr class="odd">
-<td>Jueves 3</td>
-<td>RECESO</td>
+<td>Jueves 6</td>
 <td></td>
 <td></td>
+<td><strong>Entrega Tarea Individual 3</strong></td>
 </tr>
 <tr class="even">
-<td>Jueves 10</td>
-<td><a href="./content/10-content.html"><strong>10. Análisis de baterías e índices</strong></a></td>
+<td>Domingo 9</td>
 <td></td>
 <td></td>
-</tr>
-<tr class="odd">
-<td>Jueves 17</td>
-<td><a href="./content/11-content.html"><strong>11. Análisis factorial </strong></a></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td>Jueves 24</td>
-<td><a href=""><strong>14. Presentación final</strong></a></td>
-<td>- Entrega informe 2: Análisis y reporte (Lunes 28) - detalles en pestaña Trabajos</td>
-<td></td>
+<td><strong>Entrega Informe 2 Taller Colectivo</strong></td>
 </tr>
 </tbody>
 </table>
@@ -328,7 +396,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
     button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
     setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
@@ -356,39 +441,58 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   for (var i=0; i<noterefs.length; i++) {
     const ref = noterefs[i];
     tippyHover(ref, function() {
-      let href = ref.getAttribute('href');
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
     });
   }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
-    tippyHover(ref, function() {
-      var popup = window.document.createElement('div');
-      cites.forEach(function(cite) {
-        var citeDiv = window.document.createElement('div');
-        citeDiv.classList.add('hanging-indent');
-        citeDiv.classList.add('csl-entry');
-        var biblioDiv = window.document.getElementById('ref-' + cite);
-        if (biblioDiv) {
-          citeDiv.innerHTML = biblioDiv.innerHTML;
-        }
-        popup.appendChild(citeDiv);
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
       });
-      return popup.innerHTML;
-    });
+    }
   }
 });
 </script>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
-    <div class="nav-footer-left">Content <i class="fa-brands fa-creative-commons" aria-hidden="true"></i> 2022 by <a href="https://www.jc-castillo.com">Juan Castillo</a> <br> All content licensed under a <i class="fa-brands fa-creative-commons" aria-hidden="true"></i> <i class="fa-brands fa-creative-commons-by" aria-hidden="true"></i> <i class="fa-brands fa-creative-commons-nc" aria-hidden="true"></i> <a href="https://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International license (CC BY-NC 4.0)</a></div>   
-    <div class="nav-footer-right">Made with <i class="fa-brands fa-r-project" aria-hidden="true"></i> and <a href="https://quarto.org/">Quarto</a><br> <a href="https://github.com/juancarloscastillo/encuestas-sociales">View the source at <i class="fa-brands fa-github" aria-hidden="true"></i> GitHub</a></div>
+    <div class="nav-footer-left">Content <i class="fa-brands fa-creative-commons" aria-hidden="true"></i> 2024 by Andreas Laffert <br> All content licensed under a <i class="fa-brands fa-creative-commons" aria-hidden="true"></i> <i class="fa-brands fa-creative-commons-by" aria-hidden="true"></i> <i class="fa-brands fa-creative-commons-nc" aria-hidden="true"></i> <a href="https://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International license (CC BY-NC 4.0)</a></div>   
+    <div class="nav-footer-right">Made with <i class="fa-brands fa-r-project" aria-hidden="true"></i> and <a href="https://quarto.org/">Quarto</a><br> <a href="https://github.com/cursos-metodos-facso/descriptiva">View the source at <i class="fa-brands fa-github" aria-hidden="true"></i> GitHub</a></div>
   </div>
 </footer>
 

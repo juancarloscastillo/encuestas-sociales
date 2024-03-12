@@ -2,19 +2,24 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.0.37">
+<meta name="generator" content="quarto-1.2.269">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Encuestas Sociales - Programa</title>
+<title>Estadística Descriptiva - Programa</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-span.underline{text-decoration: underline;}
-div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
 </style>
 
 
@@ -24,7 +29,7 @@ ul.task-list{list-style: none;}
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href=".//files/icon-513.png" rel="icon" type="image/png">
+<link href=".//files/logo-removebg-preview.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -44,33 +49,34 @@ ul.task-list{list-style: none;}
   "type": "overlay",
   "limit": 20,
   "language": {
-    "search-no-results-text": "Sín resultados",
+    "search-no-results-text": "Sin resultados",
     "search-matching-documents-text": "documentos encontrados",
-    "search-copy-link-title": "Copiar el enlace en la busqueda",
-    "search-hide-matches-text": "Esconder resultados adicionales",
-    "search-more-match-text": "hay más resultados en este documento",
-    "search-more-matches-text": "más resultados en este documento",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
     "search-clear-button-title": "Borrar",
     "search-detached-cancel-button-title": "Cancelar",
-    "search-submit-button-title": "Eviar"
+    "search-submit-button-title": "Enviar"
   }
 }</script>
 
 
-<meta property="og:title" content="Encuestas Sociales - Programa">
-<meta property="og:description" content="Este seminario de profundización metodológica está dirigido a quienes tengan interés en adquirir herramientas que les permitan responder de manera adecuada a las demandas actuales de diseño y…">
-<meta property="og:image" content="https://encuestas-sociales.netlify.app/files/social-image-f22.png">
-<meta property="og:site-name" content="Encuestas Sociales">
+<meta property="og:title" content="Estadística Descriptiva - Programa">
+<meta property="og:description" content="Al finalizar el curso los estudiantes conocerán los fundamentos del análisis estadístico diferenciando entre tipos de variables, niveles de medición y formas de distribución.">
+<meta property="og:image" content="https://descriptiva-facso.netlify.app/files/logo.png">
+<meta property="og:site-name" content="Estadística Descriptiva">
 <meta property="og:locale" content="en_US">
-<meta property="og:image:height" content="490">
-<meta property="og:image:width" content="898">
-<meta name="twitter:title" content="Encuestas Sociales - Programa">
-<meta name="twitter:description" content="Este seminario de profundización metodológica está dirigido a quienes tengan interés en adquirir herramientas que les permitan responder de manera adecuada a las demandas actuales de diseño y…">
-<meta name="twitter:image" content="https://encuestas-sociales.netlify.app/files/social-image-f22.png">
-<meta name="twitter:creator" content="@juankcastillo">
+<meta property="og:image:height" content="500">
+<meta property="og:image:width" content="500">
+<meta name="twitter:title" content="Estadística Descriptiva - Programa">
+<meta name="twitter:description" content="Al finalizar el curso los estudiantes conocerán los fundamentos del análisis estadístico diferenciando entre tipos de variables, niveles de medición y formas de distribución.">
+<meta name="twitter:image" content="https://descriptiva-facso.netlify.app/files/logo.png">
+<meta name="twitter:creator" content="@andreaslaffert">
+<meta name="twitter:site" content="@andreaslaffert">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image-height" content="490">
-<meta name="twitter:image-width" content="898">
+<meta name="twitter:image-height" content="500">
+<meta name="twitter:image-width" content="500">
 </head>
 
 <body class="nav-fixed">
@@ -79,33 +85,44 @@ ul.task-list{list-style: none;}
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
-      <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">Encuestas Sociales</span>
-  </a>
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Estadística Descriptiva</span>
+    </a>
+  </div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./syllabus.html" aria-current="page">Programa</a>
+    <a class="nav-link active" href="./syllabus.html" aria-current="page">
+ <span class="menu-text">Programa</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./schedule.html">Planificación</a>
+    <a class="nav-link" href="./schedule.html">
+ <span class="menu-text">Planificación</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./content/index.html">Contenidos</a>
+    <a class="nav-link" href="./class/index.html">
+ <span class="menu-text">Clases</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./trabajos.html">Trabajos</a>
+    <a class="nav-link" href="./assignment/index.html">
+ <span class="menu-text">Prácticos</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./resource/index.html">Recursos</a>
+    <a class="nav-link" href="./trabajos.html">
+ <span class="menu-text">Trabajos</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./resource/index.html">
+ <span class="menu-text">Recursos</span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://www.slack.com"><i class="bi bi-slack" role="img" aria-label="Slack">
+    <a class="nav-link" href="https://rstudio.cloud"><i class="bi bi-cloud-fill" role="img" aria-label="RStudio.cloud">
 </i> 
- </a>
+ <span class="menu-text"></span></a>
   </li>  
 </ul>
               <div id="quarto-search" class="" title="Search"></div>
@@ -118,22 +135,31 @@ ul.task-list{list-style: none;}
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc">
+        <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">En esta página</h2>
    
   <ul>
-  <li><a href="#resumen" id="toc-resumen" class="nav-link active" data-scroll-target="#resumen">Resumen</a></li>
-  <li><a href="#objetivo-general" id="toc-objetivo-general" class="nav-link" data-scroll-target="#objetivo-general">Objetivo general</a></li>
+  <li><a href="#propósito-general-del-curso" id="toc-propósito-general-del-curso" class="nav-link active" data-scroll-target="#propósito-general-del-curso">Propósito general del curso</a></li>
+  <li><a href="#competencias" id="toc-competencias" class="nav-link" data-scroll-target="#competencias">Competencias</a>
+  <ul class="collapse">
+  <li><a href="#subcompetencias" id="toc-subcompetencias" class="nav-link" data-scroll-target="#subcompetencias">Subcompetencias</a></li>
+  </ul></li>
   <li><a href="#resultados-de-aprendizaje" id="toc-resultados-de-aprendizaje" class="nav-link" data-scroll-target="#resultados-de-aprendizaje">Resultados de Aprendizaje</a></li>
   <li><a href="#saberes-contenidos" id="toc-saberes-contenidos" class="nav-link" data-scroll-target="#saberes-contenidos">Saberes / contenidos</a>
   <ul class="collapse">
-  <li><a href="#a.-diseño" id="toc-a.-diseño" class="nav-link" data-scroll-target="#a.-diseño">A. Diseño</a></li>
-  <li><a href="#b.-análisis" id="toc-b.-análisis" class="nav-link" data-scroll-target="#b.-análisis">B. Análisis</a></li>
+  <li><a href="#unidad-i.-sociología-y-estadística-algunas-vinculaciones-y-conceptos-fundamentales" id="toc-unidad-i.-sociología-y-estadística-algunas-vinculaciones-y-conceptos-fundamentales" class="nav-link" data-scroll-target="#unidad-i.-sociología-y-estadística-algunas-vinculaciones-y-conceptos-fundamentales">UNIDAD I. Sociología y estadística: algunas vinculaciones y conceptos fundamentales</a></li>
+  <li><a href="#unidad-ii.-la-descripción-de-los-datos-medidas-de-tendencia-central-dispersión-y-posición." id="toc-unidad-ii.-la-descripción-de-los-datos-medidas-de-tendencia-central-dispersión-y-posición." class="nav-link" data-scroll-target="#unidad-ii.-la-descripción-de-los-datos-medidas-de-tendencia-central-dispersión-y-posición.">UNIDAD II. La descripción de los datos: Medidas de tendencia central, dispersión y posición.</a></li>
+  <li><a href="#unidad-iii.-la-forma-de-una-distribución" id="toc-unidad-iii.-la-forma-de-una-distribución" class="nav-link" data-scroll-target="#unidad-iii.-la-forma-de-una-distribución">UNIDAD III. La forma de una distribución</a></li>
+  <li><a href="#unidad-iv.-inferencia-estadística-univariada-de-la-estimación-puntual-al-parámetro" id="toc-unidad-iv.-inferencia-estadística-univariada-de-la-estimación-puntual-al-parámetro" class="nav-link" data-scroll-target="#unidad-iv.-inferencia-estadística-univariada-de-la-estimación-puntual-al-parámetro">UNIDAD IV. Inferencia estadística univariada: de la estimación puntual al parámetro</a></li>
   </ul></li>
   <li><a href="#metodología" id="toc-metodología" class="nav-link" data-scroll-target="#metodología">Metodología</a></li>
   <li><a href="#evaluación" id="toc-evaluación" class="nav-link" data-scroll-target="#evaluación">Evaluación</a></li>
   <li><a href="#requisitos-de-aprobación" id="toc-requisitos-de-aprobación" class="nav-link" data-scroll-target="#requisitos-de-aprobación">Requisitos de aprobación</a></li>
   <li><a href="#palabras-clave" id="toc-palabras-clave" class="nav-link" data-scroll-target="#palabras-clave">Palabras Clave</a></li>
+  <li><a href="#bibliografía-obligatoria" id="toc-bibliografía-obligatoria" class="nav-link" data-scroll-target="#bibliografía-obligatoria">Bibliografía Obligatoria</a>
+  <ul class="collapse">
+  <li><a href="#bibliografía-complementaria" id="toc-bibliografía-complementaria" class="nav-link" data-scroll-target="#bibliografía-complementaria">Bibliografía Complementaria</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -150,6 +176,7 @@ ul.task-list{list-style: none;}
 <div class="quarto-title-meta">
 
     
+  
     
   </div>
   
@@ -160,87 +187,152 @@ ul.task-list{list-style: none;}
 <section id="profesor" class="level3 g-col-6">
 <h3 class="anchored" data-anchor-id="profesor">Profesor</h3>
 <ul>
-<li><i class="fa-solid fa-user" aria-hidden="true"></i> &nbsp; <a href="https://www.jc-castillo.com">Juan Carlos Castillo</a></li>
+<li><i class="fa-solid fa-user" aria-hidden="true"></i> &nbsp; <a href="?var:instructor.url">Rodrigo Asún</a></li>
 <li><i class="fa-solid fa-university" aria-hidden="true"></i> &nbsp; Departamento de Sociología FACSO</li>
-<li><i class="fa-solid fa-envelope" aria-hidden="true"></i> &nbsp; <a href="mailto:juancastillov@uchile.cl">juancastillov@uchile.cl</a></li>
-<li><i class="fa-brands fa-twitter" aria-hidden="true"></i> &nbsp; <a href="https://www.twitter.com/juankcastillo">juankcastillo</a></li>
-<li><i class="fa-solid fa-calendar-check" aria-hidden="true"></i> &nbsp; <a href="https://jc-castillo.com/contacto/">Schedule an appointment</a></li>
+<li><i class="fa-solid fa-envelope" aria-hidden="true"></i> &nbsp; <a href="mailto:rasun@uchile.cl">rasun@uchile.cl</a></li>
 </ul>
 </section>
 <section id="información-del-curso" class="level3 g-col-6">
 <h3 class="anchored" data-anchor-id="información-del-curso">Información del curso</h3>
 <ul>
-<li><i class="fa-solid fa-calendar" aria-hidden="true"></i> &nbsp; Jueves</li>
-<li><i class="fa-solid fa-calendar-alt" aria-hidden="true"></i> &nbsp; Agosto 18–Noviembre 17, 2022</li>
-<li><i class="fa-solid fa-clock" aria-hidden="true"></i> &nbsp; 14:30-16:30 PM</li>
-<li><i class="fa-solid fa-location-dot" aria-hidden="true"></i> &nbsp; Sala 43 FACSO</li>
-<li><i class="fa-brands fa-slack" aria-hidden="true"></i> &nbsp; <a href="">Slack</a></li>
+<li><i class="fa-solid fa-calendar" aria-hidden="true"></i> &nbsp; Lunes y Miércoles</li>
+<li><i class="fa-solid fa-calendar-alt" aria-hidden="true"></i> &nbsp; Marzo–Julio, 2024</li>
+<li><i class="fa-solid fa-clock" aria-hidden="true"></i> &nbsp; 8:30 AM - 10:00 AM</li>
+<li><i class="fa-solid fa-location-dot" aria-hidden="true"></i> &nbsp; Aulario B - sala B1</li>
 </ul>
 </section>
 </div>
-<section id="resumen" class="level2">
-<h2 class="anchored" data-anchor-id="resumen">Resumen</h2>
-<p>Este seminario de profundización metodológica está dirigido a quienes tengan interés en adquirir herramientas que les permitan responder de manera adecuada a las demandas actuales de diseño y análisis de encuestas, así como también analizar crítica y propositivamente proyectos de encuestas sociales desarrollados en el país y también a nivel internacional.</p>
-<p>El seminario cuenta con dos partes: diseño y análisis. La sección de diseño cubre temas como cuestionarios, muestreo, aplicación y documentación. Esta sección se evaluará con un reporte donde se analice la calidad de alguna encuesta realizada recientemente a nivel nacional, identificando aspectos críticos y sugerencias de mejora. En la segunda parte se trabajará con herramientas de visualización de datos, generación de reportes y presentación de resultados, lo que sera evaluado mediante un documento de reporte de alguna encuesta de interés.</p>
-<p>La metodología incluye clases lectivas, presentaciones de invitados, y presentación de trabajos grupales.</p>
+<section id="propósito-general-del-curso" class="level2">
+<h2 class="anchored" data-anchor-id="propósito-general-del-curso">Propósito general del curso</h2>
+<p>Al finalizar el curso los estudiantes conocerán los fundamentos del análisis estadístico diferenciando entre tipos de variables, niveles de medición y formas de distribución. Se espera que los estudiantes sean capaces de diseñar y depurar bases de datos; identificar y definir diferentes tipos de muestreo; aplicar de manera pertinente, estadísticos descriptivos uni y bivariados, utilizar diferentes softwares de análisis estadístico; a partir de los cuáles puedan desarrollar análisis de problemas sociales; contrastar hipótesis de investigación; y elaborar conclusiones integrando fundamentos teóricos con herramientas de análisis estadístico de resultados. Complementariamente se espera que los estudiantes adquieran herramientas que les permitan comunicar resultados de investigación en contextos sociales, profesionales y académicos.</p>
 </section>
-<section id="objetivo-general" class="level2">
-<h2 class="anchored" data-anchor-id="objetivo-general">Objetivo general</h2>
-<p>Las encuestas son utilizadas ampliamente como instrumento de investigación en la academia, el sector público y el sector privado. Dado que en general se identifica a la sociología como la disciplina más cercana al diseño y análisis de este instrumento, este curso consiste en un espacio de formación en la lógica de investigación por encuestas, sus objetivos, alcances, alternativas de diseño, análisis y reporte.</p>
+<section id="competencias" class="level2">
+<h2 class="anchored" data-anchor-id="competencias">Competencias</h2>
+<ol type="1">
+<li><p>Delimitar, conceptualizar y analizar diversos objetos de investigación social, con especial énfasis en aquellos relacionados con los procesos de transformación del país y Latinoamérica</p></li>
+<li><p>Manejar diversas estrategias metodológicas de las ciencias sociales</p></li>
+<li><p>Manejar un conjunto de herramientas para el procesamiento y análisis de información</p></li>
+<li><p>Transmitir los conocimientos derivados de la práctica investigativa, así como aquellos adquiridos durante el proceso formativo.</p></li>
+</ol>
+<section id="subcompetencias" class="level3">
+<h3 class="anchored" data-anchor-id="subcompetencias">Subcompetencias</h3>
+<ul>
+<li><p>Contribuir a generar conocimiento sociológico en el marco de estudios y/o procesos de investigación donde se articulen creativamente las dimensiones teórica, metodológica y práctica.</p></li>
+<li><p>Comunicar los saberes disciplinares de manera pertinente a las características de distintos contextos y audiencias, utilizando diversas estrategias y formatos.</p></li>
+</ul>
+</section>
 </section>
 <section id="resultados-de-aprendizaje" class="level2">
 <h2 class="anchored" data-anchor-id="resultados-de-aprendizaje">Resultados de Aprendizaje</h2>
+<p>Al finalizar el curso, los estudiantes serán capaces de:</p>
 <ul>
-<li><p>Manejar herramientas de análisis y reporte de resultados</p></li>
-<li><p>Conocer e implementar protocolos de análisis de datos</p></li>
-<li><p>Desarrollar instrumentos de medición como preguntas, escalas y cuestionarios</p></li>
+<li><p>Comprender la relevancia del análisis estadístico como herramienta para la investigación sociológica y la comprensión de lo social.</p></li>
+<li><p>Conocer y manejar a nivel inicial las herramientas estadísticas e informáticas necesarias para realizar análisis y descripciones univariadas de datos sociales y sociológicos.</p></li>
+<li><p>Resolver problemas de investigación sociológica simples a partir del uso de técnicas de cálculo, análisis y visualización estadística.</p></li>
 </ul>
 </section>
 <section id="saberes-contenidos" class="level2">
 <h2 class="anchored" data-anchor-id="saberes-contenidos">Saberes / contenidos</h2>
-<section id="a.-diseño" class="level3">
-<h3 class="anchored" data-anchor-id="a.-diseño">A. Diseño</h3>
-<ul>
-<li>Encuestas, investigación de mercados y opinión pública -Desarrollo de estudios de encuestas: financiamiento, actores, ética, planificación y productos principales</li>
-<li>Aplicación / terreno: formas de administración, métodos mixtos, incentivos</li>
-<li>Diseño de cuestionarios</li>
-<li>Diseño muestral y representatividad</li>
-<li>Reporte técnico y libro de códigos</li>
-</ul>
+<section id="unidad-i.-sociología-y-estadística-algunas-vinculaciones-y-conceptos-fundamentales" class="level3">
+<h3 class="anchored" data-anchor-id="unidad-i.-sociología-y-estadística-algunas-vinculaciones-y-conceptos-fundamentales">UNIDAD I. Sociología y estadística: algunas vinculaciones y conceptos fundamentales</h3>
+<p>1.1.- ¿Por qué debe aprender estadística un estudiante o una estudiante de sociología?</p>
+<p>● La construcción de conocimiento sociológico y la estadística.</p>
+<p>● La estrategia de investigación cuantitativa: estrategia epistemológica, limitaciones y potencialidades.</p>
+<p>1.2.- La medición en ciencias sociales:</p>
+<p>● Medir en ciencias sociales: del constructo teórico al dato estadístico.</p>
+<p>● Tipos de variables y niveles de medición.</p>
+<p>● La noción de población, muestra, estadístico, parámetro y estimación.</p>
+<p>1.3.- Datos y bases de datos:</p>
+<p>● Las fuentes de información: tratamiento, producción y análisis de datos primarios y secundarios.</p>
+<p>● Manejo y depuración de datos y bases de datos.</p>
+<p>● Aspectos éticos</p>
 </section>
-<section id="b.-análisis" class="level3">
-<h3 class="anchored" data-anchor-id="b.-análisis">B. Análisis</h3>
-<ul>
-<li>El reporte de resultados</li>
-<li>Construcción de índices compuestos y análisis factorial</li>
-<li>Visualización de datos</li>
-<li>Ponderadores y factores de expansión</li>
-<li>Reportes dinámicos con RMarkdown</li>
-<li>Documentos de presentación</li>
-</ul>
+<section id="unidad-ii.-la-descripción-de-los-datos-medidas-de-tendencia-central-dispersión-y-posición." class="level3">
+<h3 class="anchored" data-anchor-id="unidad-ii.-la-descripción-de-los-datos-medidas-de-tendencia-central-dispersión-y-posición.">UNIDAD II. La descripción de los datos: Medidas de tendencia central, dispersión y posición.</h3>
+<p>2.1.- Medidas de tendencia central</p>
+<p>● Supuestos sociológicos tras las medidas de tendencia central. Ejemplos de investigaciones sociológicas relevantes.</p>
+<p>● La media, la media recortada, la mediana y la moda. Potencialidades y limitaciones.</p>
+<p>2.2.- Medidas de dispersión</p>
+<p>● Supuestos sociológicos tras las medidas de dispersión. Ejemplos de investigaciones sociológicas relevantes.</p>
+<p>● Rango, varianza y desviación típica. Coeficiente de variación. Representaciones gráficas.</p>
+<p>2.3.- Medidas de Posición</p>
+<p>● Distribuciones de frecuencias absoluta, relativa y acumulada.</p>
+<p>● Medidas de posición no central: los cuantiles.</p>
+<p>● Representaciones gráficas.</p>
+</section>
+<section id="unidad-iii.-la-forma-de-una-distribución" class="level3">
+<h3 class="anchored" data-anchor-id="unidad-iii.-la-forma-de-una-distribución">UNIDAD III. La forma de una distribución</h3>
+<p>● Noción de función, distribución empírica, teórica y de muestreo. Distribución discreta y distribución continua.</p>
+<p>● Características de la forma de una distribución: Asimetría y Curtosis.</p>
+<p>● Introducción a la distribución normal. Principales características de la distribución. Uso de la distribución normal. Estandarización y puntaje Z.</p>
+<p>● Introducción a otras distribuciones.</p>
+</section>
+<section id="unidad-iv.-inferencia-estadística-univariada-de-la-estimación-puntual-al-parámetro" class="level3">
+<h3 class="anchored" data-anchor-id="unidad-iv.-inferencia-estadística-univariada-de-la-estimación-puntual-al-parámetro">UNIDAD IV. Inferencia estadística univariada: de la estimación puntual al parámetro</h3>
+<p>● Tipos de hipótesis y prueba estadística.</p>
+<p>● Confianza, potencia y error.</p>
+<p>● Estimadores puntuales para medias y proporciones.</p>
+<p>● Conceptos de error típico, nivel de confianza y error de estimación.</p>
+<p>● La construcción de intervalos de confianza para medias y proporciones.</p>
+<p>● Ponderadores y sesgos en estimación de parámetros poblacionales.</p>
 </section>
 </section>
 <section id="metodología" class="level2">
 <h2 class="anchored" data-anchor-id="metodología">Metodología</h2>
-<p>El curso se organiza en sesiones semanales, con una parte lectiva seguida de una práctica. En la parte lectiva se transmiten y discuten los conceptos centrales del diseño y análisis de encuestas. En la parte práctica se aplicarán los conceptos transmitidos en la parte lectiva, además de resolver dudas en el avance de los trabajos de investigación</p>
+<p>La asignatura se desarrollará a través de:</p>
+<ul>
+<li><p>Clases lectivas o exposiciones a cargo del profesor, en las que se presentarán las principales temáticas de la asignatura, y en las que los y las estudiantes tendrán la posibilidad de resolver dudas relacionadas con los aspectos teóricos/conceptuales.</p></li>
+<li><p>Un Laboratorio de Análisis de Datos (LAB) a cargo del profesor y Equipo Docente. Se realizarán ejercicios prácticos de procesamiento, análisis e interpretación de resultados mediante diversos softwares de análisis estadístico (Excel, Spss y R, fundamentalmente). En ellos los y las estudiantes aprenderán a interpretar sociológicamente datos provenientes de múltiples fuentes, visualizar datos en forma gráfica, así como elaborar reportes de resultados.</p></li>
+<li><p>Finalmente, se realizarán sesiones de ayudantía específicas para reforzamiento de contenidos y del trabajo del Laboratorio de Análisis de Datos.</p></li>
+<li><p>Se reforzarán los contenidos con la entrega de material audiovisual y tutoriales</p></li>
+</ul>
 </section>
 <section id="evaluación" class="level2">
 <h2 class="anchored" data-anchor-id="evaluación">Evaluación</h2>
-<p>La evaluación consistirá en la elaboración de dos reportes: uno de diseño (50%) y uno de análisis (50%) un reporte en el formato de artículo de investigación. Este 50% de cada reporte se divide en trabajo escrito (30%), presentación (10%) e informe de corrección cruzada (10%).</p>
+<p>Durante el transcurso de la asignatura (y en el marco del Laboratorio de Análisis de Datos) se realizará un Trabajo de Taller Colectivo (con 2 entregas a lo largo del semestre) y 3 Tareas Individuales.</p>
+<p>● Los grupos de Taller Colectivo (de cuatro estudiantes) tendrán asignado un/a ayudante que acompañará el proceso durante todo el semestre. Las dos entregas del taller valdrán un 30% de la nota final (60% por los talleres colectivos).</p>
+<p>● Se realizarán 3 Tareas Individuales. Cada tarea individual valdrá un 13,3% de la nota final (40% en total por las tareas individuales).</p>
+<p>Para cautelar que se logren los resultados de aprendizaje, en los Talleres Colectivos los estudiantes deberán incluir reflexiones respecto de la utilidad de la estadística para la comprensión de los temas sociológicamente relevantes que estarán analizando. Por otro parte, tanto en los Talleres Colectivos como en las Tareas Individuales los estudiantes deberán demostrar su manejo de las herramientas estadísticas e informáticas enseñadas durante el curso y producir una conclusión sustantiva sobre los datos que estén procesando, con lo que se evaluarán los resultados de aprendizaje 2 y 3.</p>
 </section>
 <section id="requisitos-de-aprobación" class="level2">
 <h2 class="anchored" data-anchor-id="requisitos-de-aprobación">Requisitos de aprobación</h2>
-<ul>
-<li>Nota mínima de aprobación: 4,0 (en escala de 1 a 7).</li>
-</ul>
+<p>ASISTENCIA: Se establece una asistencia de al menos el 50% de las clases. La asistencia habilita al estudiante a presentarse al examen de primera oportunidad.</p>
+<p>NOTA DE APROBACIÓN MÍNIMA (Escala de 1.0 a 7.0): 4.0</p>
+<p>NOTA DE EXIMICIÓN MÍNIMA: 5.0</p>
+<p>REQUISITOS PARA PRESENTACIÓN A EXAMEN:</p>
+<p>Para presentarse al examen de primera oportunidad debe cumplir con: - Nota de presentación igual o superior a 3.5 - Al menos un 50% de asistencia. El estudiante se presentará al examen de segunda oportunidad en los siguientes casos: - Nota final inferior a 3.5 - Haber reprobado el curso luego de rendir el examen de primera oportunidad - No cumplimiento del mínimo de asistencia establecido en el programa (50%).</p>
 </section>
 <section id="palabras-clave" class="level2">
 <h2 class="anchored" data-anchor-id="palabras-clave">Palabras Clave</h2>
 <ul>
-<li>Encuestas sociales, medición, cuestionarios, análisis de datos, tablas, gráficos, visualización, reproducibilidad, reportes dinámicos</li>
+<li>Estadística Descriptiva, Estadística Univariada, Medidas de tendencia central, medidas de dispersión, Distribución Normal.</li>
 </ul>
+</section>
+<section id="bibliografía-obligatoria" class="level2">
+<h2 class="anchored" data-anchor-id="bibliografía-obligatoria">Bibliografía Obligatoria</h2>
+<p>● Blalock, H. (1986). Estadística Social. México D.F.: Fondo de Cultura Económica.</p>
+<p>● Ferrando, M. (1999): Socioestadística: Introducción a la Estadística en Sociología. Alianza Editorial.</p>
+<p>● Pardo Merino, A., &amp; San Martín Castellanos, R. (2010). Análisis de datos en ciencias sociales y de la salud II. Síntesis, Madrid.</p>
+<p>● Cea, D’Ancona, M. (2001). Metodología Cuantitativa. Estrategias y técnicas de investigación social. Síntesis.</p>
+<p>● Asún, R. (2006). Medir la Realidad Social: el sentido de la investigación cuantitativa. En: M. Canales (Ed.). Metodologías de Investigación Social (pp.&nbsp;29-60). Santiago de Chile: LOM. 21.</p>
+<section id="bibliografía-complementaria" class="level3">
+<h3 class="anchored" data-anchor-id="bibliografía-complementaria">Bibliografía Complementaria</h3>
+<p>● Field, A. (2009). Discovering Statistics Using IBM SPSS. California: SAGE Publications. Disponible online en: http://www.soc.univ.kiev.ua/sites/default/files/library/elopen/andyfield-discovering-statistics-using-spss-third-edition-20091.pdf</p>
+<p>● Field, A., Miles, J. y Field, Z. (2012) Discovering Statistics Using R. California: SAGE Publications.</p>
+<p>● Boccardo, G. &amp; Ruiz, F. (2019). RStudio para Estadística Descriptiva en Ciencias Sociales. Segunda edición. En línea en: https://bookdown.org/. Departamento de Sociología, Facultad de Ciencias Sociales, Universidad de Chile.</p>
+<p>● Ritchey, F. J. (2008). Estadística para las ciencias sociales. McGraw-Hill.</p>
+<p>● Stallman, R. (2004). Software libre para una sociedad libre. En línea en: https://www.traficantes.net/. Traficantes de Sueños.</p>
+<p>● Wrigth Mills, C. (1975). Empirismo abstracto. En: La imaginación sociológica. México: Fondo de Cultura Económica.</p>
+<p>● de Micheaux, P. L., Drouilhet, R., &amp; Liquet, B. (2013). The R software.Fundamentals of Programming and Statistical Analysis. Springer.</p>
+<p>● Elousa, P. (2009). ¿Existe vida más allá del SPSS? Descubre R. En Revista Psicothema, vol.21, n° 4, pp.&nbsp;652-655. Disponible online en: www.ehu.eus/gip/publicaciones/articulos/2009/2.pdf</p>
+<p>● González, F. (2019). Big data, algoritmos y política: las ciencias sociales en la era de las redes digitales. Revista Cinta moebio 65: pp.&nbsp;267-280.</p>
+<p>● Grolemund &amp; Wickham (2016). R for Data Science. Disponible en línea en: https://r4ds.had.co.nz/. O’Reilly Media.</p>
+<p>● Paradis, E. (2003). R para Principiantes. Francia: Institut des Sciences de l’Évolution. Disponible oline en: https://cran.r-project.org/doc/contrib/rdebuts_es.pdf</p>
+<p>● Urdines, F. &amp; Cruz, A. (2019). Analiza R Datos Políticos. Instituto de Ciencia Política de la Universidad Católica de Chile. Disponible en línea: https://arcruz0.github.io/</p>
+<p>● Wickham, H. (2015). ggplot2: Elegant Graphics for Data Analysis. Disponible en línea en: https://ggplot2-book.org/. Springer.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -284,8 +376,25 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // flash "checked"
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copiada");
+    button.setAttribute("title", "Copiado");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copiado");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
     setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
@@ -313,39 +422,58 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   for (var i=0; i<noterefs.length; i++) {
     const ref = noterefs[i];
     tippyHover(ref, function() {
-      let href = ref.getAttribute('href');
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
     });
   }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
-    tippyHover(ref, function() {
-      var popup = window.document.createElement('div');
-      cites.forEach(function(cite) {
-        var citeDiv = window.document.createElement('div');
-        citeDiv.classList.add('hanging-indent');
-        citeDiv.classList.add('csl-entry');
-        var biblioDiv = window.document.getElementById('ref-' + cite);
-        if (biblioDiv) {
-          citeDiv.innerHTML = biblioDiv.innerHTML;
-        }
-        popup.appendChild(citeDiv);
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
       });
-      return popup.innerHTML;
-    });
+    }
   }
 });
 </script>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
-    <div class="nav-footer-left">Content <i class="fa-brands fa-creative-commons" aria-hidden="true"></i> 2022 by <a href="https://www.jc-castillo.com">Juan Castillo</a> <br> All content licensed under a <i class="fa-brands fa-creative-commons" aria-hidden="true"></i> <i class="fa-brands fa-creative-commons-by" aria-hidden="true"></i> <i class="fa-brands fa-creative-commons-nc" aria-hidden="true"></i> <a href="https://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International license (CC BY-NC 4.0)</a></div>   
-    <div class="nav-footer-right">Made with <i class="fa-brands fa-r-project" aria-hidden="true"></i> and <a href="https://quarto.org/">Quarto</a><br> <a href="https://github.com/juancarloscastillo/encuestas-sociales">View the source at <i class="fa-brands fa-github" aria-hidden="true"></i> GitHub</a></div>
+    <div class="nav-footer-left">Content <i class="fa-brands fa-creative-commons" aria-hidden="true"></i> 2024 by Andreas Laffert <br> All content licensed under a <i class="fa-brands fa-creative-commons" aria-hidden="true"></i> <i class="fa-brands fa-creative-commons-by" aria-hidden="true"></i> <i class="fa-brands fa-creative-commons-nc" aria-hidden="true"></i> <a href="https://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International license (CC BY-NC 4.0)</a></div>   
+    <div class="nav-footer-right">Made with <i class="fa-brands fa-r-project" aria-hidden="true"></i> and <a href="https://quarto.org/">Quarto</a><br> <a href="https://github.com/cursos-metodos-facso/descriptiva">View the source at <i class="fa-brands fa-github" aria-hidden="true"></i> GitHub</a></div>
   </div>
 </footer>
 

@@ -1,0 +1,233 @@
+---
+title: "Práctica 1. Introducción al lenguaje R"
+date: "2023-04-13"
+lang: es
+output:
+  number_sections: true
+---
+
+# Presentación
+
+## 0. Objetivo de la práctica
+
+El objetivo de esta guía práctica es introducirnos a las herramientas que permiten establecer un flujo de trabajo en R.
+
+En detalle, aprenderemos:
+
+1. Cómo establecer un flujo de trabajo mediante **scripts** y **Rprojects** siguiendo el protocolo [IPO](https://lisa-coes.com/ipo-data/)
+
+2. Cómo crear un proyecto de R (R.proyect)
+
+3. Cómo crear un script (hoja) en R
+
+## 1. R y RStudio
+
+**R es un lenguaje y ambiente de programación**, dentro del cual se pueden implementar técnicas estadísticas y de ciencia de datos. Por su parte, **RStudio es** un IDE (integrated development enviroment) para R, o en pocas palabras, es una **interfaz** más amigable que nos permite interactuar con R. 
+
+¿Y por qué aprender R? Existen **muchas razones**, pero algunas de las principales son:
+
+- Empleabilidad 
+- Crisis de reproducibilidad y Ciencia Abierta
+- Facilita manipulación, almacenaje, cálculos y visualización de datos
+- Facilita la colaboración y trabajo en equipo
+- Simple, pero potente
+- Puede integrarse con otros ambientes y herramientas
+
+
+```{r echo=FALSE, warning=FALSE, out.width="50%", fig.align='center'}
+
+knitr::include_graphics("../images/erre.gif", error = FALSE)
+```
+
+Al momento de abrir RStudio por primera vez puede que nos asustemos, pues es un entorno nuevo lleno de posibilidades en donde todavía no conocemos mucho. 
+
+```{r echo=FALSE, warning=FALSE, out.width="50%", fig.align='center'}
+
+knitr::include_graphics("../images/the-office.gif", error = FALSE)
+```
+
+**¡Pero que no cunda el pánico!** ya que estas posibilidades son nuevas oportunidades de aprendizaje en un software libre, gratuito y cada vez más utilizado en las ciencias sociales. ¿Nos vamos a equivocar? Claro que sí, y esperemos que así sea pues más aprenderemos. 
+
+```{r echo=FALSE, warning=FALSE, out.width="80%", fig.align='center'}
+
+knitr::include_graphics("../images/r_rollercoaster.png", error = FALSE)
+```
+
+
+Al ver RStudio por primera vez se nos presentará una interfaz de al menos cuatro paneles.
+
+```{r echo=FALSE, warning=FALSE, out.width="70%", fig.align='center'}
+
+knitr::include_graphics("../images/panel.png", error = FALSE)
+```
+
+
+**¡VEAMOS COMO COMENZAR A USAR R!**
+
+## 2. Flujo de trabajo en R
+
+Tal vez una de las dificultades más comunes o cotidianas del uso de R es el orden de trabajo, en donde tenemos cientos de archivos, scripts, gráficos, bases de datos u otros repartidos desordenadamente en nuestro computador. También se da mucho el caso en que, cuando queremos trabajar con alguien, tenemos que cambiar las rutas de los archivos, por ejemplo en dónde están las bases de datos, ya que nuestros ordenadores y usuarios se llaman y son escencialmente distintos. 
+
+¿Cómo podemos sortear eso? Siguiendo un flujo de trabajo reproducible, autocontenido y ordenado. **En este curso trabajaremos R con un flujo de trabajo reproducible, basado en el sistema [IPO](https://lisa-coes.com/ipo-data/)**. El protocolor IPO es una plantilla/protocolo de estructura digital de carpetas que tiene por objetivo el organizar, procesar y documentar los datos de un proyecto de investigación con miras a la apertura de los datos en un repositorio público y de acceso libre. En concreto, el sistema IPO se propone abordar brevemente todo lo referente a los Datos, Métodos y Resultados.
+
+```{r echo=FALSE, warning=FALSE, out.width="80%", fig.align='center'}
+
+knitr::include_graphics("../images/image (3).png", error = FALSE)
+```
+
+Lleva este nombre por el sistema de carpetas que se implementan: **I**nput, **P**rocesamiento y **O**utput. En la carpeta **Input** guardaremos todos aquellso recursos iniciales que usaremos, como las bases de datos, el libro de códigos, entre otros. En la carpeta de **Procesamiento**, como dice el nombre, guardaremos todos los archivos que procesen y analicen datos. En la carpeta **Output** guardaremos todo aquello que hayamos producido en los archivos de procesamiento, como las bases de datos procesadas listas para compartir o publicas, los documentos de reporte, informes o analísis, gráficos o tablas. 
+
+```{r echo=FALSE, warning=FALSE, out.width="80%", fig.align='center'}
+
+knitr::include_graphics("../images/image (2).png", error = FALSE)
+```
+
+La implementación de la reproducibilidad en este tipo de protocolos se basa en generar un conjunto de archivos auto-contenidos organizado en una estructura de proyecto que cualquier persona pueda compartir y ejecutar. En otras palabras, debe tener todo lo que necesita para ejecutar y volver a ejecutar el análisis. Para conocer más, visita el [Laboratorio de Ciencia Abierta](https://lisa-coes.com/03componentes/). 
+
+```{r echo=FALSE, warning=FALSE, out.width="80%", fig.align='center'}
+
+knitr::include_graphics("../images/image.png", error = FALSE)
+```
+
+## 3. Proyecto de R (.Rproject)
+
+¿Y cómo hacemos lo anterior? Mediante los **Rproject**. Los proyectos en R, o R Projects, serán el centro a partir del cual estaremos trabajando el resto de archivos incluidos en nuestro trabajo con los datos (Input, Procesamiento y Output). En pocas palabras, el **Rproject** será el elemento raíz de nuestro proyecto y que articula o abraza todos los demás componentes. 
+
+```{r echo=FALSE, warning=FALSE, out.width="80%", fig.align='center'}
+
+knitr::include_graphics("../images/cora1.png", error = FALSE)
+```
+
+
+¿Cómo lo hacemos? Es bastante sencillo. Nos dirigiremos a la sección superior derecha de RStudio, donde se encuentra una R dentro de un cubo:
+
+
+```{r echo=FALSE, warning=FALSE, out.width="70%", fig.align='center'}
+knitr::include_graphics("../images/rproj.png", error = FALSE)
+```
+
+Hacemos click en ella, y luego se nos desplegará una ventana con distintas opciones. Seleccionamos **New Project**. 
+
+```{r echo=FALSE, warning=FALSE, out.width="70%", fig.align='center'}
+knitr::include_graphics("../images/new.png", error = FALSE)
+```
+
+Luego, seleccionamos **New Directory > New Project** 
+
+```{r echo=FALSE, warning=FALSE, out.width="60%", fig.align='left'}
+knitr::include_graphics("../images/directort.png", error = FALSE)
+```
+
+```{r echo=FALSE, warning=FALSE, out.width="60%", fig.align='right'}
+knitr::include_graphics("../images/projee.png", error = FALSE)
+```
+
+Una vez realizado lo anterior, nos pedirá asignar un **Directory name**, que es como se llamará nuestro proyecto. Se recomienda que tenga nombres sustantivos. En este ejemplo, le llamaremos _tarea01_.
+
+```{r echo=FALSE, warning=FALSE, out.width="60%", fig.align='left'}
+knitr::include_graphics("../images/name.png", error = FALSE)
+```
+
+```{r echo=FALSE, warning=FALSE, out.width="60%", fig.align='right'}
+knitr::include_graphics("../images/brow.png", error = FALSE)
+```
+
+
+Luego debemos indicarle **dónde queremos que esté alojado en nuestro computador este proyecto**. Para ello pinchamos en el **Browse**, y se nos desplegará nuestro sistema de carpetas de nuestro computador. Supongamos que queremos guardarlo en una carpeta que llamaremos _Estadistica Descriptiva 2023_. 
+
+```{r echo=FALSE, warning=FALSE, out.width="60%", fig.align='left'}
+knitr::include_graphics("../images/carpet.png", error = FALSE)
+```
+Seleccionamos la carpeta y le damos a **Open** o **Abrir**. Una vez realizado lo anterior, volveremos a RStudio y tendremos nuestro projecto abierto. Además, podemos ver que nuestro **.Rproj** se creó en la carpeta respectiva en la esquina inferior derecha de la pantalla. 
+
+```{r echo=FALSE, warning=FALSE, out.width="60%", fig.align='right'}
+knitr::include_graphics("../images/ver.png", error = FALSE)
+```
+
+Ahora, **tenemos que darle el formato de flujo de trabajo reproducible**. Para ello, crearemos las carpetas de Input, Procesamiento y Ouput en la misma carpeta _Estadistica Descriptiva 2023_ donde tenemos alojado el **.Rproject**. 
+
+```{r echo=FALSE, warning=FALSE, out.width="60%", fig.align='left'}
+knitr::include_graphics("../images/carpeta2.png", error = FALSE)
+```
+```{r echo=FALSE, warning=FALSE, out.width="60%", fig.align='right'}
+knitr::include_graphics("../images/ipo.png", error = FALSE)
+```
+¿Y podemos ver esto mismo pero en RStudio? ¡Claro que sí!, cada carpeta que creemos se irá sumando al visualizador de **Files**, así como también si subimos archivos (como bases de datos) en las respectivas subcarpetas, irán apareciendo allí. 
+
+```{r echo=FALSE, warning=FALSE, out.width="60%", fig.align='center'}
+knitr::include_graphics("../images/projectoo.png", error = FALSE)
+```
+
+**¡HEMOS CREADO NUESTRO PROYECTO Y SISTEMA DE TRABAJO REPRODUCIBLE!**
+
+```{r echo=FALSE, warning=FALSE, out.width="80%", fig.align='center'}
+knitr::include_graphics("../images/the-office-dwight.gif", error = FALSE)
+```
+
+## 4. Crear un nuevo Script (.R)
+
+Para comenzar a trabajar en R, lo primero es crear un **Script**. ¿Qué es un script? En términos simples, un _script_ es la _hoja_ en donde escribiremos y guardaremos nuestro código, y en donde a la vez podremos ir ordenando nuestros pasos e incluso ir comentándolos. Cuando hablamos de **Sintaxis** estamos refiriéndonos, en escencia, a un **Script**.  
+
+Imaginen que un Script es como una _hoja_ de receta de cocina, allí anotamos todos los ingredientes, fases y procedimientos que debemos seguir e ir ejecutando. Esta receta la podemos compartir con otros, volver a verla cuando queramos hacer lo mismo o algo similar. Esa es la gracia de un **Script**.
+
+Si bien podemos escribir y ejecutar código directamente en la consola, estos se eliminarán una vez que cerremos la sesión en RStudio. 
+
+**¿Cómo crear un Script?** Hacerlo es bastante sencillo. En la sección superior izquierda de RStudio, debe hacerse click en la hoja con un signo + verde y, luego, seleccionar la opción R Script en el menú desplegado:
+
+```{r echo=FALSE, warning=FALSE, out.width="80%", fig.align='center'}
+knitr::include_graphics("../images/script.png", error = FALSE)
+```
+
+Otra manera de abrir un nuevo script es hacer click en la opción File de la barra superior. Posteriormente seleccionar New File > R Script en los menús desplegados:
+
+```{r echo=FALSE, warning=FALSE, out.width="80%", fig.align='center'}
+knitr::include_graphics("../images/file.png", error = FALSE)
+```
+
+Por último, podemos mantener presionadas las teclas Ctrl + Shift + N en Windows, o ⌘ + Shift + N en Mac.
+
+¡Hemos abierto un nuevo script¡, que se debe ver de la siguiente manera:
+
+```{r echo=FALSE, warning=FALSE, out.width="80%", fig.align='center'}
+knitr::include_graphics("../images/result.png", error = FALSE)
+```
+
+Podemos escribir en él los códigos, que se ejecutarán en la consola una vez mantengamos presionadas las teclas Control + Enter al inicio de la línea
+
+
+```{r echo=FALSE, warning=FALSE, out.width="80%", fig.align='center'}
+knitr::include_graphics("../images/print.png", error = FALSE)
+```
+
+¿Y cómo guardo mi código? Podemos hacer click en el **disquete** situado en la barra que se encuentra sobre el código, o bien, apretar Ctrl + S. 
+
+```{r echo=FALSE, warning=FALSE, out.width="80%", fig.align='center'}
+knitr::include_graphics("../images/save.png", error = FALSE)
+```
+
+La primera vez que guardemos un Script, nos pedirá que le asignemos un nombre y una ruta donde guardarlo. **Este nombre debe ser sustantivo (como procesamiento o análisis), y debemos alojarlo en las subcarpetas que creamos en el paso anterior**. Generalmente, guardaremos los scripts en la carpeta de **Procesamiento**. En este ejemplo, lo llamaremos _script01_: 
+
+```{r echo=FALSE, warning=FALSE, out.width="70%", fig.align='left'}
+knitr::include_graphics("../images/nombre.png", error = FALSE)
+```
+
+```{r echo=FALSE, warning=FALSE, out.width="70%", fig.align='right'}
+knitr::include_graphics("../images/nombre2.png", error = FALSE)
+```
+
+Una vez almacenado en una carpeta, cada vez que clickeemos en los casetes o mantengamos presionadas las teclas Control + S, el archivo se actualizará a la última versión que hayamos guardado
+
+
+## Resumen
+
+Hoy aprendimos a procesar datos en R. En detalle, vimos:
+
+1. Cómo establecer un flujo de trabajo mediante **scripts** y **Rprojects** siguiendo el protocolo [IPO](https://lisa-coes.com/ipo-data/)
+
+2. Cómo crear un proyecto de R (R.proyect)
+
+3. Cómo crear un script (hoja) en R
+
+## Presentación de la clase
+
+- [{{< fa file-archive >}} Presentación Sesión 1.pdf](/projects/ppt.pdf)

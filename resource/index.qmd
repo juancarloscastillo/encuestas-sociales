@@ -1,8 +1,7 @@
 ---
-title: "Recursos"
+title: "Recursos adicionales"
 lang: es
 ---
 
-En esta sección se presentan una serie de recursos como ejemplos de encuestas, construcción de instrumentos, muestreo, análisis y reporte.
+En esta sección se presentan una serie de recursos como ejemplos de bases de datos, tutoriales, guías y sitios de consulta sobre el uso de R.
 
-[en construcción] 

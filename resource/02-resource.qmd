@@ -1,18 +1,45 @@
 ---
-title: "Medición e instrumentos"
-date: "2022-08-18"
+title: "Uso de R"
+date: "2023-03-06"
 lang: es
 ---
 
-- [Soep Scales Manual (2017)](https://www.diw.de/documents/publikationen/73/diw_01.c.571151.de/diw_ssp0423.pdf)
+# Recursos web para aprender R
 
-- [ratSWD (2015) Quality Standards for the Development, Application, and Evaluation of Measurement Instruments in Social Science Survey Research ](https://encuestas-sociales.netlify.app/files/lecturas/RatSWD_WP_245.pdf)
+- [R para Ciencia de Datos](https://es.r4ds.hadley.nz/)
 
-- [Documenting Measurement Instruments for the Social
-and Behavioral Sciences](https://www.gesis.org/fileadmin/upload/SDMwiki/2020_schmidt_measurement_1.pdf)
+- [Hands-On Programming with R](https://rstudio-education.github.io/hopr/)
 
-- [Survey Quality Predictor](https://sqp.gesis.org/). SQP 3.0 is a survey quality prediction system for questions used in survey research.
+- [Manual de R](https://fhernanb.github.io/Manual-de-R/)
 
-- [Explorador de preguntas de la General Social Survey](https://gssdataexplorer.norc.org/home)
+- [Más libros de R](https://www.rstudio.com/resources/books/)
 
-- [Buscador preguntas CEP](https://www.cepchile.cl/cep/site/edic/base/port/buscador.html)
+- [AnalizaR Datos Políticos](https://arcruz0.github.io/libroadp/)
+
+- [R Cheatsheets](https://posit.co/resources/cheatsheets/)
+
+- [Guías rápidas en R](https://www.maximaformacion.es/libreria-recursos/guias-rapidas/)
+
+- [RStudio para Estadística Descriptiva en Ciencias Sociales](https://bookdown.org/gboccardo/manual-ED-UCH/)
+
+
+# Visualización de datos en R
+
+- [R Graph Gallery](https://r-graph-gallery.com/)
+
+- [Data to Viz](https://www.data-to-viz.com/)
+
+- [Data Visualization Course](https://datavizm20.classes.andrewheiss.com/)
+
+
+
+# Sitios de consulta y comunidad de R
+
+- [Stack Overflow](https://stackoverflow.com/)
+
+- [Geeks for geeks](https://www.geeksforgeeks.org/) 
+
+- [ChatGPT](https://chat.openai.com/chat)
+
+- [Rstudio Community](https://community.rstudio.com/)
+

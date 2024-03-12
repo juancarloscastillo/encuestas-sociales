@@ -84,7 +84,7 @@ Gráfico final
 data <- data %>%  set_labels (., labels=c("No le agrada"=1,
   "Le agrada"=5))
 
-plot_stackfrq(data, sort.frq = "last.desc", geom.colors = "OrRd") + theme(legend.position="bottom")
+plot_stackfrq(data, sort.frq = "last.desc", geom.colors = "OrRd") #+ theme(legend.position="bottom")
 
 
 ```

@@ -1,0 +1,32 @@
+---
+title: "Diseño de un reporte de investigación"
+subtitle: "Estadística Descriptiva"
+author: "Andreas Laffert & Daniela Olivares"
+institute: "Universidad de Chile"
+output: 
+  beamer_presentation: 
+    slide_level: 2
+    toc: true
+    incremental: yes
+    theme: Madrid
+    colortheme: whale
+date: "Jueves 22 de junio de 2023"
+lang: es
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
+# Formulación de un problema de investigación
+
+# Niveles de alcance
+
+# Pregunta de investigación
+
+# Objetivos de investigación
+
+# Formulación de hipótesis
+
+

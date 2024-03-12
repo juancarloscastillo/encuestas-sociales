@@ -1,0 +1,253 @@
+---
+title: "Práctica 2. Conocimientos básicos de programación en R"
+date: "2023-04-13"
+lang: es
+output:
+  number_sections: true
+---
+ 
+# Presentación
+
+## 0. Objetivo de la práctica
+
+El objetivo de esta guía práctica es introducirnos en los procedimientos básicos del uso del lenguaje y ambiente R.
+
+En detalle, aprenderemos:
+
+
+1. Herramientas básicas de programación en R
+
+2. Operadores en R
+
+3. Tipos de datos
+
+
+## 1. Conocimientos básicos de programación 
+
+Revisemos algunos conocimientos básicos para la programación en R. Pero antes, tengamos dos cosas en mente: 
+
+- Primero, ¿qué es codificar?, en programación **codificar corresponde a un proceso de entrega de instrucciones** en un lenguaje específico, siguiendo un orden lógico y coherente. 
+
+- Segundo, de aquí en adelante nos manejaremos con una máxima en el curso; **_existe un acuerdo implícito entre tú y R_: R hará todos los cálculos por ti, pero en cambio _tú_ debes dar las instrucciones con total precisión.**
+
+### 1.1 R como calculadora
+
+Uno de los usos más sencillos y que están a la base de R, es usarlo como una calculadora. 
+
+```{r, collapse=FALSE}
+5+5
+
+25/5
+
+2*2
+
+27-2
+
+```
+
+Como podrás ver, el resultado de estas instrucciones aparecen como un `[1]` en la consola. También podemos hacer operatorias más complejas y con más cálculos. 
+
+```{r, collapse=FALSE}
+12*(7+2)+(45-32)+8
+
+22^2 - 2^2
+
+1/200 * 30
+```
+
+
+### 1.2 Un lenguaje orientado a objetos
+
+R es un lenguaje de programación orientado a objetos. ¿Qué significa eso?, implica que podemos crear elementos dentro del ambiente de R, a los cuales les **asignaremos información** que quedará almacenada, información que puede ir desde números, palabras, cálculos hasta grandes bases de datos. 
+
+Todas las instrucciones en R en las que crees objetos, es decir, instrucciones de **asignación**, tendrán la misma estructura:
+
+`nombre_objeto <- valor`
+
+El asignador `<-` se utiliza para crear objetos y forma parte de uno de los **operadores** usados en R. 
+
+Los elementos que podemos asignar a objetos son múltiples, como números, palabras acompañadas siempre de corchetes `" "` y vectores que corresponden a un conjunto o secuencia de elementos del mismo tipo definidos por la funcion de concatenar = `c()`.
+
+Veamos un ejemplo creando objetos:
+
+```{r, collapse=FALSE}
+x <- 4 # asignar
+
+x # ejecutar
+
+y <- "Hola mundo" # los carácteres alfabéticos siempre van acompañados de corchetes
+
+y 
+
+```
+
+
+¿Y concatenando? Hacemos un vector.
+
+```{r, collapse=FALSE}
+edad <- c(18,22,36,19,35) # concatenar (variable de razon)
+
+edad
+
+genero <- c(3,1,1,2,3) # masculino = 1; femenino = 2; transgenero = 3 (variable nominal)
+
+genero 
+
+gse <- c("ABC1", "C2", "E", "AbC1", "E")  # tambíen se pueden usar carácteres (variable ordinal)
+
+gse
+```
+
+
+
+**¡Hagamos una pequeño reto!**: ¿Cuál es el valor de a y b? Si a <- 5; b <- a; a <- 4
+
+```{r, collapse=FALSE}
+
+a <- 5
+b <- a
+a <- 4
+
+print(a) # imprimir en la consola
+
+print(b)
+
+a + 10
+```
+
+Ahora, sea z = a^2 ¿qué resultado obtenemos de a * b + z?
+
+```{r, collapse=FALSE}
+z <- a^2 # asignar
+
+a * b + z
+```
+
+
+Además de lo anterior, en R es fundamental la creación de **data.frames**. Un Data.frame es una estructura de datos de dos dimensiones (columnas y filas), donde las columnas pueden ser de diferente naturaleza, pero deben tener el mismo largo. A partir de ella agrupamos variables en una matriz, o sea, construimos una base de datos. Es como "pegar" las columnas (variables) una al lado de otra. 
+
+Creemos un data.frame con los vectores que ya creamos antes. 
+
+```{r, collapse=FALSE}
+base1 <- data.frame(genero, gse, edad) # Resulta como objeto de "datos" en
+                                       # entorno.
+
+base1
+
+```
+
+Como puedes ver, para crear el data.frame usamos la función que lleva el mismo nombre, colocando dentro del paréntesis los vectores que creamos anteriormente: `data.frame(mis_vectores)`. 
+
+Ahora, creemos un `data.frame` desce cero. En este ejemplo, crearemos los vectores dentro de la función `data.frame()`.
+
+```{r, collapse=FALSE}
+# Ejemplo de como crear un data.frame desde 0: 
+
+base2 <- data.frame(Sexo=c("H","M","H","M","H","M"),
+                    Estatura=c(1.83,1.76,1.82,1.60,1.90,1.66),
+                    Peso=c(67,58,66,48,75,55))
+
+head(base2)  # Me permite visualizar las primeras filas
+
+```
+
+## 2. Operadores en R
+
+Antes de trabajar con datos, debemos conocer el concepto de **operadores**. Estos símbolos no son de uso exclusivo en R, pero no todos tienen el mismo significado que en otros softwares.
+
+Los operadores son símbolos que permiten, en los distintos procedimientos de procesamiento, simplificar procesos. Por ejemplo, serán útilizados cuando filtremos nuestros datos para personas de ciertas categorías, cuando calculemos variables nuevas (de manera aritmética o condicional) o, simplemente, cuando queramos hacer procesos “concatenados”.
+
+
+![](../images/operadores.png)
+
+¡Veamos algunos ejemplos!
+
+```{r, collapse=FALSE}
+20 == 5 # igualdad
+
+30 >= 14 # mayor o igual que
+
+22 <= 2 # menor o igual que
+
+25 != 10 # no es igual a
+
+p = 10; y = 5; p <= y # operatoria en objetos
+
+```
+
+
+## 3. Tipos de datos
+
+### 3.1 ¿Qué son los tipos de datos?
+
+En R, al igual que en la mayoría de lenguajes de programación, contamos con datos de diversos tipos, en razón de los cuales podemos realizar determinados procedimientos de tratamiento o análisis. 
+
+**Los tipos de datos están íntimamente relacionados con el nivel de medición de las variables** a las que corresponden. Como viste en clases, la teoría de los niveles de medición contempla cuatro tipos: 
+
+![](../images/noir2.jpg)
+
+### 3.2 ¿Qué tipos de datos encontramos en R?
+
+Para responder esta pregunta, ¡metamos nuestras manos en los datos!. En esta oportunidad trabajaremos sobre un subset de datos del Modulo de Desigualdad Social de la encuesta [International Social Survey Programme del 2019](https://www.gesis.org/en/issp/home). Esta base la descargaremos directamente desde internet por esta vez (en futuras sesiones aprenderemos cómo cargar bases de datos).  
+
+```{r, eval=TRUE}
+#cargamos la base de datos desde internet
+
+load(url("https://github.com/Andreas-Lafferte/descriptiva/blob/main/data/db-proc.RData?raw=true"))
+
+head(rand_df) # ver primeros casos de la base
+
+```
+
+
+#### I) Character
+
+Los datos `character` están directamente asociados a las variables cualitativas (o categóricas). Generalmente suelen ser variables de texto abierto, como es el caso de la variable **pais**, que detalla el país de procedencia de la persona encuestada.
+
+Para conocer cuál es el tipo de variable en R, utilizamos el comando `class()`, y para detallar dentro de la base de datos cuál es la variable de interés, utilizamos el símbolo `$` posterior a la base de datos:
+
+```{r, collapse=FALSE}
+class(rand_df$pais) # siempre es la misma estructura = base$variable
+
+```
+
+Sin embargo, estas variables no tienden a ser las mejores a la hora de presentar nuestros resultados. Como solución, tenemos las variables de tipo Factor.
+
+#### II) Factor
+
+Las variables de tipo `factor` son ideales para trabajar con variables de tipo nominal u ordinal. Esto es así debido a que permiten establecer un orden entre las categorías de la variable, lo cual es fundamental si trabajamos, por ejemplo, con variables nominales como el sexo de los encuestados, o si trabajamos con variables ordinales como su ideología política.
+
+
+```{r, collapse=FALSE}
+class(rand_df$sexo)
+
+class(rand_df$ideologia)
+```
+
+
+#### III) Numeric
+
+Las variables de tipo `numeric` son variables de tipo númerica, las cuales pueden ser intervales o de razón. Así, por ejemplo, cuando trabajamos con variables de razón trabajamos con variables como el número de hijos o la edad (aunque sería extraño encuestar a alguien con 0 años). 
+
+```{r, collapse=FALSE}
+class(rand_df$edad)
+
+```
+
+# Resumen
+
+Hoy aprendimos distintas herramientas básicas para utilizar el lenguaje y ambiente R. Como resumen:
+
+- Utilizar R como calculadora, su lógica orientada a objetos creando objetos, vectores y data.frames
+
+- Operadores en R
+
+- Tipos de datos en R como variables cualitativas (character o factor) y cuantitativas (numeric)
+
+## Video de clase
+
+<div style="width: 100%; height: 600px; overflow: hidden;">
+<video  style="width: 100%;" controls>
+<source src="https://www.dropbox.com/s/ruqc21ldnfua6rc/video-sesion01-LAB.mp4?raw=1" type="video/mp4">
+</video>
+</div>

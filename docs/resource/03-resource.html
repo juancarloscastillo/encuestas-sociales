@@ -2,19 +2,24 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.0.37">
+<meta name="generator" content="quarto-1.2.269">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Encuestas Sociales - Tutorial formr</title>
+<title>Estadística Descriptiva - Importar datos en R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-span.underline{text-decoration: underline;}
-div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -53,7 +58,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -66,7 +71,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -87,7 +92,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="..//files/icon-513.png" rel="icon" type="image/png">
+<link href="..//files/logo-removebg-preview.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -107,33 +112,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   "type": "overlay",
   "limit": 20,
   "language": {
-    "search-no-results-text": "Sín resultados",
+    "search-no-results-text": "Sin resultados",
     "search-matching-documents-text": "documentos encontrados",
-    "search-copy-link-title": "Copiar el enlace en la busqueda",
-    "search-hide-matches-text": "Esconder resultados adicionales",
-    "search-more-match-text": "hay más resultados en este documento",
-    "search-more-matches-text": "más resultados en este documento",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
     "search-clear-button-title": "Borrar",
     "search-detached-cancel-button-title": "Cancelar",
-    "search-submit-button-title": "Eviar"
+    "search-submit-button-title": "Enviar"
   }
 }</script>
 
 
-<meta property="og:title" content="Encuestas Sociales - Tutorial formr">
-<meta property="og:description" content="Actualmente, el diseño de cuestionarios e instrumentos de medición en el contexto del desarrollo de encuestas sociales se implementa principalmente en formato web.">
-<meta property="og:image" content="https://encuestas-sociales.netlify.app/files/social-image-f22.png">
-<meta property="og:site-name" content="Encuestas Sociales">
+<meta property="og:title" content="Estadística Descriptiva - Importar datos en R">
+<meta property="og:image" content="https://descriptiva-facso.netlify.app/files/logo.png">
+<meta property="og:site-name" content="Estadística Descriptiva">
 <meta property="og:locale" content="en_US">
-<meta property="og:image:height" content="490">
-<meta property="og:image:width" content="898">
-<meta name="twitter:title" content="Encuestas Sociales - Tutorial formr">
-<meta name="twitter:description" content="Actualmente, el diseño de cuestionarios e instrumentos de medición en el contexto del desarrollo de encuestas sociales se implementa principalmente en formato web.">
-<meta name="twitter:image" content="https://encuestas-sociales.netlify.app/files/social-image-f22.png">
-<meta name="twitter:creator" content="@juankcastillo">
+<meta property="og:image:height" content="500">
+<meta property="og:image:width" content="500">
+<meta name="twitter:title" content="Estadística Descriptiva - Importar datos en R">
+<meta name="twitter:image" content="https://descriptiva-facso.netlify.app/files/logo.png">
+<meta name="twitter:creator" content="@andreaslaffert">
+<meta name="twitter:site" content="@andreaslaffert">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image-height" content="490">
-<meta name="twitter:image-width" content="898">
+<meta name="twitter:image-height" content="500">
+<meta name="twitter:image-width" content="500">
 </head>
 
 <body class="nav-sidebar docked nav-fixed">
@@ -142,33 +146,44 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
-      <a class="navbar-brand" href="../index.html">
-    <span class="navbar-title">Encuestas Sociales</span>
-  </a>
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Estadística Descriptiva</span>
+    </a>
+  </div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../syllabus.html">Programa</a>
+    <a class="nav-link" href="../syllabus.html">
+ <span class="menu-text">Programa</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../schedule.html">Planificación</a>
+    <a class="nav-link" href="../schedule.html">
+ <span class="menu-text">Planificación</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../content/index.html">Contenidos</a>
+    <a class="nav-link" href="../class/index.html">
+ <span class="menu-text">Clases</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../trabajos.html">Trabajos</a>
+    <a class="nav-link" href="../content/index.html">
+ <span class="menu-text">Prácticos</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../resource/index.html" aria-current="page">Recursos</a>
+    <a class="nav-link" href="../trabajos.html">
+ <span class="menu-text">Trabajos</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="../resource/index.html" aria-current="page">
+ <span class="menu-text">Recursos</span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://www.slack.com"><i class="bi bi-slack" role="img" aria-label="Slack">
+    <a class="nav-link" href="https://rstudio.cloud"><i class="bi bi-cloud-fill" role="img" aria-label="RStudio.cloud">
 </i> 
- </a>
+ <span class="menu-text"></span></a>
   </li>  
 </ul>
               <div id="quarto-search" class="" title="Search"></div>
@@ -177,7 +192,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </nav>
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Tutorial formr</h1>
+      <h1 class="quarto-secondary-nav-title">Importar datos en R</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -197,27 +212,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../resource/01-resource.html" class="sidebar-item-text sidebar-link">Ejemplos encuestas</a>
+  <a href="../resource/01-resource.html" class="sidebar-item-text sidebar-link">Bases de Datos</a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../resource/02-resource.html" class="sidebar-item-text sidebar-link">Medición e instrumentos</a>
+  <a href="../resource/02-resource.html" class="sidebar-item-text sidebar-link">Uso de R</a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../resource/03-resource.html" class="sidebar-item-text sidebar-link active">Tutorial formr</a>
+  <a href="../resource/03-resource.html" class="sidebar-item-text sidebar-link active">Importar datos en R</a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../resource/04-resource.html" class="sidebar-item-text sidebar-link">Encuesta Microemprendimiento</a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../resource/05-resource.html" class="sidebar-item-text sidebar-link">Práctica Análisis factorial</a>
+  <a href="../resource/04-resource.html" class="sidebar-item-text sidebar-link">Procesamiento, limpieza y manipulación de datos en R base</a>
   </div>
 </li>
     </ul>
@@ -225,27 +235,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc">
+        <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">En esta página</h2>
    
   <ul>
-  <li><a href="#contexto" id="toc-contexto" class="nav-link active" data-scroll-target="#contexto">Contexto</a></li>
-  <li><a href="#generar-cuenta" id="toc-generar-cuenta" class="nav-link" data-scroll-target="#generar-cuenta">1. Generar cuenta</a></li>
-  <li><a href="#crear-encuesta" id="toc-crear-encuesta" class="nav-link" data-scroll-target="#crear-encuesta">2. Crear encuesta</a>
+  <li><a href="#otras-formas-de-importar-datos-en-r" id="toc-otras-formas-de-importar-datos-en-r" class="nav-link active" data-scroll-target="#otras-formas-de-importar-datos-en-r">Otras formas de importar datos en R</a>
   <ul class="collapse">
-  <li><a href="#creando-la-planilla" id="toc-creando-la-planilla" class="nav-link" data-scroll-target="#creando-la-planilla">Creando la planilla</a></li>
-  <li><a href="#tipos-de-items-y-campos" id="toc-tipos-de-items-y-campos" class="nav-link" data-scroll-target="#tipos-de-items-y-campos">Tipos de items y campos</a></li>
-  </ul></li>
-  <li><a href="#generar-y-publicar-encuesta-runs" id="toc-generar-y-publicar-encuesta-runs" class="nav-link" data-scroll-target="#generar-y-publicar-encuesta-runs">3. Generar y publicar encuesta (Runs)</a>
+  <li><a href="#cargar-librerías" id="toc-cargar-librerías" class="nav-link" data-scroll-target="#cargar-librerías">1. Cargar librerías</a></li>
+  <li><a href="#cargar-datos-en-distintos-formatos" id="toc-cargar-datos-en-distintos-formatos" class="nav-link" data-scroll-target="#cargar-datos-en-distintos-formatos">2. Cargar datos en distintos formatos</a>
   <ul class="collapse">
-  <li><a href="#generación-de-un-run" id="toc-generación-de-un-run" class="nav-link" data-scroll-target="#generación-de-un-run">Generación de un Run</a></li>
+  <li><a href="#a-.dta" id="toc-a-.dta" class="nav-link" data-scroll-target="#a-.dta">a) <code>.dta</code></a></li>
+  <li><a href="#b-.csv" id="toc-b-.csv" class="nav-link" data-scroll-target="#b-.csv">b) <code>.csv</code></a></li>
+  <li><a href="#c-.xlsx" id="toc-c-.xlsx" class="nav-link" data-scroll-target="#c-.xlsx">c) <code>.xlsx</code></a></li>
+  <li><a href="#d-.rdata-o-.rds" id="toc-d-.rdata-o-.rds" class="nav-link" data-scroll-target="#d-.rdata-o-.rds">d) <code>.RData</code> o <code>.rds</code></a></li>
   </ul></li>
-  <li><a href="#obtención-de-datos" id="toc-obtención-de-datos" class="nav-link" data-scroll-target="#obtención-de-datos">4.Obtención de datos</a>
-  <ul class="collapse">
-  <li><a href="#exportar-desde-formr" id="toc-exportar-desde-formr" class="nav-link" data-scroll-target="#exportar-desde-formr">Exportar desde formr</a></li>
-  <li><a href="#leer-desde-r-con-la-librería-formr" id="toc-leer-desde-r-con-la-librería-formr" class="nav-link" data-scroll-target="#leer-desde-r-con-la-librería-formr">Leer desde R con la librería formr</a></li>
   </ul></li>
-  <li><a href="#recursos-y-links" id="toc-recursos-y-links" class="nav-link" data-scroll-target="#recursos-y-links">Recursos y links</a></li>
   </ul>
 </nav>
     </div>
@@ -254,7 +258,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Tutorial formr</h1>
+<h1 class="title d-none d-lg-block">Importar datos en R</h1>
 </div>
 
 
@@ -263,265 +267,229 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
     
     <div>
-    <div class="quarto-title-meta-heading">Fecha de Publicación</div>
+    <div class="quarto-title-meta-heading">Fecha de publicación</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">15 de septiembre de 2022</p>
+      <p class="date">11 de mayo de 2023</p>
     </div>
   </div>
+  
     
   </div>
   
 
 </header>
 
-<section id="contexto" class="level1">
-<h1>Contexto</h1>
-<p>Actualmente, el diseño de cuestionarios e instrumentos de medición en el contexto del desarrollo de encuestas sociales se implementa principalmente en formato web. Incluso cuando la aplicación es cara-a-cara, crecientemente las entrevistas se encuetran mediadas por un dispositivo electrónico tipo tablet o teléfono donde se registran las respuestas. Por lo tanto, la elección de la plataforma en la cual diseñar y programar la encuesta cobra cada vez más importancia.</p>
-<p>La plataforma utilizada por defecto por el público general al momento de diseñar encuestas actualmente es <strong>Google Forms</strong>, que tiene la ventaja de ser fácil de diseñar, administrar y registrar respuestas. Sin embargo, carece de funcionalidades necesarias en investigaciones sociales (como seguimiento, aleatorización de preguntas y módulos, etiquetado, reproducibilidad, etc.). Para encuestas con funciones más avanzadas existen servicios como Qualtrics y Surveymonkey, que poseen muchas ventajas en diseño de cuestionario pero que poseen limitaciones en términos de licencias pagadas y propiedad del trabajo realizado. Por ejemplo, si se deja de pagar Qualtrics, todo el trabajo de programación de la encuesta en la plataforma ya no es accesible y es difícilmente transferible a otras plataformas.</p>
-<p><strong><code>formr</code></strong> es a la vez una plataforma y una librería de <code>R</code> que permite desarrollar y administrar encuestas en un entorno caracterizado por:</p>
-<ul>
-<li>código abierto</li>
-<li>amplia variedad de funcionalidades como aleatorización de módulos y preguntas, encuestas longitudinales, experimentos, etc.</li>
-<li>programación en un entorno simple (planilla de cálculo)</li>
-<li>propiedad de los contenidos (a diferencia de plataformas donde la programación de la encuesta es accesible mediante licencia pagada)</li>
-<li>reproducibilidad</li>
-<li>vínculo expedito con R, tanto para análisis de los datos como también para incorporar en la encuesta elementos generados mediante R / Rmarkdown</li>
-</ul>
-<p>Los pasos para poder utilizar formr son los siguientes:</p>
-<p>1- generar una cuenta 2- crear encuesta 3- publicar encuesta 4- monitoreo de respuestas 5- obtener datos desde R</p>
-</section>
-<section id="generar-cuenta" class="level1">
-<h1>1. Generar cuenta</h1>
-<p><img src="../files/img/formr/webpage.png" class="img-fluid"></p>
-<ol type="1">
-<li><p>abrir una cuenta en <a href="https://formr.org/">formr.org</a> (en ocasiones puede que las cuentas para usuarios nuevos estén temporalmente suspendidas, en ese caso abrir una cuenta en https://workshops.formr.org/, que se utiliza para fines de aprendizaje)</p></li>
-<li><p>confirmar el mail enviado al correo con el que se abrió la cuenta y hacer login.</p></li>
-</ol>
-<p><img src="../../files/img/formr/login.png" class="img-fluid"></p>
-<ol start="3" type="1">
-<li>enviar un correo a accounts@formr.org para obtener una cuenta de administrador. En el asunto escribir: <strong><em>administratior account request</em></strong>, y en el cuerpo del correo: <em>Dear formr team, I would like to request an administrator account as well as API keys for my account [aquí el correo con el que se creó la cuenta]. Best regards [nombre].</em></li>
-</ol>
-<p>En general la respuesta es rápida.</p>
-<ol start="4" type="1">
-<li>Una vez recibido el correo autorizando la cuenta como administrador, al ingresar nuevamente a formr se muestra un panel (dashboard) con distintas opciones:</li>
-</ol>
-<p><img src="../files/img/formr/formr-dashboard.png" class="img-fluid"></p>
-<p>Las principales opciones son:</p>
-<ul>
-<li><strong>Create survey</strong>: es el diseño del cuestionario</li>
-<li><strong>Create run</strong>: es la implementación de la encuesta</li>
-</ul>
-<p>Además, hay un link a Documentation, que es el manual de <code>formr</code> y se recomienda leer. En este tutorial cubriremos solo algunos aspectos contenidos en el manual.</p>
-</section>
-<section id="crear-encuesta" class="level1">
-<h1>2. Crear encuesta</h1>
-<ul>
-<li>botón <em>create survey</em> en el dashboard: aparecen dos formas de ingresar la información, desde un archivo local o una <em>Googlesheet</em>, que es un simil de excel en los archivos de Drive de google.</li>
-</ul>
-<p><img src="../files/img/formr/import-survey.png" class="img-fluid"></p>
-<ul>
-<li><p>en general se recomienda vincular a una hoja de <em>Googlesheets</em></p></li>
-<li><p>la planilla donde se ingresa la información posee ciertas columnas específicas que luego son leídas por formr:</p></li>
-</ul>
-<p><img src="../files/img/formr/googlesheet.png" class="img-fluid"></p>
-<ul>
-<li><p>las columnas principales de la planilla son:</p>
-<ul>
-<li><strong>type</strong>: tipo de item (se especifica con un código que se detalla abajo)</li>
-<li><strong>name</strong>: es el nombre del item y también será el nombre de la variable en la base de datos. Considerar: minúsculas, breves, sin caractéres especiales, sin espacios</li>
-<li><strong>label</strong>: es el texto del item o pregunta</li>
-<li><strong>choice</strong>: son las opciones de respuesta</li>
-</ul></li>
-<li><p>las otras columnas son:</p>
-<ul>
-<li><strong>class</strong>: opciones adicionales de la pregunta, como por ejemplo formato de las opciones, utilización de lista recurrente de opciones de respuesta, etc.</li>
-<li><strong>optional</strong>: si la pregunta es opcional o no. Si se ingresa un asterisco en esta casilla la pregunta correspondiente es opcional, es decir, se puede seguir avanzando en el cuestionario a pesar de no responder ninguna opción.</li>
-<li><strong>showif</strong>: es la manera de especificar filtros. Se utilizan operadores lógicos haciendo referencia al nombre de la pregunta (columna name) . Por ejemplo: <em>pregunta1==3</em>; se mostrará esta pregunta solamente a aquellos que hayan respondido 3 en la pregunta 1.</li>
-</ul></li>
-</ul>
-<p>La columna <strong>explanations</strong> no es considerada en la lectura de la planilla desde formr, se utiliza solo para comentarios en relación a la pregunta (por ejemplo: “corregir pregunta antes del piloto”)</p>
-<section id="creando-la-planilla" class="level2">
-<h2 class="anchored" data-anchor-id="creando-la-planilla">Creando la planilla</h2>
-<ul>
-<li><p>hay una planilla modelo de forms que se encuentra disponible <a href="https://docs.google.com/spreadsheets/d/1vXJ8sbkh0p4pM5xNqOelRUmslcq2IHnY9o52RmQLKFw/">aquí</a>. Para poder generar un archivo propio y editable a partir de este modelo se debe hacer una copia en el drive personal: ir a <em>archivo &gt; hacer una copia</em>, y se sugiere dar un nombre que permita su clara identificación (ej: probandoencuesta). <strong>Evitar espacios y caracteres especiales</strong></p></li>
-<li><p>una vez creado el archivo se debe generar permiso para que pueda ser accesible desde formr: en compartir &gt; cualquier persona con el enlace &gt; editor.</p></li>
-<li><p>copiar la dirección de la planilla y pegar en la ventana de formr <em>sheet link</em>. Además, dar un nombre a la encuesta (survey name).</p></li>
-<li><p><strong>Tener en cuenta las restricciones para el nombre de la encuesta</strong>: debe comenzar con una letra, entre 2 y 64 caracteres, sin caracteres especiales (tildes, eñes, espacios). Para este tutorial le daremos el nombre “prueba1”</p></li>
-<li><p>con esto la información de la planilla debería cargarse y así se puede acceder a la encuesta desde el menú superior (Surveys). Al hacer click en la encuesta se abre la siguiente plataforma de diseño:</p></li>
-</ul>
-<p><img src="../files/img/formr/survey_platform.png" class="img-fluid"></p>
-<ul>
-<li><p>si se presiona la opción <em>test survey</em> se puede visualizar (renderizar) la encuesta creada, y al comparar planilla con la visualización se puede tener una idea de cómo se especifican los distintos tipos de ítems e información que aparece en la encuesta</p></li>
-<li><p>modificaciones e incorporación de nuevos items: cada vez que se realiza una modificación en la planilla se debe actualizar la encuesta en formr (<strong>no es automático</strong>). Para ello hay que ir a <em>import items</em> y presionar el botón al final (Upload new items). En caso que items anteriores hayan sido borrados o que la etiqueta se haya modificado (<em>name</em> en la planilla ), mostrará una advertencia y hay que escribir el nombre de la encuesta para modificar esto.</p></li>
-</ul>
-</section>
-<section id="tipos-de-items-y-campos" class="level2">
-<h2 class="anchored" data-anchor-id="tipos-de-items-y-campos">Tipos de items y campos</h2>
-<p>El aspecto central del cuestionario sin duda se realaciona con el diseño de items. En la planilla, el tipo de item se especifica en la columna <em>type</em>. Los principales son:</p>
-<ul>
-<li><p>Texto:</p>
-<ul>
-<li><em>text</em>: campo de texto para respuesta breve</li>
-<li><em>textarea</em>: campo respuesta amplia</li>
-<li>note: solo texto (por ejemplo encabezados, instrucciones), no solicita respuesta</li>
-</ul></li>
-<li><p>Botón de salto de página:</p>
-<ul>
-<li>submit, y darle un label para poder avanzar</li>
-</ul></li>
-<li><p>Selección múltiple</p>
-<table class="table">
-<colgroup>
-<col style="width: 19%">
-<col style="width: 80%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>type</th>
-<th>descripción</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>mc</td>
-<td>lista_de_elección opción múltiple (botones de radio), puede elegir solo uno.</td>
-</tr>
-<tr class="even">
-<td>mc_button</td>
-<td>lista_elección como mc pero en lugar de que el texto aparezca junto a un botón pequeño, un botón grande contiene cada etiqueta de opción</td>
-</tr>
-<tr class="odd">
-<td>mc_multiple</td>
-<td>opción múltiple múltiple (casillas de verificación), puede elegir varios. Opciones definidas como arriba.</td>
-</tr>
-<tr class="even">
-<td>mc_multiple_button</td>
-<td>como mc_multiple y mc_button controlar una sola casilla de verificación para la confirmación de una declaración.</td>
-</tr>
-<tr class="odd">
-<td>check</td>
-<td>un botón más grande para comprobar.</td>
-</tr>
-<tr class="even">
-<td>rating_button; min, max, step</td>
-<td>Esto muestra la etiqueta de elección 1 a la izquierda, la etiqueta de elección 2 a la derecha y una serie de botones numerados definidos por min, max, step en el medio. Los valores predeterminados son 1,5,1.</td>
-</tr>
-<tr class="odd">
-<td>sex</td>
-<td>abreviatura de mc_button con los símbolos ♂, ♀ como opciones</td>
-</tr>
-<tr class="even">
-<td>select_one</td>
-<td>un menú desplegable, puede elegir solo uno select_multiple</td>
-</tr>
-<tr class="odd">
-<td>select_or_add_one, choice_list, maxType</td>
-<td>como select_one, pero permite a los usuarios elegir una opción no dada. Utiliza Select2. se puede usar para establecer un límite superior en la longitud de la opción agregada por el usuario. El valor predeterminado es 255.</td>
-</tr>
-<tr class="even">
-<td>select_or_add_multiple, choice_list, maxType, maxChoose</td>
-<td>como select_multiple y select_or_add_one, permite a los usuarios agregar opciones no proporcionadas. Se puede usar para colocar un límite superior en la cantidad de opciones seleccionables.</td>
-</tr>
-<tr class="odd">
-<td>mc_heading, choice_list</td>
-<td>Este tipo le permite mostrar las etiquetas para las opciones mc o mc_multiple solo una vez. Para obtener el aspecto tabular necesario, asigne un ancho constante a las opciones (usando, por ejemplo, mc-width100), asigne al encabezado las mismas opciones que a los mcs y asigne a los siguientes mcs (o mc_multiples) las mismas clases + hide_label. En pantallas pequeñas, mc_heading se ocultará y las etiquetas se volverán a mostrar automáticamente, ya que, de lo contrario, el diseño tabular se rompería.</td>
-</tr>
-</tbody>
-</table></li>
-</ul>
-<p>Un ejemplo de encuesta con estas opciones se puede ve <a href="https://tutorial-formr.formr.org/">aquí</a>. El archivo de origen se puede acceder <a href="https://docs.google.com/spreadsheets/d/1f_vfBWqoCTUWhgrlLf39AHz1ljHyGgtaCyKlOH3vPbQ/edit#gid=1611481919">aquí</a></p>
-</section>
-</section>
-<section id="generar-y-publicar-encuesta-runs" class="level1">
-<h1>3. Generar y publicar encuesta (Runs)</h1>
-<p>En <code>formr</code> hay una diferencia importante entre la encuesta ingresada (cuestionario o <em>survey</em>) y la encuesta administrada, que se denomina <strong>Run</strong>. Un Run consiste en montar la o las encuestas de manera que puedan ser luego respondidas en la plataforma online. Esta distinción hace sentido ya que permite la creación de cuestionarios independientes (por ejemplo, por módulos a cargo de distintos equipos) y que luego se pueden combinar en un mismo Run. Esto además da la posibilidad de filtrar módulos completos según respuestas anteriores y de aleatorizar los módulos. Con el Run además se genera una dirección web que será luego la que se puede distribuir en el trabajo de campo de la encuesta.</p>
-<section id="generación-de-un-run" class="level2">
-<h2 class="anchored" data-anchor-id="generación-de-un-run">Generación de un Run</h2>
-<ul>
-<li>desde el dashboard o el menú superior: Create run, y dar un nombre con las restricciones habituales, aparece lo siguiente:</li>
-</ul>
-<p><img src="../files/img/formr/run.png" class="img-fluid"></p>
-<ul>
-<li>un Run es el diseño del estudio propiamente tal. Para ello se pueden ingresar items de distintas encuestas presentes en la cuenta, ordenar, introducir elementos adicionales como pausas, tiempos, mensaje final, etc. también desde el Run se puede visualizar la encuesta con <strong>Test run</strong>.</li>
-</ul>
-</section>
-</section>
-<section id="obtención-de-datos" class="level1">
-<h1>4.Obtención de datos</h1>
-<section id="exportar-desde-formr" class="level2">
-<h2 class="anchored" data-anchor-id="exportar-desde-formr">Exportar desde formr</h2>
-<ul>
-<li>Directamente desde la página de formr, ir a la encuesta -&gt; show results -&gt; export, y exportar como csv. Luego leer desde r con data&lt;-read.csv(nombre del archivo)</li>
-</ul>
-</section>
-<section id="leer-desde-r-con-la-librería-formr" class="level2">
-<h2 class="anchored" data-anchor-id="leer-desde-r-con-la-librería-formr">Leer desde R con la librería formr</h2>
-<ul>
-<li><p>instalar la librería <code>formr</code> (advertencia: en mi caso requirió actualizar <em>bioconductor</em> , lo que a su vez actualiza varias librerías y tomó un rato largo. Mejor dejarlo corriendo durante la noche)</p></li>
-<li><p>cargar librería Cargar/instalar librería</p></li>
-</ul>
+<section id="otras-formas-de-importar-datos-en-r" class="level1">
+<h1>Otras formas de importar datos en R</h1>
+<section id="cargar-librerías" class="level2">
+<h2 class="anchored" data-anchor-id="cargar-librerías">1. Cargar librerías</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(formr)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<ul>
-<li>ingresar credenciales:</li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">formr_store_keys</span>(<span class="st">"encuestas.sociales.facso@gmail.com"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<ul>
-<li><p>ingresar cuenta gmail y password de formr en ventana emergente</p></li>
-<li><p>luego pide otra cosa (keyring), invesar un password y memorizarlo/guardarlo para una siguiente ocasión</p></li>
-<li><p>la conexión queda hecha y se pueden obtener los datos, por ejemplo:</p></li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">formr_results</span>(<span class="at">survey_name =</span> <span class="st">'caracterizacion'</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="callout-warning callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Advertencia
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><strong>Bugs: Problemas de conexión</strong>:</p>
-<ul>
-<li>en ocasiones he tenido problemas a la hora de re-conectar con formr, aparece el error (pero tal vez sea una cosa de mi sistema operativo, Linux-Ubuntu):</li>
-</ul>
-<pre><code>Error: lexical error: invalid char in json text.
-                                       &lt;!DOCTYPE html&gt; &lt;html&gt;     &lt;hea
-                     (right here) ------^</code></pre>
-<p>Pero en realidad ese error ocurre porque no reconoce las credenciales, si pongo una password aleatoria también aparece el error. Mi impresión es que es algún error de la librería keyring. Por lo tanto, ingresar de esta manera (que no utiliza librería keyring):</p>
-<pre><code>formr_connect(
-  email = "encuestas.sociales.facso@gmail.com",
-  password = "aqui_password",
-)</code></pre>
-<p>Arroja un warning, pero de todas maneras queda conectado.</p>
-</div>
-</div>
-<ul>
-<li>tener en cuenta que los datos se obtienen de cada una de las encuestas por separado, entonces si se necesita información de otro(s) módulo(s) para el análisis se deben juntar (merge) las bases de datos. Para ello, la variable que identifica a cada caso es la sesión (session), ejemplo:</li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>df1 <span class="sc">%&gt;%</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(df2</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>, <span class="at">by=</span><span class="st">'session'</span>) <span class="sc">%&gt;%</span>  <span class="fu">left_join</span>(df3, <span class="at">by=</span><span class="st">'session'</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(tidyverse,</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>               sjmisc,</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>               dplyr,</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>               haven, <span class="co"># para .dta, .sav</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>               readr, <span class="co"># para .csv</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>               readxl) <span class="co"># para archivos excel </span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
+<section id="cargar-datos-en-distintos-formatos" class="level2">
+<h2 class="anchored" data-anchor-id="cargar-datos-en-distintos-formatos">2. Cargar datos en distintos formatos</h2>
+<section id="a-.dta" class="level3">
+<h3 class="anchored" data-anchor-id="a-.dta">a) <code>.dta</code></h3>
+<p>Los archivos con extensión <code>.dta</code> generalmente provienen de Stata, es decir, son bases o datos procesadas en dicho software. Para estos archivos, así como aquellos que vienen en <code>.sav</code>, usamos el paquete <code>haven()</code>. En estos casos siempre es conveniente señalar el tipo de <code>encoding</code> en el argumento, en este caso, usamos <code>"UTF-8"</code> que corresponde al estandar.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>elsoc_2022 <span class="ot">&lt;-</span> haven<span class="sc">::</span><span class="fu">read_dta</span>(<span class="at">file =</span> <span class="st">"input/data/ELSOC_W06_v1.0_Stata.dta"</span>, <span class="at">encoding =</span> <span class="st">"UTF-8"</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>elsoc_2022</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2,730 × 437
+   idencuesta ola       version muestra   cuest…¹ cuest…² formato segme…³ comuna
+        &lt;dbl&gt; &lt;dbl+lbl&gt;   &lt;dbl&gt; &lt;dbl+lbl&gt; &lt;dbl+l&gt; &lt;dbl+l&gt; &lt;dbl+l&gt;   &lt;dbl&gt; &lt;chr&gt; 
+ 1    1101011 6 [2022]   202201 1 [Muest… 2 [Ven… 1 [Com… 1 [CAP…  110101 Iquiq…
+ 2    1101012 6 [2022]   202201 1 [Muest… 2 [Ven… 1 [Com… 1 [CAP…  110101 Iquiq…
+ 3    1101023 6 [2022]   202201 1 [Muest… 2 [Ven… 1 [Com… 1 [CAP…  110102 Iquiq…
+ 4    1101041 6 [2022]   202201 1 [Muest… 2 [Ven… 1 [Com… 1 [CAP…  110104 Iquiq…
+ 5    1101081 6 [2022]   202201 1 [Muest… 2 [Ven… 1 [Com… 1 [CAP…  110108 Iquiq…
+ 6    1101082 6 [2022]   202201 1 [Muest… 1 [Per… 1 [Com… 1 [CAP…  110108 Iquiq…
+ 7    1101102 6 [2022]   202201 1 [Muest… 2 [Ven… 1 [Com… 1 [CAP…  110110 San F…
+ 8    1101103 6 [2022]   202201 1 [Muest… 1 [Per… 1 [Com… 1 [CAP…  110110 Iquiq…
+ 9    1101111 6 [2022]   202201 1 [Muest… 2 [Ven… 1 [Com… 1 [CAP…  110111 Iquiq…
+10    1101113 6 [2022]   202201 1 [Muest… 1 [Per… 1 [Com… 1 [CAP…  110111 Iquiq…
+# … with 2,720 more rows, 428 more variables: comuna_cod &lt;dbl+lbl&gt;,
+#   region &lt;chr&gt;, region_cod &lt;dbl+lbl&gt;, estrato &lt;dbl+lbl&gt;, ponderador01 &lt;dbl&gt;,
+#   ponderador02 &lt;dbl&gt;, fact_exp01 &lt;dbl&gt;, fact_exp02 &lt;dbl&gt;, r05_01 &lt;dbl+lbl&gt;,
+#   r05_02 &lt;dbl+lbl&gt;, r06 &lt;dbl+lbl&gt;, r07 &lt;dbl+lbl&gt;, r08 &lt;dbl+lbl&gt;,
+#   r09 &lt;dbl+lbl&gt;, r10 &lt;dbl+lbl&gt;, r11 &lt;dbl+lbl&gt;, r12_01 &lt;dbl+lbl&gt;,
+#   r12_02 &lt;dbl+lbl&gt;, r12_03 &lt;dbl+lbl&gt;, r12_04 &lt;dbl+lbl&gt;, r12_05 &lt;dbl+lbl&gt;,
+#   r12_06 &lt;dbl+lbl&gt;, r12_07 &lt;dbl+lbl&gt;, r13_nredes &lt;dbl&gt;, …</code></pre>
+</div>
+</div>
 </section>
-<section id="recursos-y-links" class="level1">
-<h1>Recursos y links</h1>
-<ul>
-<li><p><a href="https://www.jhelvy.com/talks/2021-01-21-surveys-with-formr/">Using formr to create R-powered surveys with individualized feedback, by John Paul Helveston</a></p></li>
-<li><p><a href="files/docs/arslan2019formr_paper.pdf">Arslan et al (2019) formr: A study framework</a></p></li>
-<li><p><a href="files/docs/formr_workshop_Goettingen_09_2018.pdf">Arslan 2018 Workshop formr and data sharing</a></p></li>
-</ul>
-<hr>
+<section id="b-.csv" class="level3">
+<h3 class="anchored" data-anchor-id="b-.csv">b) <code>.csv</code></h3>
+<p>Para los archivos con extension <code>.csv</code> usamos el paquete <code>readr::</code>. Importante es que los archivos <code>.csv</code> vienen separados por comas <code>,</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>elsoc_2022 <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="at">file =</span><span class="st">"input/data/ELSOC_W06_v1.0_CSV.csv"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 2730 Columns: 437
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr   (14): comuna, region, c12_09_otro, c16_otro, c17_otro, c20_otro, m36_o...
+dbl  (422): idencuesta, ola, version, muestra, cuestion_mig, cuestion_comple...
+date   (1): fecha_entr
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>elsoc_2022</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2,730 × 437
+   idencu…¹   ola version muestra cuest…² cuest…³ formato segme…⁴ comuna comun…⁵
+      &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt;
+ 1  1101011     6  202201       1       2       1       1  110101 Iquiq…    1101
+ 2  1101012     6  202201       1       2       1       1  110101 Iquiq…    1101
+ 3  1101023     6  202201       1       2       1       1  110102 Iquiq…    1101
+ 4  1101041     6  202201       1       2       1       1  110104 Iquiq…    1101
+ 5  1101081     6  202201       1       2       1       1  110108 Iquiq…    1101
+ 6  1101082     6  202201       1       1       1       1  110108 Iquiq…    1101
+ 7  1101102     6  202201       1       2       1       1  110110 San F…    6301
+ 8  1101103     6  202201       1       1       1       1  110110 Iquiq…    1101
+ 9  1101111     6  202201       1       2       1       1  110111 Iquiq…    1101
+10  1101113     6  202201       1       1       1       1  110111 Iquiq…    1101
+# … with 2,720 more rows, 427 more variables: region &lt;chr&gt;, region_cod &lt;dbl&gt;,
+#   estrato &lt;dbl&gt;, ponderador01 &lt;dbl&gt;, ponderador02 &lt;dbl&gt;, fact_exp01 &lt;dbl&gt;,
+#   fact_exp02 &lt;dbl&gt;, r05_01 &lt;dbl&gt;, r05_02 &lt;dbl&gt;, r06 &lt;dbl&gt;, r07 &lt;dbl&gt;,
+#   r08 &lt;dbl&gt;, r09 &lt;dbl&gt;, r10 &lt;dbl&gt;, r11 &lt;dbl&gt;, r12_01 &lt;dbl&gt;, r12_02 &lt;dbl&gt;,
+#   r12_03 &lt;dbl&gt;, r12_04 &lt;dbl&gt;, r12_05 &lt;dbl&gt;, r12_06 &lt;dbl&gt;, r12_07 &lt;dbl&gt;,
+#   r13_nredes &lt;dbl&gt;, r13_sexo_01 &lt;dbl&gt;, r13_edad_01 &lt;dbl&gt;,
+#   r13_relacion_01 &lt;dbl&gt;, r13_tiempo_01 &lt;dbl&gt;, r13_barrio_01 &lt;dbl&gt;, …</code></pre>
+</div>
+</div>
+</section>
+<section id="c-.xlsx" class="level3">
+<h3 class="anchored" data-anchor-id="c-.xlsx">c) <code>.xlsx</code></h3>
+<p>Para los archivos que provienen de Excel, tales como los <code>.xlsx</code> usamos el paquete <code>readxl::</code>. Noten que podemos cargar la base completa, como en el primer ejemplo, pero también podemos especificarle que queremos determinadas columnas y filas de un archivo Excel, como en el segundo ejmplo.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>elsoc_2022 <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="st">"input/data/ELSOC_W06_v1.0_EXCEL.xlsx"</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>elsoc_2022</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2,730 × 437
+   idencu…¹   ola version muestra cuest…² cuest…³ formato segme…⁴ comuna comun…⁵
+      &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt;
+ 1  1101011     6  202201       1       2       1       1  110101 Iquiq…    1101
+ 2  1101012     6  202201       1       2       1       1  110101 Iquiq…    1101
+ 3  1101023     6  202201       1       2       1       1  110102 Iquiq…    1101
+ 4  1101041     6  202201       1       2       1       1  110104 Iquiq…    1101
+ 5  1101081     6  202201       1       2       1       1  110108 Iquiq…    1101
+ 6  1101082     6  202201       1       1       1       1  110108 Iquiq…    1101
+ 7  1101102     6  202201       1       2       1       1  110110 San F…    6301
+ 8  1101103     6  202201       1       1       1       1  110110 Iquiq…    1101
+ 9  1101111     6  202201       1       2       1       1  110111 Iquiq…    1101
+10  1101113     6  202201       1       1       1       1  110111 Iquiq…    1101
+# … with 2,720 more rows, 427 more variables: region &lt;chr&gt;, region_cod &lt;dbl&gt;,
+#   estrato &lt;dbl&gt;, ponderador01 &lt;dbl&gt;, ponderador02 &lt;dbl&gt;, fact_exp01 &lt;dbl&gt;,
+#   fact_exp02 &lt;dbl&gt;, r05_01 &lt;dbl&gt;, r05_02 &lt;dbl&gt;, r06 &lt;dbl&gt;, r07 &lt;dbl&gt;,
+#   r08 &lt;dbl&gt;, r09 &lt;dbl&gt;, r10 &lt;dbl&gt;, r11 &lt;dbl&gt;, r12_01 &lt;dbl&gt;, r12_02 &lt;dbl&gt;,
+#   r12_03 &lt;dbl&gt;, r12_04 &lt;dbl&gt;, r12_05 &lt;dbl&gt;, r12_06 &lt;dbl&gt;, r12_07 &lt;dbl&gt;,
+#   r13_nredes &lt;dbl&gt;, r13_sexo_01 &lt;dbl&gt;, r13_edad_01 &lt;dbl&gt;,
+#   r13_relacion_01 &lt;dbl&gt;, r13_tiempo_01 &lt;dbl&gt;, r13_barrio_01 &lt;dbl&gt;, …</code></pre>
+</div>
+</div>
+<p>En este caso le especificamos la hoja del excel en donde están los datos, y también le indicamos el rango que son las columnas y filas que queremos ver. Esto siempre sigue el mismo formato: “COLUMNAFILA_INICIO:COLUMNAFILA_FINAL”. No necesariamente tienen que ser todas las columnas o filas, eso lo podemos cambiar según necesitemos.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>elsoc_2022 <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="at">path =</span> <span class="st">"input/data/ELSOC_W06_v1.0_EXCEL.xlsx"</span>,</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">sheet =</span> <span class="dv">1</span>, <span class="co"># indicamos la hoja del excel,</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">range =</span> <span class="st">"A1:PU2731"</span>)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>elsoc_2022</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2,730 × 437
+   idencu…¹   ola version muestra cuest…² cuest…³ formato segme…⁴ comuna comun…⁵
+      &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt;
+ 1  1101011     6  202201       1       2       1       1  110101 Iquiq…    1101
+ 2  1101012     6  202201       1       2       1       1  110101 Iquiq…    1101
+ 3  1101023     6  202201       1       2       1       1  110102 Iquiq…    1101
+ 4  1101041     6  202201       1       2       1       1  110104 Iquiq…    1101
+ 5  1101081     6  202201       1       2       1       1  110108 Iquiq…    1101
+ 6  1101082     6  202201       1       1       1       1  110108 Iquiq…    1101
+ 7  1101102     6  202201       1       2       1       1  110110 San F…    6301
+ 8  1101103     6  202201       1       1       1       1  110110 Iquiq…    1101
+ 9  1101111     6  202201       1       2       1       1  110111 Iquiq…    1101
+10  1101113     6  202201       1       1       1       1  110111 Iquiq…    1101
+# … with 2,720 more rows, 427 more variables: region &lt;chr&gt;, region_cod &lt;dbl&gt;,
+#   estrato &lt;dbl&gt;, ponderador01 &lt;dbl&gt;, ponderador02 &lt;dbl&gt;, fact_exp01 &lt;dbl&gt;,
+#   fact_exp02 &lt;dbl&gt;, r05_01 &lt;dbl&gt;, r05_02 &lt;dbl&gt;, r06 &lt;dbl&gt;, r07 &lt;dbl&gt;,
+#   r08 &lt;dbl&gt;, r09 &lt;dbl&gt;, r10 &lt;dbl&gt;, r11 &lt;dbl&gt;, r12_01 &lt;dbl&gt;, r12_02 &lt;dbl&gt;,
+#   r12_03 &lt;dbl&gt;, r12_04 &lt;dbl&gt;, r12_05 &lt;dbl&gt;, r12_06 &lt;dbl&gt;, r12_07 &lt;dbl&gt;,
+#   r13_nredes &lt;dbl&gt;, r13_sexo_01 &lt;dbl&gt;, r13_edad_01 &lt;dbl&gt;,
+#   r13_relacion_01 &lt;dbl&gt;, r13_tiempo_01 &lt;dbl&gt;, r13_barrio_01 &lt;dbl&gt;, …</code></pre>
+</div>
+</div>
+<p>Seleccionamos solo algunas columnas. Ahora vemos que solo tenemos 26 columnas:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>elsoc_2022 <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="at">path =</span> <span class="st">"input/data/ELSOC_W06_v1.0_EXCEL.xlsx"</span>,</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">sheet =</span> <span class="dv">1</span>, <span class="co"># indicamos la hoja del excel,</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">range =</span> <span class="st">"A1:Z2731"</span>)</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>elsoc_2022</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2,730 × 26
+   idencu…¹   ola version muestra cuest…² cuest…³ formato segme…⁴ comuna comun…⁵
+      &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt;
+ 1  1101011     6  202201       1       2       1       1  110101 Iquiq…    1101
+ 2  1101012     6  202201       1       2       1       1  110101 Iquiq…    1101
+ 3  1101023     6  202201       1       2       1       1  110102 Iquiq…    1101
+ 4  1101041     6  202201       1       2       1       1  110104 Iquiq…    1101
+ 5  1101081     6  202201       1       2       1       1  110108 Iquiq…    1101
+ 6  1101082     6  202201       1       1       1       1  110108 Iquiq…    1101
+ 7  1101102     6  202201       1       2       1       1  110110 San F…    6301
+ 8  1101103     6  202201       1       1       1       1  110110 Iquiq…    1101
+ 9  1101111     6  202201       1       2       1       1  110111 Iquiq…    1101
+10  1101113     6  202201       1       1       1       1  110111 Iquiq…    1101
+# … with 2,720 more rows, 16 more variables: region &lt;chr&gt;, region_cod &lt;dbl&gt;,
+#   estrato &lt;dbl&gt;, ponderador01 &lt;dbl&gt;, ponderador02 &lt;dbl&gt;, fact_exp01 &lt;dbl&gt;,
+#   fact_exp02 &lt;dbl&gt;, r05_01 &lt;dbl&gt;, r05_02 &lt;dbl&gt;, r06 &lt;dbl&gt;, r07 &lt;dbl&gt;,
+#   r08 &lt;dbl&gt;, r09 &lt;dbl&gt;, r10 &lt;dbl&gt;, r11 &lt;dbl&gt;, r12_01 &lt;dbl&gt;, and abbreviated
+#   variable names ¹​idencuesta, ²​cuestion_mig, ³​cuestion_completo, ⁴​segmento,
+#   ⁵​comuna_cod</code></pre>
+</div>
+</div>
+</section>
+<section id="d-.rdata-o-.rds" class="level3">
+<h3 class="anchored" data-anchor-id="d-.rdata-o-.rds">d) <code>.RData</code> o <code>.rds</code></h3>
+<p>Cuando los datos vienen en formato <code>.R</code> no es necesario asinarle un objeto, lo podemos hacer después de ser necesario. Para leer estos archivos usamos la función <code>load()</code> de R base.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>base<span class="sc">::</span><span class="fu">load</span>(<span class="at">file =</span> <span class="st">"input/data/ELSOC_W06_v1.0_R.RData"</span>) </span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>elsoc_2022</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2,730 × 437
+   idencu…¹   ola version muestra cuest…² cuest…³ formato segme…⁴ comuna comun…⁵
+      &lt;dbl&gt; &lt;dbl&gt;   &lt;int&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt;
+ 1  1101011     6  202201       1       2       1       1  110101 Iquiq…    1101
+ 2  1101012     6  202201       1       2       1       1  110101 Iquiq…    1101
+ 3  1101023     6  202201       1       2       1       1  110102 Iquiq…    1101
+ 4  1101041     6  202201       1       2       1       1  110104 Iquiq…    1101
+ 5  1101081     6  202201       1       2       1       1  110108 Iquiq…    1101
+ 6  1101082     6  202201       1       1       1       1  110108 Iquiq…    1101
+ 7  1101102     6  202201       1       2       1       1  110110 San F…    6301
+ 8  1101103     6  202201       1       1       1       1  110110 Iquiq…    1101
+ 9  1101111     6  202201       1       2       1       1  110111 Iquiq…    1101
+10  1101113     6  202201       1       1       1       1  110111 Iquiq…    1101
+# … with 2,720 more rows, 427 more variables: region &lt;chr&gt;, region_cod &lt;dbl&gt;,
+#   estrato &lt;dbl&gt;, ponderador01 &lt;dbl&gt;, ponderador02 &lt;dbl&gt;, fact_exp01 &lt;dbl&gt;,
+#   fact_exp02 &lt;dbl&gt;, r05_01 &lt;dbl&gt;, r05_02 &lt;dbl&gt;, r06 &lt;dbl&gt;, r07 &lt;dbl&gt;,
+#   r08 &lt;dbl&gt;, r09 &lt;dbl&gt;, r10 &lt;dbl&gt;, r11 &lt;dbl&gt;, r12_01 &lt;dbl&gt;, r12_02 &lt;dbl&gt;,
+#   r12_03 &lt;dbl&gt;, r12_04 &lt;dbl&gt;, r12_05 &lt;dbl&gt;, r12_06 &lt;dbl&gt;, r12_07 &lt;dbl&gt;,
+#   r13_nredes &lt;dbl&gt;, r13_sexo_01 &lt;dbl&gt;, r13_edad_01 &lt;dbl&gt;,
+#   r13_relacion_01 &lt;dbl&gt;, r13_tiempo_01 &lt;dbl&gt;, r13_barrio_01 &lt;dbl&gt;, …</code></pre>
+</div>
+</div>
 
 
+</section>
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -565,8 +533,25 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // flash "checked"
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copiada");
+    button.setAttribute("title", "Copiado");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copiado");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
     setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
@@ -594,39 +579,58 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   for (var i=0; i<noterefs.length; i++) {
     const ref = noterefs[i];
     tippyHover(ref, function() {
-      let href = ref.getAttribute('href');
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
     });
   }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
-    tippyHover(ref, function() {
-      var popup = window.document.createElement('div');
-      cites.forEach(function(cite) {
-        var citeDiv = window.document.createElement('div');
-        citeDiv.classList.add('hanging-indent');
-        citeDiv.classList.add('csl-entry');
-        var biblioDiv = window.document.getElementById('ref-' + cite);
-        if (biblioDiv) {
-          citeDiv.innerHTML = biblioDiv.innerHTML;
-        }
-        popup.appendChild(citeDiv);
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
       });
-      return popup.innerHTML;
-    });
+    }
   }
 });
 </script>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
-    <div class="nav-footer-left">Content <i class="fa-brands fa-creative-commons" aria-hidden="true"></i> 2022 by <a href="https://www.jc-castillo.com">Juan Castillo</a> <br> All content licensed under a <i class="fa-brands fa-creative-commons" aria-hidden="true"></i> <i class="fa-brands fa-creative-commons-by" aria-hidden="true"></i> <i class="fa-brands fa-creative-commons-nc" aria-hidden="true"></i> <a href="https://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International license (CC BY-NC 4.0)</a></div>   
-    <div class="nav-footer-right">Made with <i class="fa-brands fa-r-project" aria-hidden="true"></i> and <a href="https://quarto.org/">Quarto</a><br> <a href="https://github.com/juancarloscastillo/encuestas-sociales">View the source at <i class="fa-brands fa-github" aria-hidden="true"></i> GitHub</a></div>
+    <div class="nav-footer-left">Content <i class="fa-brands fa-creative-commons" aria-hidden="true"></i> 2023 by <a href="?var:instructor.url">Andreas Laffert</a> <br> All content licensed under a <i class="fa-brands fa-creative-commons" aria-hidden="true"></i> <i class="fa-brands fa-creative-commons-by" aria-hidden="true"></i> <i class="fa-brands fa-creative-commons-nc" aria-hidden="true"></i> <a href="https://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International license (CC BY-NC 4.0)</a></div>   
+    <div class="nav-footer-right">Made with <i class="fa-brands fa-r-project" aria-hidden="true"></i> and <a href="https://quarto.org/">Quarto</a><br> <a href="https://github.com/Andreas-Lafferte/descriptiva">View the source at <i class="fa-brands fa-github" aria-hidden="true"></i> GitHub</a></div>
   </div>
 </footer>
 

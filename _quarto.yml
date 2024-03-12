@@ -22,69 +22,94 @@ bibliography: files/bib/references.bib
 csl: files/bib/chicago-author-date.csl
 
 website:
-  title: "Encuestas Sociales"
-  site-url: "https://encuestas-sociales.netlify.app"
-  description-meta: "Diseño, análisis, reporte y visualización de encuestas sociales"
-  favicon: "/files/icon-513.png"
+  title: "Estadística Descriptiva"
+  site-url: "https://descriptiva-facso.netlify.app"
+  #description: "Diseño, análisis, reporte y visualización de encuestas sociales"
+  favicon: "/files/logo-removebg-preview.png"
 
   twitter-card:
-    image: "/files/social-image-f22.png"
+    image: "/files/logo.png"
     card-style: summary_large_image
-    creator: "@juankcastillo"
-    site: "@juankcastillo"
+    creator: "@andreaslaffert"
+    site: "@andreaslaffert"
 
   open-graph:
-    image: "/files/social-image-f22.png"
+    image: "/files/logo.png"
     locale: en_US
 
   navbar:
     pinned: true
-    background: "#08C4C4"
+    background: "#00788d"
     right:
       - syllabus.qmd
       - schedule.qmd
-      - text: "Contenidos"
-        file: content/index.qmd
-#      - text: "Assignments"
-#        file: assignment/index.qmd
-#      - text: "Examples"
-#        file: example/index.qmd
+      - text: "Clases"
+        file: class/index.qmd
+      - text: "Prácticos"
+        file: assignment/index.qmd
       - trabajos.qmd
       - text: "Recursos"
         file: resource/index.qmd
-      - icon: slack
-        href: "https://www.slack.com"
-        aria-label: Slack
+      - icon: cloud-fill
+        href: "https://rstudio.cloud"
+        aria-label: RStudio.cloud
+
 
   sidebar:
-    - title: "Contenidos"
+    - title: "Clases"
       style: "docked"
       search: false
       background: dark
       contents:
         - section: "Información general"
           contents:
-            - content/index.qmd
+            - class/index.qmd
         - section: "Sesiones"
           contents:
-            - text: "1: Presentación"
-              file: content/01-content.qmd
-            - text: "2: Bases"
-              file: content/02-content.qmd
-            - text: "3: Medición"
-              file: content/03-content.qmd
-            - text: "4: Preguntas"
-              file: content/04-content.qmd
-            - text: "5: Cuestionario"
-              file: content/05-content.qmd
-            - text: "8: Flujo de trabajo"
-              file: content/08-content.qmd
-            - text: "9: Documentos dinámicos & RMarkdown"
-              file: content/09-content.qmd
-            - text: "10: Baterías e índices"
-              file: content/10-content.qmd
-            - text: "11: Análisis factorial"
-              file: content/11-content.qmd
+            - text: "1: Presentación al curso"
+              file: class/01-class.qmd
+            - text: "2: Caracterización de la investigación cuantitativa"
+              file: class/02-class.qmd
+            - text: "3: Medición y operacionalización"
+              file: class/03-class.qmd
+            - text: "4: Manejo de bases de datos"
+              file: class/04-class.qmd
+            - text: "5: Descripción de los datos"
+              file: class/05-class.qmd
+            - text: "6: Función y distribución de variables"
+              file: class/06-class.qmd
+            - text: "7: Introducción a la inferencia estadística"
+              file: class/07-class.qmd
+
+
+
+    - title: "Practicos"
+      style: "docked"
+      search: false
+      background: dark
+      contents:
+        - section: "Información general"
+          contents:
+            - assignment/index.qmd
+        - section: "Sesiones"
+          contents:
+            - text: "1: Introducción al lenguaje R"
+              file: assignment/01-practico.qmd
+            - text: "2: Conocimientos básicos de programación en R"
+              file: assignment/02-practico.qmd
+            - text: "3: Procesamiento, limpieza y manipulación de datos en R"
+              file: assignment/03-practico.qmd
+            - text: "4: Análisis descriptivo de datos en R"
+              file: assignment/04-practico.qmd
+            - text: "5: Procesamiento y análisis de datos en R"
+              file: assignment/05-practico.qmd
+            - text: "6: Visualización de datos con R"
+              file: assignment/06-practico.qmd
+            - text: "7: Forma de una distribución"
+              file: assignment/07-practico.qmd
+            - text: "8: Inferencia estadística univariada"
+              file: assignment/08-practico.qmd
+
     - title: "Recursos"
       style: "docked"
       search: false
@@ -92,20 +117,22 @@ website:
       contents:
         - text: "Descripción"
           file: resource/index.qmd
-        - text: "Ejemplos encuestas"
+        - text: "Bases de Datos"
           file: resource/01-resource.qmd
-        - text: "Medición e instrumentos"
+        - text: "Uso de R"
           file: resource/02-resource.qmd
-        - text: "Tutorial formr"
+        - text: "Importar datos en R"
           file: resource/03-resource.qmd
-        - text: "Encuesta Microemprendimiento"
+        - text: "Procesamiento, limpieza y manipulación de datos en R base"
           file: resource/04-resource.qmd
-        - text: "Práctica Análisis factorial"
-          file: resource/05-resource.qmd
+
+
+
+
 
   page-footer:
     left: |
-      Content {{< fa brands creative-commons >}} {{< var course.copyright_year >}} by [{{< var instructor.name_no_title >}}]({{< var instructor.url >}}) <br>
+      Content {{< fa brands creative-commons >}} {{< var course.copyright_year >}} by Andreas Laffert <br>
       All content licensed under a {{< fa brands creative-commons >}}
       {{< fa brands creative-commons-by >}} {{< fa brands creative-commons-nc >}}
       [Creative Commons Attribution-NonCommercial 4.0 International license (CC BY-NC 4.0)](https://creativecommons.org/licenses/by-nc/4.0/)

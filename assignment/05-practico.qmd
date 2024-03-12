@@ -1,0 +1,418 @@
+---
+title: "Práctica 5. Repaso procesamiento y análisis de datos en R"
+date: "2023-05-18"
+lang: es
+output:
+  number_sections: true
+---
+
+# Presentación
+
+## Objetivo de la práctica
+
+El objetivo de esta guía práctica es repasar los procedimientos básicos para el procesamiento y análisis descripivo de datos en R, los cuales fueron vistos en las sesiones pasadas del laboratorio.
+
+En detalle, aprenderemos:
+
+1.  Establecer un flujo de trabajo en R.
+
+2.  Procesar, limpiar y transformar bases de datos en R.
+
+3.  Realizar análisis desciptivos (medidas de posición, tendencia central y dispersión) en R.
+
+
+**¡Al final de esta práctica la idea es que cada un\_ elabore y entienda su propio documento de preparación y análisis de datos!**
+
+## Recursos de la práctica
+
+En esta práctica trabajaremos con un subset de los datos del Estudio Longitudinal Social de Chile (ELSOC) realizado por [COES](https://coes.cl/encuesta-panel/). Esta base la pueden encontrar en el canal de U-Cursos sección Material Docente, o bien, en el siguiente enlace [{{< fa table >}} `ELSOC 2022`](https://github.com/Andreas-Lafferte/descriptiva/raw/main/content/input/data/elsoc_w06_subset.dta) podrán descargar el archivo que contiene la base ELSOC 2022.
+
+Recuerden que siempre es importante trabajar con el manual/libro de códigos de las bases de datos. El manual de la ELSOC 2022 lo pueden encontrar [aquí](https://coes.cl/wp-content/uploads/Listado-de-Variables-ELSOC-2.xlsx).
+
+
+# Establecer flujo de trabajo en R
+
+Pasos a seguir: 
+
+- Descargar la base de datos vía U-Cursos o mediante el enlace [{{< fa table >}} `ELSOC 2022`](https://github.com/Andreas-Lafferte/descriptiva/raw/main/content/input/data/elsoc_w06_subset.dta) 
+- Crear un proyecto de R (.Rproj) que se llame _"laboratorio03"_
+- Crear carpetas de **Input, Procesamiento y Output**
+- Ubicar la base de datos en la carpeta Input
+- Crear un Script (.R) en la carpeta Procesamiento que se llame _"01proc-data"_ 
+- Crear un Script (.R) en la carpeta Procesamiento que se llame _"02analisis"_ 
+
+
+En esta parte, trabajaremos sobre el script de _01proc-data_
+
+# Procesamiento, limpieza y manipulación de datos
+
+### 1 Cargar librerías
+
+En este ejemplo vamos a usar la siguientes librerías:
+
+1.  `pacman`: este facilita y agiliza la lectura de los paquetes a utilizar en R
+
+2.  `tidyverse`: colección de paquetes, de la cual utilizaremos dplyr y haven
+
+3.  `dplyr`: nos permite seleccionar variables de un set de datos
+
+4.  `haven`: cargar y exportar bases de datos en formatos .sav y .dta
+
+5.  `car`: para recodificar/agrupar valores de variables
+
+6.  `psych`: para análisis descriptivo de datos
+
+7.  `sjmisc`: para análisis descriptivo de datos
+ 
+8.  `crosstable`: para tablas de contingencia o doble entrada
+
+
+Primero, si nos tenemos instalado el paquete `pacman`, debemos instalarlo y y llamarlo tradicionalmente. Si ya lo tienes instalado, no es necesario este paso, solo debes llamarlo con `library()`.
+
+```{r eval=FALSE, include=TRUE}
+install.packages("pacman") #para instalar
+library(pacman) # para llamar/cargar
+```
+
+Luego de tener cargado el paquete `pacman`, procedemos a usarlo para instalar y cargar las demás librerías:
+
+```{r echo=TRUE}
+pacman::p_load(tidyverse, # colección de paquetes para manipulación de datos
+               dplyr, # para manipular datos
+               haven, # para importar datos
+               car) # para recodificar datos
+              
+```
+
+
+También se recomienda limpiar nuestro entorno de trabajo y eliminar la notación cientifica, seteando ciertas funciones. 
+
+```{r echo=TRUE}
+options(scipen = 999) # para desactivar notacion cientifica
+rm(list = ls()) # para limpiar el entorno de trabajo
+```
+
+
+### 2 Importar datos
+
+```{r eval=TRUE, include=TRUE, collapse=FALSE}
+elsoc_2022 <- read_dta("Input/data/elsoc_w06_subset.dta") # Funciona 
+```
+
+
+### 3 Explorar datos
+
+```{r eval = F}
+View(elsoc_2022) # Ver datos
+names(elsoc_2022) # Nombre de columnas
+dim(elsoc_2022) # Dimensiones
+str(elsoc_2022) # Estructura de los datos (las clases y categorias de repuesta)
+```
+
+
+### 4 Limpiar datos
+
+![](../images/clean.data.jpg)
+
+#### 4.1 Seleccionar
+
+En este ejemplo utilizaremos las siguientes variables: 
+
+ * **m0_sexo**: sexo del entrevistado
+ * **m0_edad**: edad del entrevistado
+ * **m13**: ingreso mensual entrevistado
+ * **c03**: altruismo social generalizado
+ * **c05_03**: grado de confianza en carabineros
+ 
+```{r eval=TRUE, include=TRUE, collapse=FALSE}
+
+proc_elsoc <- elsoc_2022 %>% 
+  dplyr::select(edad = m0_edad,
+                sexo = m0_sexo,
+                ingreso = m13,
+                altruismo = c03,
+                confianza_carab = c05_03)
+
+proc_elsoc
+```
+
+
+#### 4.2 Filtrar
+
+Quedémonos con aquellos casos cuya edad sea mayor o igual a 15 años.
+
+```{r eval=TRUE, include=TRUE, collapse=FALSE}
+proc_elsoc <- proc_elsoc %>% dplyr::filter(edad >= 25)
+
+proc_elsoc
+```
+
+
+
+#### 4.3 Recodificar
+
+Recodifiquemos las variables `sexo` e `ingreso`:
+
+```{r eval=TRUE, include=TRUE, collapse=FALSE, warning=FALSE}
+proc_elsoc <- proc_elsoc %>% 
+  dplyr::mutate(sexo = car::recode(sexo,
+                            recodes = c("'Hombre' = 'Masculino'; 'Mujer' = 'Femenino'")),
+                ingreso = car::recode(ingreso, 
+                               recodes = c("-888 = NA; -999 = NA")))
+
+proc_elsoc
+```
+
+
+Ahora, las variables `altruismo` y `confianza_carab` conviertiéndolas a factor y, si es pertinente, asigarles niveles.
+
+```{r eval=TRUE, include=TRUE, collapse=FALSE}
+
+proc_elsoc <- proc_elsoc %>%
+  dplyr::mutate(altruismo = car::recode(altruismo,
+                                 recodes = c("1 = 'La mayoria de las veces tratan de ayudar a los demas';
+                                              2 = 'La mayoria de las veces se preocupan solo de si mismas';
+                                              3 = 'Depende';
+                                              -666 = NA;
+                                              -777 = NA;
+                                              -888 = NA;
+                                              -999 = NA"),
+                                 as.factor = TRUE), # transformar a factor
+         confianza_carab = car::recode(confianza_carab,
+                                       recodes = c("1 = 'Nada';
+                                                    2 = 'Poca';
+                                                    3 = 'Algo';
+                                                    4 = 'Bastante';
+                                                    5 = 'Mucha';
+                                                    -666 = NA;
+                                                    -777 = NA;
+                                                    -888 = NA;
+                                                    -999 = NA"),
+                                       as.factor = TRUE, # transformar a factor
+                                       levels = c("Nada",
+                                                  "Poca",
+                                                  "Algo",
+                                                  "Bastante",
+                                                  "Mucha"))) # asignar niveles
+
+proc_elsoc
+```
+
+
+#### 4.4 Tratamiento casos pérdidos
+
+Identifiquemos primero los casos pérdidos tanto en la base de datos completa como en las respectivas variables. 
+
+```{r eval=FALSE, include=TRUE, collapse=FALSE}
+is.na(proc_elsoc)
+
+is.na(proc_elsoc$ingreso)
+```
+
+```{r eval=TRUE, include=TRUE, collapse=FALSE}
+sum(is.na(proc_elsoc))
+
+```
+
+
+En toda la base, tenemos 454 casos pérdidos. Ahora veamos cuántos hay por cada columna/variable.
+
+```{r collapse=FALSE}
+colSums(is.na(proc_elsoc))
+```
+
+Una vez identificamos los valores nulos, podemos proceder a **removerlos** de la base de datos. El comando `na.omit()` eliminará todas las filas que presenten casos perdidos.
+
+```{r collapse=FALSE}
+proc_elsoc <- na.omit(proc_elsoc)
+
+proc_elsoc
+```
+
+### 5 Transformar variables 
+
+En este ejemplo, transformaremos las variables `edad` e `ingresos`, y crearemos una nueva variable llamada `año` de la encuesta y otra llamada `ingreso_minimo`. 
+
+**¡Veámos cómo se hace!**
+
+Generemos las nueva variable año:
+
+```{r eval=TRUE, include=TRUE, collapse=FALSE}
+proc_elsoc <- proc_elsoc %>% dplyr::mutate(ano = 2022)
+
+proc_elsoc
+```
+
+
+#### Transformar variables con `case_when()` e `if_else()`
+
+Generemos nuevas variables para `edad` e `ingresos` dejándolas como tramos con `case_when()`. 
+
+```{r eval=TRUE, include=TRUE, collapse=FALSE}
+proc_elsoc <- proc_elsoc %>% 
+  dplyr::mutate(tramo_edad = case_when(edad <= 29 ~ "Jovenes",
+                                       edad >= 30 & edad <= 59 ~ "Adultos",
+                                       edad >= 60 ~ "Adutos mayores"),
+                tramo_ingreso = case_when(ingreso <= 250000 ~ "Tramo 1",
+                                          ingreso > 250000 & ingreso <= 500000 ~ "Tramo 2",      
+                                          ingreso > 500000 & ingreso <= 750000 ~ "Tramo 3",      
+                                          ingreso > 750000 & ingreso <= 1000000 ~ "Tramo 4",       
+                                          ingreso > 1000000 ~ "Tramo 5"))
+
+proc_elsoc
+```
+
+
+Ahora, generemos una nueva variable llamada `ingreso_minimo` con la función `if_else()`.
+
+```{r eval=TRUE, include=TRUE, collapse=FALSE}
+
+proc_elsoc <- proc_elsoc %>% 
+  dplyr::mutate(ingreso_minimo = if_else(ingreso < 410000, "debajo minimo", "sobre minimo"))
+
+proc_elsoc
+```
+
+
+### 6 Guardar y exportar
+
+```{r collapse=FALSE}
+saveRDS(proc_elsoc, file = "Output/datos_proc.Rdata")
+```
+
+
+# Análisis descriptivo de datos
+
+Recordemos que el flujo recomendado de trabajo en R corresponde a:
+
+- Descargar la base de datos 
+- Crear un proyecto de R (.Rproj) 
+- Crear carpetas de **Input, Procesamiento y Output**
+- Ubicar la base de datos en la carpeta Input
+- Crear un Script (.R) en la carpeta Procesamiento que se llame _"01proc-data"_ 
+- Crear un Script (.R) en la carpeta Procesamiento que se llame _"02analisis"_
+
+Como ya tenemos creado el archivo de sintaxis llamado _"02analisis"_ trabajamos sobre él.
+
+
+### 1 Cargar librerías
+
+Este paso ya lo realizamos y cargamos todas las librerías necesarias. Pero si, al trabajar los distintos script lo hacemos en sesiones diferentes, debemos volver a cargar las librerías.
+
+```{r eval=FALSE, include=TRUE}
+install.packages("pacman") #para instalar
+library(pacman) # para llamar/cargar
+```
+
+
+```{r echo=TRUE}
+pacman::p_load(tidyverse, # colección de paquetes para manipulación de datos
+               dplyr, # para manipular datos
+               psych, # para analizar datos
+               crosstable, # para tablas de contingencia
+               sjmisc) # para analizar datos
+
+options(scipen = 999) # para desactivar notacion cientifica
+rm(list = ls()) # para limpiar el entorno de trabajo
+```
+
+### 2 Importar datos
+
+Usamos los datos creados en el procesamiento que se encuentran guardados en la carpeta output.
+
+```{r collapse=FALSE}
+datos_proc <- readRDS("output/datos_proc.Rdata")
+```
+
+
+
+### 3 Estadísticos descriptivos para variables categóricas
+
+Para analizar de manera descriptiva a las variables categóricas, esto es, con nivel de medición nominal y ordinal, podemos calcular tablas de frecuencias.
+
+#### 3.1. Frecuencias absolutas y relativas
+
+Para las variables nominales podemos usar tablas de frecuencias absolutas y relativas, y con ellas conocer la moda, es dedcir, el valor con mayor cantidad de observaciones. 
+
+
+```{r eval=TRUE, include=TRUE, collapse=FALSE}
+(freq_table1 <-table(datos_proc$altruismo))
+prop.table(freq_table1)*100 
+
+```
+
+Acá podemos ver que el valor con mayor cantidad de obervaciones corresponde a _"La mayoria de las veces se preocupan solo de si mismas"_.
+
+#### 3.2. Frecuencias acumuladas
+
+Mientras que si trabajamos con variables ordinales, podemos usar también la frecuencia acumulada:
+
+```{r eval=TRUE, include=TRUE, collapse=FALSE}
+(freq_table2 <- table(datos_proc$tramo_ingreso))
+(freq_table3 <- prop.table(freq_table2)*100)
+cumsum(freq_table3)
+
+tbl3 <- table(datos_proc$tramo_ingreso)
+cbind(Freq=tbl3, relat = prop.table(tbl3)*100, Cum = cumsum(tbl3))
+```
+
+Otra manera de calcular frecuencias (absolutas, relativas y acumuladas) en R, es mediante la función `frq()` del paquete `sjmisc`. 
+
+```{r eval=TRUE, include=TRUE, collapse=FALSE}
+
+sjmisc::frq(datos_proc$tramo_ingreso)
+
+```
+
+#### 3.3. Tablas de contingencia
+
+También podemos cruzar dos variables mediante las llamadas tablas de contingencia o tablas cruzadas. Además de conocer la frecuencia absoluta en cada casilla, podemos también conocer la proporción o frecuencia relativa para cada casilla y el total de la filas y columnas.
+
+```{r eval=TRUE, include=TRUE, collapse=FALSE}
+
+crosstable(datos_proc, cols = sexo, by = tramo_edad)
+
+crosstable(datos_proc, cols = sexo, by = tramo_edad, total = "both") #fila y columna
+
+crosstable(datos_proc, cols = sexo, by = tramo_edad, total = "row") #solo fila
+
+crosstable(datos_proc, cols = sexo, by = tramo_edad, total = "column") #solo columna
+
+```
+
+
+### 4 Estadísticos descriptivos para variables numéricas 
+
+A diferencia de las variables categóricas, a las variables numéricas les podemos calcular una mayor cantidad de estadísticos descriptivos, como medidas de tendencia central, dispersión o posición. 
+
+Como ya vimos en clases:
+
+- dentro de las medidas de tendencia central que podemos calcular para describir a una variable numérica encontramos: media, mediana;
+- dentro de las medidas de dispersión podemos señalar: desviación estándar, variancia, coeficiente de variación, rango;
+- dentro de las medidas de posición podemos mencionar: mediana, q1, q3, mínimo, máximo.
+
+```{r eval=TRUE, include=TRUE, collapse=FALSE}
+
+psych::describe(datos_proc$edad)
+
+psych::describe(datos_proc$edad,
+                quant = c(.25,.75),
+                IQR = TRUE)
+
+psych::describe(datos_proc$ingreso,
+                quant = c(.25,.75),
+                IQR = T)
+
+
+```
+
+## Video de clase
+
+#### Primer bloque
+
+{{< video https://youtu.be/2ugaq1OAL94 >}}
+
+#### Segundo bloque
+
+{{< video https://youtu.be/1_lAulfXv_w >}}
+

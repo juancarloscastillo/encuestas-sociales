@@ -1,5 +1,0 @@
----
-title: "Presentaciones, lecturas y actividades"
----
-
-En esta sección se encuentran los documentos de presentación correspondientes a cada clase, lecturas y también actividades prácticas.

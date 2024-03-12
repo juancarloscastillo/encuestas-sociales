@@ -2,19 +2,24 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.0.37">
+<meta name="generator" content="quarto-1.2.269">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Encuestas Sociales - Análisis Factorial Exploratorio</title>
+<title>Estadística Descriptiva - Análisis Factorial Exploratorio</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-span.underline{text-decoration: underline;}
-div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -53,7 +58,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -66,7 +71,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -87,7 +92,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="..//files/icon-513.png" rel="icon" type="image/png">
+<link href="..//files/logo-removebg-preview.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -107,125 +112,93 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   "type": "overlay",
   "limit": 20,
   "language": {
-    "search-no-results-text": "Sín resultados",
+    "search-no-results-text": "Sin resultados",
     "search-matching-documents-text": "documentos encontrados",
-    "search-copy-link-title": "Copiar el enlace en la busqueda",
-    "search-hide-matches-text": "Esconder resultados adicionales",
-    "search-more-match-text": "hay más resultados en este documento",
-    "search-more-matches-text": "más resultados en este documento",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
     "search-clear-button-title": "Borrar",
     "search-detached-cancel-button-title": "Cancelar",
-    "search-submit-button-title": "Eviar"
+    "search-submit-button-title": "Enviar"
   }
 }</script>
 
 
-<meta property="og:title" content="Encuestas Sociales - Análisis Factorial Exploratorio">
+<meta property="og:title" content="Estadística Descriptiva - Análisis Factorial Exploratorio">
 <meta property="og:description" content="¿Qué se puede deducir de la matriz de correlaciones en relación a la estructura subyacente en términos de variables latentes?">
-<meta property="og:image" content="https://encuestas-sociales.netlify.app/files/social-image-f22.png">
-<meta property="og:site-name" content="Encuestas Sociales">
+<meta property="og:image" content="https://descriptiva-facso.netlify.app/files/logo.png">
+<meta property="og:site-name" content="Estadística Descriptiva">
 <meta property="og:locale" content="en_US">
-<meta property="og:image:height" content="490">
-<meta property="og:image:width" content="898">
-<meta name="twitter:title" content="Encuestas Sociales - Análisis Factorial Exploratorio">
+<meta property="og:image:height" content="500">
+<meta property="og:image:width" content="500">
+<meta name="twitter:title" content="Estadística Descriptiva - Análisis Factorial Exploratorio">
 <meta name="twitter:description" content="¿Qué se puede deducir de la matriz de correlaciones en relación a la estructura subyacente en términos de variables latentes?">
-<meta name="twitter:image" content="https://encuestas-sociales.netlify.app/files/social-image-f22.png">
-<meta name="twitter:creator" content="@juankcastillo">
+<meta name="twitter:image" content="https://descriptiva-facso.netlify.app/files/logo.png">
+<meta name="twitter:creator" content="@andreaslaffert">
+<meta name="twitter:site" content="@andreaslaffert">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image-height" content="490">
-<meta name="twitter:image-width" content="898">
+<meta name="twitter:image-height" content="500">
+<meta name="twitter:image-width" content="500">
 </head>
 
-<body class="nav-sidebar docked nav-fixed">
+<body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
-      <a class="navbar-brand" href="../index.html">
-    <span class="navbar-title">Encuestas Sociales</span>
-  </a>
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Estadística Descriptiva</span>
+    </a>
+  </div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../syllabus.html">Programa</a>
+    <a class="nav-link" href="../syllabus.html">
+ <span class="menu-text">Programa</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../schedule.html">Planificación</a>
+    <a class="nav-link" href="../schedule.html">
+ <span class="menu-text">Planificación</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../content/index.html">Contenidos</a>
+    <a class="nav-link" href="../class/index.html">
+ <span class="menu-text">Clases</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../trabajos.html">Trabajos</a>
+    <a class="nav-link" href="../content/index.html">
+ <span class="menu-text">Prácticos</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../resource/index.html" aria-current="page">Recursos</a>
+    <a class="nav-link" href="../trabajos.html">
+ <span class="menu-text">Trabajos</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../resource/index.html">
+ <span class="menu-text">Recursos</span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://www.slack.com"><i class="bi bi-slack" role="img" aria-label="Slack">
+    <a class="nav-link" href="https://rstudio.cloud"><i class="bi bi-cloud-fill" role="img" aria-label="RStudio.cloud">
 </i> 
- </a>
+ <span class="menu-text"></span></a>
   </li>  
 </ul>
               <div id="quarto-search" class="" title="Search"></div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
-  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-    <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Análisis Factorial Exploratorio</h1>
-      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
-        <i class="bi bi-chevron-right"></i>
-      </button>
-    </div>
-  </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
-    <div class="sidebar-menu-container"> 
-    <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../resource/index.html" class="sidebar-item-text sidebar-link">Descripción</a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../resource/01-resource.html" class="sidebar-item-text sidebar-link">Ejemplos encuestas</a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../resource/02-resource.html" class="sidebar-item-text sidebar-link">Medición e instrumentos</a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../resource/03-resource.html" class="sidebar-item-text sidebar-link">Tutorial formr</a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../resource/04-resource.html" class="sidebar-item-text sidebar-link">Encuesta Microemprendimiento</a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../resource/05-resource.html" class="sidebar-item-text sidebar-link active">Práctica Análisis factorial</a>
-  </div>
-</li>
-    </ul>
-    </div>
-</nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc">
+        <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">En esta página</h2>
    
   <ul>
@@ -256,7 +229,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Análisis Factorial Exploratorio</h1>
+<h1 class="title">Análisis Factorial Exploratorio</h1>
 </div>
 
 
@@ -265,11 +238,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
     
     <div>
-    <div class="quarto-title-meta-heading">Fecha de Publicación</div>
+    <div class="quarto-title-meta-heading">Fecha de publicación</div>
     <div class="quarto-title-meta-contents">
       <p class="date">17 de noviembre de 2022</p>
     </div>
   </div>
+  
     
   </div>
   
@@ -291,13 +265,48 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>psy, <span class="co"># scree plot function</span></span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>nFactors, <span class="co"># parallel</span></span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>GPArotation) <span class="co"># rotación</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Installing package into '/Users/macbookair/Downloads/encuestas-sociales-main/renv/library/R-4.2/aarch64-apple-darwin20'
+(as 'lib' is unspecified)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>also installing the dependency 'htmlTable'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Hmisc installed</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Installing package into '/Users/macbookair/Downloads/encuestas-sociales-main/renv/library/R-4.2/aarch64-apple-darwin20'
+(as 'lib' is unspecified)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+psy installed</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Installing package into '/Users/macbookair/Downloads/encuestas-sociales-main/renv/library/R-4.2/aarch64-apple-darwin20'
+(as 'lib' is unspecified)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+nFactors installed</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Installing package into '/Users/macbookair/Downloads/encuestas-sociales-main/renv/library/R-4.2/aarch64-apple-darwin20'
+(as 'lib' is unspecified)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+GPArotation installed</code></pre>
+</div>
 </div>
 </section>
 <section id="datos" class="level2">
 <h2 class="anchored" data-anchor-id="datos">Datos</h2>
 <p>Lectura de datos</p>
 <div class="cell" data-hash="05-resource_cache/html/unnamed-chunk-2_bd2c492c53f3e9a52a61b00fc23999e2">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"input/data/efa_asignaturas.csv"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"input/data/efa_asignaturas.csv"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-hash="05-resource_cache/html/unnamed-chunk-3_15fe2c1184b604030cec6653f7fc50ba">
 
@@ -309,7 +318,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="exploración-de-datos" class="level2">
 <h2 class="anchored" data-anchor-id="exploración-de-datos">Exploración de datos</h2>
 <div class="cell" data-hash="05-resource_cache/html/unnamed-chunk-4_4ca23032f8c8b54c585b9c58ad31b228">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(data)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(data)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>      BIO             GEO            CHEM            ALG            CALC      
  Min.   :1.000   Min.   :1.00   Min.   :1.000   Min.   :1.00   Min.   :1.000  
@@ -326,15 +335,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
  3rd Qu.:4.000  
  Max.   :5.000  </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(data)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(data)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "BIO"  "GEO"  "CHEM" "ALG"  "CALC" "STAT"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(data)  <span class="co"># filas columnas</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(data)  <span class="co"># filas columnas</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 300   6</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(<span class="fu">na.omit</span>(data)) <span class="co"># número de casos con datos completos</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(<span class="fu">na.omit</span>(data)) <span class="co"># número de casos con datos completos</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 300</code></pre>
 </div>
@@ -344,27 +353,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="descriptivos" class="level1">
 <h1>Descriptivos</h1>
 <div class="cell" data-hash="05-resource_cache/html/unnamed-chunk-5_eba8bbede8b0b002bb7599fc6fa22e1f">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">stargazer</span>(data, <span class="at">type =</span> <span class="st">"text"</span>)  <span class="co"># para visualizar en consola</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">stargazer</span>(data, <span class="at">type =</span> <span class="st">"text"</span>)  <span class="co"># para visualizar en consola</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
-======================================================
-Statistic  N  Mean  St. Dev. Min Pctl(25) Pctl(75) Max
-------------------------------------------------------
-BIO       300 2.353  1.228    1     1        3      5 
-GEO       300 2.170  1.230    1     1        3      5 
-CHEM      300 2.237  1.273    1     1        3      5 
-ALG       300 3.050  1.174    1     2        4      5 
-CALC      300 3.063  1.127    1     2        4      5 
-STAT      300 2.937  1.259    1     2        4      5 
-------------------------------------------------------</code></pre>
+====================================
+Statistic  N  Mean  St. Dev. Min Max
+------------------------------------
+BIO       300 2.353  1.228    1   5 
+GEO       300 2.170  1.230    1   5 
+CHEM      300 2.237  1.273    1   5 
+ALG       300 3.050  1.174    1   5 
+CALC      300 3.063  1.127    1   5 
+STAT      300 2.937  1.259    1   5 
+------------------------------------</code></pre>
 </div>
 </div>
 <div class="cell" data-hash="05-resource_cache/html/unnamed-chunk-6_928bff528df75252b3dff188e89cecaf">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">stargazer</span>(data, <span class="at">type =</span> <span class="st">"html"</span>) <span class="co"># a html</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">stargazer</span>(data, <span class="at">type =</span> <span class="st">"html"</span>) <span class="co"># a html</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 <table style="text-align:center">
 <tbody><tr>
-<td colspan="8" style="border-bottom: 1px solid black">
+<td colspan="6" style="border-bottom: 1px solid black">
 </td>
 </tr>
 <tr>
@@ -384,17 +393,11 @@ St.&nbsp;Dev.
 Min
 </td>
 <td>
-Pctl(25)
-</td>
-<td>
-Pctl(75)
-</td>
-<td>
 Max
 </td>
 </tr>
 <tr>
-<td colspan="8" style="border-bottom: 1px solid black">
+<td colspan="6" style="border-bottom: 1px solid black">
 </td>
 </tr>
 <tr>
@@ -412,12 +415,6 @@ BIO
 </td>
 <td>
 1
-</td>
-<td>
-1
-</td>
-<td>
-3
 </td>
 <td>
 5
@@ -440,12 +437,6 @@ GEO
 1
 </td>
 <td>
-1
-</td>
-<td>
-3
-</td>
-<td>
 5
 </td>
 </tr>
@@ -464,12 +455,6 @@ CHEM
 </td>
 <td>
 1
-</td>
-<td>
-1
-</td>
-<td>
-3
 </td>
 <td>
 5
@@ -492,12 +477,6 @@ ALG
 1
 </td>
 <td>
-2
-</td>
-<td>
-4
-</td>
-<td>
 5
 </td>
 </tr>
@@ -516,12 +495,6 @@ CALC
 </td>
 <td>
 1
-</td>
-<td>
-2
-</td>
-<td>
-4
 </td>
 <td>
 5
@@ -544,17 +517,11 @@ STAT
 1
 </td>
 <td>
-2
-</td>
-<td>
-4
-</td>
-<td>
 5
 </td>
 </tr>
 <tr>
-<td colspan="8" style="border-bottom: 1px solid black">
+<td colspan="6" style="border-bottom: 1px solid black">
 </td>
 </tr>
 
@@ -563,25 +530,25 @@ STAT
 <section id="gráfico-barras-apiladas" class="level2">
 <h2 class="anchored" data-anchor-id="gráfico-barras-apiladas">Gráfico barras apiladas</h2>
 <div class="cell" data-hash="05-resource_cache/html/unnamed-chunk-7_c12158fdf910e7bea23b4debd9cb6cd2">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">#sjplot(data$BIO, "frq") # no muy buena descripción ...</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(data)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co">#sjplot(data$BIO, "frq") # no muy buena descripción ...</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(data)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "BIO"  "GEO"  "CHEM" "ALG"  "CALC" "STAT"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_stackfrq</span>(data)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_stackfrq</span>(data)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="05-resource_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>Gráfico final</p>
-<div class="cell" data-hash="05-resource_cache/html/unnamed-chunk-8_b030e873b82ed512f8e9b03ed085c1b6">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co">#label values</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span>  <span class="fu">set_labels</span> (., <span class="at">labels=</span><span class="fu">c</span>(<span class="st">"No le agrada"</span><span class="ot">=</span><span class="dv">1</span>,</span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Le agrada"</span><span class="ot">=</span><span class="dv">5</span>))</span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_stackfrq</span>(data, <span class="at">sort.frq =</span> <span class="st">"last.desc"</span>, <span class="at">geom.colors =</span> <span class="st">"OrRd"</span>) <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">legend.position=</span><span class="st">"bottom"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="05-resource_cache/html/unnamed-chunk-8_73fcdb26ddf72d8d0ce95b06a2dbb2b0">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co">#label values</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span>  <span class="fu">set_labels</span> (., <span class="at">labels=</span><span class="fu">c</span>(<span class="st">"No le agrada"</span><span class="ot">=</span><span class="dv">1</span>,</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Le agrada"</span><span class="ot">=</span><span class="dv">5</span>))</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_stackfrq</span>(data, <span class="at">sort.frq =</span> <span class="st">"last.desc"</span>, <span class="at">geom.colors =</span> <span class="st">"OrRd"</span>) <span class="co">#+ theme(legend.position="bottom")</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="05-resource_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -591,9 +558,9 @@ STAT
 <h2 class="anchored" data-anchor-id="analisis-de-matriz-de-correlaciones">Analisis de matriz de correlaciones</h2>
 <p>Matriz</p>
 <div class="cell" data-hash="05-resource_cache/html/unnamed-chunk-9_17b9d9b760a21f6025bd291e54d3498c">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>corMat  <span class="ot">&lt;-</span> <span class="fu">cor</span>(data)  <span class="co"># estimar matriz pearson</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">digits=</span><span class="dv">2</span>)</span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>corMat <span class="co"># muestra matriz</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>corMat  <span class="ot">&lt;-</span> <span class="fu">cor</span>(data)  <span class="co"># estimar matriz pearson</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">digits=</span><span class="dv">2</span>)</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>corMat <span class="co"># muestra matriz</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>      BIO  GEO  CHEM   ALG CALC STAT
 BIO  1.00 0.68 0.747 0.115 0.21 0.20
@@ -606,7 +573,7 @@ STAT 0.20 0.23 0.166 0.409 0.51 1.00</code></pre>
 </div>
 <p>Reporte tabla</p>
 <div class="cell" data-hash="05-resource_cache/html/unnamed-chunk-10_62a916846ead9aad4fe181e961e1772d">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tab_corr</span>(data, <span class="at">triangle =</span> <span class="st">"lower"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tab_corr</span>(data, <span class="at">triangle =</span> <span class="st">"lower"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
 <table style="border-collapse:collapse; border:none;">
@@ -682,16 +649,16 @@ STAT 0.20 0.23 0.166 0.409 0.51 1.00</code></pre>
 </div>
 <p>Reporte gráfico con corrplot</p>
 <div class="cell" data-hash="05-resource_cache/html/unnamed-chunk-11_ca156d3d0060b863e445459e3349163f">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>M<span class="ot">=</span><span class="fu">cor</span>(data) <span class="co"># matriz simple de correlaciones de los datos</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">corrplot</span>(M, <span class="at">type=</span><span class="st">"lower"</span>) <span class="co"># lower x bajo diagonal</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>M<span class="ot">=</span><span class="fu">cor</span>(data) <span class="co"># matriz simple de correlaciones de los datos</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="fu">corrplot</span>(M, <span class="at">type=</span><span class="st">"lower"</span>) <span class="co"># lower x bajo diagonal</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="05-resource_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>Otra opción</p>
 <div class="cell" data-hash="05-resource_cache/html/unnamed-chunk-12_7d4857f6abe9268643d8fe28fa7feb9f">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">corrplot</span>(M, <span class="at">type=</span><span class="st">"lower"</span>,</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>      <span class="at">order=</span><span class="st">"AOE"</span>, <span class="at">cl.pos=</span><span class="st">"b"</span>, <span class="at">tl.pos=</span><span class="st">"d"</span>) <span class="co">#agrega nombres en diag.</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">corrplot</span>(M, <span class="at">type=</span><span class="st">"lower"</span>,</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>      <span class="at">order=</span><span class="st">"AOE"</span>, <span class="at">cl.pos=</span><span class="st">"b"</span>, <span class="at">tl.pos=</span><span class="st">"d"</span>) <span class="co">#agrega nombres en diag.</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="05-resource_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -703,7 +670,7 @@ STAT 0.20 0.23 0.166 0.409 0.51 1.00</code></pre>
 <p>¿Qué se puede deducir de la matriz de correlaciones en relación a la estructura subyacente en términos de variables latentes? Vemos dos grupos de indicadores asociados entre sí, y no asociados con el otro grupo. Por un lado, el grupo de chem, bio y geo, y por otro el de stat, calc y alg.</p>
 <p>Adecuación de matriz para análisis factorial</p>
 <div class="cell" data-hash="05-resource_cache/html/unnamed-chunk-13_5f61c61e5a80dc2517f217a81ae2f861">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">KMO</span>(corMat)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">KMO</span>(corMat)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Kaiser-Meyer-Olkin factor adequacy
 Call: KMO(r = corMat)
@@ -712,7 +679,7 @@ MSA for each item =
  BIO  GEO CHEM  ALG CALC STAT 
 0.73 0.81 0.72 0.60 0.60 0.84 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cortest.bartlett</span>(corMat, <span class="at">n =</span> <span class="dv">300</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cortest.bartlett</span>(corMat, <span class="at">n =</span> <span class="dv">300</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>$chisq
 [1] 849
@@ -728,13 +695,13 @@ $df
 <h2 class="anchored" data-anchor-id="seleccion-de-numero-de-factores">Seleccion de numero de factores</h2>
 <p>Graficos</p>
 <div class="cell" data-hash="05-resource_cache/html/unnamed-chunk-14_1eba56c8b4d93d21054346242103fa8e">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">scree.plot</span>(data)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">scree.plot</span>(data)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="05-resource_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <div class="cell" data-hash="05-resource_cache/html/unnamed-chunk-15_6816a0fd76b93cd50521c36053163dad">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fa.parallel</span>(corMat, <span class="at">n.obs=</span><span class="dv">300</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fa.parallel</span>(corMat, <span class="at">n.obs=</span><span class="dv">300</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="05-resource_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -743,12 +710,12 @@ $df
 </div>
 </div>
 <div class="cell" data-hash="05-resource_cache/html/unnamed-chunk-16_8e7638e62e660e22d200bc11012fef84">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(nFactors)</span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>ev <span class="ot">&lt;-</span> <span class="fu">eigen</span>(corMat) <span class="co"># get eigenvalues</span></span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>ap <span class="ot">&lt;-</span> <span class="fu">parallel</span>(<span class="at">subject=</span><span class="dv">300</span>,<span class="at">var=</span><span class="dv">6</span>,</span>
-<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">rep=</span><span class="dv">100</span>,<span class="at">cent=</span>.<span class="dv">05</span>)</span>
-<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>nS <span class="ot">&lt;-</span> <span class="fu">nScree</span>(<span class="at">x=</span>ev<span class="sc">$</span>values, <span class="at">aparallel=</span>ap<span class="sc">$</span>eigen<span class="sc">$</span>qevpea)</span>
-<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plotnScree</span>(nS)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(nFactors)</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>ev <span class="ot">&lt;-</span> <span class="fu">eigen</span>(corMat) <span class="co"># get eigenvalues</span></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>ap <span class="ot">&lt;-</span> <span class="fu">parallel</span>(<span class="at">subject=</span><span class="dv">300</span>,<span class="at">var=</span><span class="dv">6</span>,</span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">rep=</span><span class="dv">100</span>,<span class="at">cent=</span>.<span class="dv">05</span>)</span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>nS <span class="ot">&lt;-</span> <span class="fu">nScree</span>(<span class="at">x=</span>ev<span class="sc">$</span>values, <span class="at">aparallel=</span>ap<span class="sc">$</span>eigen<span class="sc">$</span>qevpea)</span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plotnScree</span>(nS)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="05-resource_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -760,9 +727,9 @@ $df
 <h2 class="anchored" data-anchor-id="extracción">Extracción</h2>
 <p>Ejes principales</p>
 <div class="cell" data-hash="05-resource_cache/html/unnamed-chunk-17_bd1c25793ca70be2c051c82f2e47c25b">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>fac_pa <span class="ot">&lt;-</span> <span class="fu">fa</span>(<span class="at">r =</span> data, <span class="at">nfactors =</span> <span class="dv">2</span>, <span class="at">fm=</span> <span class="st">"pa"</span>)</span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="co">#summary(fac_pa)</span></span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>fac_pa</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>fac_pa <span class="ot">&lt;-</span> <span class="fu">fa</span>(<span class="at">r =</span> data, <span class="at">nfactors =</span> <span class="dv">2</span>, <span class="at">fm=</span> <span class="st">"pa"</span>)</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="co">#summary(fac_pa)</span></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>fac_pa</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Factor Analysis using method =  pa
 Call: fa(r = data, nfactors = 2, fm = "pa")
@@ -790,14 +757,14 @@ PA2 0.21 1.00
 Mean item complexity =  1
 Test of the hypothesis that 2 factors are sufficient.
 
-The degrees of freedom for the null model are  15  and the objective function was  2.9 with Chi Square of  849
-The degrees of freedom for the model are 4  and the objective function was  0.01 
+df null model =  15  with the objective function =  2.9 with Chi Square =  849
+df of  the model are 4  and the objective function was  0.01 
 
 The root mean square of the residuals (RMSR) is  0.01 
 The df corrected root mean square of the residuals is  0.02 
 
-The harmonic number of observations is  300 with the empirical chi square  0.78  with prob &lt;  0.94 
-The total number of observations was  300  with Likelihood Chi Square =  3.3  with prob &lt;  0.51 
+The harmonic n.obs is  300 with the empirical chi square  0.78  with prob &lt;  0.94 
+The total n.obs was  300  with Likelihood Chi Square =  3.3  with prob &lt;  0.51 
 
 Tucker Lewis Index of factoring reliability =  1
 RMSEA index =  0  and the 90 % confidence intervals are  0 0.08
@@ -812,12 +779,12 @@ Minimum correlation of possible factor scores     0.77 0.86</code></pre>
 </div>
 <p>Maximum likelihood</p>
 <div class="cell" data-hash="05-resource_cache/html/unnamed-chunk-18_8841b4ebbcb5c49835e36f1eb8c8a456">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>fac_ml <span class="ot">&lt;-</span> <span class="fu">fa</span>(<span class="at">r =</span> data, <span class="at">nfactors =</span> <span class="dv">2</span>, <span class="at">fm=</span> <span class="st">"ml"</span>)</span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fac_ml)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>fac_ml <span class="ot">&lt;-</span> <span class="fu">fa</span>(<span class="at">r =</span> data, <span class="at">nfactors =</span> <span class="dv">2</span>, <span class="at">fm=</span> <span class="st">"ml"</span>)</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fac_ml)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Plot de cargas factoriales ml</p>
 <div class="cell" data-hash="05-resource_cache/html/unnamed-chunk-19_d5434de1136f01aafa33d701ec79bb38">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">factor.plot</span>(fac_ml, <span class="at">labels=</span><span class="fu">rownames</span>(fac_ml<span class="sc">$</span>loadings))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">factor.plot</span>(fac_ml, <span class="at">labels=</span><span class="fu">rownames</span>(fac_ml<span class="sc">$</span>loadings))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="05-resource_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -825,10 +792,10 @@ Minimum correlation of possible factor scores     0.77 0.86</code></pre>
 <p><strong>Obtención de Puntajes factoriales</strong></p>
 <p>Los puntajes factoriales son vectores/variables que representan al factor latente como una variable observada y que por lo tanto suma una columna a la base de datos por cada factor extraído. Como la variable latente no tiene métrica, se le otorga una con media 0 y varianza 1. Los puntajes son una especie de índice pero donde la constribución de cada indicador al índice se encuentra ponderada por su carga factorial (su contribución a la variable latente común o factor).</p>
 <div class="cell" data-hash="05-resource_cache/html/unnamed-chunk-20_56954ffbd067d49e7aeaf6bffbdecab8">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>fac_ml <span class="ot">&lt;-</span> <span class="fu">fa</span>(<span class="at">r =</span> data, <span class="at">nfactors =</span> <span class="dv">2</span>, <span class="at">fm=</span> <span class="st">"ml"</span>, <span class="at">scores=</span><span class="st">"regression"</span>)</span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>data2<span class="ot">=</span>data</span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>data3 <span class="ot">&lt;-</span> <span class="fu">cbind</span>(data2, fac_ml<span class="sc">$</span>scores)</span>
-<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data3)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>fac_ml <span class="ot">&lt;-</span> <span class="fu">fa</span>(<span class="at">r =</span> data, <span class="at">nfactors =</span> <span class="dv">2</span>, <span class="at">fm=</span> <span class="st">"ml"</span>, <span class="at">scores=</span><span class="st">"regression"</span>)</span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>data2<span class="ot">=</span>data</span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>data3 <span class="ot">&lt;-</span> <span class="fu">cbind</span>(data2, fac_ml<span class="sc">$</span>scores)</span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data3)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  BIO GEO CHEM ALG CALC STAT    ML2   ML1
 1   1   1    1   1    1    1 -1.110 -1.84
@@ -844,8 +811,8 @@ Minimum correlation of possible factor scores     0.77 0.86</code></pre>
 <h2 class="anchored" data-anchor-id="rotación">Rotación</h2>
 <p>Varimax (ortogonal)</p>
 <div class="cell" data-hash="05-resource_cache/html/unnamed-chunk-21_85d4f1c3a3dd9a15ab3f88e09833c068">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>fac_ml_var <span class="ot">&lt;-</span> <span class="fu">fa</span>(<span class="at">r =</span> data, <span class="at">nfactors =</span> <span class="dv">2</span>, <span class="at">fm=</span> <span class="st">"ml"</span>, <span class="at">rotate=</span><span class="st">"varimax"</span>) <span class="co"># ortogonal</span></span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>fac_ml_var</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>fac_ml_var <span class="ot">&lt;-</span> <span class="fu">fa</span>(<span class="at">r =</span> data, <span class="at">nfactors =</span> <span class="dv">2</span>, <span class="at">fm=</span> <span class="st">"ml"</span>, <span class="at">rotate=</span><span class="st">"varimax"</span>) <span class="co"># ortogonal</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>fac_ml_var</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Factor Analysis using method =  ml
 Call: fa(r = data, nfactors = 2, rotate = "varimax", fm = "ml")
@@ -868,14 +835,14 @@ Cumulative Proportion 0.53 1.00
 Mean item complexity =  1.1
 Test of the hypothesis that 2 factors are sufficient.
 
-The degrees of freedom for the null model are  15  and the objective function was  2.9 with Chi Square of  849
-The degrees of freedom for the model are 4  and the objective function was  0.01 
+df null model =  15  with the objective function =  2.9 with Chi Square =  849
+df of  the model are 4  and the objective function was  0.01 
 
 The root mean square of the residuals (RMSR) is  0.01 
 The df corrected root mean square of the residuals is  0.02 
 
-The harmonic number of observations is  300 with the empirical chi square  0.97  with prob &lt;  0.91 
-The total number of observations was  300  with Likelihood Chi Square =  2.9  with prob &lt;  0.57 
+The harmonic n.obs is  300 with the empirical chi square  0.97  with prob &lt;  0.91 
+The total n.obs was  300  with Likelihood Chi Square =  2.9  with prob &lt;  0.57 
 
 Tucker Lewis Index of factoring reliability =  1
 RMSEA index =  0  and the 90 % confidence intervals are  0 0.076
@@ -890,8 +857,8 @@ Minimum correlation of possible factor scores     0.76 0.91</code></pre>
 </div>
 <p>Promax (oblicua)</p>
 <div class="cell" data-hash="05-resource_cache/html/unnamed-chunk-22_98f292598d71871f97e4fa10a167f7b8">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>fac_ml_pro <span class="ot">&lt;-</span> <span class="fu">fa</span>(<span class="at">r =</span> data, <span class="at">nfactors =</span> <span class="dv">2</span>, <span class="at">fm=</span> <span class="st">"ml"</span>, <span class="at">rotate=</span><span class="st">"promax"</span>)</span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>fac_ml_pro</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>fac_ml_pro <span class="ot">&lt;-</span> <span class="fu">fa</span>(<span class="at">r =</span> data, <span class="at">nfactors =</span> <span class="dv">2</span>, <span class="at">fm=</span> <span class="st">"ml"</span>, <span class="at">rotate=</span><span class="st">"promax"</span>)</span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>fac_ml_pro</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Factor Analysis using method =  ml
 Call: fa(r = data, nfactors = 2, rotate = "promax", fm = "ml")
@@ -919,14 +886,14 @@ ML1 0.28 1.00
 Mean item complexity =  1
 Test of the hypothesis that 2 factors are sufficient.
 
-The degrees of freedom for the null model are  15  and the objective function was  2.9 with Chi Square of  849
-The degrees of freedom for the model are 4  and the objective function was  0.01 
+df null model =  15  with the objective function =  2.9 with Chi Square =  849
+df of  the model are 4  and the objective function was  0.01 
 
 The root mean square of the residuals (RMSR) is  0.01 
 The df corrected root mean square of the residuals is  0.02 
 
-The harmonic number of observations is  300 with the empirical chi square  0.97  with prob &lt;  0.91 
-The total number of observations was  300  with Likelihood Chi Square =  2.9  with prob &lt;  0.57 
+The harmonic n.obs is  300 with the empirical chi square  0.97  with prob &lt;  0.91 
+The total n.obs was  300  with Likelihood Chi Square =  2.9  with prob &lt;  0.57 
 
 Tucker Lewis Index of factoring reliability =  1
 RMSEA index =  0  and the 90 % confidence intervals are  0 0.076
@@ -944,7 +911,7 @@ Minimum correlation of possible factor scores     0.77 0.91</code></pre>
 <h2 class="anchored" data-anchor-id="reporte-tabla-análisis-factorial">Reporte: Tabla análisis factorial</h2>
 <p>A html via sjPlot</p>
 <div class="cell" data-hash="05-resource_cache/html/unnamed-chunk-23_cd104d97a461ecc2f15c24ab789cd8f4">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tab_fa</span>(data, <span class="at">rotation =</span> <span class="st">"varimax"</span>,<span class="at">show.comm =</span> <span class="cn">TRUE</span>, <span class="at">title =</span> <span class="st">"Análisis factorial asignaturas"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tab_fa</span>(data, <span class="at">rotation =</span> <span class="st">"varimax"</span>,<span class="at">show.comm =</span> <span class="cn">TRUE</span>, <span class="at">title =</span> <span class="st">"Análisis factorial asignaturas"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Parallel analysis suggests that the number of factors =  2  and the number of components =  NA </code></pre>
 </div>
@@ -1059,8 +1026,25 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // flash "checked"
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copiada");
+    button.setAttribute("title", "Copiado");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copiado");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
     setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
@@ -1088,39 +1072,58 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   for (var i=0; i<noterefs.length; i++) {
     const ref = noterefs[i];
     tippyHover(ref, function() {
-      let href = ref.getAttribute('href');
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
     });
   }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
-    tippyHover(ref, function() {
-      var popup = window.document.createElement('div');
-      cites.forEach(function(cite) {
-        var citeDiv = window.document.createElement('div');
-        citeDiv.classList.add('hanging-indent');
-        citeDiv.classList.add('csl-entry');
-        var biblioDiv = window.document.getElementById('ref-' + cite);
-        if (biblioDiv) {
-          citeDiv.innerHTML = biblioDiv.innerHTML;
-        }
-        popup.appendChild(citeDiv);
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
       });
-      return popup.innerHTML;
-    });
+    }
   }
 });
 </script>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
-    <div class="nav-footer-left">Content <i class="fa-brands fa-creative-commons" aria-hidden="true"></i> 2022 by <a href="https://www.jc-castillo.com">Juan Castillo</a> <br> All content licensed under a <i class="fa-brands fa-creative-commons" aria-hidden="true"></i> <i class="fa-brands fa-creative-commons-by" aria-hidden="true"></i> <i class="fa-brands fa-creative-commons-nc" aria-hidden="true"></i> <a href="https://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International license (CC BY-NC 4.0)</a></div>   
-    <div class="nav-footer-right">Made with <i class="fa-brands fa-r-project" aria-hidden="true"></i> and <a href="https://quarto.org/">Quarto</a><br> <a href="https://github.com/juancarloscastillo/encuestas-sociales">View the source at <i class="fa-brands fa-github" aria-hidden="true"></i> GitHub</a></div>
+    <div class="nav-footer-left">Content <i class="fa-brands fa-creative-commons" aria-hidden="true"></i> 2023 by <a href="?var:instructor.url">Andreas Laffert</a> <br> All content licensed under a <i class="fa-brands fa-creative-commons" aria-hidden="true"></i> <i class="fa-brands fa-creative-commons-by" aria-hidden="true"></i> <i class="fa-brands fa-creative-commons-nc" aria-hidden="true"></i> <a href="https://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International license (CC BY-NC 4.0)</a></div>   
+    <div class="nav-footer-right">Made with <i class="fa-brands fa-r-project" aria-hidden="true"></i> and <a href="https://quarto.org/">Quarto</a><br> <a href="https://github.com/Andreas-Lafferte/descriptiva">View the source at <i class="fa-brands fa-github" aria-hidden="true"></i> GitHub</a></div>
   </div>
 </footer>
 

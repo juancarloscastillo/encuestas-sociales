@@ -2,19 +2,24 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.0.37">
+<meta name="generator" content="quarto-1.2.269">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Encuestas Sociales - Presentaciones, lecturas y actividades</title>
+<title>Estadística Descriptiva - Laboratorio de Análisis de Datos</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-span.underline{text-decoration: underline;}
-div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
 </style>
 
 
@@ -24,7 +29,7 @@ ul.task-list{list-style: none;}
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="..//files/icon-513.png" rel="icon" type="image/png">
+<link href="..//files/logo-removebg-preview.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -57,20 +62,21 @@ ul.task-list{list-style: none;}
 }</script>
 
 
-<meta property="og:title" content="Encuestas Sociales - Presentaciones, lecturas y actividades">
-<meta property="og:description" content="En esta sección se encuentran los documentos de presentación correspondientes a cada clase, lecturas y también actividades prácticas.">
-<meta property="og:image" content="https://encuestas-sociales.netlify.app/files/social-image-f22.png">
-<meta property="og:site-name" content="Encuestas Sociales">
+<meta property="og:title" content="Estadística Descriptiva - Laboratorio de Análisis de Datos">
+<meta property="og:description" content="En esta sección se encuentran las guías prácticas a desarrollar durante las sesiones del Laboratorio de Análisis de Datos.">
+<meta property="og:image" content="https://descriptiva-facso.netlify.app/files/logo.png">
+<meta property="og:site-name" content="Estadística Descriptiva">
 <meta property="og:locale" content="en_US">
-<meta property="og:image:height" content="490">
-<meta property="og:image:width" content="898">
-<meta name="twitter:title" content="Encuestas Sociales - Presentaciones, lecturas y actividades">
-<meta name="twitter:description" content="En esta sección se encuentran los documentos de presentación correspondientes a cada clase, lecturas y también actividades prácticas.">
-<meta name="twitter:image" content="https://encuestas-sociales.netlify.app/files/social-image-f22.png">
-<meta name="twitter:creator" content="@juankcastillo">
+<meta property="og:image:height" content="500">
+<meta property="og:image:width" content="500">
+<meta name="twitter:title" content="Estadística Descriptiva - Laboratorio de Análisis de Datos">
+<meta name="twitter:description" content="En esta sección se encuentran las guías prácticas a desarrollar durante las sesiones del Laboratorio de Análisis de Datos.">
+<meta name="twitter:image" content="https://descriptiva-facso.netlify.app/files/logo.png">
+<meta name="twitter:creator" content="@andreaslaffert">
+<meta name="twitter:site" content="@andreaslaffert">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image-height" content="490">
-<meta name="twitter:image-width" content="898">
+<meta name="twitter:image-height" content="500">
+<meta name="twitter:image-width" content="500">
 </head>
 
 <body class="nav-sidebar docked nav-fixed">
@@ -79,33 +85,44 @@ ul.task-list{list-style: none;}
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
-      <a class="navbar-brand" href="../index.html">
-    <span class="navbar-title">Encuestas Sociales</span>
-  </a>
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Estadística Descriptiva</span>
+    </a>
+  </div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../syllabus.html">Programa</a>
+    <a class="nav-link" href="../syllabus.html">
+ <span class="menu-text">Programa</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../schedule.html">Planificación</a>
+    <a class="nav-link" href="../schedule.html">
+ <span class="menu-text">Planificación</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../content/index.html" aria-current="page">Contenidos</a>
+    <a class="nav-link" href="../class/index.html">
+ <span class="menu-text">Clases</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../trabajos.html">Trabajos</a>
+    <a class="nav-link active" href="../content/index.html" aria-current="page">
+ <span class="menu-text">Prácticos</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../resource/index.html">Recursos</a>
+    <a class="nav-link" href="../trabajos.html">
+ <span class="menu-text">Trabajos</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../resource/index.html">
+ <span class="menu-text">Recursos</span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://www.slack.com"><i class="bi bi-slack" role="img" aria-label="Slack">
+    <a class="nav-link" href="https://rstudio.cloud"><i class="bi bi-cloud-fill" role="img" aria-label="RStudio.cloud">
 </i> 
- </a>
+ <span class="menu-text"></span></a>
   </li>  
 </ul>
               <div id="quarto-search" class="" title="Search"></div>
@@ -114,7 +131,7 @@ ul.task-list{list-style: none;}
     </nav>
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Presentaciones, lecturas y actividades</h1>
+      <h1 class="quarto-secondary-nav-title">Laboratorio de Análisis de Datos</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -137,7 +154,7 @@ ul.task-list{list-style: none;}
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../content/index.html" class="sidebar-item-text sidebar-link active">Presentaciones, lecturas y actividades</a>
+  <a href="../content/index.html" class="sidebar-item-text sidebar-link active">Laboratorio de Análisis de Datos</a>
   </div>
 </li>
       </ul>
@@ -152,47 +169,42 @@ ul.task-list{list-style: none;}
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../content/01-content.html" class="sidebar-item-text sidebar-link">1: Presentación</a>
+  <a href="../content/01-content.html" class="sidebar-item-text sidebar-link">1: Introducción al lenguaje R</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../content/02-content.html" class="sidebar-item-text sidebar-link">2: Bases</a>
+  <a href="../content/02-content.html" class="sidebar-item-text sidebar-link">2: Conocimientos básicos de programación en R</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../content/03-content.html" class="sidebar-item-text sidebar-link">3: Medición</a>
+  <a href="../content/03-content.html" class="sidebar-item-text sidebar-link">3: Procesamiento, limpieza y manipulación de datos en R</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../content/04-content.html" class="sidebar-item-text sidebar-link">4: Preguntas</a>
+  <a href="../content/04-content.html" class="sidebar-item-text sidebar-link">4: Análisis descriptivo de datos en R</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../content/05-content.html" class="sidebar-item-text sidebar-link">5: Cuestionario</a>
+  <a href="../content/05-content.html" class="sidebar-item-text sidebar-link">5: Procesamiento y análisis de datos en R</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../content/08-content.html" class="sidebar-item-text sidebar-link">8: Flujo de trabajo</a>
+  <a href="../content/06-content.html" class="sidebar-item-text sidebar-link">6: Visualización de datos con R</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../content/09-content.html" class="sidebar-item-text sidebar-link">9: Documentos dinámicos &amp; RMarkdown</a>
+  <a href="../content/07-content.html" class="sidebar-item-text sidebar-link">7: Forma de una distribución</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../content/10-content.html" class="sidebar-item-text sidebar-link">10: Baterías e índices</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../content/11-content.html" class="sidebar-item-text sidebar-link">11: Análisis factorial</a>
+  <a href="../content/08-content.html" class="sidebar-item-text sidebar-link">8: Inferencia estadística univariada</a>
   </div>
 </li>
       </ul>
@@ -202,19 +214,87 @@ ul.task-list{list-style: none;}
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#instrucciones-generales-para-las-prácticas" id="toc-instrucciones-generales-para-las-prácticas" class="nav-link active" data-scroll-target="#instrucciones-generales-para-las-prácticas">Instrucciones generales para las prácticas</a></li>
+  <li><a href="#trabajo-con-software-r" id="toc-trabajo-con-software-r" class="nav-link" data-scroll-target="#trabajo-con-software-r">Trabajo con software R</a>
+  <ul class="collapse">
+  <li><a href="#installR" id="toc-installR" class="nav-link" data-scroll-target="#installR">Instalación de R &amp; RStudio</a></li>
+  <li><a href="#codigoR" id="toc-codigoR" class="nav-link" data-scroll-target="#codigoR">Sobre el trabajo en hojas de código en RStudio</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header">
-<h1 class="title d-none d-lg-block display-7">Presentaciones, lecturas y actividades</h1>
+<h1 class="title d-none d-lg-block display-7">Laboratorio de Análisis de Datos</h1>
 
 </header>
 
-<p>En esta sección se encuentran los documentos de presentación correspondientes a cada clase, lecturas y también actividades prácticas.</p>
+<p>En esta sección se encuentran las <strong>guías prácticas</strong> a desarrollar durante las sesiones del Laboratorio de Análisis de Datos.</p>
+<p>Todo el material es accesible desde el menú de la izquierda &lt;–</p>
+<section id="instrucciones-generales-para-las-prácticas" class="level2">
+<h2 class="anchored" data-anchor-id="instrucciones-generales-para-las-prácticas">Instrucciones generales para las prácticas</h2>
+<ul>
+<li><p>Las instancia prácticas consisten en el desarrollo de una guía práctica cada 2 semanas donde se aplican y profundizan los contenidos de las clases mediante las herramientas del lenguaje R. La organización de estas prácticas se puede revisar en la <a href="../schedule">planificación del curso</a>.</p></li>
+<li><p>Estas sesiones acompañarán el desarrollo de las guías prácticas disponibles en este sitio.</p></li>
+<li><p>En las prácticas vamos a trabajar con el software R, Versión 4.2.2</p></li>
+<li><p>Para poder tener una asesoría y monitoreo más cercano en el desarrollo de las guías, los estudiantes han sido divididos en grupos asignados a un/a ayudante (ver en UCursos).</p></li>
+<li><p>El trabajo con estas guías se organiza en los siguientes momentos:</p>
+<ul>
+<li>las sesiones de laboratorios serán en modalidad online, en donde el equipo docente guiará el desarrollo del práctico</li>
+<li>el equipo docente mostrará el código para cada sesión, el cual contendrá los mismos contenidos de las guías alojadas en este sitio</li>
+<li>en paralelo, cada estudiante realiza esta guía de manera autónoma durante la sesión de laboratorio en su propio computador, apoyándose en el código que mostrarán los apoyos docentes</li>
+<li>en caso de dudas, las realizan en los foros disponibles o se contactan directamente con su ayudante</li>
+</ul></li>
+</ul>
+</section>
+<section id="trabajo-con-software-r" class="level2">
+<h2 class="anchored" data-anchor-id="trabajo-con-software-r">Trabajo con software R</h2>
+<p>Para los análisis estadísticos de este curso usamos el programa R, en parte porque es gratuito, pero la principal razón es que es de código abierto. Esto quiere decir que cualquier persona puede revisar cómo está hecho y aportar con modificaciones y procedimientos nuevos, como son las librerías que realizan funciones específicas.</p>
+<p>El carácter de apertura de R posee muchas ventajas, pero también conlleva complicaciones. Se actualiza permanentemente, así como también las librerías, y esto puede generar problemas de compatibilidad y de fallas en ejecución del código de análisis.</p>
+<p>Para minimizar estos posibles problemas en este curso, vamos a:</p>
+<ul>
+<li><p>trabajar con la misma y última versión de R, que es la 4.2</p></li>
+<li><p>evitar uso de tilde, ñ, espacios y mayúsculas tanto en carpetas y archivos, así como también en los nombres de las variables</p></li>
+<li><p>al momento de hacer consultas sobre problemas en la ejecución del código, adjuntar la siguiente información:</p>
+<ol type="1">
+<li>Código completo hasta que se produce el problema</li>
+<li>Indicar línea del código donde se produce el problema</li>
+<li>Adjuntar el resultado del output de la información de la sesión (<code>sessionInfo()</code>)</li>
+</ol></li>
+</ul>
+<section id="installR" class="level3">
+<h3 class="anchored" data-anchor-id="installR">Instalación de R &amp; RStudio</h3>
+<p>Para esta versión del curso vamos a trabajar con el programa R Version 4.2 (se sugiere la última versión 4.2.2) y con RStudio, que ofrece un entorno más amigable para trabajar con R.</p>
+<p>Para <strong>instalar R</strong>: ir a <a href="https://cran.r-project.org/index.html">https://cran.r-project.org/index.html</a> y bajar/instalar la versión correspondiente a la plataforma utilizada (Windows, Mac o Linux)</p>
+<p>Para instalar <strong>RStudio</strong>: ir a <a href="https://posit.co/downloads/">https://posit.co/downloads/</a> y bajar/instalar RStudio desktop, Open Source License (libre).</p>
+<p>Si por alguna razón se prefiere trabajar sin descargar, también se puede utilizar RCloud, abajo un tutorial de una versión anterior del curso de estadística multivarada</p>
+<div style="width: 100%; height: 600px; overflow: hidden;">
+<video style="width: 100%;" controls="">
+<source src="https://www.dropbox.com/s/6nqm99dqnjvtmry/rcloud.mp4?raw=1" type="video/mp4">
+</video>
+</div>
+</section>
+<section id="codigoR" class="level3">
+<h3 class="anchored" data-anchor-id="codigoR">Sobre el trabajo en hojas de código en RStudio</h3>
+<ul>
+<li><p>El trabajo de análisis en RStudio se efectua en una <em>hoja de código</em> (o R script o sintaxis, o para los usuarios de Stata la <em>do-file</em>), que es donde se anotan los comandos y funciones. Para abrir una hoja, en RStudio ir a File &gt; New File &gt; R Script (o ctrl+shift+N),y aparecerá un panel con una pestaña “Untitled” (sin título). Esta es la hoja de código donde se anotan los comandos.</p></li>
+<li><p>Los contenidos de las hojas de código son básicamente 2:</p>
+<ul>
+<li>comandos o funciones: se escriben en la hoja, y para ejecutarlos se debe posicionar el cursor en la línea respectiva y ctrl+enter, el resultado aparecerá en el panel de resultados o <em>Consola</em>.</li>
+<li>texto: para escribir títulos, comentarios, y todo lo que permita entender qué se está haciendo, al principio de la línea respectiva escribir el signo <code>#</code></li>
+</ul></li>
+<li><p>Para grabar nuestra hoja de código y así respaldar nuestros análisis, File &gt; Save (o ctrl+s), y dar un nombre al archivo. Recordar: breve, sin espacios ni tildes ni eñes. Por defecto, la extensión de estos archivos es .R</p></li>
+</ul>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -258,7 +338,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
     button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
     setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
@@ -286,39 +383,58 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   for (var i=0; i<noterefs.length; i++) {
     const ref = noterefs[i];
     tippyHover(ref, function() {
-      let href = ref.getAttribute('href');
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
     });
   }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
-    tippyHover(ref, function() {
-      var popup = window.document.createElement('div');
-      cites.forEach(function(cite) {
-        var citeDiv = window.document.createElement('div');
-        citeDiv.classList.add('hanging-indent');
-        citeDiv.classList.add('csl-entry');
-        var biblioDiv = window.document.getElementById('ref-' + cite);
-        if (biblioDiv) {
-          citeDiv.innerHTML = biblioDiv.innerHTML;
-        }
-        popup.appendChild(citeDiv);
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
       });
-      return popup.innerHTML;
-    });
+    }
   }
 });
 </script>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
-    <div class="nav-footer-left">Content <i class="fa-brands fa-creative-commons" aria-hidden="true"></i> 2022 by <a href="https://www.jc-castillo.com">Juan Castillo</a> <br> All content licensed under a <i class="fa-brands fa-creative-commons" aria-hidden="true"></i> <i class="fa-brands fa-creative-commons-by" aria-hidden="true"></i> <i class="fa-brands fa-creative-commons-nc" aria-hidden="true"></i> <a href="https://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International license (CC BY-NC 4.0)</a></div>   
-    <div class="nav-footer-right">Made with <i class="fa-brands fa-r-project" aria-hidden="true"></i> and <a href="https://quarto.org/">Quarto</a><br> <a href="https://github.com/juancarloscastillo/encuestas-sociales">View the source at <i class="fa-brands fa-github" aria-hidden="true"></i> GitHub</a></div>
+    <div class="nav-footer-left">Content <i class="fa-brands fa-creative-commons" aria-hidden="true"></i> 2023 by <a href="?var:instructor.url">Andreas Laffert</a> <br> All content licensed under a <i class="fa-brands fa-creative-commons" aria-hidden="true"></i> <i class="fa-brands fa-creative-commons-by" aria-hidden="true"></i> <i class="fa-brands fa-creative-commons-nc" aria-hidden="true"></i> <a href="https://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International license (CC BY-NC 4.0)</a></div>   
+    <div class="nav-footer-right">Made with <i class="fa-brands fa-r-project" aria-hidden="true"></i> and <a href="https://quarto.org/">Quarto</a><br> <a href="https://github.com/Andreas-Lafferte/descriptiva">View the source at <i class="fa-brands fa-github" aria-hidden="true"></i> GitHub</a></div>
   </div>
 </footer>
 

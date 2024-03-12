@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.269">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Estadística Descriptiva - Práctica 4. Análisis descriptivo de datos en R</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="..//files/logo-removebg-preview.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "Sin resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar"
+  }
+}</script>
+
+
+<meta property="og:title" content="Estadística Descriptiva - Práctica 4. Análisis descriptivo de datos en R">
+<meta property="og:image" content="https://descriptiva-facso.netlify.app/files/logo.png">
+<meta property="og:site-name" content="Estadística Descriptiva">
+<meta property="og:locale" content="en_US">
+<meta property="og:image:height" content="500">
+<meta property="og:image:width" content="500">
+<meta name="twitter:title" content="Estadística Descriptiva - Práctica 4. Análisis descriptivo de datos en R">
+<meta name="twitter:image" content="https://descriptiva-facso.netlify.app/files/logo.png">
+<meta name="twitter:creator" content="@andreaslaffert">
+<meta name="twitter:site" content="@andreaslaffert">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image-height" content="500">
+<meta name="twitter:image-width" content="500">
+</head>
+
+<body class="nav-sidebar docked nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Estadística Descriptiva</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../syllabus.html">
+ <span class="menu-text">Programa</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../schedule.html">
+ <span class="menu-text">Planificación</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../class/index.html">
+ <span class="menu-text">Clases</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="../assignment/index.html" aria-current="page">
+ <span class="menu-text">Prácticos</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../trabajos.html">
+ <span class="menu-text">Trabajos</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../resource/index.html">
+ <span class="menu-text">Recursos</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://rstudio.cloud"><i class="bi bi-cloud-fill" role="img" aria-label="RStudio.cloud">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">Práctica 4. Análisis descriptivo de datos en R</h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Información general</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../assignment/index.html" class="sidebar-item-text sidebar-link">Laboratorio de Análisis de Datos</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">Sesiones</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../assignment/01-practico.html" class="sidebar-item-text sidebar-link">1: Introducción al lenguaje R</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../assignment/02-practico.html" class="sidebar-item-text sidebar-link">2: Conocimientos básicos de programación en R</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../assignment/03-practico.html" class="sidebar-item-text sidebar-link">3: Procesamiento, limpieza y manipulación de datos en R</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../assignment/04-practico.html" class="sidebar-item-text sidebar-link active">4: Análisis descriptivo de datos en R</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../assignment/05-practico.html" class="sidebar-item-text sidebar-link">5: Procesamiento y análisis de datos en R</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../assignment/06-practico.html" class="sidebar-item-text sidebar-link">6: Visualización de datos con R</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../assignment/07-practico.html" class="sidebar-item-text sidebar-link">7: Forma de una distribución</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../assignment/08-practico.html" class="sidebar-item-text sidebar-link">8: Inferencia estadística univariada</a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#presentación" id="toc-presentación" class="nav-link active" data-scroll-target="#presentación">Presentación</a>
+  <ul class="collapse">
+  <li><a href="#objetivo-de-la-práctica" id="toc-objetivo-de-la-práctica" class="nav-link" data-scroll-target="#objetivo-de-la-práctica">Objetivo de la práctica</a></li>
+  <li><a href="#recursos-de-la-práctica" id="toc-recursos-de-la-práctica" class="nav-link" data-scroll-target="#recursos-de-la-práctica">Recursos de la práctica</a></li>
+  <li><a href="#flujo-de-trabajo-reproducible" id="toc-flujo-de-trabajo-reproducible" class="nav-link" data-scroll-target="#flujo-de-trabajo-reproducible">Flujo de trabajo reproducible</a></li>
+  </ul></li>
+  <li><a href="#análisis-descriptivo-de-datos" id="toc-análisis-descriptivo-de-datos" class="nav-link" data-scroll-target="#análisis-descriptivo-de-datos">Análisis descriptivo de datos</a>
+  <ul class="collapse">
+  <li><a href="#cargar-librerías" id="toc-cargar-librerías" class="nav-link" data-scroll-target="#cargar-librerías">1 Cargar librerías</a></li>
+  <li><a href="#importar-datos" id="toc-importar-datos" class="nav-link" data-scroll-target="#importar-datos">2 Importar datos</a></li>
+  <li><a href="#explorar-datos" id="toc-explorar-datos" class="nav-link" data-scroll-target="#explorar-datos">3 Explorar datos</a></li>
+  <li><a href="#análisis" id="toc-análisis" class="nav-link" data-scroll-target="#análisis">4 Análisis</a>
+  <ul class="collapse">
+  <li><a href="#estadísticos-descriptivos-para-variables-categóricas" id="toc-estadísticos-descriptivos-para-variables-categóricas" class="nav-link" data-scroll-target="#estadísticos-descriptivos-para-variables-categóricas">4.1 Estadísticos descriptivos para variables categóricas</a></li>
+  <li><a href="#estadísticos-descriptivos-para-variables-númericas" id="toc-estadísticos-descriptivos-para-variables-númericas" class="nav-link" data-scroll-target="#estadísticos-descriptivos-para-variables-númericas">4.2 Estadísticos descriptivos para variables númericas</a></li>
+  </ul></li>
+  <li><a href="#resumen" id="toc-resumen" class="nav-link" data-scroll-target="#resumen">Resumen</a></li>
+  <li><a href="#video-de-clase" id="toc-video-de-clase" class="nav-link" data-scroll-target="#video-de-clase">Video de clase</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header">
+<h1 class="title d-none d-lg-block display-7">Práctica 4. Análisis descriptivo de datos en R</h1>
+
+<div class="date-block bg-content text-white p-2">
+  <p class="date">Sesión del jueves, 11 de mayo de 2023</p>
+</div>
+</header>
+
+<section id="presentación" class="level1">
+<h1>Presentación</h1>
+<section id="objetivo-de-la-práctica" class="level2">
+<h2 class="anchored" data-anchor-id="objetivo-de-la-práctica">Objetivo de la práctica</h2>
+<p>El objetivo de esta guía práctica es conocer las principales formas de realizar analísis estadísticos descriptivo en R, aplicando los concocimientos aprendidos durante el curso.</p>
+<p>En detalle, aprenderemos:</p>
+<ol type="1">
+<li><p>Establecer un flujo de trabajo ordenado en un script (.R).</p></li>
+<li><p>Aplicar análisis estadísticos descriptivos a variables según su nivel de medición</p></li>
+</ol>
+</section>
+<section id="recursos-de-la-práctica" class="level2">
+<h2 class="anchored" data-anchor-id="recursos-de-la-práctica">Recursos de la práctica</h2>
+<p>En esta práctica trabajeremos con los datos procesados que obtuvimos en la <a href="https://descriptiva-facso.netlify.app/content/03-content.html">práctica anterior</a> a partir de los datos del Estudio Longitudinal Social de Chile (ELSOC) realizado por <a href="https://coes.cl/encuesta-panel/">COES</a>.</p>
+<p>Recuerden que siempre es importante trabajar con el manual/libro de códigos de las bases de datos. El manual de la ELSOC 2022 lo pueden encontrar <a href="https://coes.cl/wp-content/uploads/Listado-de-Variables-ELSOC-2.xlsx">aquí</a>.</p>
+</section>
+<section id="flujo-de-trabajo-reproducible" class="level2">
+<h2 class="anchored" data-anchor-id="flujo-de-trabajo-reproducible">Flujo de trabajo reproducible</h2>
+<p>Por temas de orden y reproducibilidad, en este curso vamos a separar en dos momentos el trabajo con datos, y dos archivos de código correspondientes:</p>
+<ul>
+<li><p><strong>Preparación</strong>: corresponde a lo que se conoce generalmente como “limpieza”, es decir, realizar las modificaciones necesarias a los datos para poder efectuar los análisis. Estas modificaciones previas al análisis son necesarias ya que los datos originales con los que se va a trabajar en general no vienen perfectamente adaptados a los análisis que se quieren hacer. Por lo tanto, en cuanto a datos también hacemos la distinción entre datos originales y datos preparados (o procesados).</p></li>
+<li><p><strong>Análisis</strong>: se relaciona con análisis estadísticos, en este caso descriptivos, asociados a las preguntas e hipótesis de investigación.</p></li>
+</ul>
+<p><strong>Los procesos de preparación y análisis vinculados tanto a datos y resultados se presentan en el siguiente esquema:</strong></p>
+<p><img src="../images/image.png" class="img-fluid"></p>
+<p>Tanto la preparación como el análisis (que son parte del concepto más general de procesamiento) quedan registrados cada uno en un archivo de código respectivo.</p>
+<p>En esta guía <strong>nos centraremos en el análisis de datos</strong> con R. El documento de código de análisis tiene, por lo menos, 4 partes más una sección de identificación inicial:</p>
+<ol start="0" type="1">
+<li>Identificación y descripción general: Título, autor(es), fecha, información breve sobre el contenido del documento</li>
+<li>Librerías: instalar/cargar librerías a utilizar</li>
+<li>Datos: carga de datos</li>
+<li>Explorar: explorar datos</li>
+<li>Análisis: analizar datos y realizar estimaciones</li>
+</ol>
+</section>
+</section>
+<section id="análisis-descriptivo-de-datos" class="level1">
+<h1>Análisis descriptivo de datos</h1>
+<section id="cargar-librerías" class="level2">
+<h2 class="anchored" data-anchor-id="cargar-librerías">1 Cargar librerías</h2>
+<p>Este paso ya lo realizamos y cargamos todas las librerías necesarias. Pero si, al trabajar los distintos script lo hacemos en sesiones diferentes, debemos volver a cargar las librerías.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"pacman"</span>) <span class="co">#para instalar</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pacman) <span class="co"># para llamar/cargar</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>En este práctico utilizaremos los siguientes paquetes:</p>
+<ol type="1">
+<li><p><code>pacman</code>: este facilita y agiliza la lectura de los paquetes a utilizar en R</p></li>
+<li><p><code>tidyverse</code>: colección de paquetes, de la cual utilizaremos dplyr y haven</p></li>
+<li><p><code>dplyr</code>: nos permite seleccionar variables de un set de datos</p></li>
+<li><p><code>psych</code>: para analizar descriptivamente datos</p></li>
+<li><p><code>sjmisc</code>: para analizar descriptivamente datos</p></li>
+<li><p><code>crosstable</code>: para tablas cruzadas o de contingencia</p></li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(tidyverse, <span class="co"># colección de paquetes para manipulación de datos</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>               dplyr, <span class="co"># para manipular datos</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>               psych, <span class="co"># para analizar datos</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>               sjmisc, <span class="co"># para analizar datos</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>               crosstable) <span class="co"># para tablas de contingencia</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen =</span> <span class="dv">999</span>) <span class="co"># para desactivar notacion cientifica</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>()) <span class="co"># para limpiar el entorno de trabajo</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="importar-datos" class="level2">
+<h2 class="anchored" data-anchor-id="importar-datos">2 Importar datos</h2>
+<p>Usamos los datos creados en el procesamiento que se encuentran guardados en la carpeta output.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>datos_proc <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"output/datos_proc.Rdata"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="explorar-datos" class="level2">
+<h2 class="anchored" data-anchor-id="explorar-datos">3 Explorar datos</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(datos_proc) <span class="co"># Ver datos</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(datos_proc) <span class="co"># Nombre de columnas</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(datos_proc) <span class="co"># Dimensiones</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(datos_proc) <span class="co"># Estructura de los datos (las clases y categorias de repuesta)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>En este caso, nuestra base de datos procesada tiene 496 casos y 9 variables.</p>
+</section>
+<section id="análisis" class="level2">
+<h2 class="anchored" data-anchor-id="análisis">4 Análisis</h2>
+<section id="estadísticos-descriptivos-para-variables-categóricas" class="level3">
+<h3 class="anchored" data-anchor-id="estadísticos-descriptivos-para-variables-categóricas">4.1 Estadísticos descriptivos para variables categóricas</h3>
+<p>Cuando tenemos variables catégoricas, sean nominales u ordinales, podemos utilizar tablas de frecuencias. Recordemos que las frecuencias es una manera ordenar datos según el valor alcanzado en la distribución de una variable.</p>
+<section id="frecuencias" class="level4">
+<h4 class="anchored" data-anchor-id="frecuencias">4.1.1 Frecuencias</h4>
+<section id="a-absolutas-y-relativas" class="level5">
+<h5 class="anchored" data-anchor-id="a-absolutas-y-relativas">a) Absolutas y relativas</h5>
+<p>Para las variables nominales podemos usar tablas de frecuencias absolutas y relativas, y con ellas conocer la moda, es dedir, el valor con mayor cantidad de observaciones. Para ello, una manera sencilla de hacerlo es mediante la función <code>table</code> de R.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(datos_proc<span class="sc">$</span>sexo)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+ Femenino Masculino 
+      277       219 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(datos_proc<span class="sc">$</span>ingreso_minimo)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+debajo minimo  sobre minimo 
+          211           285 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(datos_proc<span class="sc">$</span>autor_democ)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+          A la gente como uno, nos da lo mismo un regimen democratico que uno autoritario 
+                                                                                      112 
+En algunas circunstancias, un gobierno autoritario puede ser preferible a uno democratico 
+                                                                                       62 
+                           La democracia es preferible a cualquier otra forma de gobierno 
+                                                                                      287 
+                                                                                  Ninguna 
+                                                                                       35 </code></pre>
+</div>
+</div>
+<p>Lo anterior nos entrega la frecuencia absoluta de las variables. Con ello, podemos observar que, en cuanto la preferencias entre autoritarismo y democracia, la mayoría de nuestros casos se concentran en “La democracia es preferible a cualquier otra forma de gobierno”. Para conocer la frecuencia relativa o porcentual de estas podemos utilizar el comando <code>prop.table</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>(freq_table1 <span class="ot">&lt;-</span><span class="fu">table</span>(datos_proc<span class="sc">$</span>autor_democ))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+          A la gente como uno, nos da lo mismo un regimen democratico que uno autoritario 
+                                                                                      112 
+En algunas circunstancias, un gobierno autoritario puede ser preferible a uno democratico 
+                                                                                       62 
+                           La democracia es preferible a cualquier otra forma de gobierno 
+                                                                                      287 
+                                                                                  Ninguna 
+                                                                                       35 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(freq_table1)<span class="sc">*</span><span class="dv">100</span> </span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+          A la gente como uno, nos da lo mismo un regimen democratico que uno autoritario 
+                                                                                22.580645 
+En algunas circunstancias, un gobierno autoritario puede ser preferible a uno democratico 
+                                                                                12.500000 
+                           La democracia es preferible a cualquier otra forma de gobierno 
+                                                                                57.862903 
+                                                                                  Ninguna 
+                                                                                 7.056452 </code></pre>
+</div>
+</div>
+<p>Así, podemos sostener que un 57,9% de los casos concideran que la democracia es preferible a cualquier otra forma de gobierno.</p>
+</section>
+<section id="b-acumuladas" class="level5">
+<h5 class="anchored" data-anchor-id="b-acumuladas">b) Acumuladas</h5>
+<p>Mientras que si trabajamos con variables ordinales, podemos usar también la frecuencia acumulada:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>(freq_table2 <span class="ot">&lt;-</span> <span class="fu">table</span>(datos_proc<span class="sc">$</span>tramo_ingreso))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Tramo 1 Tramo 2 Tramo 3 Tramo 4 Tramo 5 
+     77     198      80      60      81 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>(freq_table3 <span class="ot">&lt;-</span> <span class="fu">prop.table</span>(freq_table2)<span class="sc">*</span><span class="dv">100</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+ Tramo 1  Tramo 2  Tramo 3  Tramo 4  Tramo 5 
+15.52419 39.91935 16.12903 12.09677 16.33065 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cumsum</span>(freq_table3)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Tramo 1   Tramo 2   Tramo 3   Tramo 4   Tramo 5 
+ 15.52419  55.44355  71.57258  83.66935 100.00000 </code></pre>
+</div>
+</div>
+<p>A partir de este estadístico, podemos ver que un 55% de los casos se ubican debajo del tramo 2 de ingresos, lo cual en términos sustantivos señala que un 55% de las observaciones obtienen menos de $500.000 de ingresos mensuales.</p>
+<p>También podemos unir todas estas frecuencias en una sola tabla:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>tbl3 <span class="ot">&lt;-</span> <span class="fu">table</span>(datos_proc<span class="sc">$</span>tramo_ingreso)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cbind</span>(<span class="at">Freq=</span>tbl3, <span class="at">relat =</span> <span class="fu">prop.table</span>(tbl3)<span class="sc">*</span><span class="dv">100</span>, <span class="at">Cum =</span> <span class="fu">cumsum</span>(tbl3))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        Freq    relat Cum
+Tramo 1   77 15.52419  77
+Tramo 2  198 39.91935 275
+Tramo 3   80 16.12903 355
+Tramo 4   60 12.09677 415
+Tramo 5   81 16.33065 496</code></pre>
+</div>
+</div>
+<p>Otra manera de calcular frecuencias (absolutas, relativas y acumuladas) en R, es mediante la función <code>frq()</code> del paquete <code>sjmisc</code>, el cual entrega todo lo anterior con un solo comando.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>sjmisc<span class="sc">::</span><span class="fu">frq</span>(datos_proc<span class="sc">$</span>tramo_ingreso)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>x &lt;character&gt; 
+# total N=496 valid N=496 mean=2.74 sd=1.31
+
+Value   |   N | Raw % | Valid % | Cum. %
+----------------------------------------
+Tramo 1 |  77 | 15.52 |   15.52 |  15.52
+Tramo 2 | 198 | 39.92 |   39.92 |  55.44
+Tramo 3 |  80 | 16.13 |   16.13 |  71.57
+Tramo 4 |  60 | 12.10 |   12.10 |  83.67
+Tramo 5 |  81 | 16.33 |   16.33 | 100.00
+&lt;NA&gt;    |   0 |  0.00 |    &lt;NA&gt; |   &lt;NA&gt;</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="tablas-de-contingencia" class="level4">
+<h4 class="anchored" data-anchor-id="tablas-de-contingencia">4.1.2 Tablas de contingencia</h4>
+<p>También podemos cruzar dos variables mediante las llamadas tablas de contingencia o tablas cruzadas. Además de conocer la frecuencia absoluta en cada casilla, podemos también conocer la proporción o frecuencia relativa para cada casilla y el total de la filas y columnas.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">crosstable</span>(datos_proc, <span class="at">cols =</span> sexo, <span class="at">by =</span> tramo_edad)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 6
+  .id   label variable  Adultos      `Adutos mayores` Jovenes   
+  &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;        &lt;chr&gt;            &lt;chr&gt;     
+1 sexo  sexo  Femenino  210 (75.81%) 44 (15.88%)      23 (8.30%)
+2 sexo  sexo  Masculino 152 (69.41%) 49 (22.37%)      18 (8.22%)</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">crosstable</span>(datos_proc, <span class="at">cols =</span> sexo, <span class="at">by =</span> tramo_edad, <span class="at">total =</span> <span class="st">"both"</span>) <span class="co">#fila y columna</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 7
+  .id   label variable  Adultos      `Adutos mayores` Jovenes    Total        
+  &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;        &lt;chr&gt;            &lt;chr&gt;      &lt;chr&gt;        
+1 sexo  sexo  Femenino  210 (75.81%) 44 (15.88%)      23 (8.30%) 277 (55.85%) 
+2 sexo  sexo  Masculino 152 (69.41%) 49 (22.37%)      18 (8.22%) 219 (44.15%) 
+3 sexo  sexo  Total     362 (72.98%) 93 (18.75%)      41 (8.27%) 496 (100.00%)</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">crosstable</span>(datos_proc, <span class="at">cols =</span> sexo, <span class="at">by =</span> tramo_edad, <span class="at">total =</span> <span class="st">"row"</span>) <span class="co">#solo fila</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 7
+  .id   label variable  Adultos      `Adutos mayores` Jovenes    Total       
+  &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;        &lt;chr&gt;            &lt;chr&gt;      &lt;chr&gt;       
+1 sexo  sexo  Femenino  210 (75.81%) 44 (15.88%)      23 (8.30%) 277 (55.85%)
+2 sexo  sexo  Masculino 152 (69.41%) 49 (22.37%)      18 (8.22%) 219 (44.15%)</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">crosstable</span>(datos_proc, <span class="at">cols =</span> sexo, <span class="at">by =</span> tramo_edad, <span class="at">total =</span> <span class="st">"column"</span>) <span class="co">#solo columna</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 6
+  .id   label variable  Adultos      `Adutos mayores` Jovenes   
+  &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;        &lt;chr&gt;            &lt;chr&gt;     
+1 sexo  sexo  Femenino  210 (75.81%) 44 (15.88%)      23 (8.30%)
+2 sexo  sexo  Masculino 152 (69.41%) 49 (22.37%)      18 (8.22%)
+3 sexo  sexo  Total     362 (72.98%) 93 (18.75%)      41 (8.27%)</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="estadísticos-descriptivos-para-variables-númericas" class="level3">
+<h3 class="anchored" data-anchor-id="estadísticos-descriptivos-para-variables-númericas">4.2 Estadísticos descriptivos para variables númericas</h3>
+<p>A diferencia de las variables categóricas, a las variables numéricas (intervalaras o de razón) les podemos calcular una mayor cantidad de estadísticos descriptivos, como medidas de tendencia central, dispersión o posición.</p>
+<p>Como ya vimos en clases:</p>
+<ul>
+<li>dentro de las medidas de tendencia central que podemos calcular para describir a una variable numérica encontramos: media, mediana;</li>
+<li>dentro de las medidas de dispersión podemos señalar: desviación estándar, variancia, coeficiente de variación, rango;</li>
+<li>dentro de las medidas de posición podemos mencionar: mediana, q1, q3, mínimo, máximo.</li>
+</ul>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Recordemos que:</p>
+<ul>
+<li><p>las medidads de tendencia central expresan el valor alrededor del cual se sitúa la mayor cantidad de los datos. Estamos mirando hacia el centro de los datos.</p></li>
+<li><p>las medidas de dispersión buscan cuantificar lo próximo o alejado que están los valores de una variable de un punto central. Estamos mirando la dispersión de los datos respecto a su centro.</p></li>
+<li><p>las medidas de posición señalan en qué “lugar” de una distribución se encuentra un dato o un conjunto de datos en relación al resto.</p></li>
+</ul>
+</div>
+</div>
+<p>En R existen distintas formas de cálcular este tipo de estadísticos descriptivos.</p>
+<section id="a-con-summary" class="level5">
+<h5 class="anchored" data-anchor-id="a-con-summary">a) Con <code>summary</code></h5>
+<p>Podemos obtener rapidamente un resumen de los datos con la funcion <code>summary</code> de R</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(datos_proc<span class="sc">$</span>ingreso)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+      0  350000  500000  679514  800000 5000000 </code></pre>
+</div>
+</div>
+<p>Con esto podemos ver que el promedio o media aritmética del ingreso individual de los entrevistados de nuestra base es de $679.514, mientras que la mediana es de 500.000 pesos.</p>
+<p>Asimismo, observamos que el 25% de la parte inferior de nuestros datos obtiene igual o menos de $350.000, en tanto que el 25% superior de la distribución de los datos gana igual o más de 800.000 pesos.</p>
+<p>Sin embargo, aunque es informativo, no nos entrega toda la información que quisieramos.</p>
+</section>
+<section id="b-con-psych" class="level5">
+<h5 class="anchored" data-anchor-id="b-con-psych">b) Con <code>psych</code></h5>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>psych<span class="sc">::</span><span class="fu">describe</span>(datos_proc<span class="sc">$</span>ingreso,</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>                <span class="at">quant =</span> <span class="fu">c</span>(.<span class="dv">25</span>,.<span class="dv">75</span>),</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">IQR =</span> T)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  vars   n     mean       sd median  trimmed    mad min     max   range skew
+1    1 496 679514.1 611376.9 500000 572434.7 296520   0 5000000 5000000 3.01
+  kurtosis       se    IQR  Q0.25  Q0.75
+1    13.42 27451.63 450000 350000 800000</code></pre>
+</div>
+</div>
+<p>Usando la funcion <code>describe</code> del paquete <code>psych</code> podemos obtener mayor cantidad de estadísticos, además de especificarle otros adicionales.</p>
+<p>Así, por ejemplo, ahora además de la media aritmética y la media, también tenemos la media recortada.</p>
+<p>Pero lo más relevante es que nos aporta estadísticos de la dispersión de los datos, como la desviación estandár que nos indica que el grado de dispersión de mis datos respecto al promedio de ingresos es de $611.376. Con esto, podemos obtener también la varianza de los datos, que corresponde a la DS al cuadrado.</p>
+<p>Además de eso, nos aporta el rango (el valor máximo menos el mínimo), y el recorrido interquartilico (Q3 - Q1) que nos indica el grado de dispersión del 50% de los datos.</p>
+<p>Con esta información, podemos calcular los demás estadísticos que necesitamos “a mano”, es decir, computandolos directamente en R como una cálculadora.</p>
+</section>
+<section id="c-con-summarise-de-dplyr" class="level5">
+<h5 class="anchored" data-anchor-id="c-con-summarise-de-dplyr">c) Con <code>summarise</code> de <code>dplyr</code></h5>
+<p>Otra manera de obtener todos los estadísticos que necesitamos es utilizando <code>dplyr</code>. Aquí, le especificamos lo que requerimos, pero debemos saber bien cómo calcular tales medidas:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>datos_proc <span class="sc">%&gt;%</span> </span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">media =</span> <span class="fu">mean</span>(ingreso),</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">mediana =</span> <span class="fu">median</span>(ingreso),</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">q1 =</span> <span class="fu">quantile</span>(ingreso, <span class="at">probs =</span> .<span class="dv">25</span>),</span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">q2 =</span> <span class="fu">quantile</span>(ingreso, <span class="at">probs =</span> .<span class="dv">75</span>),</span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">rango =</span> <span class="fu">max</span>(ingreso) <span class="sc">-</span> <span class="fu">min</span>(ingreso),</span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">desviacion_estandar =</span> <span class="fu">sd</span>(ingreso),</span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">varianza =</span> <span class="fu">var</span>(ingreso),</span>
+<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a>            <span class="at">coef_variacion =</span> <span class="fu">sd</span>(ingreso)<span class="sc">/</span><span class="fu">mean</span>(ingreso))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 8
+    media mediana     q1     q2   rango desviacion_estandar     varianza coef_…¹
+    &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;               &lt;dbl&gt;        &lt;dbl&gt;   &lt;dbl&gt;
+1 679514.  500000 350000 800000 5000000             611377.      3.74e11   0.900
+# … with abbreviated variable name ¹​coef_variacion</code></pre>
+</div>
+</div>
+<p>Ahora, conocemos no solo los estádisticos anteriores, sino que también obtuvimos la varianza y el coeficiente de variación.</p>
+</section>
+</section>
+</section>
+<section id="resumen" class="level2">
+<h2 class="anchored" data-anchor-id="resumen">Resumen</h2>
+<p>Hoy aprendimos a procesar datos en R. En detalle, vimos:</p>
+<ol type="1">
+<li><p>Cómo establecer un flujo de trabajo de procesamiento y análisis de datos en R.</p></li>
+<li><p>Realizar análisis descriptivos en R según el nivel de medición de las variables</p></li>
+</ol>
+</section>
+<section id="video-de-clase" class="level2">
+<h2 class="anchored" data-anchor-id="video-de-clase">Video de clase</h2>
+<div class="quarto-video ratio ratio-16x9"><iframe src="https://www.youtube.com/embed/2Z2KYScppPA" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copiado");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copiado");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">Content <i class="fa-brands fa-creative-commons" aria-hidden="true"></i> 2024 by <a href="?var:instructor.url"><strong>?var:instructor.name_no_title</strong></a> <br> All content licensed under a <i class="fa-brands fa-creative-commons" aria-hidden="true"></i> <i class="fa-brands fa-creative-commons-by" aria-hidden="true"></i> <i class="fa-brands fa-creative-commons-nc" aria-hidden="true"></i> <a href="https://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International license (CC BY-NC 4.0)</a></div>   
+    <div class="nav-footer-right">Made with <i class="fa-brands fa-r-project" aria-hidden="true"></i> and <a href="https://quarto.org/">Quarto</a><br> <a href="https://github.com/cursos-metodos-facso/descriptiva">View the source at <i class="fa-brands fa-github" aria-hidden="true"></i> GitHub</a></div>
+  </div>
+</footer>
+
+
+
+</body></html>

@@ -1,9 +1,8 @@
 ---
-title: "Encuestas Sociales"
-subtitle: "Diseño, análisis y reporte"
+title: "Estadística Descriptiva"
 lang: es
 details: |
-  SOC01210-1 • Segundo Semestre 2022<br>Departamento de Sociología FACSO<br>Universidad de Chile
+  SOC01014-1 • Primer Semestre 2024<br>Departamento de Sociología, Facultad de Ciencias Sociales<br>Universidad de Chile
 sidebar: false
 toc: false
 page-layout: full
@@ -11,7 +10,7 @@ format:
   html:
     template-partials:
       - html/home/title-block.html
-course-logo: /files/img/eval-hires.png
+course-logo: /files/img/logo.png
 ---
 
 ```{r set-dependencies, include=FALSE, eval=FALSE}
@@ -26,36 +25,75 @@ withr::with_dir(here::here(), {
 
 ::: {.grid .course-details}
 
-::: {.g-col-4}
-### Profesor
+::: {.g-col-12 .g-col-sm-6 .g-col-md-4}
+### Equipo docente
 
-- {{< fa user >}} &nbsp; [{{< var instructor.name >}}]({{< var instructor.url >}})
+**Profesor**
+
+
+<div class="image-cropper">
+  <img src="https://ucampus.uchile.cl/d/r/usuario/ba/ba7fdee322ce6c51d3c525d12065fd48/perfil/f62c8ca06f8a62b9553cd11ea59d1238.jpg">
+</div>
+
+
+
+{{< var instructor.name >}}
+
 - {{< fa university >}} &nbsp; {{< var instructor.office >}}
 - {{< fa envelope >}} &nbsp; <a href="mailto:{{< var instructor.email >}}">{{< var instructor.email >}}</a>
-- {{< fa brands twitter >}} &nbsp; [{{< var instructor.twitter >}}](https://www.twitter.com/{{< var instructor.twitter >}})
-- {{< fa calendar-check >}} &nbsp; [Reuniones]({{< var instructor.appointment_url >}})
+
+
+**Apoyos docentes**
+
+<div class="image-cropper">
+  <img src="https://static.u-cursos.cl/r/usuario/af/af4bf2025223c7ec26f2b05853a831e8/datos_usuario/av_611aa760e705a.jpg" alt="avatar" class="profile-pic">
+</div>
+
+
+Daniela Olivares
+
+- {{< fa envelope >}} &nbsp; <a href="mailto:{{< var other2.email >}}">{{< var other2.email >}}</a>
+- {{< fa calendar-check >}} &nbsp; [Agendar reunión]({{< var other2.appointment_url >}})
+
+<div class="image-cropper">
+  <img src="https://ucampus.uchile.cl/d/r/usuario/5b/5b662afdc07fea74ce535d3c5e29712e/perfil/8150fe7de4d9418b59adf4d32aba4bec.jpg">
+</div>
+
+
+Andreas Laffert
+
+- {{< fa envelope >}} &nbsp; <a href="mailto:{{< var other.email >}}">{{< var other.email >}}</a>
+- {{< fa calendar-check >}} &nbsp; [Agendar reunión]({{< var other.appointment_url >}})
+
+**Ayudantes**
+
+- 
+-
+
 :::
 
-::: {.g-col-4}
-### Información del curso
+::: {.g-col-12 .g-col-sm-6 .g-col-md-4}
+### Actividades
 
-- {{< fa calendar >}} &nbsp; {{< var course.days >}}
-- {{< fa calendar-alt >}} &nbsp; {{< var course.dates >}}
-- {{< fa clock >}} &nbsp; {{< var course.time >}}
-- {{< fa location-dot >}} &nbsp; {{< var course.location >}}
-- {{< fa brands slack >}} &nbsp; [Slack]({{< var course.slack >}})
+- {{< fa university >}} &nbsp; **Lunes 8:30-10:00** - Aulario B/1
+
+- {{< fa computer >}} &nbsp; **Miércoles 8:30-10:00** Online 
+
 :::
 
-::: {.g-col-4 .contact-policy}
+::: {.g-col-12 .g-col-md-4 .contact-policy}
 ### Contacto
 
 {{< var instructor.contact_policy >}}
-:::
+
+### Versiones anteriores del curso
+
+- [2023](https://version2023--descriptiva-facso.netlify.app/)
 
 :::
 
-```{r eval=FALSE, echo=FALSE}
-# knitr::include_graphics(here::here("files", "img", "eval-flowchart.png"), error = FALSE)
-```
+:::
+
 
 :::
+
