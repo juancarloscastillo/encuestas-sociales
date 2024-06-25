@@ -1,5 +1,5 @@
 ---
-title: "Estadística Multivariada"
+title: "Encuestas sociales"
 author: ".small[Juan Carlos Castillo <br><br> Departamento de Sociología - UCH / COES <br><br>]"
 date: "1er Sem 2022"
 output:
@@ -13,7 +13,7 @@ output:
       highlightStyle: github
       highlightLines: true
       countIncrementalSlides: false
-      beforeInit: "https://multinivel.netlify.com/docpres/xaringan_custom/macros.js"
+      beforeInit: "../macros.js"
     seal: false # esto omite title slide automática
 ---
 class: front
